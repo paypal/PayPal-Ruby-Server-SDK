@@ -1,0 +1,60 @@
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false  
+
+Metrics/ParameterLists:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Layout/EndOfLine:
+  Enabled: false
+Lint/UnderscorePrefixedVariableName:
+  Enabled: false
+
+Lint/MissingSuper:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Naming/MethodParameterName:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/RedundantAssignment:
+  Enabled: false
+
+Style/MultilineTernaryOperator:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  Enabled: false
+
+Style/KeywordParametersOrder:
+  Enabled: false
+
+AllCops:
+  Exclude:
+    - './test/**/*'
+    - './*'
