@@ -21,7 +21,7 @@ The following parameters are configurable for the API Client:
 The API client can be initialized as follows:
 
 ```ruby
-client = PayPalRestapIs::Client.new(
+client = PaypalServerSdk::Client.new(
   client_credentials_auth_credentials: ClientCredentialsAuthCredentials.new(
     o_auth_client_id: 'OAuthClientId',
     o_auth_client_secret: 'OAuthClientSecret'
@@ -51,7 +51,7 @@ API calls return an `ApiResponse` object that includes the following fields:
 | `errors` | Errors, if they exist |
 | `data` | The deserialized body of the HTTP response |
 
-## PayPal REST APIs Client
+## paypal server sdk Client
 
 The gateway for the SDK. This class acts as a factory for the Controllers and also holds the configuration of the SDK.
 

@@ -75,10 +75,10 @@ def customer_payment_tokens_get(options = {})
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `customer_id` | `String` | Query, Required | A unique identifier representing a specific customer in merchant's/partner's system or records. |
-| `page_size` | `Integer` | Query, Optional | A non-negative, non-zero integer indicating the maximum number of results to return at one time. |
-| `page` | `Integer` | Query, Optional | A non-negative, non-zero integer representing the page of the results. |
-| `total_required` | `TrueClass \| FalseClass` | Query, Optional | A boolean indicating total number of items (total_items) and pages (total_pages) are expected to be returned in the response. |
+| `customer_id` | `String` | Query, Required | A unique identifier representing a specific customer in merchant's/partner's system or records.<br>**Constraints**: *Minimum Length*: `7`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
+| `page_size` | `Integer` | Query, Optional | A non-negative, non-zero integer indicating the maximum number of results to return at one time.<br>**Default**: `5`<br>**Constraints**: `>= 1` |
+| `page` | `Integer` | Query, Optional | A non-negative, non-zero integer representing the page of the results.<br>**Default**: `1`<br>**Constraints**: `>= 1` |
+| `total_required` | `TrueClass \| FalseClass` | Query, Optional | A boolean indicating total number of items (total_items) and pages (total_pages) are expected to be returned in the response.<br>**Default**: `false` |
 
 ## Response Type
 
@@ -118,7 +118,7 @@ def payment_tokens_get(id)
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `String` | Template, Required | ID of the payment token. |
+| `id` | `String` | Template, Required | ID of the payment token.<br>**Constraints**: *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
 
@@ -154,7 +154,7 @@ def payment_tokens_delete(id)
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `String` | Template, Required | ID of the payment token. |
+| `id` | `String` | Template, Required | ID of the payment token.<br>**Constraints**: *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
 
@@ -231,7 +231,7 @@ def setup_tokens_get(id)
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `String` | Template, Required | ID of the setup token. |
+| `id` | `String` | Template, Required | ID of the setup token.<br>**Constraints**: *Minimum Length*: `7`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
 

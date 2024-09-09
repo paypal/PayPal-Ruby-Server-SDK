@@ -19,7 +19,7 @@ In order to provide custom logger implementation, the `AbstractLogger` class mus
 require 'ougai'
 require 'logger'
 
-include PayPalRestapIs
+include PaypalServerSdk
 
 
 class CustomLogger < AbstractLogger
@@ -38,7 +38,7 @@ end
 Following is how the custom logger implementation can be injected in the SDK client.
 
 ```ruby
-client = PayPalRestapIs::Client.new(
+client = PaypalServerSdk::Client.new(
   logging_configuration: LoggingConfiguration.new(
     logger: CustomLogger.new
   )
