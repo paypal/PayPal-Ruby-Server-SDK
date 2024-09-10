@@ -38,6 +38,10 @@ jobs:
     - name: Add UI Testing Framework Dependency
       run: |
         gem install capybara -v 3.40 && bundle add capybara
+    - name: Add Minitest Dependency
+      run: |
+        gem install minitest -v 5.24 && bundle add minitest
+        gem install minitest-proveit -v 1.0 && bundle add minitest-proveit
     - name: Add DotEnv Dependency
       run: |
         gem install dotenv && bundle add dotenv
