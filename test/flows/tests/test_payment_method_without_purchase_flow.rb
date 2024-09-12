@@ -38,7 +38,7 @@ class PaymentMethodWithoutPurchaseFlowTest < FlowTestBase
         payment_source: PaymentTokenRequestPaymentSource.new(
           token: VaultTokenRequest.new(
             id: setup_token_api_response.data.id,
-            type: TokenType::SETUP_TOKEN
+            type: TokenRequestType::SETUP_TOKEN
           )
         )
       )

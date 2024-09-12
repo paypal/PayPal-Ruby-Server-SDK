@@ -55,7 +55,7 @@ class VaultControllerTest < ControllerTestBase
       'pay_pal_request_id' => '',
       'body' => PaymentTokenRequest.new(
         payment_source: PaymentTokenRequestPaymentSource.new(
-          token: VaultTokenRequest.new(id: 'id0', type: TokenType::BILLING_AGREEMENT)
+          token: VaultTokenRequest.new(id: 'id0', type: TokenRequestType::BILLING_AGREEMENT)
         )
       )
     }

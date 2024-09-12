@@ -1,11 +1,11 @@
 require 'json'
 require 'minitest/autorun'
-require 'pay_pal_restap_is'
+require 'paypal_server_sdk'
 require_relative '../flows/ui_flow_executor'
 require 'dotenv'
 
 class FlowTestBase < Minitest::Test
-  include PayPalRestapIs
+  include PaypalServerSdk
   include CoreLibrary
   Dotenv.load
 
