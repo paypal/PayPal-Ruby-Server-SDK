@@ -14,7 +14,7 @@ module PaypalServerSdk
     attr_accessor :card
 
     # TODO: Write general description for this method
-    # @return [PayPalPaymentToken]
+    # @return [PaypalPaymentToken]
     attr_accessor :paypal
 
     # TODO: Write general description for this method
@@ -56,7 +56,7 @@ module PaypalServerSdk
 
       # Extract variables from the hash.
       card = SetupTokenResponseCard.from_hash(hash['card']) if hash['card']
-      paypal = PayPalPaymentToken.from_hash(hash['paypal']) if hash['paypal']
+      paypal = PaypalPaymentToken.from_hash(hash['paypal']) if hash['paypal']
       venmo = VenmoPaymentToken.from_hash(hash['venmo']) if hash['venmo']
 
       # Create object from extracted values.

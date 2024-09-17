@@ -5,7 +5,7 @@
 
 module PaypalServerSdk
   # Information used to pay using iDEAL.
-  class IDEALPaymentObject < BaseModel
+  class IdealPaymentObject < BaseModel
     SKIP = Object.new
     private_constant :SKIP
 
@@ -76,7 +76,7 @@ module PaypalServerSdk
         hash.key?('iban_last_chars') ? hash['iban_last_chars'] : SKIP
 
       # Create object from extracted values.
-      IDEALPaymentObject.new(name: name,
+      IdealPaymentObject.new(name: name,
                              country_code: country_code,
                              bic: bic,
                              iban_last_chars: iban_last_chars)

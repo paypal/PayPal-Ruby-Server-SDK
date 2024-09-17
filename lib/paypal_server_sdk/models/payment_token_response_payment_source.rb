@@ -14,7 +14,7 @@ module PaypalServerSdk
     attr_accessor :card
 
     # Full representation of a Card Payment Token including network token.
-    # @return [PayPalPaymentToken]
+    # @return [PaypalPaymentToken]
     attr_accessor :paypal
 
     # Full representation of a Card Payment Token including network token.
@@ -71,7 +71,7 @@ module PaypalServerSdk
 
       # Extract variables from the hash.
       card = CardPaymentToken.from_hash(hash['card']) if hash['card']
-      paypal = PayPalPaymentToken.from_hash(hash['paypal']) if hash['paypal']
+      paypal = PaypalPaymentToken.from_hash(hash['paypal']) if hash['paypal']
       venmo = VenmoPaymentToken.from_hash(hash['venmo']) if hash['venmo']
       apple_pay = ApplePayPaymentToken.from_hash(hash['apple_pay']) if hash['apple_pay']
       bank = hash.key?('bank') ? hash['bank'] : SKIP

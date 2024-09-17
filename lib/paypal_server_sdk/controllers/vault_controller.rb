@@ -8,7 +8,7 @@ module PaypalServerSdk
   class VaultController < BaseController
     # Creates a Payment Token from the given payment source and adds it to the
     # Vault of the associated customer.
-    # @param [String] pay_pal_request_id Required parameter: The server stores
+    # @param [String] paypal_request_id Required parameter: The server stores
     # keys for 3 hours.
     # @param [PaymentTokenRequest] body Required parameter: Payment Token
     # creation with a financial instrument and an optional customer_id.
@@ -18,7 +18,7 @@ module PaypalServerSdk
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/v3/vault/payment-tokens',
                                      Server::DEFAULT)
-                   .header_param(new_parameter(options['pay_pal_request_id'], key: 'PayPal-Request-Id'))
+                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
                    .body_param(new_parameter(options['body']))
                    .header_param(new_parameter('application/json', key: 'accept'))
@@ -150,7 +150,7 @@ module PaypalServerSdk
 
     # Creates a Setup Token from the given payment source and adds it to the
     # Vault of the associated customer.
-    # @param [String] pay_pal_request_id Required parameter: The server stores
+    # @param [String] paypal_request_id Required parameter: The server stores
     # keys for 3 hours.
     # @param [SetupTokenRequest] body Required parameter: Setup Token creation
     # with a instrument type optional financial instrument details and
@@ -161,7 +161,7 @@ module PaypalServerSdk
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/v3/vault/setup-tokens',
                                      Server::DEFAULT)
-                   .header_param(new_parameter(options['pay_pal_request_id'], key: 'PayPal-Request-Id'))
+                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
                    .body_param(new_parameter(options['body']))
                    .header_param(new_parameter('application/json', key: 'accept'))

@@ -46,7 +46,7 @@ module PaypalServerSdk
     # Captures an authorized payment, by ID.
     # @param [String] authorization_id Required parameter: The PayPal-generated
     # ID for the authorized payment to capture.
-    # @param [String] pay_pal_request_id Optional parameter: The server stores
+    # @param [String] paypal_request_id Optional parameter: The server stores
     # keys for 45 days.
     # @param [String] prefer Optional parameter: The preferred server response
     # upon successful completion of the request. Value
@@ -66,7 +66,7 @@ module PaypalServerSdk
                    .template_param(new_parameter(options['authorization_id'], key: 'authorization_id')
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
-                   .header_param(new_parameter(options['pay_pal_request_id'], key: 'PayPal-Request-Id'))
+                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
                    .header_param(new_parameter(options['prefer'], key: 'Prefer'))
                    .body_param(new_parameter(options['body']))
                    .header_param(new_parameter('application/json', key: 'accept'))
@@ -124,7 +124,7 @@ module PaypalServerSdk
     # supported for Partner use cases.</blockquote>
     # @param [String] authorization_id Required parameter: The PayPal-generated
     # ID for the authorized payment to reauthorize.
-    # @param [String] pay_pal_request_id Optional parameter: The server stores
+    # @param [String] paypal_request_id Optional parameter: The server stores
     # keys for 45 days.
     # @param [String] prefer Optional parameter: The preferred server response
     # upon successful completion of the request. Value
@@ -144,7 +144,7 @@ module PaypalServerSdk
                    .template_param(new_parameter(options['authorization_id'], key: 'authorization_id')
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
-                   .header_param(new_parameter(options['pay_pal_request_id'], key: 'PayPal-Request-Id'))
+                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
                    .header_param(new_parameter(options['prefer'], key: 'Prefer'))
                    .body_param(new_parameter(options['body']))
                    .header_param(new_parameter('application/json', key: 'accept'))
@@ -186,7 +186,7 @@ module PaypalServerSdk
     # authorized payment that has been fully captured.
     # @param [String] authorization_id Required parameter: The PayPal-generated
     # ID for the authorized payment to void.
-    # @param [String] pay_pal_auth_assertion Optional parameter: An
+    # @param [String] paypal_auth_assertion Optional parameter: An
     # API-caller-provided JSON Web Token (JWT) assertion that identifies the
     # merchant. For details, see
     # [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-asse
@@ -210,7 +210,7 @@ module PaypalServerSdk
                                      Server::DEFAULT)
                    .template_param(new_parameter(options['authorization_id'], key: 'authorization_id')
                                     .should_encode(true))
-                   .header_param(new_parameter(options['pay_pal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
+                   .header_param(new_parameter(options['paypal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
                    .header_param(new_parameter(options['prefer'], key: 'Prefer'))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .auth(Single.new('Oauth2')))
@@ -293,7 +293,7 @@ module PaypalServerSdk
     # <code>amount</code> object in the JSON request body.
     # @param [String] capture_id Required parameter: The PayPal-generated ID for
     # the captured payment to refund.
-    # @param [String] pay_pal_request_id Optional parameter: The server stores
+    # @param [String] paypal_request_id Optional parameter: The server stores
     # keys for 45 days.
     # @param [String] prefer Optional parameter: The preferred server response
     # upon successful completion of the request. Value
@@ -303,7 +303,7 @@ module PaypalServerSdk
     # HATEOAS links.</li><li><code>return=representation</code>. The server
     # returns a complete resource representation, including the current state of
     # the resource.</li></ul>
-    # @param [String] pay_pal_auth_assertion Optional parameter: An
+    # @param [String] paypal_auth_assertion Optional parameter: An
     # API-caller-provided JSON Web Token (JWT) assertion that identifies the
     # merchant. For details, see
     # [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-asse
@@ -321,9 +321,9 @@ module PaypalServerSdk
                    .template_param(new_parameter(options['capture_id'], key: 'capture_id')
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
-                   .header_param(new_parameter(options['pay_pal_request_id'], key: 'PayPal-Request-Id'))
+                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
                    .header_param(new_parameter(options['prefer'], key: 'Prefer'))
-                   .header_param(new_parameter(options['pay_pal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
+                   .header_param(new_parameter(options['paypal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
                    .body_param(new_parameter(options['body']))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)

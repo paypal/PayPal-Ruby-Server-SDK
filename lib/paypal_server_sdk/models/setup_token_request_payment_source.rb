@@ -14,7 +14,7 @@ module PaypalServerSdk
     attr_accessor :card
 
     # A resource representing a request to vault PayPal Wallet.
-    # @return [VaultPayPalWalletRequest]
+    # @return [VaultPaypalWalletRequest]
     attr_accessor :paypal
 
     # A resource representing a request to vault PayPal Wallet.
@@ -63,7 +63,7 @@ module PaypalServerSdk
 
       # Extract variables from the hash.
       card = SetupTokenRequestCard.from_hash(hash['card']) if hash['card']
-      paypal = VaultPayPalWalletRequest.from_hash(hash['paypal']) if hash['paypal']
+      paypal = VaultPaypalWalletRequest.from_hash(hash['paypal']) if hash['paypal']
       venmo = VaultVenmoRequest.from_hash(hash['venmo']) if hash['venmo']
       token = VaultTokenRequest.from_hash(hash['token']) if hash['token']
 
