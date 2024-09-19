@@ -32,7 +32,7 @@ def payment_tokens_create(options = {})
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `pay_pal_request_id` | `String` | Header, Required | The server stores keys for 3 hours. |
+| `paypal_request_id` | `String` | Header, Required | The server stores keys for 3 hours. |
 | `body` | [`PaymentTokenRequest`](../../doc/models/payment-token-request.md) | Body, Required | Payment Token creation with a financial instrument and an optional customer_id. |
 
 ## Response Type
@@ -43,7 +43,7 @@ This method returns a `ApiResponse` instance. The `data` property in this instan
 
 ```ruby
 collect = {
-  'pay_pal_request_id' => 'PayPal-Request-Id6',
+  'paypal_request_id' => 'PayPal-Request-Id6',
   'body' => PaymentTokenRequest.new(
     payment_source: PaymentTokenRequestPaymentSource.new
   )
@@ -189,7 +189,7 @@ def setup_tokens_create(options = {})
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `pay_pal_request_id` | `String` | Header, Required | The server stores keys for 3 hours. |
+| `paypal_request_id` | `String` | Header, Required | The server stores keys for 3 hours. |
 | `body` | [`SetupTokenRequest`](../../doc/models/setup-token-request.md) | Body, Required | Setup Token creation with a instrument type optional financial instrument details and customer_id. |
 
 ## Response Type
@@ -200,7 +200,7 @@ This method returns a `ApiResponse` instance. The `data` property in this instan
 
 ```ruby
 collect = {
-  'pay_pal_request_id' => 'PayPal-Request-Id6',
+  'paypal_request_id' => 'PayPal-Request-Id6',
   'body' => SetupTokenRequest.new(
     payment_source: SetupTokenRequestPaymentSource.new
   )

@@ -51,7 +51,7 @@ API calls return an `ApiResponse` object that includes the following fields:
 | `errors` | Errors, if they exist |
 | `data` | The deserialized body of the HTTP response |
 
-## Paypal Server SDK Client
+## PayPal Server SDK Client
 
 The gateway for the SDK. This class acts as a factory for the Controllers and also holds the configuration of the SDK.
 

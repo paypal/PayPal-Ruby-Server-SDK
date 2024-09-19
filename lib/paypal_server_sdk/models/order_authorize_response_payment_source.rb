@@ -15,7 +15,7 @@ module PaypalServerSdk
     attr_accessor :card
 
     # The PayPal Wallet response.
-    # @return [PayPalWalletResponse]
+    # @return [PaypalWalletResponse]
     attr_accessor :paypal
 
     # Information needed to pay using ApplePay.
@@ -72,7 +72,7 @@ module PaypalServerSdk
 
       # Extract variables from the hash.
       card = CardResponse.from_hash(hash['card']) if hash['card']
-      paypal = PayPalWalletResponse.from_hash(hash['paypal']) if hash['paypal']
+      paypal = PaypalWalletResponse.from_hash(hash['paypal']) if hash['paypal']
       apple_pay = ApplePayPaymentObject.from_hash(hash['apple_pay']) if hash['apple_pay']
       google_pay = GooglePayWalletResponse.from_hash(hash['google_pay']) if hash['google_pay']
       venmo = VenmoWalletResponse.from_hash(hash['venmo']) if hash['venmo']

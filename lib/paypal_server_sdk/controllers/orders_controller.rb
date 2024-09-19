@@ -17,12 +17,12 @@ module PaypalServerSdk
     # href="https://developer.paypal.com/api/rest/reference/orders/v2/errors/#cr
     # eate-order">Orders v2 errors</a>.</blockquote>
     # @param [OrderRequest] body Required parameter: Example:
-    # @param [String] pay_pal_request_id Optional parameter: The server stores
+    # @param [String] paypal_request_id Optional parameter: The server stores
     # keys for 6 hours. The API callers can request the times to up to 72 hours
     # by speaking to their Account Manager.
-    # @param [String] pay_pal_partner_attribution_id Optional parameter:
+    # @param [String] paypal_partner_attribution_id Optional parameter:
     # Example:
-    # @param [String] pay_pal_client_metadata_id Optional parameter: Example:
+    # @param [String] paypal_client_metadata_id Optional parameter: Example:
     # @param [String] prefer Optional parameter: The preferred server response
     # upon successful completion of the request. Value
     # is:<ul><li><code>return=minimal</code>. The server returns a minimal
@@ -39,9 +39,9 @@ module PaypalServerSdk
                                      Server::DEFAULT)
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
                    .body_param(new_parameter(options['body']))
-                   .header_param(new_parameter(options['pay_pal_request_id'], key: 'PayPal-Request-Id'))
-                   .header_param(new_parameter(options['pay_pal_partner_attribution_id'], key: 'PayPal-Partner-Attribution-Id'))
-                   .header_param(new_parameter(options['pay_pal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
+                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
+                   .header_param(new_parameter(options['paypal_partner_attribution_id'], key: 'PayPal-Partner-Attribution-Id'))
+                   .header_param(new_parameter(options['paypal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
                    .header_param(new_parameter(options['prefer'], key: 'Prefer'))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
@@ -207,7 +207,7 @@ module PaypalServerSdk
     # payment source.
     # @param [String] id Required parameter: The ID of the order for which the
     # payer confirms their intent to pay.
-    # @param [String] pay_pal_client_metadata_id Optional parameter: Example:
+    # @param [String] paypal_client_metadata_id Optional parameter: Example:
     # @param [String] prefer Optional parameter: The preferred server response
     # upon successful completion of the request. Value
     # is:<ul><li><code>return=minimal</code>. The server returns a minimal
@@ -226,7 +226,7 @@ module PaypalServerSdk
                    .template_param(new_parameter(options['id'], key: 'id')
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
-                   .header_param(new_parameter(options['pay_pal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
+                   .header_param(new_parameter(options['paypal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
                    .header_param(new_parameter(options['prefer'], key: 'Prefer'))
                    .body_param(new_parameter(options['body']))
                    .header_param(new_parameter('application/json', key: 'accept'))
@@ -266,7 +266,7 @@ module PaypalServerSdk
     # thorize-order">Orders v2 errors</a>.</blockquote>
     # @param [String] id Required parameter: The ID of the order for which to
     # authorize.
-    # @param [String] pay_pal_request_id Optional parameter: The server stores
+    # @param [String] paypal_request_id Optional parameter: The server stores
     # keys for 6 hours. The API callers can request the times to up to 72 hours
     # by speaking to their Account Manager.
     # @param [String] prefer Optional parameter: The preferred server response
@@ -277,8 +277,8 @@ module PaypalServerSdk
     # HATEOAS links.</li><li><code>return=representation</code>. The server
     # returns a complete resource representation, including the current state of
     # the resource.</li></ul>
-    # @param [String] pay_pal_client_metadata_id Optional parameter: Example:
-    # @param [String] pay_pal_auth_assertion Optional parameter: An
+    # @param [String] paypal_client_metadata_id Optional parameter: Example:
+    # @param [String] paypal_auth_assertion Optional parameter: An
     # API-caller-provided JSON Web Token (JWT) assertion that identifies the
     # merchant. For details, see <a
     # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
@@ -293,10 +293,10 @@ module PaypalServerSdk
                    .template_param(new_parameter(options['id'], key: 'id')
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
-                   .header_param(new_parameter(options['pay_pal_request_id'], key: 'PayPal-Request-Id'))
+                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
                    .header_param(new_parameter(options['prefer'], key: 'Prefer'))
-                   .header_param(new_parameter(options['pay_pal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
-                   .header_param(new_parameter(options['pay_pal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
+                   .header_param(new_parameter(options['paypal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
+                   .header_param(new_parameter(options['paypal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
                    .body_param(new_parameter(options['body']))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
@@ -343,7 +343,7 @@ module PaypalServerSdk
     # pture-order">Orders v2 errors</a>.</blockquote>
     # @param [String] id Required parameter: The ID of the order for which to
     # capture a payment.
-    # @param [String] pay_pal_request_id Optional parameter: The server stores
+    # @param [String] paypal_request_id Optional parameter: The server stores
     # keys for 6 hours. The API callers can request the times to up to 72 hours
     # by speaking to their Account Manager.
     # @param [String] prefer Optional parameter: The preferred server response
@@ -354,8 +354,8 @@ module PaypalServerSdk
     # HATEOAS links.</li><li><code>return=representation</code>. The server
     # returns a complete resource representation, including the current state of
     # the resource.</li></ul>
-    # @param [String] pay_pal_client_metadata_id Optional parameter: Example:
-    # @param [String] pay_pal_auth_assertion Optional parameter: An
+    # @param [String] paypal_client_metadata_id Optional parameter: Example:
+    # @param [String] paypal_auth_assertion Optional parameter: An
     # API-caller-provided JSON Web Token (JWT) assertion that identifies the
     # merchant. For details, see <a
     # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
@@ -370,10 +370,10 @@ module PaypalServerSdk
                    .template_param(new_parameter(options['id'], key: 'id')
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
-                   .header_param(new_parameter(options['pay_pal_request_id'], key: 'PayPal-Request-Id'))
+                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
                    .header_param(new_parameter(options['prefer'], key: 'Prefer'))
-                   .header_param(new_parameter(options['pay_pal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
-                   .header_param(new_parameter(options['pay_pal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
+                   .header_param(new_parameter(options['paypal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
+                   .header_param(new_parameter(options['paypal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
                    .body_param(new_parameter(options['body']))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
@@ -414,7 +414,7 @@ module PaypalServerSdk
     # @param [String] id Required parameter: The ID of the order that the
     # tracking information is associated with.
     # @param [OrderTrackerRequest] body Required parameter: Example:
-    # @param [String] pay_pal_auth_assertion Optional parameter: An
+    # @param [String] paypal_auth_assertion Optional parameter: An
     # API-caller-provided JSON Web Token (JWT) assertion that identifies the
     # merchant. For details, see <a
     # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
@@ -429,7 +429,7 @@ module PaypalServerSdk
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
                    .body_param(new_parameter(options['body']))
-                   .header_param(new_parameter(options['pay_pal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
+                   .header_param(new_parameter(options['paypal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('Oauth2')))

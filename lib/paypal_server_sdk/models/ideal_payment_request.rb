@@ -5,7 +5,7 @@
 
 module PaypalServerSdk
   # Information needed to pay using iDEAL.
-  class IDEALPaymentRequest < BaseModel
+  class IdealPaymentRequest < BaseModel
     SKIP = Object.new
     private_constant :SKIP
 
@@ -74,7 +74,7 @@ module PaypalServerSdk
         hash['experience_context']
 
       # Create object from extracted values.
-      IDEALPaymentRequest.new(name: name,
+      IdealPaymentRequest.new(name: name,
                               country_code: country_code,
                               bic: bic,
                               experience_context: experience_context)
