@@ -3,7 +3,22 @@
 
 ## Introduction
 
-An order represents a payment between two or more parties. Use the Orders API to create, update, retrieve, authorize, and capture orders., Call the Payments API to authorize payments, capture authorized payments, refund payments that have already been captured, and show payment information. Use the Payments API in conjunction with the <a href="/docs/api/orders/v2/">Orders API</a>. For more information, see the <a href="/docs/checkout/">PayPal Checkout Overview</a>., The Payment Method Tokens API saves payment methods so payers don't have to enter details for future transactions. Payers can check out faster or pay without being present after they agree to save a payment method.<br><br>The API associates a payment method with a temporary setup token. Pass the setup token to the API to exchange the setup token for a permanent token.<br><br>The permanent token represents a payment method that's saved to the vault. This token can be used repeatedly for checkout or recurring transactions such as subscriptions.<br><br>The Payment Method Tokens API is available in the US only.
+### ⚠️ Beta Release Notice
+
+This version is considered a **beta release**. While we have done our best to ensure stability and functionality, there may still be bugs, incomplete features, or breaking changes in future updates.
+
+#### Important Notes
+
+- **Available Features:** This SDK currently contains only 3 of PayPal's API endpoints. Additional endpoints and functionality will be added in the future.
+- **API Changes:** Expect potential changes in APIs and features as we finalize the product.
+
+### Information
+
+The PayPal Server SDK provides integration access to the PayPal REST APIs. The API endpoints are divided into distinct controllers:
+
+- Orders Controller: <a href="https://developer.paypal.com/docs/api/orders/v2/">Orders API v2</a>
+- Payments Controller: <a href="https://developer.paypal.com/docs/api/payments/v2/">Payments API v2</a>
+- Vault Controller: <a href="https://developer.paypal.com/docs/api/payment-tokens/v3/">Payment Method Tokens API v3</a> *Available in the US only.*
 
 Find out more here: [https://developer.paypal.com/docs/api/orders/v2/](https://developer.paypal.com/docs/api/orders/v2/)
 
@@ -12,20 +27,20 @@ Find out more here: [https://developer.paypal.com/docs/api/orders/v2/](https://d
 Install the gem from the command line:
 
 ```ruby
-gem install paypal-server-sdk -v 0.5.1
+gem install paypal-server-sdk -v 0.5.2
 ```
 
 Or add the gem to your Gemfile and run `bundle`:
 
 ```ruby
-gem 'paypal-server-sdk', '0.5.1'
+gem 'paypal-server-sdk', '0.5.2'
 ```
 
-For additional gem details, see the [RubyGems page for the paypal-server-sdk gem](https://rubygems.org/gems/paypal-server-sdk/versions/0.5.1).
+For additional gem details, see the [RubyGems page for the paypal-server-sdk gem](https://rubygems.org/gems/paypal-server-sdk/versions/0.5.2).
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.1/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.2/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
@@ -41,8 +56,8 @@ The following parameters are configurable for the API Client:
 | `retry_statuses` | `Array` | A list of HTTP statuses to retry. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | `retry_methods` | `Array` | A list of HTTP methods to retry. <br> **Default: %i[get put]** |
 | `http_callback` | `HttpCallBack` | The Http CallBack allows defining callables for pre and post API calls. |
-| `logging_configuration` | [`LoggingConfiguration`](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.1/doc/logging-configuration.md) | The SDK logging configuration for API calls |
-| `client_credentials_auth_credentials` | [`ClientCredentialsAuthCredentials`](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.1/doc/auth/oauth-2-client-credentials-grant.md) | The credential object for OAuth 2 Client Credentials Grant |
+| `logging_configuration` | [`LoggingConfiguration`](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.2/doc/logging-configuration.md) | The SDK logging configuration for API calls |
+| `client_credentials_auth_credentials` | [`ClientCredentialsAuthCredentials`](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.2/doc/auth/oauth-2-client-credentials-grant.md) | The credential object for OAuth 2 Client Credentials Grant |
 
 The API client can be initialized as follows:
 
@@ -92,21 +107,21 @@ The SDK can be configured to use a different environment for making API calls. A
 
 This API uses the following authentication schemes.
 
-* [`Oauth2 (OAuth 2 Client Credentials Grant)`](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.1/doc/auth/oauth-2-client-credentials-grant.md)
+* [`Oauth2 (OAuth 2 Client Credentials Grant)`](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.2/doc/auth/oauth-2-client-credentials-grant.md)
 
 ## List of APIs
 
-* [Orders](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.1/doc/controllers/orders.md)
-* [Payments](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.1/doc/controllers/payments.md)
-* [Vault](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.1/doc/controllers/vault.md)
+* [Orders](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.2/doc/controllers/orders.md)
+* [Payments](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.2/doc/controllers/payments.md)
+* [Vault](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.2/doc/controllers/vault.md)
 
 ## Classes Documentation
 
-* [Utility Classes](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.1/doc/utility-classes.md)
-* [HttpResponse](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.1/doc/http-response.md)
-* [HttpRequest](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.1/doc/http-request.md)
-* [LoggingConfiguration](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.1/doc/logging-configuration.md)
-* [RequestLoggingConfiguration](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.1/doc/request-logging-configuration.md)
-* [ResponseLoggingConfiguration](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.1/doc/response-logging-configuration.md)
-* [Abstract Logger](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.1/doc/abstract-logger.md)
+* [Utility Classes](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.2/doc/utility-classes.md)
+* [HttpResponse](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.2/doc/http-response.md)
+* [HttpRequest](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.2/doc/http-request.md)
+* [LoggingConfiguration](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.2/doc/logging-configuration.md)
+* [RequestLoggingConfiguration](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.2/doc/request-logging-configuration.md)
+* [ResponseLoggingConfiguration](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.2/doc/response-logging-configuration.md)
+* [Abstract Logger](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/0.5.2/doc/abstract-logger.md)
 

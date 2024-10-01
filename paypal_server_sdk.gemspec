@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'paypal-server-sdk'
-  s.version = '0.5.1'
+  s.version = '0.5.2'
   s.summary = 'PayPal\'s SDK for interacting with the REST APIs'
   s.description = ''
   s.authors = ['PayPal']
