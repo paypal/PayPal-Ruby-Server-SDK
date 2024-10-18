@@ -12,12 +12,12 @@ module PaypalServerSdk
 
     # The address verification code for Visa, Discover, Mastercard, or American
     # Express transactions.
-    # @return [AVSCode]
+    # @return [AvsCode]
     attr_accessor :avs_code
 
     # The card verification value code for for Visa, Discover, Mastercard, or
     # American Express.
-    # @return [CVVCode]
+    # @return [CvvCode]
     attr_accessor :cvv_code
 
     # A mapping from model property names to API property names.

@@ -5,7 +5,7 @@
 
 module PaypalServerSdk
   # Information used to pay using BLIK.
-  class BLIKPaymentObject < BaseModel
+  class BlikPaymentObject < BaseModel
     SKIP = Object.new
     private_constant :SKIP
 
@@ -31,7 +31,7 @@ module PaypalServerSdk
     attr_accessor :email
 
     # Information used to pay using BLIK one-click flow.
-    # @return [BLIKOneClickPaymentObject]
+    # @return [BlikOneClickPaymentObject]
     attr_accessor :one_click
 
     # A mapping from model property names to API property names.
@@ -74,10 +74,10 @@ module PaypalServerSdk
       name = hash.key?('name') ? hash['name'] : SKIP
       country_code = hash.key?('country_code') ? hash['country_code'] : SKIP
       email = hash.key?('email') ? hash['email'] : SKIP
-      one_click = BLIKOneClickPaymentObject.from_hash(hash['one_click']) if hash['one_click']
+      one_click = BlikOneClickPaymentObject.from_hash(hash['one_click']) if hash['one_click']
 
       # Create object from extracted values.
-      BLIKPaymentObject.new(name: name,
+      BlikPaymentObject.new(name: name,
                             country_code: country_code,
                             email: email,
                             one_click: one_click)

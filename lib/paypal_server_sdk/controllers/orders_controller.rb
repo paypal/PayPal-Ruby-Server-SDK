@@ -6,6 +6,133 @@
 module PaypalServerSdk
   # OrdersController
   class OrdersController < BaseController
+    # Authorizes payment for an order. To successfully authorize payment for an
+    # order, the buyer must first approve the order or a valid payment_source
+    # must be provided in the request. A buyer can approve the order upon being
+    # redirected to the rel:approve URL that was returned in the HATEOAS links
+    # in the create order response.<blockquote><strong>Note:</strong> For error
+    # handling and troubleshooting, see <a
+    # href="https://developer.paypal.com/api/rest/reference/orders/v2/errors/#au
+    # thorize-order">Orders v2 errors</a>.</blockquote>
+    # @param [String] id Required parameter: The ID of the order for which to
+    # authorize.
+    # @param [String] paypal_request_id Optional parameter: The server stores
+    # keys for 6 hours. The API callers can request the times to up to 72 hours
+    # by speaking to their Account Manager.
+    # @param [String] prefer Optional parameter: The preferred server response
+    # upon successful completion of the request. Value
+    # is:<ul><li><code>return=minimal</code>. The server returns a minimal
+    # response to optimize communication between the API caller and the server.
+    # A minimal response includes the <code>id</code>, <code>status</code> and
+    # HATEOAS links.</li><li><code>return=representation</code>. The server
+    # returns a complete resource representation, including the current state of
+    # the resource.</li></ul>
+    # @param [String] paypal_client_metadata_id Optional parameter: Example:
+    # @param [String] paypal_auth_assertion Optional parameter: An
+    # API-caller-provided JSON Web Token (JWT) assertion that identifies the
+    # merchant. For details, see <a
+    # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
+    # n">PayPal-Auth-Assertion</a>.
+    # @param [OrderAuthorizeRequest] body Optional parameter: Example:
+    # @return [ApiResponse]  the complete http response with raw body and status code.
+    def orders_authorize(options = {})
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/v2/checkout/orders/{id}/authorize',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(options['id'], key: 'id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'Content-Type'))
+                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
+                   .header_param(new_parameter(options['prefer'], key: 'Prefer'))
+                   .header_param(new_parameter(options['paypal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
+                   .header_param(new_parameter(options['paypal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
+                   .body_param(new_parameter(options['body']))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('Oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(OrderAuthorizeResponse.method(:from_hash))
+                    .is_api_response(true)
+                    .local_error('400',
+                                 'Request is not well-formed, syntactically incorrect, or'\
+                                  ' violates schema.',
+                                 ErrorException)
+                    .local_error('401',
+                                 'Authentication failed due to missing authorization header, or'\
+                                  ' invalid authentication credentials.',
+                                 ErrorException)
+                    .local_error('403',
+                                 'The authorized payment failed due to insufficient permissions'\
+                                  '.',
+                                 ErrorException)
+                    .local_error('404',
+                                 'The specified resource does not exist.',
+                                 ErrorException)
+                    .local_error('422',
+                                 'The requested action could not be performed, semantically'\
+                                  ' incorrect, or failed business validation.',
+                                 ErrorException)
+                    .local_error('500',
+                                 'An internal server error has occurred.',
+                                 ErrorException)
+                    .local_error('default',
+                                 'The error response.',
+                                 ErrorException))
+        .execute
+    end
+
+    # Adds tracking information for an Order.
+    # @param [String] id Required parameter: The ID of the order that the
+    # tracking information is associated with.
+    # @param [OrderTrackerRequest] body Required parameter: Example:
+    # @param [String] paypal_auth_assertion Optional parameter: An
+    # API-caller-provided JSON Web Token (JWT) assertion that identifies the
+    # merchant. For details, see <a
+    # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
+    # n">PayPal-Auth-Assertion</a>.
+    # @return [ApiResponse]  the complete http response with raw body and status code.
+    def orders_track_create(options = {})
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/v2/checkout/orders/{id}/track',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(options['id'], key: 'id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'Content-Type'))
+                   .body_param(new_parameter(options['body']))
+                   .header_param(new_parameter(options['paypal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('Oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(Order.method(:from_hash))
+                    .is_api_response(true)
+                    .local_error('400',
+                                 'Request is not well-formed, syntactically incorrect, or'\
+                                  ' violates schema.',
+                                 ErrorException)
+                    .local_error('403',
+                                 'Authorization failed due to insufficient permissions.',
+                                 ErrorException)
+                    .local_error('404',
+                                 'The specified resource does not exist.',
+                                 ErrorException)
+                    .local_error('422',
+                                 'The requested action could not be performed, semantically'\
+                                  ' incorrect, or failed business validation.',
+                                 ErrorException)
+                    .local_error('500',
+                                 'An internal server error has occurred.',
+                                 ErrorException)
+                    .local_error('default',
+                                 'The error response.',
+                                 ErrorException))
+        .execute
+    end
+
     # Creates an order. Merchants and partners can add Level 2 and 3 data to
     # payments to reduce risk and payment processing costs. For more information
     # about processing payments, see <a
@@ -17,12 +144,12 @@ module PaypalServerSdk
     # href="https://developer.paypal.com/api/rest/reference/orders/v2/errors/#cr
     # eate-order">Orders v2 errors</a>.</blockquote>
     # @param [OrderRequest] body Required parameter: Example:
-    # @param [String] pay_pal_request_id Optional parameter: The server stores
+    # @param [String] paypal_request_id Optional parameter: The server stores
     # keys for 6 hours. The API callers can request the times to up to 72 hours
     # by speaking to their Account Manager.
-    # @param [String] pay_pal_partner_attribution_id Optional parameter:
+    # @param [String] paypal_partner_attribution_id Optional parameter:
     # Example:
-    # @param [String] pay_pal_client_metadata_id Optional parameter: Example:
+    # @param [String] paypal_client_metadata_id Optional parameter: Example:
     # @param [String] prefer Optional parameter: The preferred server response
     # upon successful completion of the request. Value
     # is:<ul><li><code>return=minimal</code>. The server returns a minimal
@@ -39,9 +166,9 @@ module PaypalServerSdk
                                      Server::DEFAULT)
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
                    .body_param(new_parameter(options['body']))
-                   .header_param(new_parameter(options['pay_pal_request_id'], key: 'PayPal-Request-Id'))
-                   .header_param(new_parameter(options['pay_pal_partner_attribution_id'], key: 'PayPal-Partner-Attribution-Id'))
-                   .header_param(new_parameter(options['pay_pal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
+                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
+                   .header_param(new_parameter(options['paypal_partner_attribution_id'], key: 'PayPal-Partner-Attribution-Id'))
+                   .header_param(new_parameter(options['paypal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
                    .header_param(new_parameter(options['prefer'], key: 'Prefer'))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
@@ -61,43 +188,6 @@ module PaypalServerSdk
                     .local_error('422',
                                  'The requested action could not be performed, semantically'\
                                   ' incorrect, or failed business validation.',
-                                 ErrorException)
-                    .local_error('default',
-                                 'The error response.',
-                                 ErrorException))
-        .execute
-    end
-
-    # Shows details for an order, by ID.<blockquote><strong>Note:</strong> For
-    # error handling and troubleshooting, see <a
-    # href="https://developer.paypal.com/api/rest/reference/orders/v2/errors/#ge
-    # t-order">Orders v2 errors</a>.</blockquote>
-    # @param [String] id Required parameter: The ID of the order for which to
-    # show details.
-    # @param [String] fields Optional parameter: A comma-separated list of
-    # fields that should be returned for the order. Valid filter field is
-    # `payment_source`.
-    # @return [ApiResponse]  the complete http response with raw body and status code.
-    def orders_get(options = {})
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/v2/checkout/orders/{id}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(options['id'], key: 'id')
-                                    .should_encode(true))
-                   .query_param(new_parameter(options['fields'], key: 'fields'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('Oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(Order.method(:from_hash))
-                    .is_api_response(true)
-                    .local_error('401',
-                                 'Authentication failed due to missing authorization header, or'\
-                                  ' invalid authentication credentials.',
-                                 ErrorException)
-                    .local_error('404',
-                                 'The specified resource does not exist.',
                                  ErrorException)
                     .local_error('default',
                                  'The error response.',
@@ -203,11 +293,125 @@ module PaypalServerSdk
         .execute
     end
 
+    # Captures payment for an order. To successfully capture payment for an
+    # order, the buyer must first approve the order or a valid payment_source
+    # must be provided in the request. A buyer can approve the order upon being
+    # redirected to the rel:approve URL that was returned in the HATEOAS links
+    # in the create order response.<blockquote><strong>Note:</strong> For error
+    # handling and troubleshooting, see <a
+    # href="https://developer.paypal.com/api/rest/reference/orders/v2/errors/#ca
+    # pture-order">Orders v2 errors</a>.</blockquote>
+    # @param [String] id Required parameter: The ID of the order for which to
+    # capture a payment.
+    # @param [String] paypal_request_id Optional parameter: The server stores
+    # keys for 6 hours. The API callers can request the times to up to 72 hours
+    # by speaking to their Account Manager.
+    # @param [String] prefer Optional parameter: The preferred server response
+    # upon successful completion of the request. Value
+    # is:<ul><li><code>return=minimal</code>. The server returns a minimal
+    # response to optimize communication between the API caller and the server.
+    # A minimal response includes the <code>id</code>, <code>status</code> and
+    # HATEOAS links.</li><li><code>return=representation</code>. The server
+    # returns a complete resource representation, including the current state of
+    # the resource.</li></ul>
+    # @param [String] paypal_client_metadata_id Optional parameter: Example:
+    # @param [String] paypal_auth_assertion Optional parameter: An
+    # API-caller-provided JSON Web Token (JWT) assertion that identifies the
+    # merchant. For details, see <a
+    # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
+    # n">PayPal-Auth-Assertion</a>.
+    # @param [OrderCaptureRequest] body Optional parameter: Example:
+    # @return [ApiResponse]  the complete http response with raw body and status code.
+    def orders_capture(options = {})
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/v2/checkout/orders/{id}/capture',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(options['id'], key: 'id')
+                                    .should_encode(true))
+                   .header_param(new_parameter('application/json', key: 'Content-Type'))
+                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
+                   .header_param(new_parameter(options['prefer'], key: 'Prefer'))
+                   .header_param(new_parameter(options['paypal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
+                   .header_param(new_parameter(options['paypal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
+                   .body_param(new_parameter(options['body']))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('Oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(Order.method(:from_hash))
+                    .is_api_response(true)
+                    .local_error('400',
+                                 'Request is not well-formed, syntactically incorrect, or'\
+                                  ' violates schema.',
+                                 ErrorException)
+                    .local_error('401',
+                                 'Authentication failed due to missing authorization header, or'\
+                                  ' invalid authentication credentials.',
+                                 ErrorException)
+                    .local_error('403',
+                                 'The authorized payment failed due to insufficient permissions'\
+                                  '.',
+                                 ErrorException)
+                    .local_error('404',
+                                 'The specified resource does not exist.',
+                                 ErrorException)
+                    .local_error('422',
+                                 'The requested action could not be performed, semantically'\
+                                  ' incorrect, or failed business validation.',
+                                 ErrorException)
+                    .local_error('500',
+                                 'An internal server error has occurred.',
+                                 ErrorException)
+                    .local_error('default',
+                                 'The error response.',
+                                 ErrorException))
+        .execute
+    end
+
+    # Shows details for an order, by ID.<blockquote><strong>Note:</strong> For
+    # error handling and troubleshooting, see <a
+    # href="https://developer.paypal.com/api/rest/reference/orders/v2/errors/#ge
+    # t-order">Orders v2 errors</a>.</blockquote>
+    # @param [String] id Required parameter: The ID of the order for which to
+    # show details.
+    # @param [String] fields Optional parameter: A comma-separated list of
+    # fields that should be returned for the order. Valid filter field is
+    # `payment_source`.
+    # @return [ApiResponse]  the complete http response with raw body and status code.
+    def orders_get(options = {})
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/v2/checkout/orders/{id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(options['id'], key: 'id')
+                                    .should_encode(true))
+                   .query_param(new_parameter(options['fields'], key: 'fields'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('Oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(Order.method(:from_hash))
+                    .is_api_response(true)
+                    .local_error('401',
+                                 'Authentication failed due to missing authorization header, or'\
+                                  ' invalid authentication credentials.',
+                                 ErrorException)
+                    .local_error('404',
+                                 'The specified resource does not exist.',
+                                 ErrorException)
+                    .local_error('default',
+                                 'The error response.',
+                                 ErrorException))
+        .execute
+    end
+
     # Payer confirms their intent to pay for the the Order with the given
     # payment source.
     # @param [String] id Required parameter: The ID of the order for which the
     # payer confirms their intent to pay.
-    # @param [String] pay_pal_client_metadata_id Optional parameter: Example:
+    # @param [String] paypal_client_metadata_id Optional parameter: Example:
     # @param [String] prefer Optional parameter: The preferred server response
     # upon successful completion of the request. Value
     # is:<ul><li><code>return=minimal</code>. The server returns a minimal
@@ -226,7 +430,7 @@ module PaypalServerSdk
                    .template_param(new_parameter(options['id'], key: 'id')
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
-                   .header_param(new_parameter(options['pay_pal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
+                   .header_param(new_parameter(options['paypal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
                    .header_param(new_parameter(options['prefer'], key: 'Prefer'))
                    .body_param(new_parameter(options['body']))
                    .header_param(new_parameter('application/json', key: 'accept'))
@@ -242,210 +446,6 @@ module PaypalServerSdk
                                  ErrorException)
                     .local_error('403',
                                  'Authorization failed due to insufficient permissions.',
-                                 ErrorException)
-                    .local_error('422',
-                                 'The requested action could not be performed, semantically'\
-                                  ' incorrect, or failed business validation.',
-                                 ErrorException)
-                    .local_error('500',
-                                 'An internal server error has occurred.',
-                                 ErrorException)
-                    .local_error('default',
-                                 'The error response.',
-                                 ErrorException))
-        .execute
-    end
-
-    # Authorizes payment for an order. To successfully authorize payment for an
-    # order, the buyer must first approve the order or a valid payment_source
-    # must be provided in the request. A buyer can approve the order upon being
-    # redirected to the rel:approve URL that was returned in the HATEOAS links
-    # in the create order response.<blockquote><strong>Note:</strong> For error
-    # handling and troubleshooting, see <a
-    # href="https://developer.paypal.com/api/rest/reference/orders/v2/errors/#au
-    # thorize-order">Orders v2 errors</a>.</blockquote>
-    # @param [String] id Required parameter: The ID of the order for which to
-    # authorize.
-    # @param [String] pay_pal_request_id Optional parameter: The server stores
-    # keys for 6 hours. The API callers can request the times to up to 72 hours
-    # by speaking to their Account Manager.
-    # @param [String] prefer Optional parameter: The preferred server response
-    # upon successful completion of the request. Value
-    # is:<ul><li><code>return=minimal</code>. The server returns a minimal
-    # response to optimize communication between the API caller and the server.
-    # A minimal response includes the <code>id</code>, <code>status</code> and
-    # HATEOAS links.</li><li><code>return=representation</code>. The server
-    # returns a complete resource representation, including the current state of
-    # the resource.</li></ul>
-    # @param [String] pay_pal_client_metadata_id Optional parameter: Example:
-    # @param [String] pay_pal_auth_assertion Optional parameter: An
-    # API-caller-provided JSON Web Token (JWT) assertion that identifies the
-    # merchant. For details, see <a
-    # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
-    # n">PayPal-Auth-Assertion</a>.
-    # @param [OrderAuthorizeRequest] body Optional parameter: Example:
-    # @return [ApiResponse]  the complete http response with raw body and status code.
-    def orders_authorize(options = {})
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/v2/checkout/orders/{id}/authorize',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(options['id'], key: 'id')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'Content-Type'))
-                   .header_param(new_parameter(options['pay_pal_request_id'], key: 'PayPal-Request-Id'))
-                   .header_param(new_parameter(options['prefer'], key: 'Prefer'))
-                   .header_param(new_parameter(options['pay_pal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
-                   .header_param(new_parameter(options['pay_pal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
-                   .body_param(new_parameter(options['body']))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('Oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(OrderAuthorizeResponse.method(:from_hash))
-                    .is_api_response(true)
-                    .local_error('400',
-                                 'Request is not well-formed, syntactically incorrect, or'\
-                                  ' violates schema.',
-                                 ErrorException)
-                    .local_error('401',
-                                 'Authentication failed due to missing authorization header, or'\
-                                  ' invalid authentication credentials.',
-                                 ErrorException)
-                    .local_error('403',
-                                 'The authorized payment failed due to insufficient permissions'\
-                                  '.',
-                                 ErrorException)
-                    .local_error('404',
-                                 'The specified resource does not exist.',
-                                 ErrorException)
-                    .local_error('422',
-                                 'The requested action could not be performed, semantically'\
-                                  ' incorrect, or failed business validation.',
-                                 ErrorException)
-                    .local_error('500',
-                                 'An internal server error has occurred.',
-                                 ErrorException)
-                    .local_error('default',
-                                 'The error response.',
-                                 ErrorException))
-        .execute
-    end
-
-    # Captures payment for an order. To successfully capture payment for an
-    # order, the buyer must first approve the order or a valid payment_source
-    # must be provided in the request. A buyer can approve the order upon being
-    # redirected to the rel:approve URL that was returned in the HATEOAS links
-    # in the create order response.<blockquote><strong>Note:</strong> For error
-    # handling and troubleshooting, see <a
-    # href="https://developer.paypal.com/api/rest/reference/orders/v2/errors/#ca
-    # pture-order">Orders v2 errors</a>.</blockquote>
-    # @param [String] id Required parameter: The ID of the order for which to
-    # capture a payment.
-    # @param [String] pay_pal_request_id Optional parameter: The server stores
-    # keys for 6 hours. The API callers can request the times to up to 72 hours
-    # by speaking to their Account Manager.
-    # @param [String] prefer Optional parameter: The preferred server response
-    # upon successful completion of the request. Value
-    # is:<ul><li><code>return=minimal</code>. The server returns a minimal
-    # response to optimize communication between the API caller and the server.
-    # A minimal response includes the <code>id</code>, <code>status</code> and
-    # HATEOAS links.</li><li><code>return=representation</code>. The server
-    # returns a complete resource representation, including the current state of
-    # the resource.</li></ul>
-    # @param [String] pay_pal_client_metadata_id Optional parameter: Example:
-    # @param [String] pay_pal_auth_assertion Optional parameter: An
-    # API-caller-provided JSON Web Token (JWT) assertion that identifies the
-    # merchant. For details, see <a
-    # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
-    # n">PayPal-Auth-Assertion</a>.
-    # @param [OrderCaptureRequest] body Optional parameter: Example:
-    # @return [ApiResponse]  the complete http response with raw body and status code.
-    def orders_capture(options = {})
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/v2/checkout/orders/{id}/capture',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(options['id'], key: 'id')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'Content-Type'))
-                   .header_param(new_parameter(options['pay_pal_request_id'], key: 'PayPal-Request-Id'))
-                   .header_param(new_parameter(options['prefer'], key: 'Prefer'))
-                   .header_param(new_parameter(options['pay_pal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
-                   .header_param(new_parameter(options['pay_pal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
-                   .body_param(new_parameter(options['body']))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('Oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(Order.method(:from_hash))
-                    .is_api_response(true)
-                    .local_error('400',
-                                 'Request is not well-formed, syntactically incorrect, or'\
-                                  ' violates schema.',
-                                 ErrorException)
-                    .local_error('401',
-                                 'Authentication failed due to missing authorization header, or'\
-                                  ' invalid authentication credentials.',
-                                 ErrorException)
-                    .local_error('403',
-                                 'The authorized payment failed due to insufficient permissions'\
-                                  '.',
-                                 ErrorException)
-                    .local_error('404',
-                                 'The specified resource does not exist.',
-                                 ErrorException)
-                    .local_error('422',
-                                 'The requested action could not be performed, semantically'\
-                                  ' incorrect, or failed business validation.',
-                                 ErrorException)
-                    .local_error('500',
-                                 'An internal server error has occurred.',
-                                 ErrorException)
-                    .local_error('default',
-                                 'The error response.',
-                                 ErrorException))
-        .execute
-    end
-
-    # Adds tracking information for an Order.
-    # @param [String] id Required parameter: The ID of the order that the
-    # tracking information is associated with.
-    # @param [OrderTrackerRequest] body Required parameter: Example:
-    # @param [String] pay_pal_auth_assertion Optional parameter: An
-    # API-caller-provided JSON Web Token (JWT) assertion that identifies the
-    # merchant. For details, see <a
-    # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
-    # n">PayPal-Auth-Assertion</a>.
-    # @return [ApiResponse]  the complete http response with raw body and status code.
-    def orders_track_create(options = {})
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/v2/checkout/orders/{id}/track',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(options['id'], key: 'id')
-                                    .should_encode(true))
-                   .header_param(new_parameter('application/json', key: 'Content-Type'))
-                   .body_param(new_parameter(options['body']))
-                   .header_param(new_parameter(options['pay_pal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('Oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(Order.method(:from_hash))
-                    .is_api_response(true)
-                    .local_error('400',
-                                 'Request is not well-formed, syntactically incorrect, or'\
-                                  ' violates schema.',
-                                 ErrorException)
-                    .local_error('403',
-                                 'Authorization failed due to insufficient permissions.',
-                                 ErrorException)
-                    .local_error('404',
-                                 'The specified resource does not exist.',
                                  ErrorException)
                     .local_error('422',
                                  'The requested action could not be performed, semantically'\

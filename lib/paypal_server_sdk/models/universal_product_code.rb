@@ -10,7 +10,7 @@ module PaypalServerSdk
     private_constant :SKIP
 
     # The Universal Product Code type.
-    # @return [UPCType]
+    # @return [UpcType]
     attr_accessor :type
 
     # The UPC product code of the item.

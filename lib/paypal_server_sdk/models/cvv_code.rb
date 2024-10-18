@@ -6,7 +6,7 @@
 module PaypalServerSdk
   # The card verification value code for for Visa, Discover, Mastercard, or
   # American Express.
-  class CVVCode
+  class CvvCode
     CVV_CODE = [
       # TODO: Write general description for E
       E = 'E'.freeze,

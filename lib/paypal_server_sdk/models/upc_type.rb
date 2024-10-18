@@ -5,7 +5,7 @@
 
 module PaypalServerSdk
   # The Universal Product Code type.
-  class UPCType
+  class UpcType
     UPC_TYPE = [
       # TODO: Write general description for UPCA
       UPCA = 'UPC-A'.freeze,

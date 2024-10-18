@@ -26,7 +26,7 @@ module PaypalServerSdk
     attr_accessor :token
 
     # A resource that identifies a PayPal Wallet is used for payment.
-    # @return [PayPalWallet]
+    # @return [PaypalWallet]
     attr_accessor :paypal
 
     # Information needed to pay using Bancontact.
@@ -34,11 +34,11 @@ module PaypalServerSdk
     attr_accessor :bancontact
 
     # Information needed to pay using BLIK.
-    # @return [BLIKPaymentRequest]
+    # @return [BlikPaymentRequest]
     attr_accessor :blik
 
     # Information needed to pay using eps.
-    # @return [EPSPaymentRequest]
+    # @return [EpsPaymentRequest]
     attr_accessor :eps
 
     # Information needed to pay using giropay.
@@ -46,11 +46,11 @@ module PaypalServerSdk
     attr_accessor :giropay
 
     # Information needed to pay using iDEAL.
-    # @return [IDEALPaymentRequest]
+    # @return [IdealPaymentRequest]
     attr_accessor :ideal
 
     # Information needed to pay using MyBank.
-    # @return [MyBankPaymentRequest]
+    # @return [MybankPaymentRequest]
     attr_accessor :mybank
 
     # Information needed to pay using P24 (Przelewy24).
@@ -152,13 +152,13 @@ module PaypalServerSdk
       # Extract variables from the hash.
       card = CardRequest.from_hash(hash['card']) if hash['card']
       token = Token.from_hash(hash['token']) if hash['token']
-      paypal = PayPalWallet.from_hash(hash['paypal']) if hash['paypal']
+      paypal = PaypalWallet.from_hash(hash['paypal']) if hash['paypal']
       bancontact = BancontactPaymentRequest.from_hash(hash['bancontact']) if hash['bancontact']
-      blik = BLIKPaymentRequest.from_hash(hash['blik']) if hash['blik']
-      eps = EPSPaymentRequest.from_hash(hash['eps']) if hash['eps']
+      blik = BlikPaymentRequest.from_hash(hash['blik']) if hash['blik']
+      eps = EpsPaymentRequest.from_hash(hash['eps']) if hash['eps']
       giropay = GiropayPaymentRequest.from_hash(hash['giropay']) if hash['giropay']
-      ideal = IDEALPaymentRequest.from_hash(hash['ideal']) if hash['ideal']
-      mybank = MyBankPaymentRequest.from_hash(hash['mybank']) if hash['mybank']
+      ideal = IdealPaymentRequest.from_hash(hash['ideal']) if hash['ideal']
+      mybank = MybankPaymentRequest.from_hash(hash['mybank']) if hash['mybank']
       p24 = P24PaymentRequest.from_hash(hash['p24']) if hash['p24']
       sofort = SofortPaymentRequest.from_hash(hash['sofort']) if hash['sofort']
       trustly = TrustlyPaymentRequest.from_hash(hash['trustly']) if hash['trustly']

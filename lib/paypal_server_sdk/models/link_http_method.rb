@@ -5,7 +5,7 @@
 
 module PaypalServerSdk
   # The HTTP method required to make the related call.
-  class LinkHTTPMethod
+  class LinkHttpMethod
     LINK_HTTP_METHOD = [
       # TODO: Write general description for GET
       GET = 'GET'.freeze,

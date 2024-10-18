@@ -7,7 +7,7 @@ module PaypalServerSdk
   # Electronic Commerce Indicator (ECI). The ECI value is part of the 2 data
   # elements that indicate the transaction was processed electronically. This
   # should be passed on the authorization transaction to the Gateway/Processor.
-  class ECIFlag
+  class EciFlag
     ECI_FLAG = [
       # TODO: Write general description for MASTERCARD_NON_3D_SECURE_TRANSACTION
       MASTERCARD_NON_3D_SECURE_TRANSACTION = 'MASTERCARD_NON_3D_SECURE_TRANSACTION'.freeze,

@@ -11,7 +11,7 @@ module PaypalServerSdk
 
     # Transactions status result identifier. The outcome of the issuer's
     # authentication.
-    # @return [PAResStatus]
+    # @return [PaResStatus]
     attr_accessor :authentication_status
 
     # Status of Authentication eligibility.

@@ -6,7 +6,7 @@
 module PaypalServerSdk
   # Customizes the payer experience during the approval process for the BLIK
   # payment.
-  class BLIKExperienceContext < BaseModel
+  class BlikExperienceContext < BaseModel
     SKIP = Object.new
     private_constant :SKIP
 
@@ -110,7 +110,7 @@ module PaypalServerSdk
         hash.key?('consumer_user_agent') ? hash['consumer_user_agent'] : SKIP
 
       # Create object from extracted values.
-      BLIKExperienceContext.new(brand_name: brand_name,
+      BlikExperienceContext.new(brand_name: brand_name,
                                 locale: locale,
                                 shipping_preference: shipping_preference,
                                 return_url: return_url,

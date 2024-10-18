@@ -6,7 +6,7 @@
 module PaypalServerSdk
   # The address verification code for Visa, Discover, Mastercard, or American
   # Express transactions.
-  class AVSCode
+  class AvsCode
     AVS_CODE = [
       # TODO: Write general description for A
       A = 'A'.freeze,

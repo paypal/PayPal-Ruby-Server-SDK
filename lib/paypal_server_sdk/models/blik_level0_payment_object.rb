@@ -5,7 +5,7 @@
 
 module PaypalServerSdk
   # Information used to pay using BLIK level_0 flow.
-  class BLIKLevel0PaymentObject < BaseModel
+  class BlikLevel0PaymentObject < BaseModel
     SKIP = Object.new
     private_constant :SKIP
 
@@ -42,7 +42,7 @@ module PaypalServerSdk
       auth_code = hash.key?('auth_code') ? hash['auth_code'] : nil
 
       # Create object from extracted values.
-      BLIKLevel0PaymentObject.new(auth_code: auth_code)
+      BlikLevel0PaymentObject.new(auth_code: auth_code)
     end
   end
 end

@@ -5,7 +5,7 @@
 
 module PaypalServerSdk
   # Information used to pay using BLIK one-click flow.
-  class BLIKOneClickPaymentRequest < BaseModel
+  class BlikOneClickPaymentRequest < BaseModel
     SKIP = Object.new
     private_constant :SKIP
 
@@ -73,7 +73,7 @@ module PaypalServerSdk
       alias_key = hash.key?('alias_key') ? hash['alias_key'] : SKIP
 
       # Create object from extracted values.
-      BLIKOneClickPaymentRequest.new(consumer_reference: consumer_reference,
+      BlikOneClickPaymentRequest.new(consumer_reference: consumer_reference,
                                      auth_code: auth_code,
                                      alias_label: alias_label,
                                      alias_key: alias_key)

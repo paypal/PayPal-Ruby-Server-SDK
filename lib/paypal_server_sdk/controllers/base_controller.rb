@@ -10,7 +10,7 @@ module PaypalServerSdk
     attr_accessor :config, :http_call_back
 
     def self.user_agent
-      'PayPal REST API Ruby SDK, Version: 0.5.2, on OS {os-info}'
+      'PayPal REST API Ruby SDK, Version: 0.6.0, on OS {os-info}'
     end
 
     def self.user_agent_parameters

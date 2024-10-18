@@ -26,7 +26,7 @@ module PaypalServerSdk
     attr_accessor :token
 
     # A resource that identifies a PayPal Wallet is used for payment.
-    # @return [PayPalWallet]
+    # @return [PaypalWallet]
     attr_accessor :paypal
 
     # Information needed to pay using ApplePay.
@@ -87,7 +87,7 @@ module PaypalServerSdk
       # Extract variables from the hash.
       card = CardRequest.from_hash(hash['card']) if hash['card']
       token = Token.from_hash(hash['token']) if hash['token']
-      paypal = PayPalWallet.from_hash(hash['paypal']) if hash['paypal']
+      paypal = PaypalWallet.from_hash(hash['paypal']) if hash['paypal']
       apple_pay = ApplePayRequest.from_hash(hash['apple_pay']) if hash['apple_pay']
       google_pay = GooglePayRequest.from_hash(hash['google_pay']) if hash['google_pay']
       venmo = VenmoWalletRequest.from_hash(hash['venmo']) if hash['venmo']

@@ -5,7 +5,7 @@
 
 module PaypalServerSdk
   # Information needed to pay using eps.
-  class EPSPaymentRequest < BaseModel
+  class EpsPaymentRequest < BaseModel
     SKIP = Object.new
     private_constant :SKIP
 
@@ -65,7 +65,7 @@ module PaypalServerSdk
         hash['experience_context']
 
       # Create object from extracted values.
-      EPSPaymentRequest.new(name: name,
+      EpsPaymentRequest.new(name: name,
                             country_code: country_code,
                             experience_context: experience_context)
     end

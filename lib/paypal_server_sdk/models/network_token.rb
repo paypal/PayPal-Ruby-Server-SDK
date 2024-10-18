@@ -27,7 +27,7 @@ module PaypalServerSdk
     # elements that indicate the transaction was processed electronically. This
     # should be passed on the authorization transaction to the
     # Gateway/Processor.
-    # @return [ECIFlag]
+    # @return [EciFlag]
     attr_accessor :eci_flag
 
     # A TRID, or a Token Requestor ID, is an identifier used by merchants to

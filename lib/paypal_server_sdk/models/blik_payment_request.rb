@@ -5,7 +5,7 @@
 
 module PaypalServerSdk
   # Information needed to pay using BLIK.
-  class BLIKPaymentRequest < BaseModel
+  class BlikPaymentRequest < BaseModel
     SKIP = Object.new
     private_constant :SKIP
 
@@ -32,15 +32,15 @@ module PaypalServerSdk
 
     # Customizes the payer experience during the approval process for the BLIK
     # payment.
-    # @return [BLIKExperienceContext]
+    # @return [BlikExperienceContext]
     attr_accessor :experience_context
 
     # Information used to pay using BLIK level_0 flow.
-    # @return [BLIKLevel0PaymentObject]
+    # @return [BlikLevel0PaymentObject]
     attr_accessor :level_0
 
     # Information used to pay using BLIK one-click flow.
-    # @return [BLIKOneClickPaymentRequest]
+    # @return [BlikOneClickPaymentRequest]
     attr_accessor :one_click
 
     # A mapping from model property names to API property names.
@@ -88,13 +88,13 @@ module PaypalServerSdk
       name = hash.key?('name') ? hash['name'] : nil
       country_code = hash.key?('country_code') ? hash['country_code'] : nil
       email = hash.key?('email') ? hash['email'] : SKIP
-      experience_context = BLIKExperienceContext.from_hash(hash['experience_context']) if
+      experience_context = BlikExperienceContext.from_hash(hash['experience_context']) if
         hash['experience_context']
-      level_0 = BLIKLevel0PaymentObject.from_hash(hash['level_0']) if hash['level_0']
-      one_click = BLIKOneClickPaymentRequest.from_hash(hash['one_click']) if hash['one_click']
+      level_0 = BlikLevel0PaymentObject.from_hash(hash['level_0']) if hash['level_0']
+      one_click = BlikOneClickPaymentRequest.from_hash(hash['one_click']) if hash['one_click']
 
       # Create object from extracted values.
-      BLIKPaymentRequest.new(name: name,
+      BlikPaymentRequest.new(name: name,
                              country_code: country_code,
                              email: email,
                              experience_context: experience_context,

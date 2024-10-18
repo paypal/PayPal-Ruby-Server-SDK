@@ -6,7 +6,7 @@
 module PaypalServerSdk
   # Transactions status result identifier. The outcome of the issuer's
   # authentication.
-  class PAResStatus
+  class PaResStatus
     PA_RES_STATUS = [
       # TODO: Write general description for Y
       Y = 'Y'.freeze,

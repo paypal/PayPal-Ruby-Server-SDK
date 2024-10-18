@@ -6,48 +6,6 @@
 module PaypalServerSdk
   # VaultController
   class VaultController < BaseController
-    # Creates a Payment Token from the given payment source and adds it to the
-    # Vault of the associated customer.
-    # @param [String] pay_pal_request_id Required parameter: The server stores
-    # keys for 3 hours.
-    # @param [PaymentTokenRequest] body Required parameter: Payment Token
-    # creation with a financial instrument and an optional customer_id.
-    # @return [ApiResponse]  the complete http response with raw body and status code.
-    def payment_tokens_create(options = {})
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/v3/vault/payment-tokens',
-                                     Server::DEFAULT)
-                   .header_param(new_parameter(options['pay_pal_request_id'], key: 'PayPal-Request-Id'))
-                   .header_param(new_parameter('application/json', key: 'Content-Type'))
-                   .body_param(new_parameter(options['body']))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('Oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(PaymentTokenResponse.method(:from_hash))
-                    .is_api_response(true)
-                    .local_error('400',
-                                 'Request is not well-formed, syntactically incorrect, or'\
-                                  ' violates schema.',
-                                 ErrorException)
-                    .local_error('403',
-                                 'Authorization failed due to insufficient permissions.',
-                                 ErrorException)
-                    .local_error('404',
-                                 'Request contains reference to resources that do not exist.',
-                                 ErrorException)
-                    .local_error('422',
-                                 'The requested action could not be performed, semantically'\
-                                  ' incorrect, or failed business validation.',
-                                 ErrorException)
-                    .local_error('500',
-                                 'An internal server error has occurred.',
-                                 ErrorException))
-        .execute
-    end
-
     # Returns all payment tokens for a customer.
     # @param [String] customer_id Required parameter: A unique identifier
     # representing a specific customer in merchant's/partner's system or
@@ -121,6 +79,88 @@ module PaypalServerSdk
         .execute
     end
 
+    # Creates a Payment Token from the given payment source and adds it to the
+    # Vault of the associated customer.
+    # @param [String] paypal_request_id Required parameter: The server stores
+    # keys for 3 hours.
+    # @param [PaymentTokenRequest] body Required parameter: Payment Token
+    # creation with a financial instrument and an optional customer_id.
+    # @return [ApiResponse]  the complete http response with raw body and status code.
+    def payment_tokens_create(options = {})
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/v3/vault/payment-tokens',
+                                     Server::DEFAULT)
+                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
+                   .header_param(new_parameter('application/json', key: 'Content-Type'))
+                   .body_param(new_parameter(options['body']))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('Oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(PaymentTokenResponse.method(:from_hash))
+                    .is_api_response(true)
+                    .local_error('400',
+                                 'Request is not well-formed, syntactically incorrect, or'\
+                                  ' violates schema.',
+                                 ErrorException)
+                    .local_error('403',
+                                 'Authorization failed due to insufficient permissions.',
+                                 ErrorException)
+                    .local_error('404',
+                                 'Request contains reference to resources that do not exist.',
+                                 ErrorException)
+                    .local_error('422',
+                                 'The requested action could not be performed, semantically'\
+                                  ' incorrect, or failed business validation.',
+                                 ErrorException)
+                    .local_error('500',
+                                 'An internal server error has occurred.',
+                                 ErrorException))
+        .execute
+    end
+
+    # Creates a Setup Token from the given payment source and adds it to the
+    # Vault of the associated customer.
+    # @param [String] paypal_request_id Required parameter: The server stores
+    # keys for 3 hours.
+    # @param [SetupTokenRequest] body Required parameter: Setup Token creation
+    # with a instrument type optional financial instrument details and
+    # customer_id.
+    # @return [ApiResponse]  the complete http response with raw body and status code.
+    def setup_tokens_create(options = {})
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::POST,
+                                     '/v3/vault/setup-tokens',
+                                     Server::DEFAULT)
+                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
+                   .header_param(new_parameter('application/json', key: 'Content-Type'))
+                   .body_param(new_parameter(options['body']))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
+                   .auth(Single.new('Oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(SetupTokenResponse.method(:from_hash))
+                    .is_api_response(true)
+                    .local_error('400',
+                                 'Request is not well-formed, syntactically incorrect, or'\
+                                  ' violates schema.',
+                                 ErrorException)
+                    .local_error('403',
+                                 'Authorization failed due to insufficient permissions.',
+                                 ErrorException)
+                    .local_error('422',
+                                 'The requested action could not be performed, semantically'\
+                                  ' incorrect, or failed business validation.',
+                                 ErrorException)
+                    .local_error('500',
+                                 'An internal server error has occurred.',
+                                 ErrorException))
+        .execute
+    end
+
     # Delete the payment token associated with the payment token id.
     # @param [String] id Required parameter: ID of the payment token.
     # @return [ApiResponse]  the complete http response with raw body and status code.
@@ -141,46 +181,6 @@ module PaypalServerSdk
                                  ErrorException)
                     .local_error('403',
                                  'Authorization failed due to insufficient permissions.',
-                                 ErrorException)
-                    .local_error('500',
-                                 'An internal server error has occurred.',
-                                 ErrorException))
-        .execute
-    end
-
-    # Creates a Setup Token from the given payment source and adds it to the
-    # Vault of the associated customer.
-    # @param [String] pay_pal_request_id Required parameter: The server stores
-    # keys for 3 hours.
-    # @param [SetupTokenRequest] body Required parameter: Setup Token creation
-    # with a instrument type optional financial instrument details and
-    # customer_id.
-    # @return [ApiResponse]  the complete http response with raw body and status code.
-    def setup_tokens_create(options = {})
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::POST,
-                                     '/v3/vault/setup-tokens',
-                                     Server::DEFAULT)
-                   .header_param(new_parameter(options['pay_pal_request_id'], key: 'PayPal-Request-Id'))
-                   .header_param(new_parameter('application/json', key: 'Content-Type'))
-                   .body_param(new_parameter(options['body']))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .body_serializer(proc do |param| param.to_json unless param.nil? end)
-                   .auth(Single.new('Oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(SetupTokenResponse.method(:from_hash))
-                    .is_api_response(true)
-                    .local_error('400',
-                                 'Request is not well-formed, syntactically incorrect, or'\
-                                  ' violates schema.',
-                                 ErrorException)
-                    .local_error('403',
-                                 'Authorization failed due to insufficient permissions.',
-                                 ErrorException)
-                    .local_error('422',
-                                 'The requested action could not be performed, semantically'\
-                                  ' incorrect, or failed business validation.',
                                  ErrorException)
                     .local_error('500',
                                  'An internal server error has occurred.',

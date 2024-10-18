@@ -15,7 +15,7 @@ module PaypalServerSdk
     attr_accessor :card
 
     # The PayPal Wallet response.
-    # @return [PayPalWalletResponse]
+    # @return [PaypalWalletResponse]
     attr_accessor :paypal
 
     # Information used to pay Bancontact.
@@ -23,11 +23,11 @@ module PaypalServerSdk
     attr_accessor :bancontact
 
     # Information used to pay using BLIK.
-    # @return [BLIKPaymentObject]
+    # @return [BlikPaymentObject]
     attr_accessor :blik
 
     # Information used to pay using eps.
-    # @return [EPSPaymentObject]
+    # @return [EpsPaymentObject]
     attr_accessor :eps
 
     # Information needed to pay using giropay.
@@ -35,11 +35,11 @@ module PaypalServerSdk
     attr_accessor :giropay
 
     # Information used to pay using iDEAL.
-    # @return [IDEALPaymentObject]
+    # @return [IdealPaymentObject]
     attr_accessor :ideal
 
     # Information used to pay using MyBank.
-    # @return [MyBankPaymentObject]
+    # @return [MybankPaymentObject]
     attr_accessor :mybank
 
     # Information used to pay using P24(Przelewy24).
@@ -137,13 +137,13 @@ module PaypalServerSdk
 
       # Extract variables from the hash.
       card = CardResponse.from_hash(hash['card']) if hash['card']
-      paypal = PayPalWalletResponse.from_hash(hash['paypal']) if hash['paypal']
+      paypal = PaypalWalletResponse.from_hash(hash['paypal']) if hash['paypal']
       bancontact = BancontactPaymentObject.from_hash(hash['bancontact']) if hash['bancontact']
-      blik = BLIKPaymentObject.from_hash(hash['blik']) if hash['blik']
-      eps = EPSPaymentObject.from_hash(hash['eps']) if hash['eps']
+      blik = BlikPaymentObject.from_hash(hash['blik']) if hash['blik']
+      eps = EpsPaymentObject.from_hash(hash['eps']) if hash['eps']
       giropay = GiropayPaymentObject.from_hash(hash['giropay']) if hash['giropay']
-      ideal = IDEALPaymentObject.from_hash(hash['ideal']) if hash['ideal']
-      mybank = MyBankPaymentObject.from_hash(hash['mybank']) if hash['mybank']
+      ideal = IdealPaymentObject.from_hash(hash['ideal']) if hash['ideal']
+      mybank = MybankPaymentObject.from_hash(hash['mybank']) if hash['mybank']
       p24 = P24PaymentObject.from_hash(hash['p24']) if hash['p24']
       sofort = SofortPaymentObject.from_hash(hash['sofort']) if hash['sofort']
       trustly = TrustlyPaymentObject.from_hash(hash['trustly']) if hash['trustly']

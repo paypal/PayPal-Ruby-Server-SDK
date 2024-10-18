@@ -27,7 +27,7 @@ module PaypalServerSdk
     attr_accessor :rel
 
     # The HTTP method required to make the related call.
-    # @return [LinkHTTPMethod]
+    # @return [LinkHttpMethod]
     attr_accessor :method
 
     # A mapping from model property names to API property names.

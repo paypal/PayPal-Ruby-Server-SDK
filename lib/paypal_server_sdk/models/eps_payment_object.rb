@@ -5,7 +5,7 @@
 
 module PaypalServerSdk
   # Information used to pay using eps.
-  class EPSPaymentObject < BaseModel
+  class EpsPaymentObject < BaseModel
     SKIP = Object.new
     private_constant :SKIP
 
@@ -66,7 +66,7 @@ module PaypalServerSdk
       bic = hash.key?('bic') ? hash['bic'] : SKIP
 
       # Create object from extracted values.
-      EPSPaymentObject.new(name: name,
+      EpsPaymentObject.new(name: name,
                            country_code: country_code,
                            bic: bic)
     end
