@@ -45,6 +45,12 @@ module PaypalServerSdk
     # @return [CardVerificationProcessorResponse]
     attr_accessor :processor_response
 
+    # DEPRECATED. This field is DEPRECATED. Please find the 3D secure
+    # authentication data in 'three_d_secure' object under
+    # 'authentication_result' object instead of the 'verification' field.
+    # @return [Object]
+    attr_accessor :three_d_secure
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -54,6 +60,7 @@ module PaypalServerSdk
       @_hash['time'] = 'time'
       @_hash['amount'] = 'amount'
       @_hash['processor_response'] = 'processor_response'
+      @_hash['three_d_secure'] = 'three_d_secure'
       @_hash
     end
 
@@ -66,6 +73,7 @@ module PaypalServerSdk
         time
         amount
         processor_response
+        three_d_secure
       ]
     end
 
@@ -75,13 +83,15 @@ module PaypalServerSdk
     end
 
     def initialize(network_transaction_id: SKIP, date: SKIP, network: SKIP,
-                   time: SKIP, amount: SKIP, processor_response: SKIP)
+                   time: SKIP, amount: SKIP, processor_response: SKIP,
+                   three_d_secure: SKIP)
       @network_transaction_id = network_transaction_id unless network_transaction_id == SKIP
       @date = date unless date == SKIP
       @network = network unless network == SKIP
       @time = time unless time == SKIP
       @amount = amount unless amount == SKIP
       @processor_response = processor_response unless processor_response == SKIP
+      @three_d_secure = three_d_secure unless three_d_secure == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -98,6 +108,8 @@ module PaypalServerSdk
       if hash['processor_response']
         processor_response = CardVerificationProcessorResponse.from_hash(hash['processor_response'])
       end
+      three_d_secure =
+        hash.key?('three_d_secure') ? hash['three_d_secure'] : SKIP
 
       # Create object from extracted values.
       CardVerificationDetails.new(network_transaction_id: network_transaction_id,
@@ -105,7 +117,8 @@ module PaypalServerSdk
                                   network: network,
                                   time: time,
                                   amount: amount,
-                                  processor_response: processor_response)
+                                  processor_response: processor_response,
+                                  three_d_secure: three_d_secure)
     end
   end
 end

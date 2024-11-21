@@ -38,11 +38,13 @@ module PaypalServerSdk
     # @return [CheckoutPaymentIntent]
     attr_accessor :intent
 
-    # The instruction to process an order.
-    # @return [ProcessingInstruction]
+    # The intent to either capture payment immediately or authorize a payment
+    # for an order after order creation.
+    # @return [Object]
     attr_accessor :processing_instruction
 
-    # The instruction to process an order.
+    # The intent to either capture payment immediately or authorize a payment
+    # for an order after order creation.
     # @return [Payer]
     attr_accessor :payer
 
@@ -58,10 +60,10 @@ module PaypalServerSdk
     attr_accessor :status
 
     # An array of request-related HATEOAS links. To complete payer approval, use
-    # the `approve` link to redirect the payer. The API caller has 3 hours
+    # the `approve` link to redirect the payer. The API caller has 6 hours
     # (default setting, this which can be changed by your account manager to
     # 24/48/72 hours to accommodate your use case) from the time the order is
-    # created, to redirect your payer. Once redirected, the API caller has 3
+    # created, to redirect your payer. Once redirected, the API caller has 6
     # hours for the payer to approve the order and either authorize or capture
     # the order. If you are not using the PayPal JavaScript SDK to initiate
     # PayPal Checkout (in context) ensure that you include
@@ -108,12 +110,10 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(
-      create_time: SKIP, update_time: SKIP, id: SKIP, payment_source: SKIP,
-      intent: SKIP,
-      processing_instruction: ProcessingInstruction::NO_INSTRUCTION,
-      payer: SKIP, purchase_units: SKIP, status: SKIP, links: SKIP
-    )
+    def initialize(create_time: SKIP, update_time: SKIP, id: SKIP,
+                   payment_source: SKIP, intent: SKIP,
+                   processing_instruction: SKIP, payer: SKIP,
+                   purchase_units: SKIP, status: SKIP, links: SKIP)
       @create_time = create_time unless create_time == SKIP
       @update_time = update_time unless update_time == SKIP
       @id = id unless id == SKIP
@@ -138,7 +138,7 @@ module PaypalServerSdk
         hash['payment_source']
       intent = hash.key?('intent') ? hash['intent'] : SKIP
       processing_instruction =
-        hash['processing_instruction'] ||= ProcessingInstruction::NO_INSTRUCTION
+        hash.key?('processing_instruction') ? hash['processing_instruction'] : SKIP
       payer = Payer.from_hash(hash['payer']) if hash['payer']
       # Parameter is an array, so we need to iterate through it
       purchase_units = nil

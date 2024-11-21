@@ -24,6 +24,11 @@ module PaypalServerSdk
     # @return [GooglePayPaymentMethod]
     attr_accessor :payment_method
 
+    # The payment card used to fund a Google Pay payment. Can be a credit or
+    # debit card.
+    # @return [GooglePayCard]
+    attr_accessor :card
+
     # Authentication Method which is used for the card transaction.
     # @return [GooglePayAuthenticationMethod]
     attr_accessor :authentication_method
@@ -46,6 +51,7 @@ module PaypalServerSdk
       @_hash['message_id'] = 'message_id'
       @_hash['message_expiration'] = 'message_expiration'
       @_hash['payment_method'] = 'payment_method'
+      @_hash['card'] = 'card'
       @_hash['authentication_method'] = 'authentication_method'
       @_hash['cryptogram'] = 'cryptogram'
       @_hash['eci_indicator'] = 'eci_indicator'
@@ -67,12 +73,13 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(payment_method:, authentication_method:, message_id: SKIP,
-                   message_expiration: SKIP, cryptogram: SKIP,
+    def initialize(payment_method:, card:, authentication_method:,
+                   message_id: SKIP, message_expiration: SKIP, cryptogram: SKIP,
                    eci_indicator: SKIP)
       @message_id = message_id unless message_id == SKIP
       @message_expiration = message_expiration unless message_expiration == SKIP
       @payment_method = payment_method
+      @card = card
       @authentication_method = authentication_method
       @cryptogram = cryptogram unless cryptogram == SKIP
       @eci_indicator = eci_indicator unless eci_indicator == SKIP
@@ -85,6 +92,7 @@ module PaypalServerSdk
       # Extract variables from the hash.
       payment_method =
         hash.key?('payment_method') ? hash['payment_method'] : nil
+      card = GooglePayCard.from_hash(hash['card']) if hash['card']
       authentication_method =
         hash.key?('authentication_method') ? hash['authentication_method'] : nil
       message_id = hash.key?('message_id') ? hash['message_id'] : SKIP
@@ -95,6 +103,7 @@ module PaypalServerSdk
 
       # Create object from extracted values.
       GooglePayDecryptedTokenData.new(payment_method: payment_method,
+                                      card: card,
                                       authentication_method: authentication_method,
                                       message_id: message_id,
                                       message_expiration: message_expiration,

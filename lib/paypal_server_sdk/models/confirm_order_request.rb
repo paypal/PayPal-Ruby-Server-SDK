@@ -14,8 +14,8 @@ module PaypalServerSdk
     # @return [PaymentSource]
     attr_accessor :payment_source
 
-    # The instruction to process an order.
-    # @return [ProcessingInstruction]
+    # The payment source definition.
+    # @return [Object]
     attr_accessor :processing_instruction
 
     # Customizes the payer confirmation experience.
@@ -44,11 +44,8 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(
-      payment_source:,
-      processing_instruction: ProcessingInstruction::NO_INSTRUCTION,
-      application_context: SKIP
-    )
+    def initialize(payment_source:, processing_instruction: SKIP,
+                   application_context: SKIP)
       @payment_source = payment_source
       @processing_instruction = processing_instruction unless processing_instruction == SKIP
       @application_context = application_context unless application_context == SKIP
@@ -61,7 +58,7 @@ module PaypalServerSdk
       # Extract variables from the hash.
       payment_source = PaymentSource.from_hash(hash['payment_source']) if hash['payment_source']
       processing_instruction =
-        hash['processing_instruction'] ||= ProcessingInstruction::NO_INSTRUCTION
+        hash.key?('processing_instruction') ? hash['processing_instruction'] : SKIP
       application_context = OrderConfirmApplicationContext.from_hash(hash['application_context']) if
         hash['application_context']
 

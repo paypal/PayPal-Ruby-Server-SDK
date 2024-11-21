@@ -3840,7 +3840,331 @@ module PaypalServerSdk
       EMS = 'EMS'.freeze,
 
       # TODO: Write general description for SPEEDY
-      SPEEDY = 'SPEEDY'.freeze
+      SPEEDY = 'SPEEDY'.freeze,
+
+      # TODO: Write general description for ZOOM_RED
+      ZOOM_RED = 'ZOOM_RED'.freeze,
+
+      # TODO: Write general description for NAVLUNGO
+      NAVLUNGO = 'NAVLUNGO'.freeze,
+
+      # TODO: Write general description for CASTLEPARCELS
+      CASTLEPARCELS = 'CASTLEPARCELS'.freeze,
+
+      # TODO: Write general description for WEEE
+      WEEE = 'WEEE'.freeze,
+
+      # TODO: Write general description for PACKALY
+      PACKALY = 'PACKALY'.freeze,
+
+      # TODO: Write general description for YUNHUIPOST
+      YUNHUIPOST = 'YUNHUIPOST'.freeze,
+
+      # TODO: Write general description for YOUPARCEL
+      YOUPARCEL = 'YOUPARCEL'.freeze,
+
+      # TODO: Write general description for LEMAN
+      LEMAN = 'LEMAN'.freeze,
+
+      # TODO: Write general description for MOOVIN
+      MOOVIN = 'MOOVIN'.freeze,
+
+      # TODO: Write general description for URB_IT
+      URB_IT = 'URB_IT'.freeze,
+
+      # TODO: Write general description for MULTIENTREGAPANAMA
+      MULTIENTREGAPANAMA = 'MULTIENTREGAPANAMA'.freeze,
+
+      # TODO: Write general description for JUSDASR
+      JUSDASR = 'JUSDASR'.freeze,
+
+      # TODO: Write general description for DISCOUNTPOST
+      DISCOUNTPOST = 'DISCOUNTPOST'.freeze,
+
+      # TODO: Write general description for RHENUS_UK
+      RHENUS_UK = 'RHENUS_UK'.freeze,
+
+      # TODO: Write general description for SWISHIP_JP
+      SWISHIP_JP = 'SWISHIP_JP'.freeze,
+
+      # TODO: Write general description for GLS_US
+      GLS_US = 'GLS_US'.freeze,
+
+      # TODO: Write general description for SMTL
+      SMTL = 'SMTL'.freeze,
+
+      # TODO: Write general description for EMEGA
+      EMEGA = 'EMEGA'.freeze,
+
+      # TODO: Write general description for EXPRESSONE_SV
+      EXPRESSONE_SV = 'EXPRESSONE_SV'.freeze,
+
+      # TODO: Write general description for HEPSIJET
+      HEPSIJET = 'HEPSIJET'.freeze,
+
+      # TODO: Write general description for WELIVERY
+      WELIVERY = 'WELIVERY'.freeze,
+
+      # TODO: Write general description for BRINGER
+      BRINGER = 'BRINGER'.freeze,
+
+      # TODO: Write general description for EASYROUTES
+      EASYROUTES = 'EASYROUTES'.freeze,
+
+      # TODO: Write general description for MRW
+      MRW = 'MRW'.freeze,
+
+      # TODO: Write general description for RPM
+      RPM = 'RPM'.freeze,
+
+      # TODO: Write general description for DPD_PRT
+      DPD_PRT = 'DPD_PRT'.freeze,
+
+      # TODO: Write general description for GLS_ROMANIA
+      GLS_ROMANIA = 'GLS_ROMANIA'.freeze,
+
+      # TODO: Write general description for LMPARCEL
+      LMPARCEL = 'LMPARCEL'.freeze,
+
+      # TODO: Write general description for GTAGSM
+      GTAGSM = 'GTAGSM'.freeze,
+
+      # TODO: Write general description for DOMINO
+      DOMINO = 'DOMINO'.freeze,
+
+      # TODO: Write general description for ESHIPPER
+      ESHIPPER = 'ESHIPPER'.freeze,
+
+      # TODO: Write general description for TRANSPAK
+      TRANSPAK = 'TRANSPAK'.freeze,
+
+      # TODO: Write general description for XINDUS
+      XINDUS = 'XINDUS'.freeze,
+
+      # TODO: Write general description for AOYUE
+      AOYUE = 'AOYUE'.freeze,
+
+      # TODO: Write general description for EASYPARCEL
+      EASYPARCEL = 'EASYPARCEL'.freeze,
+
+      # TODO: Write general description for EXPRESSONE
+      EXPRESSONE = 'EXPRESSONE'.freeze,
+
+      # TODO: Write general description for SENDEO_KARGO
+      SENDEO_KARGO = 'SENDEO_KARGO'.freeze,
+
+      # TODO: Write general description for SPEEDAF
+      SPEEDAF = 'SPEEDAF'.freeze,
+
+      # TODO: Write general description for ETOWER
+      ETOWER = 'ETOWER'.freeze,
+
+      # TODO: Write general description for GCX
+      GCX = 'GCX'.freeze,
+
+      # TODO: Write general description for NINJAVAN_VN
+      NINJAVAN_VN = 'NINJAVAN_VN'.freeze,
+
+      # TODO: Write general description for ALLEGRO
+      ALLEGRO = 'ALLEGRO'.freeze,
+
+      # TODO: Write general description for JUMPPOINT
+      JUMPPOINT = 'JUMPPOINT'.freeze,
+
+      # TODO: Write general description for SHIPGLOBAL_US
+      SHIPGLOBAL_US = 'SHIPGLOBAL_US'.freeze,
+
+      # TODO: Write general description for KINISI
+      KINISI = 'KINISI'.freeze,
+
+      # TODO: Write general description for OAKH
+      OAKH = 'OAKH'.freeze,
+
+      # TODO: Write general description for AWEST
+      AWEST = 'AWEST'.freeze,
+
+      # TODO: Write general description for BARSAN
+      BARSAN = 'BARSAN'.freeze,
+
+      # TODO: Write general description for ENERGOLOGISTIC
+      ENERGOLOGISTIC = 'ENERGOLOGISTIC'.freeze,
+
+      # TODO: Write general description for MADROOEX
+      MADROOEX = 'MADROOEX'.freeze,
+
+      # TODO: Write general description for GOBOLT
+      GOBOLT = 'GOBOLT'.freeze,
+
+      # TODO: Write general description for SWISS_UNIVERSAL_EXPRESS
+      SWISS_UNIVERSAL_EXPRESS = 'SWISS_UNIVERSAL_EXPRESS'.freeze,
+
+      # TODO: Write general description for IORDIRECT
+      IORDIRECT = 'IORDIRECT'.freeze,
+
+      # TODO: Write general description for XMSZM
+      XMSZM = 'XMSZM'.freeze,
+
+      # TODO: Write general description for GLS_HUN
+      GLS_HUN = 'GLS_HUN'.freeze,
+
+      # TODO: Write general description for SENDY
+      SENDY = 'SENDY'.freeze,
+
+      # TODO: Write general description for BRAUNSEXPRESS
+      BRAUNSEXPRESS = 'BRAUNSEXPRESS'.freeze,
+
+      # TODO: Write general description for GRANDSLAMEXPRESS
+      GRANDSLAMEXPRESS = 'GRANDSLAMEXPRESS'.freeze,
+
+      # TODO: Write general description for XGS
+      XGS = 'XGS'.freeze,
+
+      # TODO: Write general description for OTSCHILE
+      OTSCHILE = 'OTSCHILE'.freeze,
+
+      # TODO: Write general description for PACK_UP
+      PACK_UP = 'PACK_UP'.freeze,
+
+      # TODO: Write general description for PARCELSTARS
+      PARCELSTARS = 'PARCELSTARS'.freeze,
+
+      # TODO: Write general description for TEAMEXPRESSLLC
+      TEAMEXPRESSLLC = 'TEAMEXPRESSLLC'.freeze,
+
+      # TODO: Write general description for ASYADEXPRESS
+      ASYADEXPRESS = 'ASYADEXPRESS'.freeze,
+
+      # TODO: Write general description for TDN
+      TDN = 'TDN'.freeze,
+
+      # TODO: Write general description for EARLYBIRD
+      EARLYBIRD = 'EARLYBIRD'.freeze,
+
+      # TODO: Write general description for CACESA
+      CACESA = 'CACESA'.freeze,
+
+      # TODO: Write general description for PARCELJET
+      PARCELJET = 'PARCELJET'.freeze,
+
+      # TODO: Write general description for MNG_KARGO
+      MNG_KARGO = 'MNG_KARGO'.freeze,
+
+      # TODO: Write general description for SUPERPACKLINE
+      SUPERPACKLINE = 'SUPERPACKLINE'.freeze,
+
+      # TODO: Write general description for SPEEDX
+      SPEEDX = 'SPEEDX'.freeze,
+
+      # TODO: Write general description for VESYL
+      VESYL = 'VESYL'.freeze,
+
+      # TODO: Write general description for SKYKING
+      SKYKING = 'SKYKING'.freeze,
+
+      # TODO: Write general description for DIRMENSAJERIA
+      DIRMENSAJERIA = 'DIRMENSAJERIA'.freeze,
+
+      # TODO: Write general description for NETLOGIXGROUP
+      NETLOGIXGROUP = 'NETLOGIXGROUP'.freeze,
+
+      # TODO: Write general description for ZYOU
+      ZYOU = 'ZYOU'.freeze,
+
+      # TODO: Write general description for JAWAR
+      JAWAR = 'JAWAR'.freeze,
+
+      # TODO: Write general description for AGSYSTEMS
+      AGSYSTEMS = 'AGSYSTEMS'.freeze,
+
+      # TODO: Write general description for GPS
+      GPS = 'GPS'.freeze,
+
+      # TODO: Write general description for PTT_KARGO
+      PTT_KARGO = 'PTT_KARGO'.freeze,
+
+      # TODO: Write general description for MAERGO
+      MAERGO = 'MAERGO'.freeze,
+
+      # TODO: Write general description for ARIHANTCOURIER
+      ARIHANTCOURIER = 'ARIHANTCOURIER'.freeze,
+
+      # TODO: Write general description for VTFE
+      VTFE = 'VTFE'.freeze,
+
+      # TODO: Write general description for YUNANT
+      YUNANT = 'YUNANT'.freeze,
+
+      # TODO: Write general description for URBIFY
+      URBIFY = 'URBIFY'.freeze,
+
+      # TODO: Write general description for PACK_MAN
+      PACK_MAN = 'PACK_MAN'.freeze,
+
+      # TODO: Write general description for LIEFERGRUN
+      LIEFERGRUN = 'LIEFERGRUN'.freeze,
+
+      # TODO: Write general description for OBIBOX
+      OBIBOX = 'OBIBOX'.freeze,
+
+      # TODO: Write general description for PAIKEDA
+      PAIKEDA = 'PAIKEDA'.freeze,
+
+      # TODO: Write general description for SCOTTY
+      SCOTTY = 'SCOTTY'.freeze,
+
+      # TODO: Write general description for INTELCOM_CA
+      INTELCOM_CA = 'INTELCOM_CA'.freeze,
+
+      # TODO: Write general description for SWE
+      SWE = 'SWE'.freeze,
+
+      # TODO: Write general description for ASENDIA
+      ASENDIA = 'ASENDIA'.freeze,
+
+      # TODO: Write general description for DPD_AT
+      DPD_AT = 'DPD_AT'.freeze,
+
+      # TODO: Write general description for RELAY
+      RELAY = 'RELAY'.freeze,
+
+      # TODO: Write general description for ATA
+      ATA = 'ATA'.freeze,
+
+      # TODO: Write general description for SKYEXPRESS_INTERNATIONAL
+      SKYEXPRESS_INTERNATIONAL = 'SKYEXPRESS_INTERNATIONAL'.freeze,
+
+      # TODO: Write general description for SURAT_KARGO
+      SURAT_KARGO = 'SURAT_KARGO'.freeze,
+
+      # TODO: Write general description for SGLINK
+      SGLINK = 'SGLINK'.freeze,
+
+      # TODO: Write general description for FLEETOPTICSINC
+      FLEETOPTICSINC = 'FLEETOPTICSINC'.freeze,
+
+      # TODO: Write general description for SHOPLINE
+      SHOPLINE = 'SHOPLINE'.freeze,
+
+      # TODO: Write general description for PIGGYSHIP
+      PIGGYSHIP = 'PIGGYSHIP'.freeze,
+
+      # TODO: Write general description for LOGOIX
+      LOGOIX = 'LOGOIX'.freeze,
+
+      # TODO: Write general description for KOLAY_GELSIN
+      KOLAY_GELSIN = 'KOLAY_GELSIN'.freeze,
+
+      # TODO: Write general description for ASSOCIATED_COURIERS
+      ASSOCIATED_COURIERS = 'ASSOCIATED_COURIERS'.freeze,
+
+      # TODO: Write general description for UPS_CHECKER
+      UPS_CHECKER = 'UPS_CHECKER'.freeze,
+
+      # TODO: Write general description for WINESHIPPING
+      WINESHIPPING = 'WINESHIPPING'.freeze,
+
+      # TODO: Write general description for SPEDISCI
+      SPEDISCI = 'SPEDISCI'.freeze
     ].freeze
 
     def self.validate(value)
