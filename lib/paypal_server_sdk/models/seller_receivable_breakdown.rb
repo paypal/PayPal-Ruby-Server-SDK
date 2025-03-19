@@ -125,5 +125,23 @@ module PaypalServerSdk
                                     exchange_rate: exchange_rate,
                                     platform_fees: platform_fees)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} gross_amount: #{@gross_amount}, paypal_fee: #{@paypal_fee},"\
+      " paypal_fee_in_receivable_currency: #{@paypal_fee_in_receivable_currency}, net_amount:"\
+      " #{@net_amount}, receivable_amount: #{@receivable_amount}, exchange_rate:"\
+      " #{@exchange_rate}, platform_fees: #{@platform_fees}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} gross_amount: #{@gross_amount.inspect}, paypal_fee: #{@paypal_fee.inspect},"\
+      " paypal_fee_in_receivable_currency: #{@paypal_fee_in_receivable_currency.inspect},"\
+      " net_amount: #{@net_amount.inspect}, receivable_amount: #{@receivable_amount.inspect},"\
+      " exchange_rate: #{@exchange_rate.inspect}, platform_fees: #{@platform_fees.inspect}>"
+    end
   end
 end

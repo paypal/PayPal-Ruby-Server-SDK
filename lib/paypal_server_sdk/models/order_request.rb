@@ -30,10 +30,9 @@ module PaypalServerSdk
     attr_accessor :payment_source
 
     # Customizes the payer experience during the approval process for the
-    # payment with PayPal.<blockquote><strong>Note:</strong> Partners and
-    # Marketplaces might configure <code>brand_name</code> and
-    # <code>shipping_preference</code> during partner account setup, which
-    # overrides the request values.</blockquote>
+    # payment with PayPal. Note: Partners and Marketplaces might configure
+    # brand_name and shipping_preference during partner account setup, which
+    # overrides the request values.
     # @return [OrderApplicationContext]
     attr_accessor :application_context
 
@@ -98,6 +97,21 @@ module PaypalServerSdk
                        payer: payer,
                        payment_source: payment_source,
                        application_context: application_context)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} intent: #{@intent}, payer: #{@payer}, purchase_units: #{@purchase_units},"\
+      " payment_source: #{@payment_source}, application_context: #{@application_context}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} intent: #{@intent.inspect}, payer: #{@payer.inspect}, purchase_units:"\
+      " #{@purchase_units.inspect}, payment_source: #{@payment_source.inspect},"\
+      " application_context: #{@application_context.inspect}>"
     end
   end
 end

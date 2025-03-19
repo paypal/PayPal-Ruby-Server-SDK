@@ -28,11 +28,11 @@ module PaypalServerSdk
     attr_accessor :expiry
 
     # Address request details.
-    # @return [AddressDetails]
+    # @return [CardResponseAddress]
     attr_accessor :billing_address
 
     # Verification status of Card.
-    # @return [String]
+    # @return [CardVerificationStatus]
     attr_accessor :verification_status
 
     # Card Verification details including the authorization details and 3D
@@ -125,7 +125,7 @@ module PaypalServerSdk
       last_digits = hash.key?('last_digits') ? hash['last_digits'] : SKIP
       brand = hash.key?('brand') ? hash['brand'] : SKIP
       expiry = hash.key?('expiry') ? hash['expiry'] : SKIP
-      billing_address = AddressDetails.from_hash(hash['billing_address']) if
+      billing_address = CardResponseAddress.from_hash(hash['billing_address']) if
         hash['billing_address']
       verification_status =
         hash.key?('verification_status') ? hash['verification_status'] : SKIP
@@ -151,6 +151,28 @@ module PaypalServerSdk
                                  authentication_result: authentication_result,
                                  bin_details: bin_details,
                                  type: type)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, last_digits: #{@last_digits}, brand: #{@brand}, expiry:"\
+      " #{@expiry}, billing_address: #{@billing_address}, verification_status:"\
+      " #{@verification_status}, verification: #{@verification}, network_transaction_reference:"\
+      " #{@network_transaction_reference}, authentication_result: #{@authentication_result},"\
+      " bin_details: #{@bin_details}, type: #{@type}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, last_digits: #{@last_digits.inspect}, brand:"\
+      " #{@brand.inspect}, expiry: #{@expiry.inspect}, billing_address:"\
+      " #{@billing_address.inspect}, verification_status: #{@verification_status.inspect},"\
+      " verification: #{@verification.inspect}, network_transaction_reference:"\
+      " #{@network_transaction_reference.inspect}, authentication_result:"\
+      " #{@authentication_result.inspect}, bin_details: #{@bin_details.inspect}, type:"\
+      " #{@type.inspect}>"
     end
   end
 end

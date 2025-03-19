@@ -5,6 +5,8 @@
 
 module PaypalServerSdk
   # The phone number in its canonical international [E.164 numbering plan
+  # format](https://www.itu.int/rec/T-REC-E.164/en)., The phone number, in its
+  # canonical international [E.164 numbering plan
   # format](https://www.itu.int/rec/T-REC-E.164/en).
   class PhoneNumberWithCountryCode < BaseModel
     SKIP = Object.new
@@ -61,6 +63,19 @@ module PaypalServerSdk
       # Create object from extracted values.
       PhoneNumberWithCountryCode.new(country_code: country_code,
                                      national_number: national_number)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} country_code: #{@country_code}, national_number: #{@national_number}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} country_code: #{@country_code.inspect}, national_number:"\
+      " #{@national_number.inspect}>"
     end
   end
 end

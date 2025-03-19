@@ -111,5 +111,22 @@ module PaypalServerSdk
                           shipping_discount: shipping_discount,
                           discount: discount)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} item_total: #{@item_total}, shipping: #{@shipping}, handling: #{@handling},"\
+      " tax_total: #{@tax_total}, insurance: #{@insurance}, shipping_discount:"\
+      " #{@shipping_discount}, discount: #{@discount}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} item_total: #{@item_total.inspect}, shipping: #{@shipping.inspect},"\
+      " handling: #{@handling.inspect}, tax_total: #{@tax_total.inspect}, insurance:"\
+      " #{@insurance.inspect}, shipping_discount: #{@shipping_discount.inspect}, discount:"\
+      " #{@discount.inspect}>"
+    end
   end
 end

@@ -8,15 +8,13 @@ module PaypalServerSdk
   class OrdersController < BaseController
     # Creates an order. Merchants and partners can add Level 2 and 3 data to
     # payments to reduce risk and payment processing costs. For more information
-    # about processing payments, see <a
-    # href="https://developer.paypal.com/docs/checkout/advanced/processing/">che
-    # ckout</a> or <a
-    # href="https://developer.paypal.com/docs/multiparty/checkout/advanced/proce
-    # ssing/">multiparty checkout</a>.<blockquote><strong>Note:</strong> For
-    # error handling and troubleshooting, see <a
-    # href="https://developer.paypal.com/api/rest/reference/orders/v2/errors/#cr
-    # eate-order">Orders v2 errors</a>.</blockquote>
+    # about processing payments, see checkout or multiparty checkout. Note: For
+    # error handling and troubleshooting, see Orders v2 errors.
     # @param [OrderRequest] body Required parameter: Example:
+    # @param [String] paypal_mock_response Optional parameter: PayPal's REST API
+    # uses a request header to invoke negative testing in the sandbox. This
+    # header configures the sandbox into a negative testing state for
+    # transactions that include the merchant.
     # @param [String] paypal_request_id Optional parameter: The server stores
     # keys for 6 hours. The API callers can request the times to up to 72 hours
     # by speaking to their Account Manager. It is mandatory for all single-step
@@ -27,26 +25,23 @@ module PaypalServerSdk
     # Example:
     # @param [String] paypal_client_metadata_id Optional parameter: Example:
     # @param [String] prefer Optional parameter: The preferred server response
-    # upon successful completion of the request. Value
-    # is:<ul><li><code>return=minimal</code>. The server returns a minimal
-    # response to optimize communication between the API caller and the server.
-    # A minimal response includes the <code>id</code>, <code>status</code> and
-    # HATEOAS links.</li><li><code>return=representation</code>. The server
-    # returns a complete resource representation, including the current state of
-    # the resource.</li></ul>
+    # upon successful completion of the request. Value is: return=minimal. The
+    # server returns a minimal response to optimize communication between the
+    # API caller and the server. A minimal response includes the id, status and
+    # HATEOAS links. return=representation. The server returns a complete
+    # resource representation, including the current state of the resource.
     # @param [String] paypal_auth_assertion Optional parameter: An
     # API-caller-provided JSON Web Token (JWT) assertion that identifies the
-    # merchant. For details, see <a
-    # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
-    # n">PayPal-Auth-Assertion</a>.
+    # merchant. For details, see PayPal-Auth-Assertion.
     # @return [ApiResponse]  the complete http response with raw body and status code.
-    def orders_create(options = {})
+    def create_order(options = {})
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/v2/checkout/orders',
                                      Server::DEFAULT)
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
                    .body_param(new_parameter(options['body']))
+                   .header_param(new_parameter(options['paypal_mock_response'], key: 'PayPal-Mock-Response'))
                    .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
                    .header_param(new_parameter(options['paypal_partner_attribution_id'], key: 'PayPal-Partner-Attribution-Id'))
                    .header_param(new_parameter(options['paypal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
@@ -77,28 +72,29 @@ module PaypalServerSdk
         .execute
     end
 
-    # Shows details for an order, by ID.<blockquote><strong>Note:</strong> For
-    # error handling and troubleshooting, see <a
-    # href="https://developer.paypal.com/api/rest/reference/orders/v2/errors/#ge
-    # t-order">Orders v2 errors</a>.</blockquote>
+    # Shows details for an order, by ID. Note: For error handling and
+    # troubleshooting, see Orders v2 errors.
     # @param [String] id Required parameter: The ID of the order for which to
     # show details.
+    # @param [String] paypal_mock_response Optional parameter: PayPal's REST API
+    # uses a request header to invoke negative testing in the sandbox. This
+    # header configures the sandbox into a negative testing state for
+    # transactions that include the merchant.
     # @param [String] paypal_auth_assertion Optional parameter: An
     # API-caller-provided JSON Web Token (JWT) assertion that identifies the
-    # merchant. For details, see <a
-    # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
-    # n">PayPal-Auth-Assertion</a>.
+    # merchant. For details, see PayPal-Auth-Assertion.
     # @param [String] fields Optional parameter: A comma-separated list of
     # fields that should be returned for the order. Valid filter field is
     # `payment_source`.
     # @return [ApiResponse]  the complete http response with raw body and status code.
-    def orders_get(options = {})
+    def get_order(options = {})
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/v2/checkout/orders/{id}',
                                      Server::DEFAULT)
                    .template_param(new_parameter(options['id'], key: 'id')
                                     .should_encode(true))
+                   .header_param(new_parameter(options['paypal_mock_response'], key: 'PayPal-Mock-Response'))
                    .header_param(new_parameter(options['paypal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
                    .query_param(new_parameter(options['fields'], key: 'fields'))
                    .header_param(new_parameter('application/json', key: 'accept'))
@@ -121,74 +117,47 @@ module PaypalServerSdk
     end
 
     # Updates an order with a `CREATED` or `APPROVED` status. You cannot update
-    # an order with the `COMPLETED` status.<br/><br/>To make an update, you must
-    # provide a `reference_id`. If you omit this value with an order that
-    # contains only one purchase unit, PayPal sets the value to `default` which
-    # enables you to use the path:
-    # <code>\"/purchase_units/@reference_id=='default'/{attribute-or-object}\"</
-    # code>. Merchants and partners can add Level 2 and 3 data to payments to
-    # reduce risk and payment processing costs. For more information about
-    # processing payments, see <a
-    # href="https://developer.paypal.com/docs/checkout/advanced/processing/">che
-    # ckout</a> or <a
-    # href="https://developer.paypal.com/docs/multiparty/checkout/advanced/proce
-    # ssing/">multiparty checkout</a>.<blockquote><strong>Note:</strong> For
-    # error handling and troubleshooting, see <a
-    # href="https://developer.paypal.com/api/rest/reference/orders/v2/errors/#pa
-    # tch-order">Orders v2 errors</a>.</blockquote>Patchable attributes or
-    # objects:<br/><br/><table><thead><th>Attribute</th><th>Op</th><th>Notes</th
-    # ></thead><tbody><tr><td><code>intent</code></td><td>replace</td><td></td><
-    # /tr><tr><td><code>payer</code></td><td>replace, add</td><td>Using replace
-    # op for <code>payer</code> will replace the whole <code>payer</code> object
-    # with the value sent in
-    # request.</td></tr><tr><td><code>purchase_units</code></td><td>replace,
-    # add</td><td></td></tr><tr><td><code>purchase_units[].custom_id</code></td>
-    # <td>replace, add,
-    # remove</td><td></td></tr><tr><td><code>purchase_units[].description</code>
-    # </td><td>replace, add,
-    # remove</td><td></td></tr><tr><td><code>purchase_units[].payee.email</code>
-    # </td><td>replace</td><td></td></tr><tr><td><code>purchase_units[].shipping
-    # .name</code></td><td>replace,
-    # add</td><td></td></tr><tr><td><code>purchase_units[].shipping.email_addres
-    # s</code></td><td>replace,
-    # add</td><td></td></tr><tr><td><code>purchase_units[].shipping.phone_number
-    # </code></td><td>replace,
-    # add</td><td></td></tr><tr><td><code>purchase_units[].shipping.options</cod
-    # e></td><td>replace,
-    # add</td><td></td></tr><tr><td><code>purchase_units[].shipping.address</cod
-    # e></td><td>replace,
-    # add</td><td></td></tr><tr><td><code>purchase_units[].shipping.type</code><
-    # /td><td>replace,
-    # add</td><td></td></tr><tr><td><code>purchase_units[].soft_descriptor</code
-    # ></td><td>replace,
-    # remove</td><td></td></tr><tr><td><code>purchase_units[].amount</code></td>
-    # <td>replace</td><td></td></tr><tr><td><code>purchase_units[].items</code><
-    # /td><td>replace, add,
-    # remove</td><td></td></tr><tr><td><code>purchase_units[].invoice_id</code><
-    # /td><td>replace, add,
-    # remove</td><td></td></tr><tr><td><code>purchase_units[].payment_instructio
-    # n</code></td><td>replace</td><td></td></tr><tr><td><code>purchase_units[].
-    # payment_instruction.disbursement_mode</code></td><td>replace</td><td>By
-    # default, <code>disbursement_mode</code> is
-    # <code>INSTANT</code>.</td></tr><tr><td><code>purchase_units[].payment_inst
-    # ruction.payee_receivable_fx_rate_id</code></td><td>replace, add,
-    # remove</td><td></td></tr><tr><td><code>purchase_units[].payment_instructio
-    # n.platform_fees</code></td><td>replace, add,
-    # remove</td><td></td></tr><tr><td><code>purchase_units[].supplementary_data
-    # .airline</code></td><td>replace, add,
-    # remove</td><td></td></tr><tr><td><code>purchase_units[].supplementary_data
-    # .card</code></td><td>replace, add,
-    # remove</td><td></td></tr><tr><td><code>application_context.client_configur
-    # ation</code></td><td>replace, add</td><td></td></tr></tbody></table>
+    # an order with the `COMPLETED` status. To make an update, you must provide
+    # a `reference_id`. If you omit this value with an order that contains only
+    # one purchase unit, PayPal sets the value to `default` which enables you to
+    # use the path:
+    # \"/purchase_units/@reference_id=='default'/{attribute-or-object}\".
+    # Merchants and partners can add Level 2 and 3 data to payments to reduce
+    # risk and payment processing costs. For more information about processing
+    # payments, see checkout or multiparty checkout. Note: For error handling
+    # and troubleshooting, see Orders v2 errors. Patchable attributes or
+    # objects: Attribute Op Notes intent replace payer replace, add Using
+    # replace op for payer will replace the whole payer object with the value
+    # sent in request. purchase_units replace, add purchase_units[].custom_id
+    # replace, add, remove purchase_units[].description replace, add, remove
+    # purchase_units[].payee.email replace purchase_units[].shipping.name
+    # replace, add purchase_units[].shipping.email_address replace, add
+    # purchase_units[].shipping.phone_number replace, add
+    # purchase_units[].shipping.options replace, add
+    # purchase_units[].shipping.address replace, add
+    # purchase_units[].shipping.type replace, add
+    # purchase_units[].soft_descriptor replace, remove purchase_units[].amount
+    # replace purchase_units[].items replace, add, remove
+    # purchase_units[].invoice_id replace, add, remove
+    # purchase_units[].payment_instruction replace
+    # purchase_units[].payment_instruction.disbursement_mode replace By default,
+    # disbursement_mode is INSTANT.
+    # purchase_units[].payment_instruction.payee_receivable_fx_rate_id replace,
+    # add, remove purchase_units[].payment_instruction.platform_fees replace,
+    # add, remove purchase_units[].supplementary_data.airline replace, add,
+    # remove purchase_units[].supplementary_data.card replace, add, remove
+    # application_context.client_configuration replace, add
     # @param [String] id Required parameter: The ID of the order to update.
+    # @param [String] paypal_mock_response Optional parameter: PayPal's REST API
+    # uses a request header to invoke negative testing in the sandbox. This
+    # header configures the sandbox into a negative testing state for
+    # transactions that include the merchant.
     # @param [String] paypal_auth_assertion Optional parameter: An
     # API-caller-provided JSON Web Token (JWT) assertion that identifies the
-    # merchant. For details, see <a
-    # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
-    # n">PayPal-Auth-Assertion</a>.
+    # merchant. For details, see PayPal-Auth-Assertion.
     # @param [Array[Patch]] body Optional parameter: Example:
     # @return [ApiResponse]  the complete http response with raw body and status code.
-    def orders_patch(options = {})
+    def patch_order(options = {})
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/v2/checkout/orders/{id}',
@@ -196,6 +165,7 @@ module PaypalServerSdk
                    .template_param(new_parameter(options['id'], key: 'id')
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
+                   .header_param(new_parameter(options['paypal_mock_response'], key: 'PayPal-Mock-Response'))
                    .header_param(new_parameter(options['paypal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
                    .body_param(new_parameter(options['body']))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
@@ -231,20 +201,16 @@ module PaypalServerSdk
     # @param [String] paypal_client_metadata_id Optional parameter: Example:
     # @param [String] paypal_auth_assertion Optional parameter: An
     # API-caller-provided JSON Web Token (JWT) assertion that identifies the
-    # merchant. For details, see <a
-    # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
-    # n">PayPal-Auth-Assertion</a>.
+    # merchant. For details, see PayPal-Auth-Assertion.
     # @param [String] prefer Optional parameter: The preferred server response
-    # upon successful completion of the request. Value
-    # is:<ul><li><code>return=minimal</code>. The server returns a minimal
-    # response to optimize communication between the API caller and the server.
-    # A minimal response includes the <code>id</code>, <code>status</code> and
-    # HATEOAS links.</li><li><code>return=representation</code>. The server
-    # returns a complete resource representation, including the current state of
-    # the resource.</li></ul>
+    # upon successful completion of the request. Value is: return=minimal. The
+    # server returns a minimal response to optimize communication between the
+    # API caller and the server. A minimal response includes the id, status and
+    # HATEOAS links. return=representation. The server returns a complete
+    # resource representation, including the current state of the resource.
     # @param [ConfirmOrderRequest] body Optional parameter: Example:
     # @return [ApiResponse]  the complete http response with raw body and status code.
-    def orders_confirm(options = {})
+    def confirm_order(options = {})
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/v2/checkout/orders/{id}/confirm-payment-source',
@@ -287,12 +253,14 @@ module PaypalServerSdk
     # order, the buyer must first approve the order or a valid payment_source
     # must be provided in the request. A buyer can approve the order upon being
     # redirected to the rel:approve URL that was returned in the HATEOAS links
-    # in the create order response.<blockquote><strong>Note:</strong> For error
-    # handling and troubleshooting, see <a
-    # href="https://developer.paypal.com/api/rest/reference/orders/v2/errors/#au
-    # thorize-order">Orders v2 errors</a>.</blockquote>
+    # in the create order response. Note: For error handling and
+    # troubleshooting, see Orders v2 errors.
     # @param [String] id Required parameter: The ID of the order for which to
     # authorize.
+    # @param [String] paypal_mock_response Optional parameter: PayPal's REST API
+    # uses a request header to invoke negative testing in the sandbox. This
+    # header configures the sandbox into a negative testing state for
+    # transactions that include the merchant.
     # @param [String] paypal_request_id Optional parameter: The server stores
     # keys for 6 hours. The API callers can request the times to up to 72 hours
     # by speaking to their Account Manager. It is mandatory for all single-step
@@ -300,22 +268,18 @@ module PaypalServerSdk
     # information like Card, PayPal.vault_id, PayPal.billing_agreement_id,
     # etc).
     # @param [String] prefer Optional parameter: The preferred server response
-    # upon successful completion of the request. Value
-    # is:<ul><li><code>return=minimal</code>. The server returns a minimal
-    # response to optimize communication between the API caller and the server.
-    # A minimal response includes the <code>id</code>, <code>status</code> and
-    # HATEOAS links.</li><li><code>return=representation</code>. The server
-    # returns a complete resource representation, including the current state of
-    # the resource.</li></ul>
+    # upon successful completion of the request. Value is: return=minimal. The
+    # server returns a minimal response to optimize communication between the
+    # API caller and the server. A minimal response includes the id, status and
+    # HATEOAS links. return=representation. The server returns a complete
+    # resource representation, including the current state of the resource.
     # @param [String] paypal_client_metadata_id Optional parameter: Example:
     # @param [String] paypal_auth_assertion Optional parameter: An
     # API-caller-provided JSON Web Token (JWT) assertion that identifies the
-    # merchant. For details, see <a
-    # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
-    # n">PayPal-Auth-Assertion</a>.
+    # merchant. For details, see PayPal-Auth-Assertion.
     # @param [OrderAuthorizeRequest] body Optional parameter: Example:
     # @return [ApiResponse]  the complete http response with raw body and status code.
-    def orders_authorize(options = {})
+    def authorize_order(options = {})
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/v2/checkout/orders/{id}/authorize',
@@ -323,6 +287,7 @@ module PaypalServerSdk
                    .template_param(new_parameter(options['id'], key: 'id')
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
+                   .header_param(new_parameter(options['paypal_mock_response'], key: 'PayPal-Mock-Response'))
                    .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
                    .header_param(new_parameter(options['prefer'], key: 'Prefer'))
                    .header_param(new_parameter(options['paypal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
@@ -367,12 +332,14 @@ module PaypalServerSdk
     # order, the buyer must first approve the order or a valid payment_source
     # must be provided in the request. A buyer can approve the order upon being
     # redirected to the rel:approve URL that was returned in the HATEOAS links
-    # in the create order response.<blockquote><strong>Note:</strong> For error
-    # handling and troubleshooting, see <a
-    # href="https://developer.paypal.com/api/rest/reference/orders/v2/errors/#ca
-    # pture-order">Orders v2 errors</a>.</blockquote>
+    # in the create order response. Note: For error handling and
+    # troubleshooting, see Orders v2 errors.
     # @param [String] id Required parameter: The ID of the order for which to
     # capture a payment.
+    # @param [String] paypal_mock_response Optional parameter: PayPal's REST API
+    # uses a request header to invoke negative testing in the sandbox. This
+    # header configures the sandbox into a negative testing state for
+    # transactions that include the merchant.
     # @param [String] paypal_request_id Optional parameter: The server stores
     # keys for 6 hours. The API callers can request the times to up to 72 hours
     # by speaking to their Account Manager. It is mandatory for all single-step
@@ -380,22 +347,18 @@ module PaypalServerSdk
     # information like Card, PayPal.vault_id, PayPal.billing_agreement_id,
     # etc).
     # @param [String] prefer Optional parameter: The preferred server response
-    # upon successful completion of the request. Value
-    # is:<ul><li><code>return=minimal</code>. The server returns a minimal
-    # response to optimize communication between the API caller and the server.
-    # A minimal response includes the <code>id</code>, <code>status</code> and
-    # HATEOAS links.</li><li><code>return=representation</code>. The server
-    # returns a complete resource representation, including the current state of
-    # the resource.</li></ul>
+    # upon successful completion of the request. Value is: return=minimal. The
+    # server returns a minimal response to optimize communication between the
+    # API caller and the server. A minimal response includes the id, status and
+    # HATEOAS links. return=representation. The server returns a complete
+    # resource representation, including the current state of the resource.
     # @param [String] paypal_client_metadata_id Optional parameter: Example:
     # @param [String] paypal_auth_assertion Optional parameter: An
     # API-caller-provided JSON Web Token (JWT) assertion that identifies the
-    # merchant. For details, see <a
-    # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
-    # n">PayPal-Auth-Assertion</a>.
+    # merchant. For details, see PayPal-Auth-Assertion.
     # @param [OrderCaptureRequest] body Optional parameter: Example:
     # @return [ApiResponse]  the complete http response with raw body and status code.
-    def orders_capture(options = {})
+    def capture_order(options = {})
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/v2/checkout/orders/{id}/capture',
@@ -403,6 +366,7 @@ module PaypalServerSdk
                    .template_param(new_parameter(options['id'], key: 'id')
                                     .should_encode(true))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
+                   .header_param(new_parameter(options['paypal_mock_response'], key: 'PayPal-Mock-Response'))
                    .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
                    .header_param(new_parameter(options['prefer'], key: 'Prefer'))
                    .header_param(new_parameter(options['paypal_client_metadata_id'], key: 'PayPal-Client-Metadata-Id'))
@@ -449,11 +413,9 @@ module PaypalServerSdk
     # @param [OrderTrackerRequest] body Required parameter: Example:
     # @param [String] paypal_auth_assertion Optional parameter: An
     # API-caller-provided JSON Web Token (JWT) assertion that identifies the
-    # merchant. For details, see <a
-    # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
-    # n">PayPal-Auth-Assertion</a>.
+    # merchant. For details, see PayPal-Auth-Assertion.
     # @return [ApiResponse]  the complete http response with raw body and status code.
-    def orders_track_create(options = {})
+    def create_order_tracking(options = {})
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/v2/checkout/orders/{id}/track',
@@ -494,26 +456,19 @@ module PaypalServerSdk
     end
 
     # Updates or cancels the tracking information for a PayPal order, by ID.
-    # Updatable attributes or
-    # objects:<br/><br/><table><thead><th>Attribute</th><th>Op</th><th>Notes</th
-    # ></thead><tbody></tr><tr><td><code>items</code></td><td>replace</td><td>Us
-    # ing replace op for <code>items</code> will replace the entire
-    # <code>items</code> object with the value sent in
-    # request.</td></tr><tr><td><code>notify_payer</code></td><td>replace,
-    # add</td><td></td></tr><tr><td><code>status</code></td><td>replace</td><td>
-    # Only patching status to CANCELLED is currently
-    # supported.</td></tr></tbody></table>
+    # Updatable attributes or objects: Attribute Op Notes items replace Using
+    # replace op for items will replace the entire items object with the value
+    # sent in request. notify_payer replace, add status replace Only patching
+    # status to CANCELLED is currently supported.
     # @param [String] id Required parameter: The ID of the order that the
     # tracking information is associated with.
     # @param [String] tracker_id Required parameter: The order tracking ID.
     # @param [String] paypal_auth_assertion Optional parameter: An
     # API-caller-provided JSON Web Token (JWT) assertion that identifies the
-    # merchant. For details, see <a
-    # href="https://developer.paypal.com/api/rest/requests/#paypal-auth-assertio
-    # n">PayPal-Auth-Assertion</a>.
+    # merchant. For details, see PayPal-Auth-Assertion.
     # @param [Array[Patch]] body Optional parameter: Example:
     # @return [ApiResponse]  the complete http response with raw body and status code.
-    def orders_trackers_patch(options = {})
+    def update_order_tracking(options = {})
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::PATCH,
                                      '/v2/checkout/orders/{id}/trackers/{tracker_id}',

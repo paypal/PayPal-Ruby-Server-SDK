@@ -42,15 +42,6 @@ module PaypalServerSdk
     # @return [Address]
     attr_accessor :billing_address
 
-    # The portable international postal address. Maps to
-    # [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/
-    # wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls:
-    # the autocomplete
-    # attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-co
-    # ntrols-the-autocomplete-attribute).
-    # @return [Object]
-    attr_accessor :network_transaction_reference
-
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -60,8 +51,6 @@ module PaypalServerSdk
       @_hash['security_code'] = 'security_code'
       @_hash['brand'] = 'brand'
       @_hash['billing_address'] = 'billing_address'
-      @_hash['network_transaction_reference'] =
-        'network_transaction_reference'
       @_hash
     end
 
@@ -74,7 +63,6 @@ module PaypalServerSdk
         security_code
         brand
         billing_address
-        network_transaction_reference
       ]
     end
 
@@ -84,18 +72,13 @@ module PaypalServerSdk
     end
 
     def initialize(name: SKIP, number: SKIP, expiry: SKIP, security_code: SKIP,
-                   brand: SKIP, billing_address: SKIP,
-                   network_transaction_reference: SKIP)
+                   brand: SKIP, billing_address: SKIP)
       @name = name unless name == SKIP
       @number = number unless number == SKIP
       @expiry = expiry unless expiry == SKIP
       @security_code = security_code unless security_code == SKIP
       @brand = brand unless brand == SKIP
       @billing_address = billing_address unless billing_address == SKIP
-      unless network_transaction_reference == SKIP
-        @network_transaction_reference =
-          network_transaction_reference
-      end
     end
 
     # Creates an instance of the object from a hash.
@@ -109,8 +92,6 @@ module PaypalServerSdk
       security_code = hash.key?('security_code') ? hash['security_code'] : SKIP
       brand = hash.key?('brand') ? hash['brand'] : SKIP
       billing_address = Address.from_hash(hash['billing_address']) if hash['billing_address']
-      network_transaction_reference =
-        hash.key?('network_transaction_reference') ? hash['network_transaction_reference'] : SKIP
 
       # Create object from extracted values.
       PaymentTokenRequestCard.new(name: name,
@@ -118,8 +99,22 @@ module PaypalServerSdk
                                   expiry: expiry,
                                   security_code: security_code,
                                   brand: brand,
-                                  billing_address: billing_address,
-                                  network_transaction_reference: network_transaction_reference)
+                                  billing_address: billing_address)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, number: #{@number}, expiry: #{@expiry}, security_code:"\
+      " #{@security_code}, brand: #{@brand}, billing_address: #{@billing_address}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, number: #{@number.inspect}, expiry:"\
+      " #{@expiry.inspect}, security_code: #{@security_code.inspect}, brand: #{@brand.inspect},"\
+      " billing_address: #{@billing_address.inspect}>"
     end
   end
 end

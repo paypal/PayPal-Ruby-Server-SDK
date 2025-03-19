@@ -7,17 +7,20 @@ module PaypalServerSdk
   # Status of Authentication eligibility.
   class EnrollmentStatus
     ENROLLMENT_STATUS = [
-      # TODO: Write general description for Y
-      Y = 'Y'.freeze,
+      # Yes. The bank is participating in 3-D Secure protocol and will return
+      # the ACSUrl.
+      ENROLLED = 'Y'.freeze,
 
-      # TODO: Write general description for N
-      N = 'N'.freeze,
+      # No. The bank is not participating in 3-D Secure protocol.
+      NOTENROLLED = 'N'.freeze,
 
-      # TODO: Write general description for U
-      U = 'U'.freeze,
+      # Unavailable. The DS or ACS is not available for authentication at the
+      # time of the request.
+      UNAVAILABLE = 'U'.freeze,
 
-      # TODO: Write general description for B
-      B = 'B'.freeze
+      # Bypass. The merchant authentication rule is triggered to bypass
+      # authentication.
+      BYPASS = 'B'.freeze
     ].freeze
 
     def self.validate(value)

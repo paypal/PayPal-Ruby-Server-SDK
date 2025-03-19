@@ -101,5 +101,21 @@ module PaypalServerSdk
                              payee_pricing_tier_id: payee_pricing_tier_id,
                              payee_receivable_fx_rate_id: payee_receivable_fx_rate_id)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} platform_fees: #{@platform_fees}, disbursement_mode: #{@disbursement_mode},"\
+      " payee_pricing_tier_id: #{@payee_pricing_tier_id}, payee_receivable_fx_rate_id:"\
+      " #{@payee_receivable_fx_rate_id}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} platform_fees: #{@platform_fees.inspect}, disbursement_mode:"\
+      " #{@disbursement_mode.inspect}, payee_pricing_tier_id: #{@payee_pricing_tier_id.inspect},"\
+      " payee_receivable_fx_rate_id: #{@payee_receivable_fx_rate_id.inspect}>"
+    end
   end
 end

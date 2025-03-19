@@ -7,10 +7,10 @@ module PaypalServerSdk
   # The customer's tax ID type.
   class TaxIdType
     TAX_ID_TYPE = [
-      # TODO: Write general description for BR_CPF
+      # The individual tax ID type, typically is 11 characters long.
       BR_CPF = 'BR_CPF'.freeze,
 
-      # TODO: Write general description for BR_CNPJ
+      # The business tax ID type, typically is 14 characters long.
       BR_CNPJ = 'BR_CNPJ'.freeze
     ].freeze
 

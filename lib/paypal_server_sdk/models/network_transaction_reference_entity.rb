@@ -31,9 +31,8 @@ module PaypalServerSdk
 
     # The date and time, in [Internet date and time
     # format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are
-    # required while fractional seconds are
-    # optional.<blockquote><strong>Note:</strong> The regular expression
-    # provides guidance but does not reject all invalid dates.</blockquote>
+    # required while fractional seconds are optional. Note: The regular
+    # expression provides guidance but does not reject all invalid dates.
     # @return [String]
     attr_accessor :time
 
@@ -83,6 +82,19 @@ module PaypalServerSdk
                                             date: date,
                                             network: network,
                                             time: time)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, date: #{@date}, network: #{@network}, time: #{@time}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, date: #{@date.inspect}, network: #{@network.inspect},"\
+      " time: #{@time.inspect}>"
     end
   end
 end

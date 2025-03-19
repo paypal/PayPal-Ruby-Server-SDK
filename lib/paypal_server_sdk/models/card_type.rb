@@ -7,19 +7,19 @@ module PaypalServerSdk
   # Type of card. i.e Credit, Debit and so on.
   class CardType
     CARD_TYPE = [
-      # TODO: Write general description for CREDIT
+      # A credit card.
       CREDIT = 'CREDIT'.freeze,
 
-      # TODO: Write general description for DEBIT
+      # A debit card.
       DEBIT = 'DEBIT'.freeze,
 
-      # TODO: Write general description for PREPAID
+      # A Prepaid card.
       PREPAID = 'PREPAID'.freeze,
 
-      # TODO: Write general description for STORE
+      # A store card.
       STORE = 'STORE'.freeze,
 
-      # TODO: Write general description for UNKNOWN
+      # Card type cannot be determined.
       UNKNOWN = 'UNKNOWN'.freeze
     ].freeze
 

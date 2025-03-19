@@ -84,5 +84,19 @@ module PaypalServerSdk
                                               google_pay: google_pay,
                                               venmo: venmo)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} card: #{@card}, paypal: #{@paypal}, apple_pay: #{@apple_pay}, google_pay:"\
+      " #{@google_pay}, venmo: #{@venmo}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} card: #{@card.inspect}, paypal: #{@paypal.inspect}, apple_pay:"\
+      " #{@apple_pay.inspect}, google_pay: #{@google_pay.inspect}, venmo: #{@venmo.inspect}>"
+    end
   end
 end

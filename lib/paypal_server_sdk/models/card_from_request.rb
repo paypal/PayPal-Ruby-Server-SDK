@@ -56,5 +56,17 @@ module PaypalServerSdk
       CardFromRequest.new(expiry: expiry,
                           last_digits: last_digits)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} expiry: #{@expiry}, last_digits: #{@last_digits}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} expiry: #{@expiry.inspect}, last_digits: #{@last_digits.inspect}>"
+    end
   end
 end

@@ -7,10 +7,10 @@ module PaypalServerSdk
   # The condition that is covered for the transaction.
   class DisputeCategory
     DISPUTE_CATEGORY = [
-      # TODO: Write general description for ITEM_NOT_RECEIVED
+      # The payer paid for an item that they did not receive.
       ITEM_NOT_RECEIVED = 'ITEM_NOT_RECEIVED'.freeze,
 
-      # TODO: Write general description for UNAUTHORIZED_TRANSACTION
+      # The payer did not authorize the payment.
       UNAUTHORIZED_TRANSACTION = 'UNAUTHORIZED_TRANSACTION'.freeze
     ].freeze
 

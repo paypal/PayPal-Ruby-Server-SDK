@@ -46,5 +46,17 @@ module PaypalServerSdk
       # Create object from extracted values.
       ShippingName.new(full_name: full_name)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} full_name: #{@full_name}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} full_name: #{@full_name.inspect}>"
+    end
   end
 end

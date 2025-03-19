@@ -14,7 +14,7 @@ module PaypalServerSdk
     attr_accessor :id
 
     # The tokenization method that generated the ID.
-    # @return [TokenRequestType]
+    # @return [VaultTokenRequestType]
     attr_accessor :type
 
     # A mapping from model property names to API property names.
@@ -51,6 +51,18 @@ module PaypalServerSdk
       # Create object from extracted values.
       VaultTokenRequest.new(id: id,
                             type: type)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, type: #{@type}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, type: #{@type.inspect}>"
     end
   end
 end

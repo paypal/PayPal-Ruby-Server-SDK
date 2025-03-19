@@ -65,5 +65,19 @@ module PaypalServerSdk
                              authorization_id: authorization_id,
                              capture_id: capture_id)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} order_id: #{@order_id}, authorization_id: #{@authorization_id}, capture_id:"\
+      " #{@capture_id}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} order_id: #{@order_id.inspect}, authorization_id:"\
+      " #{@authorization_id.inspect}, capture_id: #{@capture_id.inspect}>"
+    end
   end
 end

@@ -12,17 +12,15 @@ module PaypalServerSdk
 
     # The date and time, in [Internet date and time
     # format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are
-    # required while fractional seconds are
-    # optional.<blockquote><strong>Note:</strong> The regular expression
-    # provides guidance but does not reject all invalid dates.</blockquote>
+    # required while fractional seconds are optional. Note: The regular
+    # expression provides guidance but does not reject all invalid dates.
     # @return [String]
     attr_accessor :create_time
 
     # The date and time, in [Internet date and time
     # format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are
-    # required while fractional seconds are
-    # optional.<blockquote><strong>Note:</strong> The regular expression
-    # provides guidance but does not reject all invalid dates.</blockquote>
+    # required while fractional seconds are optional. Note: The regular
+    # expression provides guidance but does not reject all invalid dates.
     # @return [String]
     attr_accessor :update_time
 
@@ -63,6 +61,19 @@ module PaypalServerSdk
       # Create object from extracted values.
       ActivityTimestamps.new(create_time: create_time,
                              update_time: update_time)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} create_time: #{@create_time}, update_time: #{@update_time}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} create_time: #{@create_time.inspect}, update_time:"\
+      " #{@update_time.inspect}>"
     end
   end
 end

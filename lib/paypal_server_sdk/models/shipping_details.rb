@@ -13,6 +13,13 @@ module PaypalServerSdk
     # @return [ShippingName]
     attr_accessor :name
 
+    # The internationalized email address. Note: Up to 64 characters are allowed
+    # before and 255 characters are allowed after the @ sign. However, the
+    # generally accepted maximum length for an email address is 254 characters.
+    # The pattern verifies that an unquoted @ sign exists.
+    # @return [String]
+    attr_accessor :email_address
+
     # The phone number in its canonical international [E.164 numbering plan
     # format](https://www.itu.int/rec/T-REC-E.164/en).
     # @return [PhoneNumberWithCountryCode]
@@ -42,6 +49,7 @@ module PaypalServerSdk
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['name'] = 'name'
+      @_hash['email_address'] = 'email_address'
       @_hash['phone_number'] = 'phone_number'
       @_hash['type'] = 'type'
       @_hash['options'] = 'options'
@@ -53,6 +61,7 @@ module PaypalServerSdk
     def self.optionals
       %w[
         name
+        email_address
         phone_number
         type
         options
@@ -65,9 +74,10 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(name: SKIP, phone_number: SKIP, type: SKIP, options: SKIP,
-                   address: SKIP)
+    def initialize(name: SKIP, email_address: SKIP, phone_number: SKIP,
+                   type: SKIP, options: SKIP, address: SKIP)
       @name = name unless name == SKIP
+      @email_address = email_address unless email_address == SKIP
       @phone_number = phone_number unless phone_number == SKIP
       @type = type unless type == SKIP
       @options = options unless options == SKIP
@@ -80,6 +90,7 @@ module PaypalServerSdk
 
       # Extract variables from the hash.
       name = ShippingName.from_hash(hash['name']) if hash['name']
+      email_address = hash.key?('email_address') ? hash['email_address'] : SKIP
       phone_number = PhoneNumberWithCountryCode.from_hash(hash['phone_number']) if
         hash['phone_number']
       type = hash.key?('type') ? hash['type'] : SKIP
@@ -97,10 +108,26 @@ module PaypalServerSdk
 
       # Create object from extracted values.
       ShippingDetails.new(name: name,
+                          email_address: email_address,
                           phone_number: phone_number,
                           type: type,
                           options: options,
                           address: address)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, email_address: #{@email_address}, phone_number:"\
+      " #{@phone_number}, type: #{@type}, options: #{@options}, address: #{@address}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, email_address: #{@email_address.inspect},"\
+      " phone_number: #{@phone_number.inspect}, type: #{@type.inspect}, options:"\
+      " #{@options.inspect}, address: #{@address.inspect}>"
     end
   end
 end

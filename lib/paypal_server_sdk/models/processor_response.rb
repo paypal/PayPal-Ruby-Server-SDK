@@ -79,5 +79,20 @@ module PaypalServerSdk
                             response_code: response_code,
                             payment_advice_code: payment_advice_code)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} avs_code: #{@avs_code}, cvv_code: #{@cvv_code}, response_code:"\
+      " #{@response_code}, payment_advice_code: #{@payment_advice_code}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} avs_code: #{@avs_code.inspect}, cvv_code: #{@cvv_code.inspect},"\
+      " response_code: #{@response_code.inspect}, payment_advice_code:"\
+      " #{@payment_advice_code.inspect}>"
+    end
   end
 end

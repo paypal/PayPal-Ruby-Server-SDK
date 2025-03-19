@@ -7,7 +7,8 @@ module PaypalServerSdk
   # The reason why the refund has the `PENDING` or `FAILED` status.
   class RefundIncompleteReason
     REFUND_INCOMPLETE_REASON = [
-      # TODO: Write general description for ECHECK
+      # The customer's account is funded through an eCheck, which has not yet
+      # cleared.
       ECHECK = 'ECHECK'.freeze
     ].freeze
 

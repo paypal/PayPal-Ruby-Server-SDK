@@ -15,11 +15,10 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :vault_id
 
-    # The internationalized email address.<blockquote><strong>Note:</strong> Up
-    # to 64 characters are allowed before and 255 characters are allowed after
-    # the <code>@</code> sign. However, the generally accepted maximum length
-    # for an email address is 254 characters. The pattern verifies that an
-    # unquoted <code>@</code> sign exists.</blockquote>
+    # The internationalized email address. Note: Up to 64 characters are allowed
+    # before and 255 characters are allowed after the @ sign. However, the
+    # generally accepted maximum length for an email address is 254 characters.
+    # The pattern verifies that an unquoted @ sign exists.
     # @return [String]
     attr_accessor :email_address
 
@@ -59,10 +58,9 @@ module PaypalServerSdk
     attr_accessor :attributes
 
     # Customizes the payer experience during the approval process for payment
-    # with PayPal.<blockquote><strong>Note:</strong> Partners and Marketplaces
-    # might configure <code>brand_name</code> and
-    # <code>shipping_preference</code> during partner account setup, which
-    # overrides the request values.</blockquote>
+    # with PayPal. Note: Partners and Marketplaces might configure brand_name
+    # and shipping_preference during partner account setup, which overrides the
+    # request values.
     # @return [PaypalWalletExperienceContext]
     attr_accessor :experience_context
 
@@ -70,6 +68,12 @@ module PaypalServerSdk
     # for goods or services.
     # @return [String]
     attr_accessor :billing_agreement_id
+
+    # Provides additional details to process a payment using the PayPal wallet
+    # billing agreement or a vaulted payment method that has been stored or is
+    # intended to be stored.
+    # @return [PaypalWalletStoredCredential]
+    attr_accessor :stored_credential
 
     # A mapping from model property names to API property names.
     def self.names
@@ -84,6 +88,7 @@ module PaypalServerSdk
       @_hash['attributes'] = 'attributes'
       @_hash['experience_context'] = 'experience_context'
       @_hash['billing_agreement_id'] = 'billing_agreement_id'
+      @_hash['stored_credential'] = 'stored_credential'
       @_hash
     end
 
@@ -100,6 +105,7 @@ module PaypalServerSdk
         attributes
         experience_context
         billing_agreement_id
+        stored_credential
       ]
     end
 
@@ -111,7 +117,7 @@ module PaypalServerSdk
     def initialize(vault_id: SKIP, email_address: SKIP, name: SKIP, phone: SKIP,
                    birth_date: SKIP, tax_info: SKIP, address: SKIP,
                    attributes: SKIP, experience_context: SKIP,
-                   billing_agreement_id: SKIP)
+                   billing_agreement_id: SKIP, stored_credential: SKIP)
       @vault_id = vault_id unless vault_id == SKIP
       @email_address = email_address unless email_address == SKIP
       @name = name unless name == SKIP
@@ -122,6 +128,7 @@ module PaypalServerSdk
       @attributes = attributes unless attributes == SKIP
       @experience_context = experience_context unless experience_context == SKIP
       @billing_agreement_id = billing_agreement_id unless billing_agreement_id == SKIP
+      @stored_credential = stored_credential unless stored_credential == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -141,6 +148,8 @@ module PaypalServerSdk
         hash['experience_context']
       billing_agreement_id =
         hash.key?('billing_agreement_id') ? hash['billing_agreement_id'] : SKIP
+      stored_credential = PaypalWalletStoredCredential.from_hash(hash['stored_credential']) if
+        hash['stored_credential']
 
       # Create object from extracted values.
       PaypalWallet.new(vault_id: vault_id,
@@ -152,7 +161,28 @@ module PaypalServerSdk
                        address: address,
                        attributes: attributes,
                        experience_context: experience_context,
-                       billing_agreement_id: billing_agreement_id)
+                       billing_agreement_id: billing_agreement_id,
+                       stored_credential: stored_credential)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} vault_id: #{@vault_id}, email_address: #{@email_address}, name: #{@name},"\
+      " phone: #{@phone}, birth_date: #{@birth_date}, tax_info: #{@tax_info}, address:"\
+      " #{@address}, attributes: #{@attributes}, experience_context: #{@experience_context},"\
+      " billing_agreement_id: #{@billing_agreement_id}, stored_credential: #{@stored_credential}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} vault_id: #{@vault_id.inspect}, email_address: #{@email_address.inspect},"\
+      " name: #{@name.inspect}, phone: #{@phone.inspect}, birth_date: #{@birth_date.inspect},"\
+      " tax_info: #{@tax_info.inspect}, address: #{@address.inspect}, attributes:"\
+      " #{@attributes.inspect}, experience_context: #{@experience_context.inspect},"\
+      " billing_agreement_id: #{@billing_agreement_id.inspect}, stored_credential:"\
+      " #{@stored_credential.inspect}>"
     end
   end
 end

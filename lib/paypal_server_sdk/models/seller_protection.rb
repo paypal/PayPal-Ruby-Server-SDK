@@ -61,5 +61,18 @@ module PaypalServerSdk
       SellerProtection.new(status: status,
                            dispute_categories: dispute_categories)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} status: #{@status}, dispute_categories: #{@dispute_categories}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} status: #{@status.inspect}, dispute_categories:"\
+      " #{@dispute_categories.inspect}>"
+    end
   end
 end

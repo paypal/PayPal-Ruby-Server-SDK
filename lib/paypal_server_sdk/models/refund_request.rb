@@ -5,8 +5,8 @@
 
 module PaypalServerSdk
   # Refunds a captured payment, by ID. For a full refund, include an empty
-  # request body. For a partial refund, include an <code>amount</code> object in
-  # the request body.
+  # request body. For a partial refund, include an amount object in the request
+  # body.
   class RefundRequest < BaseModel
     SKIP = Object.new
     private_constant :SKIP
@@ -95,6 +95,21 @@ module PaypalServerSdk
                         invoice_id: invoice_id,
                         note_to_payer: note_to_payer,
                         payment_instruction: payment_instruction)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} amount: #{@amount}, custom_id: #{@custom_id}, invoice_id: #{@invoice_id},"\
+      " note_to_payer: #{@note_to_payer}, payment_instruction: #{@payment_instruction}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} amount: #{@amount.inspect}, custom_id: #{@custom_id.inspect}, invoice_id:"\
+      " #{@invoice_id.inspect}, note_to_payer: #{@note_to_payer.inspect}, payment_instruction:"\
+      " #{@payment_instruction.inspect}>"
     end
   end
 end

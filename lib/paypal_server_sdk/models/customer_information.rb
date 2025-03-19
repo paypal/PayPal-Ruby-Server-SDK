@@ -13,11 +13,10 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :id
 
-    # The internationalized email address.<blockquote><strong>Note:</strong> Up
-    # to 64 characters are allowed before and 255 characters are allowed after
-    # the <code>@</code> sign. However, the generally accepted maximum length
-    # for an email address is 254 characters. The pattern verifies that an
-    # unquoted <code>@</code> sign exists.</blockquote>
+    # The internationalized email address. Note: Up to 64 characters are allowed
+    # before and 255 characters are allowed after the @ sign. However, the
+    # generally accepted maximum length for an email address is 254 characters.
+    # The pattern verifies that an unquoted @ sign exists.
     # @return [String]
     attr_accessor :email_address
 
@@ -67,6 +66,19 @@ module PaypalServerSdk
       CustomerInformation.new(id: id,
                               email_address: email_address,
                               phone: phone)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, email_address: #{@email_address}, phone: #{@phone}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, email_address: #{@email_address.inspect}, phone:"\
+      " #{@phone.inspect}>"
     end
   end
 end

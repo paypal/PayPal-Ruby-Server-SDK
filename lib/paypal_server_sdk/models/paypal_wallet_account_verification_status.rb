@@ -8,10 +8,14 @@ module PaypalServerSdk
   # details associated with their PayPal account.
   class PaypalWalletAccountVerificationStatus
     PAYPAL_WALLET_ACCOUNT_VERIFICATION_STATUS = [
-      # TODO: Write general description for VERIFIED
+      # The buyer has completed the verification of the financial details
+      # associated with this PayPal account. For example: confirming their bank
+      # account.
       VERIFIED = 'VERIFIED'.freeze,
 
-      # TODO: Write general description for UNVERIFIED
+      # The buyer has not completed the verification of the financial details
+      # associated with this PayPal account. For example: confirming their bank
+      # account.
       UNVERIFIED = 'UNVERIFIED'.freeze
     ].freeze
 

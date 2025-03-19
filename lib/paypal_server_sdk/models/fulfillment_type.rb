@@ -9,16 +9,21 @@ module PaypalServerSdk
   # both.
   class FulfillmentType
     FULFILLMENT_TYPE = [
-      # TODO: Write general description for SHIPPING
+      # The payer intends to receive the items at a specified address.
       SHIPPING = 'SHIPPING'.freeze,
 
-      # TODO: Write general description for PICKUP_IN_PERSON
+      # DEPRECATED. Please use "PICKUP_FROM_PERSON" instead.
       PICKUP_IN_PERSON = 'PICKUP_IN_PERSON'.freeze,
 
-      # TODO: Write general description for PICKUP_IN_STORE
+      # The payer intends to pick up the item(s) from the payee's physical
+      # store. Also termed as BOPIS, "Buy Online, Pick-up in Store". Seller
+      # protection is provided with this option.
       PICKUP_IN_STORE = 'PICKUP_IN_STORE'.freeze,
 
-      # TODO: Write general description for PICKUP_FROM_PERSON
+      # The payer intends to pick up the item(s) from the payee in person. Also
+      # termed as BOPIP, "Buy Online, Pick-up in Person". Seller protection is
+      # not available, since the payer is receiving the item from the payee in
+      # person, and can validate the item prior to payment.
       PICKUP_FROM_PERSON = 'PICKUP_FROM_PERSON'.freeze
     ].freeze
 

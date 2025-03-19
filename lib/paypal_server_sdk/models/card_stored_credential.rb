@@ -6,15 +6,14 @@
 module PaypalServerSdk
   # Provides additional details to process a payment using a `card` that has
   # been stored or is intended to be stored (also referred to as
-  # stored_credential or card-on-file).<br/>Parameter
-  # compatibility:<br/><ul><li>`payment_type=ONE_TIME` is compatible only with
-  # `payment_initiator=CUSTOMER`.</li><li>`usage=FIRST` is compatible only with
-  # `payment_initiator=CUSTOMER`.</li><li>`previous_transaction_reference` or
+  # stored_credential or card-on-file). Parameter compatibility:
+  # `payment_type=ONE_TIME` is compatible only with
+  # `payment_initiator=CUSTOMER`. `usage=FIRST` is compatible only with
+  # `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
   # `previous_network_transaction_reference` is compatible only with
-  # `payment_initiator=MERCHANT`.</li><li>Only one of the parameters -
+  # `payment_initiator=MERCHANT`. Only one of the parameters -
   # `previous_transaction_reference` and
-  # `previous_network_transaction_reference` - can be present in the
-  # request.</li></ul>
+  # `previous_network_transaction_reference` - can be present in the request.
   class CardStoredCredential < BaseModel
     SKIP = Object.new
     private_constant :SKIP
@@ -90,6 +89,23 @@ module PaypalServerSdk
                                payment_type: payment_type,
                                usage: usage,
                                previous_network_transaction_reference: previous_network_transaction_reference)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payment_initiator: #{@payment_initiator}, payment_type: #{@payment_type},"\
+      " usage: #{@usage}, previous_network_transaction_reference:"\
+      " #{@previous_network_transaction_reference}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payment_initiator: #{@payment_initiator.inspect}, payment_type:"\
+      " #{@payment_type.inspect}, usage: #{@usage.inspect},"\
+      ' previous_network_transaction_reference:'\
+      " #{@previous_network_transaction_reference.inspect}>"
     end
   end
 end

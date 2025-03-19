@@ -7,10 +7,12 @@ module PaypalServerSdk
   # The merchant-preferred payment methods.
   class PayeePaymentMethodPreference
     PAYEE_PAYMENT_METHOD_PREFERENCE = [
-      # TODO: Write general description for UNRESTRICTED
+      # Accepts any type of payment from the customer.
       UNRESTRICTED = 'UNRESTRICTED'.freeze,
 
-      # TODO: Write general description for IMMEDIATE_PAYMENT_REQUIRED
+      # Accepts only immediate payment from the customer. For example, credit
+      # card, PayPal balance, or instant ACH. Ensures that at the time of
+      # capture, the payment does not have the `pending` status.
       IMMEDIATE_PAYMENT_REQUIRED = 'IMMEDIATE_PAYMENT_REQUIRED'.freeze
     ].freeze
 

@@ -17,7 +17,7 @@ module PaypalServerSdk
 
     # An array of captured payments for a purchase unit. A purchase unit can
     # have zero or more captured payments.
-    # @return [Array[Capture]]
+    # @return [Array[OrdersCapture]]
     attr_accessor :captures
 
     # An array of refunds for a purchase unit. A purchase unit can have zero or
@@ -74,7 +74,7 @@ module PaypalServerSdk
       unless hash['captures'].nil?
         captures = []
         hash['captures'].each do |structure|
-          captures << (Capture.from_hash(structure) if structure)
+          captures << (OrdersCapture.from_hash(structure) if structure)
         end
       end
 
@@ -94,6 +94,20 @@ module PaypalServerSdk
       PaymentCollection.new(authorizations: authorizations,
                             captures: captures,
                             refunds: refunds)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} authorizations: #{@authorizations}, captures: #{@captures}, refunds:"\
+      " #{@refunds}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} authorizations: #{@authorizations.inspect}, captures: #{@captures.inspect},"\
+      " refunds: #{@refunds.inspect}>"
     end
   end
 end

@@ -8,13 +8,16 @@ module PaypalServerSdk
   # payment source (also referred to as stored credential or card on file).
   class StoredPaymentSourceUsageType
     STORED_PAYMENT_SOURCE_USAGE_TYPE = [
-      # TODO: Write general description for FIRST
+      # Indicates the Initial/First payment with a payment_source that is
+      # intended to be stored upon successful processing of the payment.
       FIRST = 'FIRST'.freeze,
 
-      # TODO: Write general description for SUBSEQUENT
+      # Indicates a payment using a stored payment_source which has been
+      # successfully used previously for a payment.
       SUBSEQUENT = 'SUBSEQUENT'.freeze,
 
-      # TODO: Write general description for DERIVED
+      # Indicates that PayPal will derive the value of `FIRST` or `SUBSEQUENT`
+      # based on data available to PayPal.
       DERIVED = 'DERIVED'.freeze
     ].freeze
 

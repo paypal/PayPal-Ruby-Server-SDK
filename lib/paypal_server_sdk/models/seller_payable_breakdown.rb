@@ -152,5 +152,26 @@ module PaypalServerSdk
                                  net_amount_breakdown: net_amount_breakdown,
                                  total_refunded_amount: total_refunded_amount)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} gross_amount: #{@gross_amount}, paypal_fee: #{@paypal_fee},"\
+      " paypal_fee_in_receivable_currency: #{@paypal_fee_in_receivable_currency}, net_amount:"\
+      " #{@net_amount}, net_amount_in_receivable_currency: #{@net_amount_in_receivable_currency},"\
+      " platform_fees: #{@platform_fees}, net_amount_breakdown: #{@net_amount_breakdown},"\
+      " total_refunded_amount: #{@total_refunded_amount}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} gross_amount: #{@gross_amount.inspect}, paypal_fee: #{@paypal_fee.inspect},"\
+      " paypal_fee_in_receivable_currency: #{@paypal_fee_in_receivable_currency.inspect},"\
+      " net_amount: #{@net_amount.inspect}, net_amount_in_receivable_currency:"\
+      " #{@net_amount_in_receivable_currency.inspect}, platform_fees: #{@platform_fees.inspect},"\
+      " net_amount_breakdown: #{@net_amount_breakdown.inspect}, total_refunded_amount:"\
+      " #{@total_refunded_amount.inspect}>"
+    end
   end
 end

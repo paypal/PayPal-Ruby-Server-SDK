@@ -39,12 +39,12 @@ module PaypalServerSdk
     attr_accessor :cancel_url
 
     # The shipping preference. This only applies to PayPal payment source.
-    # @return [String]
+    # @return [OrderApplicationContextShippingPreference]
     attr_accessor :shipping_preference
 
     # Vault Instruction on action to be performed after a successful payer
     # approval.
-    # @return [String]
+    # @return [VaultInstructionAction]
     attr_accessor :vault_instruction
 
     # A mapping from model property names to API property names.
@@ -76,9 +76,11 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(brand_name: SKIP, locale: SKIP, return_url: SKIP,
-                   cancel_url: SKIP, shipping_preference: 'GET_FROM_FILE',
-                   vault_instruction: 'ON_CREATE_PAYMENT_TOKENS')
+    def initialize(
+      brand_name: SKIP, locale: SKIP, return_url: SKIP, cancel_url: SKIP,
+      shipping_preference: OrderApplicationContextShippingPreference::GET_FROM_FILE,
+      vault_instruction: VaultInstructionAction::ON_CREATE_PAYMENT_TOKENS
+    )
       @brand_name = brand_name unless brand_name == SKIP
       @locale = locale unless locale == SKIP
       @return_url = return_url unless return_url == SKIP
@@ -96,9 +98,10 @@ module PaypalServerSdk
       locale = hash.key?('locale') ? hash['locale'] : SKIP
       return_url = hash.key?('return_url') ? hash['return_url'] : SKIP
       cancel_url = hash.key?('cancel_url') ? hash['cancel_url'] : SKIP
-      shipping_preference = hash['shipping_preference'] ||= 'GET_FROM_FILE'
+      shipping_preference =
+        hash['shipping_preference'] ||= OrderApplicationContextShippingPreference::GET_FROM_FILE
       vault_instruction =
-        hash['vault_instruction'] ||= 'ON_CREATE_PAYMENT_TOKENS'
+        hash['vault_instruction'] ||= VaultInstructionAction::ON_CREATE_PAYMENT_TOKENS
 
       # Create object from extracted values.
       VaultExperienceContext.new(brand_name: brand_name,
@@ -107,6 +110,22 @@ module PaypalServerSdk
                                  cancel_url: cancel_url,
                                  shipping_preference: shipping_preference,
                                  vault_instruction: vault_instruction)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_name: #{@brand_name}, locale: #{@locale}, return_url: #{@return_url},"\
+      " cancel_url: #{@cancel_url}, shipping_preference: #{@shipping_preference},"\
+      " vault_instruction: #{@vault_instruction}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_name: #{@brand_name.inspect}, locale: #{@locale.inspect}, return_url:"\
+      " #{@return_url.inspect}, cancel_url: #{@cancel_url.inspect}, shipping_preference:"\
+      " #{@shipping_preference.inspect}, vault_instruction: #{@vault_instruction.inspect}>"
     end
   end
 end

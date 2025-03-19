@@ -13,13 +13,20 @@ module PaypalServerSdk
   # `application_context` object.
   class OrderApplicationContextLandingPage
     ORDER_APPLICATION_CONTEXT_LANDING_PAGE = [
-      # TODO: Write general description for LOGIN
+      # When the customer clicks PayPal Checkout, the customer is redirected to
+      # a page to log in to PayPal and approve the payment.
       LOGIN = 'LOGIN'.freeze,
 
-      # TODO: Write general description for BILLING
+      # When the customer clicks PayPal Checkout, the customer is redirected to
+      # a page to enter credit or debit card and other relevant billing
+      # information required to complete the purchase.
       BILLING = 'BILLING'.freeze,
 
-      # TODO: Write general description for NO_PREFERENCE
+      # When the customer clicks PayPal Checkout, the customer is redirected to
+      # either a page to log in to PayPal and approve the payment or to a page
+      # to enter credit or debit card and other relevant billing information
+      # required to complete the purchase, depending on their previous
+      # interaction with PayPal.
       NO_PREFERENCE = 'NO_PREFERENCE'.freeze
     ].freeze
 

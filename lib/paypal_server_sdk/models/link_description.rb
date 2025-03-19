@@ -71,5 +71,17 @@ module PaypalServerSdk
                           rel: rel,
                           method: method)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} href: #{@href}, rel: #{@rel}, method: #{@method}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} href: #{@href.inspect}, rel: #{@rel.inspect}, method: #{@method.inspect}>"
+    end
   end
 end

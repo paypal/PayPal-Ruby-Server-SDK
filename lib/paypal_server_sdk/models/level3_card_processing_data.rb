@@ -116,5 +116,22 @@ module PaypalServerSdk
                                    ships_from_postal_code: ships_from_postal_code,
                                    line_items: line_items)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} shipping_amount: #{@shipping_amount}, duty_amount: #{@duty_amount},"\
+      " discount_amount: #{@discount_amount}, shipping_address: #{@shipping_address},"\
+      " ships_from_postal_code: #{@ships_from_postal_code}, line_items: #{@line_items}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} shipping_amount: #{@shipping_amount.inspect}, duty_amount:"\
+      " #{@duty_amount.inspect}, discount_amount: #{@discount_amount.inspect}, shipping_address:"\
+      " #{@shipping_address.inspect}, ships_from_postal_code: #{@ships_from_postal_code.inspect},"\
+      " line_items: #{@line_items.inspect}>"
+    end
   end
 end

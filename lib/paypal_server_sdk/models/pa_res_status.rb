@@ -8,29 +8,29 @@ module PaypalServerSdk
   # authentication.
   class PaResStatus
     PA_RES_STATUS = [
-      # TODO: Write general description for Y
-      Y = 'Y'.freeze,
+      # Successful authentication.
+      SUCCESSFULAUTHENTICATION = 'Y'.freeze,
 
-      # TODO: Write general description for N
-      N = 'N'.freeze,
+      # Failed authentication / account not verified / transaction denied.
+      FAILEDAUTHENTICATION = 'N'.freeze,
 
-      # TODO: Write general description for U
-      U = 'U'.freeze,
+      # Unable to complete authentication.
+      UNABLETOCOMPLETEAUTHENTICATION = 'U'.freeze,
 
-      # TODO: Write general description for A
-      A = 'A'.freeze,
+      # Successful attempts transaction.
+      SUCCESSFULATTEMPTSTRANSACTION = 'A'.freeze,
 
-      # TODO: Write general description for C
-      C = 'C'.freeze,
+      # Challenge required for authentication.
+      CHALLENGEREQUIRED = 'C'.freeze,
 
-      # TODO: Write general description for R
-      R = 'R'.freeze,
+      # Authentication rejected (merchant must not submit for authorization).
+      AUTHENTICATIONREJECTED = 'R'.freeze,
 
-      # TODO: Write general description for D
-      D = 'D'.freeze,
+      # Challenge required; decoupled authentication confirmed.
+      DECOUPLEDAUTHENTICATION = 'D'.freeze,
 
-      # TODO: Write general description for I
-      I = 'I'.freeze
+      # Informational only; 3DS requestor challenge preference acknowledged.
+      INFORMATIONALONLY = 'I'.freeze
     ].freeze
 
     def self.validate(value)

@@ -43,16 +43,12 @@ module PaypalServerSdk
     attr_accessor :billing_address
 
     # The verification method of the card.
-    # @return [String]
+    # @return [VaultCardVerificationMethod]
     attr_accessor :verification_method
 
     # Customizes the Vault creation flow experience for your customers.
     # @return [SetupTokenCardExperienceContext]
     attr_accessor :experience_context
-
-    # Customizes the Vault creation flow experience for your customers.
-    # @return [Object]
-    attr_accessor :network_transaction_reference
 
     # A mapping from model property names to API property names.
     def self.names
@@ -65,8 +61,6 @@ module PaypalServerSdk
       @_hash['billing_address'] = 'billing_address'
       @_hash['verification_method'] = 'verification_method'
       @_hash['experience_context'] = 'experience_context'
-      @_hash['network_transaction_reference'] =
-        'network_transaction_reference'
       @_hash
     end
 
@@ -81,7 +75,6 @@ module PaypalServerSdk
         billing_address
         verification_method
         experience_context
-        network_transaction_reference
       ]
     end
 
@@ -92,8 +85,7 @@ module PaypalServerSdk
 
     def initialize(name: SKIP, number: SKIP, expiry: SKIP, security_code: SKIP,
                    brand: SKIP, billing_address: SKIP,
-                   verification_method: SKIP, experience_context: SKIP,
-                   network_transaction_reference: SKIP)
+                   verification_method: SKIP, experience_context: SKIP)
       @name = name unless name == SKIP
       @number = number unless number == SKIP
       @expiry = expiry unless expiry == SKIP
@@ -102,10 +94,6 @@ module PaypalServerSdk
       @billing_address = billing_address unless billing_address == SKIP
       @verification_method = verification_method unless verification_method == SKIP
       @experience_context = experience_context unless experience_context == SKIP
-      unless network_transaction_reference == SKIP
-        @network_transaction_reference =
-          network_transaction_reference
-      end
     end
 
     # Creates an instance of the object from a hash.
@@ -123,8 +111,6 @@ module PaypalServerSdk
         hash.key?('verification_method') ? hash['verification_method'] : SKIP
       experience_context = SetupTokenCardExperienceContext.from_hash(hash['experience_context']) if
         hash['experience_context']
-      network_transaction_reference =
-        hash.key?('network_transaction_reference') ? hash['network_transaction_reference'] : SKIP
 
       # Create object from extracted values.
       SetupTokenRequestCard.new(name: name,
@@ -134,8 +120,24 @@ module PaypalServerSdk
                                 brand: brand,
                                 billing_address: billing_address,
                                 verification_method: verification_method,
-                                experience_context: experience_context,
-                                network_transaction_reference: network_transaction_reference)
+                                experience_context: experience_context)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, number: #{@number}, expiry: #{@expiry}, security_code:"\
+      " #{@security_code}, brand: #{@brand}, billing_address: #{@billing_address},"\
+      " verification_method: #{@verification_method}, experience_context: #{@experience_context}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, number: #{@number.inspect}, expiry:"\
+      " #{@expiry.inspect}, security_code: #{@security_code.inspect}, brand: #{@brand.inspect},"\
+      " billing_address: #{@billing_address.inspect}, verification_method:"\
+      " #{@verification_method.inspect}, experience_context: #{@experience_context.inspect}>"
     end
   end
 end

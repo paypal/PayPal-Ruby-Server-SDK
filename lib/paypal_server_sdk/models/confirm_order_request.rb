@@ -14,10 +14,6 @@ module PaypalServerSdk
     # @return [PaymentSource]
     attr_accessor :payment_source
 
-    # The payment source definition.
-    # @return [Object]
-    attr_accessor :processing_instruction
-
     # Customizes the payer confirmation experience.
     # @return [OrderConfirmApplicationContext]
     attr_accessor :application_context
@@ -26,7 +22,6 @@ module PaypalServerSdk
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['payment_source'] = 'payment_source'
-      @_hash['processing_instruction'] = 'processing_instruction'
       @_hash['application_context'] = 'application_context'
       @_hash
     end
@@ -34,7 +29,6 @@ module PaypalServerSdk
     # An array for optional fields
     def self.optionals
       %w[
-        processing_instruction
         application_context
       ]
     end
@@ -44,10 +38,8 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(payment_source:, processing_instruction: SKIP,
-                   application_context: SKIP)
+    def initialize(payment_source:, application_context: SKIP)
       @payment_source = payment_source
-      @processing_instruction = processing_instruction unless processing_instruction == SKIP
       @application_context = application_context unless application_context == SKIP
     end
 
@@ -57,15 +49,26 @@ module PaypalServerSdk
 
       # Extract variables from the hash.
       payment_source = PaymentSource.from_hash(hash['payment_source']) if hash['payment_source']
-      processing_instruction =
-        hash.key?('processing_instruction') ? hash['processing_instruction'] : SKIP
       application_context = OrderConfirmApplicationContext.from_hash(hash['application_context']) if
         hash['application_context']
 
       # Create object from extracted values.
       ConfirmOrderRequest.new(payment_source: payment_source,
-                              processing_instruction: processing_instruction,
                               application_context: application_context)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payment_source: #{@payment_source}, application_context:"\
+      " #{@application_context}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payment_source: #{@payment_source.inspect}, application_context:"\
+      " #{@application_context.inspect}>"
     end
   end
 end

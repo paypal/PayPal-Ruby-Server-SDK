@@ -10,7 +10,7 @@ module PaypalServerSdk
     private_constant :SKIP
 
     # Results of 3D Secure Authentication.
-    # @return [ThreeDSecureAuthenticationResponse]
+    # @return [ThreeDSecureCardAuthenticationResponse]
     attr_accessor :three_d_secure
 
     # A mapping from model property names to API property names.
@@ -41,11 +41,23 @@ module PaypalServerSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      three_d_secure = ThreeDSecureAuthenticationResponse.from_hash(hash['three_d_secure']) if
+      three_d_secure = ThreeDSecureCardAuthenticationResponse.from_hash(hash['three_d_secure']) if
         hash['three_d_secure']
 
       # Create object from extracted values.
       CardAuthenticationResponse.new(three_d_secure: three_d_secure)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} three_d_secure: #{@three_d_secure}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} three_d_secure: #{@three_d_secure.inspect}>"
     end
   end
 end

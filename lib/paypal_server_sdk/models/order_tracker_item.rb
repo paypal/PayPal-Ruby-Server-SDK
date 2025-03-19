@@ -95,5 +95,20 @@ module PaypalServerSdk
                            image_url: image_url,
                            upc: upc)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, quantity: #{@quantity}, sku: #{@sku}, url: #{@url},"\
+      " image_url: #{@image_url}, upc: #{@upc}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, quantity: #{@quantity.inspect}, sku:"\
+      " #{@sku.inspect}, url: #{@url.inspect}, image_url: #{@image_url.inspect}, upc:"\
+      " #{@upc.inspect}>"
+    end
   end
 end

@@ -9,15 +9,11 @@ module PaypalServerSdk
     SKIP = Object.new
     private_constant :SKIP
 
-    # The payment card to use to fund a payment. Can be a credit or debit
-    # card.<blockquote><strong>Note:</strong> Passing card number, cvv and
-    # expiry directly via the API requires <a
-    # href="https://www.pcisecuritystandards.org/pci_security/completing_self_as
-    # sessment"> PCI SAQ D compliance</a>. <br>*PayPal offers a mechanism by
-    # which you do not have to take on the <strong>PCI SAQ D</strong> burden by
-    # using hosted fields - refer to <a
-    # href="https://developer.paypal.com/docs/checkout/advanced/integrate/">this
-    # Integration Guide</a>*.</blockquote>
+    # The payment card to use to fund a payment. Can be a credit or debit card.
+    # Note: Passing card number, cvv and expiry directly via the API requires
+    # PCI SAQ D compliance. *PayPal offers a mechanism by which you do not have
+    # to take on the PCI SAQ D burden by using hosted fields - refer to this
+    # Integration Guide*.
     # @return [CardRequest]
     attr_accessor :card
 
@@ -99,6 +95,21 @@ module PaypalServerSdk
                                            apple_pay: apple_pay,
                                            google_pay: google_pay,
                                            venmo: venmo)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} card: #{@card}, token: #{@token}, paypal: #{@paypal}, apple_pay:"\
+      " #{@apple_pay}, google_pay: #{@google_pay}, venmo: #{@venmo}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} card: #{@card.inspect}, token: #{@token.inspect}, paypal:"\
+      " #{@paypal.inspect}, apple_pay: #{@apple_pay.inspect}, google_pay: #{@google_pay.inspect},"\
+      " venmo: #{@venmo.inspect}>"
     end
   end
 end

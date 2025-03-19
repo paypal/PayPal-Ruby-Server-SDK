@@ -91,5 +91,21 @@ module PaypalServerSdk
                                      payment_data_type: payment_data_type,
                                      payment_data: payment_data)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} transaction_amount: #{@transaction_amount}, tokenized_card:"\
+      " #{@tokenized_card}, device_manufacturer_id: #{@device_manufacturer_id}, payment_data_type:"\
+      " #{@payment_data_type}, payment_data: #{@payment_data}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} transaction_amount: #{@transaction_amount.inspect}, tokenized_card:"\
+      " #{@tokenized_card.inspect}, device_manufacturer_id: #{@device_manufacturer_id.inspect},"\
+      " payment_data_type: #{@payment_data_type.inspect}, payment_data: #{@payment_data.inspect}>"
+    end
   end
 end

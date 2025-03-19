@@ -13,11 +13,10 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :name
 
-    # The internationalized email address.<blockquote><strong>Note:</strong> Up
-    # to 64 characters are allowed before and 255 characters are allowed after
-    # the <code>@</code> sign. However, the generally accepted maximum length
-    # for an email address is 254 characters. The pattern verifies that an
-    # unquoted <code>@</code> sign exists.</blockquote>
+    # The internationalized email address. Note: Up to 64 characters are allowed
+    # before and 255 characters are allowed after the @ sign. However, the
+    # generally accepted maximum length for an email address is 254 characters.
+    # The pattern verifies that an unquoted @ sign exists.
     # @return [String]
     attr_accessor :email_address
 
@@ -42,10 +41,6 @@ module PaypalServerSdk
     # @return [AssuranceDetails]
     attr_accessor :assurance_details
 
-    # Additional attributes associated with the use of this card.
-    # @return [GooglePayCardAttributes]
-    attr_accessor :attributes
-
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -55,7 +50,6 @@ module PaypalServerSdk
       @_hash['card'] = 'card'
       @_hash['decrypted_token'] = 'decrypted_token'
       @_hash['assurance_details'] = 'assurance_details'
-      @_hash['attributes'] = 'attributes'
       @_hash
     end
 
@@ -68,7 +62,6 @@ module PaypalServerSdk
         card
         decrypted_token
         assurance_details
-        attributes
       ]
     end
 
@@ -78,15 +71,13 @@ module PaypalServerSdk
     end
 
     def initialize(name: SKIP, email_address: SKIP, phone_number: SKIP,
-                   card: SKIP, decrypted_token: SKIP, assurance_details: SKIP,
-                   attributes: SKIP)
+                   card: SKIP, decrypted_token: SKIP, assurance_details: SKIP)
       @name = name unless name == SKIP
       @email_address = email_address unless email_address == SKIP
       @phone_number = phone_number unless phone_number == SKIP
       @card = card unless card == SKIP
       @decrypted_token = decrypted_token unless decrypted_token == SKIP
       @assurance_details = assurance_details unless assurance_details == SKIP
-      @attributes = attributes unless attributes == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -103,7 +94,6 @@ module PaypalServerSdk
         hash['decrypted_token']
       assurance_details = AssuranceDetails.from_hash(hash['assurance_details']) if
         hash['assurance_details']
-      attributes = GooglePayCardAttributes.from_hash(hash['attributes']) if hash['attributes']
 
       # Create object from extracted values.
       GooglePayRequest.new(name: name,
@@ -111,8 +101,23 @@ module PaypalServerSdk
                            phone_number: phone_number,
                            card: card,
                            decrypted_token: decrypted_token,
-                           assurance_details: assurance_details,
-                           attributes: attributes)
+                           assurance_details: assurance_details)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, email_address: #{@email_address}, phone_number:"\
+      " #{@phone_number}, card: #{@card}, decrypted_token: #{@decrypted_token}, assurance_details:"\
+      " #{@assurance_details}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, email_address: #{@email_address.inspect},"\
+      " phone_number: #{@phone_number.inspect}, card: #{@card.inspect}, decrypted_token:"\
+      " #{@decrypted_token.inspect}, assurance_details: #{@assurance_details.inspect}>"
     end
   end
 end

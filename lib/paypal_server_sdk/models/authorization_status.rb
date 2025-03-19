@@ -7,22 +7,28 @@ module PaypalServerSdk
   # The status for the authorized payment.
   class AuthorizationStatus
     AUTHORIZATION_STATUS = [
-      # TODO: Write general description for CREATED
+      # The authorized payment is created. No captured payments have been made
+      # for this authorized payment.
       CREATED = 'CREATED'.freeze,
 
-      # TODO: Write general description for CAPTURED
+      # The authorized payment has one or more captures against it. The sum of
+      # these captured payments is greater than the amount of the original
+      # authorized payment.
       CAPTURED = 'CAPTURED'.freeze,
 
-      # TODO: Write general description for DENIED
+      # PayPal cannot authorize funds for this authorized payment.
       DENIED = 'DENIED'.freeze,
 
-      # TODO: Write general description for PARTIALLY_CAPTURED
+      # A captured payment was made for the authorized payment for an amount
+      # that is less than the amount of the original authorized payment.
       PARTIALLY_CAPTURED = 'PARTIALLY_CAPTURED'.freeze,
 
-      # TODO: Write general description for VOIDED
+      # The authorized payment was voided. No more captured payments can be made
+      # against this authorized payment.
       VOIDED = 'VOIDED'.freeze,
 
-      # TODO: Write general description for PENDING
+      # The created authorization is in pending state. For more information, see
+      # status.details.
       PENDING = 'PENDING'.freeze
     ].freeze
 

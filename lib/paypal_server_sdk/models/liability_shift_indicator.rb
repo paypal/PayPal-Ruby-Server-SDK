@@ -7,13 +7,13 @@ module PaypalServerSdk
   # Liability shift indicator. The outcome of the issuer's authentication.
   class LiabilityShiftIndicator
     LIABILITY_SHIFT_INDICATOR = [
-      # TODO: Write general description for NO
+      # Liability is with the merchant.
       NO = 'NO'.freeze,
 
-      # TODO: Write general description for POSSIBLE
+      # Liability may shift to the card issuer.
       POSSIBLE = 'POSSIBLE'.freeze,
 
-      # TODO: Write general description for UNKNOWN
+      # The authentication system is not available.
       UNKNOWN = 'UNKNOWN'.freeze
     ].freeze
 
