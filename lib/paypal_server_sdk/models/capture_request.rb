@@ -104,5 +104,22 @@ module PaypalServerSdk
                          payment_instruction: payment_instruction,
                          soft_descriptor: soft_descriptor)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} invoice_id: #{@invoice_id}, note_to_payer: #{@note_to_payer}, amount:"\
+      " #{@amount}, final_capture: #{@final_capture}, payment_instruction:"\
+      " #{@payment_instruction}, soft_descriptor: #{@soft_descriptor}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} invoice_id: #{@invoice_id.inspect}, note_to_payer:"\
+      " #{@note_to_payer.inspect}, amount: #{@amount.inspect}, final_capture:"\
+      " #{@final_capture.inspect}, payment_instruction: #{@payment_instruction.inspect},"\
+      " soft_descriptor: #{@soft_descriptor.inspect}>"
+    end
   end
 end

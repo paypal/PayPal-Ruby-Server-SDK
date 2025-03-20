@@ -6,11 +6,7 @@
 module PaypalServerSdk
   # Merchants and partners can add Level 2 and 3 data to payments to reduce risk
   # and payment processing costs. For more information about processing
-  # payments, see <a
-  # href="https://developer.paypal.com/docs/checkout/advanced/processing/">check
-  # out</a> or <a
-  # href="https://developer.paypal.com/docs/multiparty/checkout/advanced/process
-  # ing/">multiparty checkout</a>.
+  # payments, see checkout or multiparty checkout.
   class CardSupplementaryData < BaseModel
     SKIP = Object.new
     private_constant :SKIP
@@ -66,6 +62,18 @@ module PaypalServerSdk
       # Create object from extracted values.
       CardSupplementaryData.new(level_2: level_2,
                                 level_3: level_3)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} level_2: #{@level_2}, level_3: #{@level_3}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} level_2: #{@level_2.inspect}, level_3: #{@level_3.inspect}>"
     end
   end
 end

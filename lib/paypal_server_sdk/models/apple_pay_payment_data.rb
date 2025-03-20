@@ -79,5 +79,19 @@ module PaypalServerSdk
                               emv_data: emv_data,
                               pin: pin)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} cryptogram: #{@cryptogram}, eci_indicator: #{@eci_indicator}, emv_data:"\
+      " #{@emv_data}, pin: #{@pin}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} cryptogram: #{@cryptogram.inspect}, eci_indicator:"\
+      " #{@eci_indicator.inspect}, emv_data: #{@emv_data.inspect}, pin: #{@pin.inspect}>"
+    end
   end
 end

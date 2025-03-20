@@ -48,5 +48,17 @@ module PaypalServerSdk
       # Create object from extracted values.
       BlikOneClickPaymentObject.new(consumer_reference: consumer_reference)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} consumer_reference: #{@consumer_reference}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} consumer_reference: #{@consumer_reference.inspect}>"
+    end
   end
 end

@@ -8,19 +8,19 @@ module PaypalServerSdk
   class VaultController < BaseController
     # Creates a Payment Token from the given payment source and adds it to the
     # Vault of the associated customer.
-    # @param [String] paypal_request_id Required parameter: The server stores
-    # keys for 3 hours.
     # @param [PaymentTokenRequest] body Required parameter: Payment Token
     # creation with a financial instrument and an optional customer_id.
+    # @param [String] paypal_request_id Optional parameter: The server stores
+    # keys for 3 hours.
     # @return [ApiResponse]  the complete http response with raw body and status code.
-    def payment_tokens_create(options = {})
+    def create_payment_token(options = {})
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/v3/vault/payment-tokens',
                                      Server::DEFAULT)
-                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
                    .body_param(new_parameter(options['body']))
+                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('Oauth2')))
@@ -60,7 +60,7 @@ module PaypalServerSdk
     # boolean indicating total number of items (total_items) and pages
     # (total_pages) are expected to be returned in the response.
     # @return [ApiResponse]  the complete http response with raw body and status code.
-    def customer_payment_tokens_get(options = {})
+    def list_customer_payment_tokens(options = {})
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/v3/vault/payment-tokens',
@@ -92,7 +92,7 @@ module PaypalServerSdk
     # with the payment token id.
     # @param [String] id Required parameter: ID of the payment token.
     # @return [ApiResponse]  the complete http response with raw body and status code.
-    def payment_tokens_get(id)
+    def get_payment_token(id)
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/v3/vault/payment-tokens/{id}',
@@ -124,7 +124,7 @@ module PaypalServerSdk
     # Delete the payment token associated with the payment token id.
     # @param [String] id Required parameter: ID of the payment token.
     # @return [ApiResponse]  the complete http response with raw body and status code.
-    def payment_tokens_delete(id)
+    def delete_payment_token(id)
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::DELETE,
                                      '/v3/vault/payment-tokens/{id}',
@@ -150,20 +150,20 @@ module PaypalServerSdk
 
     # Creates a Setup Token from the given payment source and adds it to the
     # Vault of the associated customer.
-    # @param [String] paypal_request_id Required parameter: The server stores
-    # keys for 3 hours.
     # @param [SetupTokenRequest] body Required parameter: Setup Token creation
     # with a instrument type optional financial instrument details and
     # customer_id.
+    # @param [String] paypal_request_id Optional parameter: The server stores
+    # keys for 3 hours.
     # @return [ApiResponse]  the complete http response with raw body and status code.
-    def setup_tokens_create(options = {})
+    def create_setup_token(options = {})
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::POST,
                                      '/v3/vault/setup-tokens',
                                      Server::DEFAULT)
-                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
                    .header_param(new_parameter('application/json', key: 'Content-Type'))
                    .body_param(new_parameter(options['body']))
+                   .header_param(new_parameter(options['paypal_request_id'], key: 'PayPal-Request-Id'))
                    .header_param(new_parameter('application/json', key: 'accept'))
                    .body_serializer(proc do |param| param.to_json unless param.nil? end)
                    .auth(Single.new('Oauth2')))
@@ -192,7 +192,7 @@ module PaypalServerSdk
     # associated with the setup token id.
     # @param [String] id Required parameter: ID of the setup token.
     # @return [ApiResponse]  the complete http response with raw body and status code.
-    def setup_tokens_get(id)
+    def get_setup_token(id)
       new_api_call_builder
         .request(new_request_builder(HttpMethodEnum::GET,
                                      '/v3/vault/setup-tokens/{id}',

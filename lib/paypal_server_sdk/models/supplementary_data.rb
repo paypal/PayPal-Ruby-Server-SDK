@@ -13,18 +13,20 @@ module PaypalServerSdk
 
     # Merchants and partners can add Level 2 and 3 data to payments to reduce
     # risk and payment processing costs. For more information about processing
-    # payments, see <a
-    # href="https://developer.paypal.com/docs/checkout/advanced/processing/">che
-    # ckout</a> or <a
-    # href="https://developer.paypal.com/docs/multiparty/checkout/advanced/proce
-    # ssing/">multiparty checkout</a>.
+    # payments, see checkout or multiparty checkout.
     # @return [CardSupplementaryData]
     attr_accessor :card
+
+    # Additional information necessary to evaluate the risk profile of a
+    # transaction.
+    # @return [RiskSupplementaryData]
+    attr_accessor :risk
 
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['card'] = 'card'
+      @_hash['risk'] = 'risk'
       @_hash
     end
 
@@ -32,6 +34,7 @@ module PaypalServerSdk
     def self.optionals
       %w[
         card
+        risk
       ]
     end
 
@@ -40,8 +43,9 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(card: SKIP)
+    def initialize(card: SKIP, risk: SKIP)
       @card = card unless card == SKIP
+      @risk = risk unless risk == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -50,9 +54,23 @@ module PaypalServerSdk
 
       # Extract variables from the hash.
       card = CardSupplementaryData.from_hash(hash['card']) if hash['card']
+      risk = RiskSupplementaryData.from_hash(hash['risk']) if hash['risk']
 
       # Create object from extracted values.
-      SupplementaryData.new(card: card)
+      SupplementaryData.new(card: card,
+                            risk: risk)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} card: #{@card}, risk: #{@risk}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} card: #{@card.inspect}, risk: #{@risk.inspect}>"
     end
   end
 end

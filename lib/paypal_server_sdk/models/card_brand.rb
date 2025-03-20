@@ -8,79 +8,83 @@ module PaypalServerSdk
   # cards.
   class CardBrand
     CARD_BRAND = [
-      # TODO: Write general description for VISA
+      # Visa card.
       VISA = 'VISA'.freeze,
 
-      # TODO: Write general description for MASTERCARD
+      # Mastecard card.
       MASTERCARD = 'MASTERCARD'.freeze,
 
-      # TODO: Write general description for DISCOVER
+      # Discover card.
       DISCOVER = 'DISCOVER'.freeze,
 
-      # TODO: Write general description for AMEX
+      # American Express card.
       AMEX = 'AMEX'.freeze,
 
-      # TODO: Write general description for SOLO
+      # Solo debit card.
       SOLO = 'SOLO'.freeze,
 
-      # TODO: Write general description for JCB
+      # Japan Credit Bureau card.
       JCB = 'JCB'.freeze,
 
-      # TODO: Write general description for STAR
+      # Military Star card.
       STAR = 'STAR'.freeze,
 
-      # TODO: Write general description for DELTA
+      # Delta Airlines card.
       DELTA = 'DELTA'.freeze,
 
-      # TODO: Write general description for SWITCH
+      # Switch credit card.
       SWITCH = 'SWITCH'.freeze,
 
-      # TODO: Write general description for MAESTRO
+      # Maestro credit card.
       MAESTRO = 'MAESTRO'.freeze,
 
-      # TODO: Write general description for CB_NATIONALE
+      # Carte Bancaire (CB) credit card.
       CB_NATIONALE = 'CB_NATIONALE'.freeze,
 
-      # TODO: Write general description for CONFIGOGA
+      # Configoga credit card.
       CONFIGOGA = 'CONFIGOGA'.freeze,
 
-      # TODO: Write general description for CONFIDIS
+      # Confidis credit card.
       CONFIDIS = 'CONFIDIS'.freeze,
 
-      # TODO: Write general description for ELECTRON
+      # Visa Electron credit card.
       ELECTRON = 'ELECTRON'.freeze,
 
-      # TODO: Write general description for CETELEM
+      # Cetelem credit card.
       CETELEM = 'CETELEM'.freeze,
 
-      # TODO: Write general description for CHINA_UNION_PAY
+      # China union pay credit card.
       CHINA_UNION_PAY = 'CHINA_UNION_PAY'.freeze,
 
-      # TODO: Write general description for DINERS
+      # The Diners Club International banking and payment services capability
+      # network owned by Discover Financial Services (DFS), one of the most
+      # recognized brands in US financial services.
       DINERS = 'DINERS'.freeze,
 
-      # TODO: Write general description for ELO
+      # The Brazilian Elo card payment network.
       ELO = 'ELO'.freeze,
 
-      # TODO: Write general description for HIPER
+      # The Hiper - Ingenico ePayment network.
       HIPER = 'HIPER'.freeze,
 
-      # TODO: Write general description for HIPERCARD
+      # The Brazilian Hipercard payment network that's widely accepted in the
+      # retail market.
       HIPERCARD = 'HIPERCARD'.freeze,
 
-      # TODO: Write general description for RUPAY
+      # The RuPay payment network.
       RUPAY = 'RUPAY'.freeze,
 
-      # TODO: Write general description for GE
+      # The GE Credit Union 3Point card payment network.
       GE = 'GE'.freeze,
 
-      # TODO: Write general description for SYNCHRONY
+      # The Synchrony Financial (SYF) payment network.
       SYNCHRONY = 'SYNCHRONY'.freeze,
 
-      # TODO: Write general description for EFTPOS
+      # The Electronic Fund Transfer At Point of Sale(EFTPOS) Debit card payment
+      # network.
       EFTPOS = 'EFTPOS'.freeze,
 
-      # TODO: Write general description for UNKNOWN
+      # UNKNOWN payment network.
       UNKNOWN = 'UNKNOWN'.freeze
     ].freeze
 

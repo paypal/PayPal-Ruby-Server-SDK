@@ -40,7 +40,7 @@ module PaypalServerSdk
 
     # Vault Instruction on action to be performed after a successful payer
     # approval.
-    # @return [String]
+    # @return [VaultInstructionAction]
     attr_accessor :vault_instruction
 
     # A mapping from model property names to API property names.
@@ -70,9 +70,10 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(brand_name: SKIP, locale: SKIP, return_url: SKIP,
-                   cancel_url: SKIP,
-                   vault_instruction: 'ON_CREATE_PAYMENT_TOKENS')
+    def initialize(
+      brand_name: SKIP, locale: SKIP, return_url: SKIP, cancel_url: SKIP,
+      vault_instruction: VaultInstructionAction::ON_CREATE_PAYMENT_TOKENS
+    )
       @brand_name = brand_name unless brand_name == SKIP
       @locale = locale unless locale == SKIP
       @return_url = return_url unless return_url == SKIP
@@ -90,7 +91,7 @@ module PaypalServerSdk
       return_url = hash.key?('return_url') ? hash['return_url'] : SKIP
       cancel_url = hash.key?('cancel_url') ? hash['cancel_url'] : SKIP
       vault_instruction =
-        hash['vault_instruction'] ||= 'ON_CREATE_PAYMENT_TOKENS'
+        hash['vault_instruction'] ||= VaultInstructionAction::ON_CREATE_PAYMENT_TOKENS
 
       # Create object from extracted values.
       SetupTokenCardExperienceContext.new(brand_name: brand_name,
@@ -98,6 +99,21 @@ module PaypalServerSdk
                                           return_url: return_url,
                                           cancel_url: cancel_url,
                                           vault_instruction: vault_instruction)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_name: #{@brand_name}, locale: #{@locale}, return_url: #{@return_url},"\
+      " cancel_url: #{@cancel_url}, vault_instruction: #{@vault_instruction}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_name: #{@brand_name.inspect}, locale: #{@locale.inspect}, return_url:"\
+      " #{@return_url.inspect}, cancel_url: #{@cancel_url.inspect}, vault_instruction:"\
+      " #{@vault_instruction.inspect}>"
     end
   end
 end

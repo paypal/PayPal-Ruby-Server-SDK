@@ -7,13 +7,18 @@ module PaypalServerSdk
   # The vault status.
   class PaypalWalletVaultStatus
     PAYPAL_WALLET_VAULT_STATUS = [
-      # TODO: Write general description for VAULTED
+      # The payment source has been saved in your customer's vault. This vault
+      # status reflects `/v3/vault` status.
       VAULTED = 'VAULTED'.freeze,
 
-      # TODO: Write general description for CREATED
+      # DEPRECATED. The payment source has been saved in your customer's vault.
+      # This status applies to deprecated integration patterns and will not be
+      # returned for v3/vault integrations.
       CREATED = 'CREATED'.freeze,
 
-      # TODO: Write general description for APPROVED
+      # Customer has approved the action of saving the specified payment_source
+      # into their vault. Use v3/vault/payment-tokens with given setup_token to
+      # save the payment source in the vault
       APPROVED = 'APPROVED'.freeze
     ].freeze
 

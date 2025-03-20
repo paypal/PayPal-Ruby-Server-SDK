@@ -7,22 +7,28 @@ module PaypalServerSdk
   # Expected business/pricing model for the billing agreement.
   class VenmoPaymentTokenUsagePattern
     VENMO_PAYMENT_TOKEN_USAGE_PATTERN = [
-      # TODO: Write general description for IMMEDIATE
+      # On-demand instant payments – non-recurring, pre-paid, variable amount,
+      # variable frequency.
       IMMEDIATE = 'IMMEDIATE'.freeze,
 
-      # TODO: Write general description for DEFERRED
+      # Pay after use, non-recurring post-paid, variable amount, irregular
+      # frequency.
       DEFERRED = 'DEFERRED'.freeze,
 
-      # TODO: Write general description for RECURRING_PREPAID
+      # Pay upfront fixed or variable amount on a fixed date before the
+      # goods/service is delivered.
       RECURRING_PREPAID = 'RECURRING_PREPAID'.freeze,
 
-      # TODO: Write general description for RECURRING_POSTPAID
+      # Pay on a fixed date based on usage or consumption after the
+      # goods/service is delivered.
       RECURRING_POSTPAID = 'RECURRING_POSTPAID'.freeze,
 
-      # TODO: Write general description for THRESHOLD_PREPAID
+      # Charge payer when the set amount is reached or monthly billing cycle,
+      # whichever comes first, before the goods/service is delivered.
       THRESHOLD_PREPAID = 'THRESHOLD_PREPAID'.freeze,
 
-      # TODO: Write general description for THRESHOLD_POSTPAID
+      # Charge payer when the set amount is reached or monthly billing cycle,
+      # whichever comes first, after the goods/service is delivered.
       THRESHOLD_POSTPAID = 'THRESHOLD_POSTPAID'.freeze
     ].freeze
 

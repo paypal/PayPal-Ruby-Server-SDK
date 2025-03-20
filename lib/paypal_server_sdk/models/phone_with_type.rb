@@ -55,5 +55,18 @@ module PaypalServerSdk
       PhoneWithType.new(phone_number: phone_number,
                         phone_type: phone_type)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} phone_type: #{@phone_type}, phone_number: #{@phone_number}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} phone_type: #{@phone_type.inspect}, phone_number:"\
+      " #{@phone_number.inspect}>"
+    end
   end
 end

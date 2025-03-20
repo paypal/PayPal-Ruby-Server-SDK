@@ -73,5 +73,18 @@ module PaypalServerSdk
                                          venmo: venmo,
                                          token: token)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} card: #{@card}, paypal: #{@paypal}, venmo: #{@venmo}, token: #{@token}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} card: #{@card.inspect}, paypal: #{@paypal.inspect}, venmo:"\
+      " #{@venmo.inspect}, token: #{@token.inspect}>"
+    end
   end
 end

@@ -58,5 +58,19 @@ module PaypalServerSdk
       ThreeDSecureAuthenticationResponse.new(authentication_status: authentication_status,
                                              enrollment_status: enrollment_status)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} authentication_status: #{@authentication_status}, enrollment_status:"\
+      " #{@enrollment_status}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} authentication_status: #{@authentication_status.inspect},"\
+      " enrollment_status: #{@enrollment_status.inspect}>"
+    end
   end
 end

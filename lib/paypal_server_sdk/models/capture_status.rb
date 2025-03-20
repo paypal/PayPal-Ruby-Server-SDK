@@ -7,22 +7,26 @@ module PaypalServerSdk
   # The status of the captured payment.
   class CaptureStatus
     CAPTURE_STATUS = [
-      # TODO: Write general description for COMPLETED
+      # The funds for this captured payment were credited to the payee's PayPal
+      # account.
       COMPLETED = 'COMPLETED'.freeze,
 
-      # TODO: Write general description for DECLINED
+      # The funds could not be captured.
       DECLINED = 'DECLINED'.freeze,
 
-      # TODO: Write general description for PARTIALLY_REFUNDED
+      # An amount less than this captured payment's amount was partially
+      # refunded to the payer.
       PARTIALLY_REFUNDED = 'PARTIALLY_REFUNDED'.freeze,
 
-      # TODO: Write general description for PENDING
+      # The funds for this captured payment was not yet credited to the payee's
+      # PayPal account. For more information, see status.details.
       PENDING = 'PENDING'.freeze,
 
-      # TODO: Write general description for REFUNDED
+      # An amount greater than or equal to this captured payment's amount was
+      # refunded to the payer.
       REFUNDED = 'REFUNDED'.freeze,
 
-      # TODO: Write general description for FAILED
+      # There was an error while capturing payment.
       FAILED = 'FAILED'.freeze
     ].freeze
 

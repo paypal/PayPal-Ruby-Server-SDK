@@ -7,26 +7,26 @@ module PaypalServerSdk
   # The Universal Product Code type.
   class UpcType
     UPC_TYPE = [
-      # TODO: Write general description for UPCA
-      UPCA = 'UPC-A'.freeze,
+      # TODO: Write general description for UPC_A
+      UPC_A = 'UPC-A'.freeze,
 
-      # TODO: Write general description for UPCB
-      UPCB = 'UPC-B'.freeze,
+      # TODO: Write general description for UPC_B
+      UPC_B = 'UPC-B'.freeze,
 
-      # TODO: Write general description for UPCC
-      UPCC = 'UPC-C'.freeze,
+      # TODO: Write general description for UPC_C
+      UPC_C = 'UPC-C'.freeze,
 
-      # TODO: Write general description for UPCD
-      UPCD = 'UPC-D'.freeze,
+      # TODO: Write general description for UPC_D
+      UPC_D = 'UPC-D'.freeze,
 
-      # TODO: Write general description for UPCE
-      UPCE = 'UPC-E'.freeze,
+      # TODO: Write general description for UPC_E
+      UPC_E = 'UPC-E'.freeze,
 
-      # TODO: Write general description for UPC2
-      UPC2 = 'UPC-2'.freeze,
+      # TODO: Write general description for UPC_2
+      UPC_2 = 'UPC-2'.freeze,
 
-      # TODO: Write general description for UPC5
-      UPC5 = 'UPC-5'.freeze
+      # TODO: Write general description for UPC_5
+      UPC_5 = 'UPC-5'.freeze
     ].freeze
 
     def self.validate(value)

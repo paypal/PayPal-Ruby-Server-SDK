@@ -13,20 +13,18 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :name
 
-    # The internationalized email address.<blockquote><strong>Note:</strong> Up
-    # to 64 characters are allowed before and 255 characters are allowed after
-    # the <code>@</code> sign. However, the generally accepted maximum length
-    # for an email address is 254 characters. The pattern verifies that an
-    # unquoted <code>@</code> sign exists.</blockquote>
+    # The internationalized email address. Note: Up to 64 characters are allowed
+    # before and 255 characters are allowed after the @ sign. However, the
+    # generally accepted maximum length for an email address is 254 characters.
+    # The pattern verifies that an unquoted @ sign exists.
     # @return [String]
     attr_accessor :email
 
     # The [two-character ISO 3166-1 code](/api/rest/reference/country-codes/)
-    # that identifies the country or region.<blockquote><strong>Note:</strong>
-    # The country code for Great Britain is <code>GB</code> and not
-    # <code>UK</code> as used in the top-level domain names for that country.
-    # Use the `C2` country code for China worldwide for comparable uncontrolled
-    # price (CUP) method, bank card, and cross-border transactions.</blockquote>
+    # that identifies the country or region. Note: The country code for Great
+    # Britain is GB and not UK as used in the top-level domain names for that
+    # country. Use the `C2` country code for China worldwide for comparable
+    # uncontrolled price (CUP) method, bank card, and cross-border transactions.
     # @return [String]
     attr_accessor :country_code
 
@@ -103,6 +101,22 @@ module PaypalServerSdk
                            payment_descriptor: payment_descriptor,
                            method_id: method_id,
                            method_description: method_description)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, email: #{@email}, country_code: #{@country_code},"\
+      " payment_descriptor: #{@payment_descriptor}, method_id: #{@method_id}, method_description:"\
+      " #{@method_description}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, email: #{@email.inspect}, country_code:"\
+      " #{@country_code.inspect}, payment_descriptor: #{@payment_descriptor.inspect}, method_id:"\
+      " #{@method_id.inspect}, method_description: #{@method_description.inspect}>"
     end
   end
 end

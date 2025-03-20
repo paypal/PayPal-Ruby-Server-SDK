@@ -7,7 +7,8 @@ module PaypalServerSdk
   # Defines how and when the payment source gets vaulted.
   class StoreInVaultInstruction
     STORE_IN_VAULT_INSTRUCTION = [
-      # TODO: Write general description for ON_SUCCESS
+      # Defines that the payment_source will be vaulted only when at least one
+      # authorization or capture using that payment_source is successful.
       ON_SUCCESS = 'ON_SUCCESS'.freeze
     ].freeze
 

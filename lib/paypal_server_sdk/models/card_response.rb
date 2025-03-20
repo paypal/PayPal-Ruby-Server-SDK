@@ -52,6 +52,19 @@ module PaypalServerSdk
     # @return [BinDetails]
     attr_accessor :bin_details
 
+    # Provides additional details to process a payment using a `card` that has
+    # been stored or is intended to be stored (also referred to as
+    # stored_credential or card-on-file). Parameter compatibility:
+    # `payment_type=ONE_TIME` is compatible only with
+    # `payment_initiator=CUSTOMER`. `usage=FIRST` is compatible only with
+    # `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
+    # `previous_network_transaction_reference` is compatible only with
+    # `payment_initiator=MERCHANT`. Only one of the parameters -
+    # `previous_transaction_reference` and
+    # `previous_network_transaction_reference` - can be present in the request.
+    # @return [CardStoredCredential]
+    attr_accessor :stored_credential
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -65,6 +78,7 @@ module PaypalServerSdk
       @_hash['from_request'] = 'from_request'
       @_hash['expiry'] = 'expiry'
       @_hash['bin_details'] = 'bin_details'
+      @_hash['stored_credential'] = 'stored_credential'
       @_hash
     end
 
@@ -81,6 +95,7 @@ module PaypalServerSdk
         from_request
         expiry
         bin_details
+        stored_credential
       ]
     end
 
@@ -92,7 +107,8 @@ module PaypalServerSdk
     def initialize(name: SKIP, last_digits: SKIP, brand: SKIP,
                    available_networks: SKIP, type: SKIP,
                    authentication_result: SKIP, attributes: SKIP,
-                   from_request: SKIP, expiry: SKIP, bin_details: SKIP)
+                   from_request: SKIP, expiry: SKIP, bin_details: SKIP,
+                   stored_credential: SKIP)
       @name = name unless name == SKIP
       @last_digits = last_digits unless last_digits == SKIP
       @brand = brand unless brand == SKIP
@@ -103,6 +119,7 @@ module PaypalServerSdk
       @from_request = from_request unless from_request == SKIP
       @expiry = expiry unless expiry == SKIP
       @bin_details = bin_details unless bin_details == SKIP
+      @stored_credential = stored_credential unless stored_credential == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -122,6 +139,8 @@ module PaypalServerSdk
       from_request = CardFromRequest.from_hash(hash['from_request']) if hash['from_request']
       expiry = hash.key?('expiry') ? hash['expiry'] : SKIP
       bin_details = BinDetails.from_hash(hash['bin_details']) if hash['bin_details']
+      stored_credential = CardStoredCredential.from_hash(hash['stored_credential']) if
+        hash['stored_credential']
 
       # Create object from extracted values.
       CardResponse.new(name: name,
@@ -133,7 +152,29 @@ module PaypalServerSdk
                        attributes: attributes,
                        from_request: from_request,
                        expiry: expiry,
-                       bin_details: bin_details)
+                       bin_details: bin_details,
+                       stored_credential: stored_credential)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, last_digits: #{@last_digits}, brand: #{@brand},"\
+      " available_networks: #{@available_networks}, type: #{@type}, authentication_result:"\
+      " #{@authentication_result}, attributes: #{@attributes}, from_request: #{@from_request},"\
+      " expiry: #{@expiry}, bin_details: #{@bin_details}, stored_credential:"\
+      " #{@stored_credential}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, last_digits: #{@last_digits.inspect}, brand:"\
+      " #{@brand.inspect}, available_networks: #{@available_networks.inspect}, type:"\
+      " #{@type.inspect}, authentication_result: #{@authentication_result.inspect}, attributes:"\
+      " #{@attributes.inspect}, from_request: #{@from_request.inspect}, expiry:"\
+      " #{@expiry.inspect}, bin_details: #{@bin_details.inspect}, stored_credential:"\
+      " #{@stored_credential.inspect}>"
     end
   end
 end

@@ -42,7 +42,7 @@ module PaypalServerSdk
     # the autocomplete
     # attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-co
     # ntrols-the-autocomplete-attribute).
-    # @return [PortablePostalAddressMediumGrained]
+    # @return [Address]
     attr_accessor :billing_address
 
     # A mapping from model property names to API property names.
@@ -98,8 +98,7 @@ module PaypalServerSdk
       last_digits = hash.key?('last_digits') ? hash['last_digits'] : SKIP
       type = hash.key?('type') ? hash['type'] : SKIP
       brand = hash.key?('brand') ? hash['brand'] : SKIP
-      billing_address = PortablePostalAddressMediumGrained.from_hash(hash['billing_address']) if
-        hash['billing_address']
+      billing_address = Address.from_hash(hash['billing_address']) if hash['billing_address']
 
       # Create object from extracted values.
       GooglePayCard.new(name: name,
@@ -109,6 +108,21 @@ module PaypalServerSdk
                         type: type,
                         brand: brand,
                         billing_address: billing_address)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, number: #{@number}, expiry: #{@expiry}, last_digits:"\
+      " #{@last_digits}, type: #{@type}, brand: #{@brand}, billing_address: #{@billing_address}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, number: #{@number.inspect}, expiry:"\
+      " #{@expiry.inspect}, last_digits: #{@last_digits.inspect}, type: #{@type.inspect}, brand:"\
+      " #{@brand.inspect}, billing_address: #{@billing_address.inspect}>"
     end
   end
 end

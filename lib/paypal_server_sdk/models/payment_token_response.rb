@@ -13,8 +13,9 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :id
 
-    # Customer in merchant's or partner's system of records.
-    # @return [CustomerRequest]
+    # This object defines a customer in your system. Use it to manage customer
+    # profiles, save payment methods and contact details.
+    # @return [CustomerResponse]
     attr_accessor :customer
 
     # The vaulted payment method details.
@@ -63,7 +64,7 @@ module PaypalServerSdk
 
       # Extract variables from the hash.
       id = hash.key?('id') ? hash['id'] : SKIP
-      customer = CustomerRequest.from_hash(hash['customer']) if hash['customer']
+      customer = CustomerResponse.from_hash(hash['customer']) if hash['customer']
       payment_source = PaymentTokenResponsePaymentSource.from_hash(hash['payment_source']) if
         hash['payment_source']
       # Parameter is an array, so we need to iterate through it
@@ -82,6 +83,20 @@ module PaypalServerSdk
                                customer: customer,
                                payment_source: payment_source,
                                links: links)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, customer: #{@customer}, payment_source: #{@payment_source},"\
+      " links: #{@links}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, customer: #{@customer.inspect}, payment_source:"\
+      " #{@payment_source.inspect}, links: #{@links.inspect}>"
     end
   end
 end

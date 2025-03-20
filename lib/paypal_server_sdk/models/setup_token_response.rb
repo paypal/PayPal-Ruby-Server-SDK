@@ -13,16 +13,13 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :id
 
-    # Ordinal number for sorting.
-    # @return [Integer]
-    attr_accessor :ordinal
-
-    # Customer in merchant's or partner's system of records.
-    # @return [CustomerRequest]
+    # This object defines a customer in your system. Use it to manage customer
+    # profiles, save payment methods and contact details.
+    # @return [Customer]
     attr_accessor :customer
 
     # The status of the payment token.
-    # @return [String]
+    # @return [PaymentTokenStatus]
     attr_accessor :status
 
     # The setup payment method details.
@@ -37,7 +34,6 @@ module PaypalServerSdk
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['id'] = 'id'
-      @_hash['ordinal'] = 'ordinal'
       @_hash['customer'] = 'customer'
       @_hash['status'] = 'status'
       @_hash['payment_source'] = 'payment_source'
@@ -49,7 +45,6 @@ module PaypalServerSdk
     def self.optionals
       %w[
         id
-        ordinal
         customer
         status
         payment_source
@@ -62,10 +57,10 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(id: SKIP, ordinal: SKIP, customer: SKIP, status: 'CREATED',
-                   payment_source: SKIP, links: SKIP)
+    def initialize(id: SKIP, customer: SKIP,
+                   status: PaymentTokenStatus::CREATED, payment_source: SKIP,
+                   links: SKIP)
       @id = id unless id == SKIP
-      @ordinal = ordinal unless ordinal == SKIP
       @customer = customer unless customer == SKIP
       @status = status unless status == SKIP
       @payment_source = payment_source unless payment_source == SKIP
@@ -78,9 +73,8 @@ module PaypalServerSdk
 
       # Extract variables from the hash.
       id = hash.key?('id') ? hash['id'] : SKIP
-      ordinal = hash.key?('ordinal') ? hash['ordinal'] : SKIP
-      customer = CustomerRequest.from_hash(hash['customer']) if hash['customer']
-      status = hash['status'] ||= 'CREATED'
+      customer = Customer.from_hash(hash['customer']) if hash['customer']
+      status = hash['status'] ||= PaymentTokenStatus::CREATED
       payment_source = SetupTokenResponsePaymentSource.from_hash(hash['payment_source']) if
         hash['payment_source']
       # Parameter is an array, so we need to iterate through it
@@ -96,11 +90,24 @@ module PaypalServerSdk
 
       # Create object from extracted values.
       SetupTokenResponse.new(id: id,
-                             ordinal: ordinal,
                              customer: customer,
                              status: status,
                              payment_source: payment_source,
                              links: links)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, customer: #{@customer}, status: #{@status}, payment_source:"\
+      " #{@payment_source}, links: #{@links}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, customer: #{@customer.inspect}, status:"\
+      " #{@status.inspect}, payment_source: #{@payment_source.inspect}, links: #{@links.inspect}>"
     end
   end
 end

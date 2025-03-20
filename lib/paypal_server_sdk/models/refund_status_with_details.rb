@@ -56,5 +56,17 @@ module PaypalServerSdk
       RefundStatusWithDetails.new(status: status,
                                   status_details: status_details)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} status: #{@status}, status_details: #{@status_details}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} status: #{@status.inspect}, status_details: #{@status_details.inspect}>"
+    end
   end
 end

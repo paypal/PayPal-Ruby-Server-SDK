@@ -86,5 +86,19 @@ module PaypalServerSdk
                                       network: network,
                                       acquirer_reference_number: acquirer_reference_number)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, date: #{@date}, network: #{@network},"\
+      " acquirer_reference_number: #{@acquirer_reference_number}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, date: #{@date.inspect}, network: #{@network.inspect},"\
+      " acquirer_reference_number: #{@acquirer_reference_number.inspect}>"
+    end
   end
 end

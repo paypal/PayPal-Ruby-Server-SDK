@@ -10,4160 +10,4135 @@ module PaypalServerSdk
   # country. If the carrier is not available for your country, choose the global
   # version of the carrier. If your carrier name is not in the list, set
   # `carrier` to `OTHER` and set carrier name in `carrier_name_other`. For
-  # allowed values, see <a
-  # href="/docs/tracking/reference/carriers/">Carriers</a>.
+  # allowed values, see Carriers.
   class ShipmentCarrier
     SHIPMENT_CARRIER = [
-      # TODO: Write general description for DPD_RU
+      # DPD Russia.
       DPD_RU = 'DPD_RU'.freeze,
 
-      # TODO: Write general description for BG_BULGARIAN_POST
+      # Bulgarian Posts.
       BG_BULGARIAN_POST = 'BG_BULGARIAN_POST'.freeze,
 
-      # TODO: Write general description for KR_KOREA_POST
+      # Koreapost (www.koreapost.go.kr).
       KR_KOREA_POST = 'KR_KOREA_POST'.freeze,
 
-      # TODO: Write general description for ZA_COURIERIT
+      # Courier IT.
       ZA_COURIERIT = 'ZA_COURIERIT'.freeze,
 
-      # TODO: Write general description for FR_EXAPAQ
+      # DPD France (formerly exapaq).
       FR_EXAPAQ = 'FR_EXAPAQ'.freeze,
 
-      # TODO: Write general description for ARE_EMIRATES_POST
+      # Emirates Post.
       ARE_EMIRATES_POST = 'ARE_EMIRATES_POST'.freeze,
 
-      # TODO: Write general description for GAC
+      # GAC.
       GAC = 'GAC'.freeze,
 
-      # TODO: Write general description for GEIS
+      # Geis CZ.
       GEIS = 'GEIS'.freeze,
 
-      # TODO: Write general description for SF_EX
+      # SF Express.
       SF_EX = 'SF_EX'.freeze,
 
-      # TODO: Write general description for PAGO
+      # Pago Logistics.
       PAGO = 'PAGO'.freeze,
 
-      # TODO: Write general description for MYHERMES
+      # MyHermes UK.
       MYHERMES = 'MYHERMES'.freeze,
 
-      # TODO: Write general description for DIAMOND_EUROGISTICS
+      # Diamond Eurogistics Limited.
       DIAMOND_EUROGISTICS = 'DIAMOND_EUROGISTICS'.freeze,
 
-      # TODO: Write general description for CORPORATECOURIERS_WEBHOOK
+      # Corporate Couriers.
       CORPORATECOURIERS_WEBHOOK = 'CORPORATECOURIERS_WEBHOOK'.freeze,
 
-      # TODO: Write general description for BOND
+      # Bond courier.
       BOND = 'BOND'.freeze,
 
-      # TODO: Write general description for OMNIPARCEL
+      # Omni Parcel.
       OMNIPARCEL = 'OMNIPARCEL'.freeze,
 
-      # TODO: Write general description for SK_POSTA
+      # Slovenska pošta.
       SK_POSTA = 'SK_POSTA'.freeze,
 
-      # TODO: Write general description for PUROLATOR
+      # purolator.
       PUROLATOR = 'PUROLATOR'.freeze,
 
-      # TODO: Write general description for FETCHR_WEBHOOK
+      # Mena 360 (Fetchr).
       FETCHR_WEBHOOK = 'FETCHR_WEBHOOK'.freeze,
 
-      # TODO: Write general description for THEDELIVERYGROUP
+      # TDG – The Delivery Group.
       THEDELIVERYGROUP = 'THEDELIVERYGROUP'.freeze,
 
-      # TODO: Write general description for CELLO_SQUARE
+      # Cello Square.
       CELLO_SQUARE = 'CELLO_SQUARE'.freeze,
 
-      # TODO: Write general description for TARRIVE
+      # TONDA GLOBAL.
       TARRIVE = 'TARRIVE'.freeze,
 
-      # TODO: Write general description for COLLIVERY
+      # MDS Collivery Pty (Ltd).
       COLLIVERY = 'COLLIVERY'.freeze,
 
-      # TODO: Write general description for MAINFREIGHT
+      # Mainfreight.
       MAINFREIGHT = 'MAINFREIGHT'.freeze,
 
-      # TODO: Write general description for IND_FIRSTFLIGHT
+      # First Flight Couriers.
       IND_FIRSTFLIGHT = 'IND_FIRSTFLIGHT'.freeze,
 
-      # TODO: Write general description for ACSWORLDWIDE
+      # ACS Worldwide Express.
       ACSWORLDWIDE = 'ACSWORLDWIDE'.freeze,
 
-      # TODO: Write general description for AMSTAN
+      # Amstan Logistics.
       AMSTAN = 'AMSTAN'.freeze,
 
-      # TODO: Write general description for OKAYPARCEL
+      # OkayParcel.
       OKAYPARCEL = 'OKAYPARCEL'.freeze,
 
-      # TODO: Write general description for ENVIALIA_REFERENCE
+      # Envialia Reference.
       ENVIALIA_REFERENCE = 'ENVIALIA_REFERENCE'.freeze,
 
-      # TODO: Write general description for SEUR_ES
+      # Seur Spain.
       SEUR_ES = 'SEUR_ES'.freeze,
 
-      # TODO: Write general description for CONTINENTAL
+      # Continental.
       CONTINENTAL = 'CONTINENTAL'.freeze,
 
-      # TODO: Write general description for FDSEXPRESS
+      # FDSEXPRESS.
       FDSEXPRESS = 'FDSEXPRESS'.freeze,
 
-      # TODO: Write general description for AMAZON_FBA_SWISHIP
+      # Swiship UK.
       AMAZON_FBA_SWISHIP = 'AMAZON_FBA_SWISHIP'.freeze,
 
-      # TODO: Write general description for WYNGS
+      # Wyngs.
       WYNGS = 'WYNGS'.freeze,
 
-      # TODO: Write general description for DHL_ACTIVE_TRACING
+      # DHL Active Tracing.
       DHL_ACTIVE_TRACING = 'DHL_ACTIVE_TRACING'.freeze,
 
-      # TODO: Write general description for ZYLLEM
+      # Zyllem.
       ZYLLEM = 'ZYLLEM'.freeze,
 
-      # TODO: Write general description for RUSTON
+      # Ruston.
       RUSTON = 'RUSTON'.freeze,
 
-      # TODO: Write general description for XPOST
+      # Xpost.ph.
       XPOST = 'XPOST'.freeze,
 
-      # TODO: Write general description for CORREOS_ES
+      # correos Express (www.correos.es).
       CORREOS_ES = 'CORREOS_ES'.freeze,
 
-      # TODO: Write general description for DHL_FR
+      # DHL France (www.dhl.com).
       DHL_FR = 'DHL_FR'.freeze,
 
-      # TODO: Write general description for PAN_ASIA
+      # Pan-Asia International.
       PAN_ASIA = 'PAN_ASIA'.freeze,
 
-      # TODO: Write general description for BRT_IT
+      # BRT couriers Italy (www.brt.it).
       BRT_IT = 'BRT_IT'.freeze,
 
-      # TODO: Write general description for SRE_KOREA
+      # SRE Korea (www.srekorea.co.kr).
       SRE_KOREA = 'SRE_KOREA'.freeze,
 
-      # TODO: Write general description for SPEEDEE
+      # Spee-Dee Delivery.
       SPEEDEE = 'SPEEDEE'.freeze,
 
-      # TODO: Write general description for TNT_UK
+      # TNT UK Limited (www.tnt.com).
       TNT_UK = 'TNT_UK'.freeze,
 
-      # TODO: Write general description for VENIPAK
+      # Venipak.
       VENIPAK = 'VENIPAK'.freeze,
 
-      # TODO: Write general description for SHREENANDANCOURIER
+      # SHREE NANDAN COURIER.
       SHREENANDANCOURIER = 'SHREENANDANCOURIER'.freeze,
 
-      # TODO: Write general description for CROSHOT
+      # Croshot.
       CROSHOT = 'CROSHOT'.freeze,
 
-      # TODO: Write general description for NIPOST_NG
+      # NIpost (www.nipost.gov.ng).
       NIPOST_NG = 'NIPOST_NG'.freeze,
 
-      # TODO: Write general description for EPST_GLBL
+      # ePost Global.
       EPST_GLBL = 'EPST_GLBL'.freeze,
 
-      # TODO: Write general description for NEWGISTICS
+      # Newgistics.
       NEWGISTICS = 'NEWGISTICS'.freeze,
 
-      # TODO: Write general description for POST_SLOVENIA
+      # Post of Slovenia.
       POST_SLOVENIA = 'POST_SLOVENIA'.freeze,
 
-      # TODO: Write general description for JERSEY_POST
+      # Jersey Post.
       JERSEY_POST = 'JERSEY_POST'.freeze,
 
-      # TODO: Write general description for BOMBINOEXP
+      # Bombino Express Pvt.
       BOMBINOEXP = 'BOMBINOEXP'.freeze,
 
-      # TODO: Write general description for WMG
+      # WMG Delivery.
       WMG = 'WMG'.freeze,
 
-      # TODO: Write general description for XQ_EXPRESS
+      # XQ Express.
       XQ_EXPRESS = 'XQ_EXPRESS'.freeze,
 
-      # TODO: Write general description for FURDECO
+      # Furdeco.
       FURDECO = 'FURDECO'.freeze,
 
-      # TODO: Write general description for LHT_EXPRESS
+      # LHT Express.
       LHT_EXPRESS = 'LHT_EXPRESS'.freeze,
 
-      # TODO: Write general description for SOUTH_AFRICAN_POST_OFFICE
+      # South African Post Office.
       SOUTH_AFRICAN_POST_OFFICE = 'SOUTH_AFRICAN_POST_OFFICE'.freeze,
 
-      # TODO: Write general description for SPOTON
+      # SPOTON Logistics Pvt Ltd.
       SPOTON = 'SPOTON'.freeze,
 
-      # TODO: Write general description for DIMERCO
+      # Dimerco Express Group.
       DIMERCO = 'DIMERCO'.freeze,
 
-      # TODO: Write general description for CYPRUS_POST_CYP
+      # cyprus post.
       CYPRUS_POST_CYP = 'CYPRUS_POST_CYP'.freeze,
 
-      # TODO: Write general description for ABCUSTOM
+      # AB Custom Group.
       ABCUSTOM = 'ABCUSTOM'.freeze,
 
-      # TODO: Write general description for IND_DELIVREE
+      # deliverE.
       IND_DELIVREE = 'IND_DELIVREE'.freeze,
 
-      # TODO: Write general description for CN_BESTEXPRESS
+      # Best Express.
       CN_BESTEXPRESS = 'CN_BESTEXPRESS'.freeze,
 
-      # TODO: Write general description for DX_SFTP
+      # DX (SFTP).
       DX_SFTP = 'DX_SFTP'.freeze,
 
-      # TODO: Write general description for PICKUPP_MYS
+      # PICK UPP.
       PICKUPP_MYS = 'PICKUPP_MYS'.freeze,
 
-      # TODO: Write general description for FMX
+      # FMX.
       FMX = 'FMX'.freeze,
 
-      # TODO: Write general description for HELLMANN
+      # Hellmann Worldwide Logistics.
       HELLMANN = 'HELLMANN'.freeze,
 
-      # TODO: Write general description for SHIP_IT_ASIA
+      # Ship It Asia.
       SHIP_IT_ASIA = 'SHIP_IT_ASIA'.freeze,
 
-      # TODO: Write general description for KERRY_ECOMMERCE
+      # Kerry eCommerce.
       KERRY_ECOMMERCE = 'KERRY_ECOMMERCE'.freeze,
 
-      # TODO: Write general description for FRETERAPIDO
+      # Frete Rapido.
       FRETERAPIDO = 'FRETERAPIDO'.freeze,
 
-      # TODO: Write general description for PITNEY_BOWES
+      # Pitney Bowes.
       PITNEY_BOWES = 'PITNEY_BOWES'.freeze,
 
-      # TODO: Write general description for XPRESSEN_DK
+      # Xpressen courier.
       XPRESSEN_DK = 'XPRESSEN_DK'.freeze,
 
-      # TODO: Write general description for SEUR_SP_API
+      # Spanish Seur API.
       SEUR_SP_API = 'SEUR_SP_API'.freeze,
 
-      # TODO: Write general description for DELIVERYONTIME
+      # DELIVERYONTIME LOGISTICS PVT LTD.
       DELIVERYONTIME = 'DELIVERYONTIME'.freeze,
 
-      # TODO: Write general description for JINSUNG
+      # JINSUNG TRADING.
       JINSUNG = 'JINSUNG'.freeze,
 
-      # TODO: Write general description for TRANS_KARGO
+      # Trans Kargo Internasional.
       TRANS_KARGO = 'TRANS_KARGO'.freeze,
 
-      # TODO: Write general description for SWISHIP_DE
+      # Swiship DE.
       SWISHIP_DE = 'SWISHIP_DE'.freeze,
 
-      # TODO: Write general description for IVOY_WEBHOOK
+      # Ivoy courier.
       IVOY_WEBHOOK = 'IVOY_WEBHOOK'.freeze,
 
-      # TODO: Write general description for AIRMEE_WEBHOOK
+      # Airmee couriers.
       AIRMEE_WEBHOOK = 'AIRMEE_WEBHOOK'.freeze,
 
-      # TODO: Write general description for DHL_BENELUX
+      # dhl benelux.
       DHL_BENELUX = 'DHL_BENELUX'.freeze,
 
-      # TODO: Write general description for FIRSTMILE
+      # FirstMile.
       FIRSTMILE = 'FIRSTMILE'.freeze,
 
-      # TODO: Write general description for FASTWAY_IR
+      # Fastway Ireland.
       FASTWAY_IR = 'FASTWAY_IR'.freeze,
 
-      # TODO: Write general description for HH_EXP
+      # Hua Han Logistics.
       HH_EXP = 'HH_EXP'.freeze,
 
-      # TODO: Write general description for MYS_MYPOST_ONLINE
+      # Mypostonline.
       MYS_MYPOST_ONLINE = 'MYS_MYPOST_ONLINE'.freeze,
 
-      # TODO: Write general description for TNT_NL
+      # THT Netherland.
       TNT_NL = 'TNT_NL'.freeze,
 
-      # TODO: Write general description for TIPSA
+      # TIPSA courier.
       TIPSA = 'TIPSA'.freeze,
 
-      # TODO: Write general description for TAQBIN_MY
+      # TAQBIN Malaysia.
       TAQBIN_MY = 'TAQBIN_MY'.freeze,
 
-      # TODO: Write general description for KGMHUB
+      # KGM Hub.
       KGMHUB = 'KGMHUB'.freeze,
 
-      # TODO: Write general description for INTEXPRESS
+      # Internet Express.
       INTEXPRESS = 'INTEXPRESS'.freeze,
 
-      # TODO: Write general description for OVERSE_EXP
+      # Overseas Express.
       OVERSE_EXP = 'OVERSE_EXP'.freeze,
 
-      # TODO: Write general description for ONECLICK
+      # One click delivery services.
       ONECLICK = 'ONECLICK'.freeze,
 
-      # TODO: Write general description for ROADRUNNER_FREIGHT
+      # Roadbull Logistics.
       ROADRUNNER_FREIGHT = 'ROADRUNNER_FREIGHT'.freeze,
 
-      # TODO: Write general description for GLS_CROTIA
+      # GLS Croatia.
       GLS_CROTIA = 'GLS_CROTIA'.freeze,
 
-      # TODO: Write general description for MRW_FTP
+      # MRW courier.
       MRW_FTP = 'MRW_FTP'.freeze,
 
-      # TODO: Write general description for BLUEX
+      # Blue Express.
       BLUEX = 'BLUEX'.freeze,
 
-      # TODO: Write general description for DYLT
+      # Daylight Transport.
       DYLT = 'DYLT'.freeze,
 
-      # TODO: Write general description for DPD_IR
+      # DPD Ireland.
       DPD_IR = 'DPD_IR'.freeze,
 
-      # TODO: Write general description for SIN_GLBL
+      # Sin Global Express.
       SIN_GLBL = 'SIN_GLBL'.freeze,
 
-      # TODO: Write general description for TUFFNELLS_REFERENCE
+      # Tuffnells Parcels Express- Reference.
       TUFFNELLS_REFERENCE = 'TUFFNELLS_REFERENCE'.freeze,
 
-      # TODO: Write general description for CJPACKET
+      # CJ Packet.
       CJPACKET = 'CJPACKET'.freeze,
 
-      # TODO: Write general description for MILKMAN
+      # Milkman courier.
       MILKMAN = 'MILKMAN'.freeze,
 
-      # TODO: Write general description for ASIGNA
+      # ASIGNA courier.
       ASIGNA = 'ASIGNA'.freeze,
 
-      # TODO: Write general description for ONEWORLDEXPRESS
+      # One World Express.
       ONEWORLDEXPRESS = 'ONEWORLDEXPRESS'.freeze,
 
-      # TODO: Write general description for ROYAL_MAIL
+      # RoyalShipments.
       ROYAL_MAIL = 'ROYAL_MAIL'.freeze,
 
-      # TODO: Write general description for VIA_EXPRESS
+      # Viaxpress.
       VIA_EXPRESS = 'VIA_EXPRESS'.freeze,
 
-      # TODO: Write general description for TIGFREIGHT
+      # TIG Freight.
       TIGFREIGHT = 'TIGFREIGHT'.freeze,
 
-      # TODO: Write general description for ZTO_EXPRESS
+      # ZTO Express.
       ZTO_EXPRESS = 'ZTO_EXPRESS'.freeze,
 
-      # TODO: Write general description for TWO_GO
+      # 2GO Courier.
       TWO_GO = 'TWO_GO'.freeze,
 
-      # TODO: Write general description for IML
+      # IML courier.
       IML = 'IML'.freeze,
 
-      # TODO: Write general description for INTEL_VALLEY
+      # Intel-Valley Supply chain (ShenZhen) Co. Ltd.
       INTEL_VALLEY = 'INTEL_VALLEY'.freeze,
 
-      # TODO: Write general description for EFS
+      # EFS (E-commerce Fulfillment Service).
       EFS = 'EFS'.freeze,
 
-      # TODO: Write general description for UK_UK_MAIL
+      # UK mail (ukmail.com).
       UK_UK_MAIL = 'UK_UK_MAIL'.freeze,
 
-      # TODO: Write general description for RAM
+      # RAM courier.
       RAM = 'RAM'.freeze,
 
-      # TODO: Write general description for ALLIEDEXPRESS
+      # Allied Express.
       ALLIEDEXPRESS = 'ALLIEDEXPRESS'.freeze,
 
-      # TODO: Write general description for APC_OVERNIGHT
+      # APC overnight (apc-overnight.com).
       APC_OVERNIGHT = 'APC_OVERNIGHT'.freeze,
 
-      # TODO: Write general description for SHIPPIT
+      # Shippit.
       SHIPPIT = 'SHIPPIT'.freeze,
 
-      # TODO: Write general description for TFM
+      # TFM Xpress.
       TFM = 'TFM'.freeze,
 
-      # TODO: Write general description for M_XPRESS
+      # M Xpress Sdn Bhd.
       M_XPRESS = 'M_XPRESS'.freeze,
 
-      # TODO: Write general description for HDB_BOX
+      # Haidaibao (BOX).
       HDB_BOX = 'HDB_BOX'.freeze,
 
-      # TODO: Write general description for CLEVY_LINKS
+      # Clevy Links.
       CLEVY_LINKS = 'CLEVY_LINKS'.freeze,
 
-      # TODO: Write general description for IBEONE
+      # Beone Logistics.
       IBEONE = 'IBEONE'.freeze,
 
-      # TODO: Write general description for FIEGE_NL
+      # Fiege Netherlands.
       FIEGE_NL = 'FIEGE_NL'.freeze,
 
-      # TODO: Write general description for KWE_GLOBAL
+      # KWE Global.
       KWE_GLOBAL = 'KWE_GLOBAL'.freeze,
 
-      # TODO: Write general description for CTC_EXPRESS
+      # CTC Express.
       CTC_EXPRESS = 'CTC_EXPRESS'.freeze,
 
-      # TODO: Write general description for LAO_POST
-      LAO_POST = 'LAO_POST'.freeze,
-
-      # TODO: Write general description for AMAZON
+      # Amazon Shipping.
       AMAZON = 'AMAZON'.freeze,
 
-      # TODO: Write general description for MORE_LINK
+      # Morelink.
       MORE_LINK = 'MORE_LINK'.freeze,
 
-      # TODO: Write general description for JX
+      # JX courier.
       JX = 'JX'.freeze,
 
-      # TODO: Write general description for EASY_MAIL
+      # Easy Mail.
       EASY_MAIL = 'EASY_MAIL'.freeze,
 
-      # TODO: Write general description for ADUIEPYLE
+      # A Duie Pyle.
       ADUIEPYLE = 'ADUIEPYLE'.freeze,
 
-      # TODO: Write general description for GB_PANTHER
+      # Panther.
       GB_PANTHER = 'GB_PANTHER'.freeze,
 
-      # TODO: Write general description for EXPRESSSALE
+      # Expresssale.
       EXPRESSSALE = 'EXPRESSSALE'.freeze,
 
-      # TODO: Write general description for SG_DETRACK
+      # Detrack.
       SG_DETRACK = 'SG_DETRACK'.freeze,
 
-      # TODO: Write general description for TRUNKRS_WEBHOOK
+      # Trunkrs courier.
       TRUNKRS_WEBHOOK = 'TRUNKRS_WEBHOOK'.freeze,
 
-      # TODO: Write general description for MATDESPATCH
+      # Matdespatch.
       MATDESPATCH = 'MATDESPATCH'.freeze,
 
-      # TODO: Write general description for DICOM
+      # GLS Logistic Systems Canada Ltd./Dicom.
       DICOM = 'DICOM'.freeze,
 
-      # TODO: Write general description for MBW
+      # MBW Courier Inc..
       MBW = 'MBW'.freeze,
 
-      # TODO: Write general description for KHM_CAMBODIA_POST
+      # Cambodia Post.
       KHM_CAMBODIA_POST = 'KHM_CAMBODIA_POST'.freeze,
 
-      # TODO: Write general description for SINOTRANS
+      # Sinotrans.
       SINOTRANS = 'SINOTRANS'.freeze,
 
-      # TODO: Write general description for BRT_IT_PARCELID
+      # BRT Bartolini(Parcel ID).
       BRT_IT_PARCELID = 'BRT_IT_PARCELID'.freeze,
 
-      # TODO: Write general description for DHL_SUPPLY_CHAIN
+      # DHL Supply Chain APAC.
       DHL_SUPPLY_CHAIN = 'DHL_SUPPLY_CHAIN'.freeze,
 
-      # TODO: Write general description for DHL_PL
+      # DHL Poland.
       DHL_PL = 'DHL_PL'.freeze,
 
-      # TODO: Write general description for TOPYOU
+      # TopYou.
       TOPYOU = 'TOPYOU'.freeze,
 
-      # TODO: Write general description for PALEXPRESS
+      # PAL Express Limited.
       PALEXPRESS = 'PALEXPRESS'.freeze,
 
-      # TODO: Write general description for DHL_SG
+      # dhl Singapore.
       DHL_SG = 'DHL_SG'.freeze,
 
-      # TODO: Write general description for CN_WEDO
+      # WeDo Logistics.
       CN_WEDO = 'CN_WEDO'.freeze,
 
-      # TODO: Write general description for FULFILLME
+      # Fulfillme.
       FULFILLME = 'FULFILLME'.freeze,
 
-      # TODO: Write general description for DPD_DELISTRACK
+      # DPD delistrack.
       DPD_DELISTRACK = 'DPD_DELISTRACK'.freeze,
 
-      # TODO: Write general description for UPS_REFERENCE
+      # UPS Reference.
       UPS_REFERENCE = 'UPS_REFERENCE'.freeze,
 
-      # TODO: Write general description for CARIBOU
+      # Caribou.
       CARIBOU = 'CARIBOU'.freeze,
 
-      # TODO: Write general description for LOCUS_WEBHOOK
+      # Locus courier.
       LOCUS_WEBHOOK = 'LOCUS_WEBHOOK'.freeze,
 
-      # TODO: Write general description for DSV
+      # DSV courier.
       DSV = 'DSV'.freeze,
 
-      # TODO: Write general description for CN_GOFLY
-      CN_GOFLY = 'CN_GOFLY'.freeze,
-
-      # TODO: Write general description for P2P_TRC
+      # P2P TrakPak.
       P2P_TRC = 'P2P_TRC'.freeze,
 
-      # TODO: Write general description for DIRECTPARCELS
+      # Direct Parcels.
       DIRECTPARCELS = 'DIRECTPARCELS'.freeze,
 
-      # TODO: Write general description for NOVA_POSHTA_INT
+      # Nova Poshta (International).
       NOVA_POSHTA_INT = 'NOVA_POSHTA_INT'.freeze,
 
-      # TODO: Write general description for FEDEX_POLAND
+      # FedEx® Poland Domestic.
       FEDEX_POLAND = 'FEDEX_POLAND'.freeze,
 
-      # TODO: Write general description for CN_JCEX
+      # JCEX courier.
       CN_JCEX = 'CN_JCEX'.freeze,
 
-      # TODO: Write general description for FAR_INTERNATIONAL
+      # FAR international.
       FAR_INTERNATIONAL = 'FAR_INTERNATIONAL'.freeze,
 
-      # TODO: Write general description for IDEXPRESS
+      # IDEX courier.
       IDEXPRESS = 'IDEXPRESS'.freeze,
 
-      # TODO: Write general description for GANGBAO
+      # GANGBAO Supplychain.
       GANGBAO = 'GANGBAO'.freeze,
 
-      # TODO: Write general description for NEWAY
+      # Neway Transport.
       NEWAY = 'NEWAY'.freeze,
 
-      # TODO: Write general description for POSTNL_INT_3_S
+      # PostNL International.
       POSTNL_INT_3_S = 'POSTNL_INT_3_S'.freeze,
 
-      # TODO: Write general description for RPX_ID
+      # RPX Indonesia.
       RPX_ID = 'RPX_ID'.freeze,
 
-      # TODO: Write general description for DESIGNERTRANSPORT_WEBHOOK
+      # Designer Transport.
       DESIGNERTRANSPORT_WEBHOOK = 'DESIGNERTRANSPORT_WEBHOOK'.freeze,
 
-      # TODO: Write general description for GLS_SLOVEN
+      # GLS Slovenia.
       GLS_SLOVEN = 'GLS_SLOVEN'.freeze,
 
-      # TODO: Write general description for PARCELLED_IN
+      # Parcelled.in.
       PARCELLED_IN = 'PARCELLED_IN'.freeze,
 
-      # TODO: Write general description for GSI_EXPRESS
+      # GSI EXPRESS.
       GSI_EXPRESS = 'GSI_EXPRESS'.freeze,
 
-      # TODO: Write general description for CON_WAY
+      # Con-way Freight.
       CON_WAY = 'CON_WAY'.freeze,
 
-      # TODO: Write general description for BROUWER_TRANSPORT
+      # Brouwer Transport en Logistiek.
       BROUWER_TRANSPORT = 'BROUWER_TRANSPORT'.freeze,
 
-      # TODO: Write general description for CPEX
+      # Captain Express International.
       CPEX = 'CPEX'.freeze,
 
-      # TODO: Write general description for ISRAEL_POST
+      # Israel Post.
       ISRAEL_POST = 'ISRAEL_POST'.freeze,
 
-      # TODO: Write general description for DTDC_IN
+      # DTDC India.
       DTDC_IN = 'DTDC_IN'.freeze,
 
-      # TODO: Write general description for PTT_POST
+      # PTT Post.
       PTT_POST = 'PTT_POST'.freeze,
 
-      # TODO: Write general description for XDE_WEBHOOK
+      # Ximex Delivery Express.
       XDE_WEBHOOK = 'XDE_WEBHOOK'.freeze,
 
-      # TODO: Write general description for TOLOS
+      # Tolos courier.
       TOLOS = 'TOLOS'.freeze,
 
-      # TODO: Write general description for GIAO_HANG
+      # Giao hàng nhanh.
       GIAO_HANG = 'GIAO_HANG'.freeze,
 
-      # TODO: Write general description for GEODIS_ESPACE
+      # Geodis E-space.
       GEODIS_ESPACE = 'GEODIS_ESPACE'.freeze,
 
-      # TODO: Write general description for MAGYAR_HU
+      # Magyar Post.
       MAGYAR_HU = 'MAGYAR_HU'.freeze,
 
-      # TODO: Write general description for DOORDASH_WEBHOOK
+      # DoorDash.
       DOORDASH_WEBHOOK = 'DOORDASH_WEBHOOK'.freeze,
 
-      # TODO: Write general description for TIKI_ID
+      # Tiki shipment.
       TIKI_ID = 'TIKI_ID'.freeze,
 
-      # TODO: Write general description for CJ_HK_INTERNATIONAL
+      # CJ Logistics International(Hong Kong).
       CJ_HK_INTERNATIONAL = 'CJ_HK_INTERNATIONAL'.freeze,
 
-      # TODO: Write general description for STAR_TRACK_EXPRESS
+      # Star Track Express.
       STAR_TRACK_EXPRESS = 'STAR_TRACK_EXPRESS'.freeze,
 
-      # TODO: Write general description for HELTHJEM
+      # Helthjem.
       HELTHJEM = 'HELTHJEM'.freeze,
 
-      # TODO: Write general description for SFB2C
+      # SF International.
       SFB2C = 'SFB2C'.freeze,
 
-      # TODO: Write general description for FREIGHTQUOTE
+      # Freightquote by C.H. Robinson.
       FREIGHTQUOTE = 'FREIGHTQUOTE'.freeze,
 
-      # TODO: Write general description for LANDMARK_GLOBAL_REFERENCE
+      # Landmark Global Reference.
       LANDMARK_GLOBAL_REFERENCE = 'LANDMARK_GLOBAL_REFERENCE'.freeze,
 
-      # TODO: Write general description for PARCEL2GO
+      # Parcel2Go.
       PARCEL2GO = 'PARCEL2GO'.freeze,
 
-      # TODO: Write general description for DELNEXT
+      # Delnext.
       DELNEXT = 'DELNEXT'.freeze,
 
-      # TODO: Write general description for RCL
+      # Red Carpet Logistics.
       RCL = 'RCL'.freeze,
 
-      # TODO: Write general description for CGS_EXPRESS
+      # CGS Express.
       CGS_EXPRESS = 'CGS_EXPRESS'.freeze,
 
-      # TODO: Write general description for HK_POST
+      # Hongkong Post (www.hongkongpost.hk).
       HK_POST = 'HK_POST'.freeze,
 
-      # TODO: Write general description for SAP_EXPRESS
+      # SAP EXPRESS.
       SAP_EXPRESS = 'SAP_EXPRESS'.freeze,
 
-      # TODO: Write general description for PARCELPOST_SG
+      # Parcel Post Singapore.
       PARCELPOST_SG = 'PARCELPOST_SG'.freeze,
 
-      # TODO: Write general description for HERMES
+      # HermesWorld UK.
       HERMES = 'HERMES'.freeze,
 
-      # TODO: Write general description for IND_SAFEEXPRESS
+      # Safexpress.
       IND_SAFEEXPRESS = 'IND_SAFEEXPRESS'.freeze,
 
-      # TODO: Write general description for TOPHATTEREXPRESS
+      # Tophatter Express.
       TOPHATTEREXPRESS = 'TOPHATTEREXPRESS'.freeze,
 
-      # TODO: Write general description for MGLOBAL
+      # PT MGLOBAL LOGISTICS INDONESIA.
       MGLOBAL = 'MGLOBAL'.freeze,
 
-      # TODO: Write general description for AVERITT
+      # Averitt Express.
       AVERITT = 'AVERITT'.freeze,
 
-      # TODO: Write general description for LEADER
+      # leader.
       LEADER = 'LEADER'.freeze,
 
-      # TODO: Write general description for _2EBOX
+      # 2ebox courier.
       _2EBOX = '_2EBOX'.freeze,
 
-      # TODO: Write general description for SG_SPEEDPOST
+      # Singapore Speedpost.
       SG_SPEEDPOST = 'SG_SPEEDPOST'.freeze,
 
-      # TODO: Write general description for DBSCHENKER_SE
+      # DB Schenker (www.dbschenker.com).
       DBSCHENKER_SE = 'DBSCHENKER_SE'.freeze,
 
-      # TODO: Write general description for ISR_POST_DOMESTIC
+      # Israel Post Domestic.
       ISR_POST_DOMESTIC = 'ISR_POST_DOMESTIC'.freeze,
 
-      # TODO: Write general description for BESTWAYPARCEL
+      # Best Way Parcel.
       BESTWAYPARCEL = 'BESTWAYPARCEL'.freeze,
 
-      # TODO: Write general description for ASENDIA_DE
+      # asendia_de.
       ASENDIA_DE = 'ASENDIA_DE'.freeze,
 
-      # TODO: Write general description for NIGHTLINE_UK
+      # nightline_uk.
       NIGHTLINE_UK = 'NIGHTLINE_UK'.freeze,
 
-      # TODO: Write general description for TAQBIN_SG
+      # taqbin_sg.
       TAQBIN_SG = 'TAQBIN_SG'.freeze,
 
-      # TODO: Write general description for TCK_EXPRESS
+      # TCK Express.
       TCK_EXPRESS = 'TCK_EXPRESS'.freeze,
 
-      # TODO: Write general description for ENDEAVOUR_DELIVERY
+      # Endeavour Delivery.
       ENDEAVOUR_DELIVERY = 'ENDEAVOUR_DELIVERY'.freeze,
 
-      # TODO: Write general description for NANJINGWOYUAN
+      # Nanjing Woyuan.
       NANJINGWOYUAN = 'NANJINGWOYUAN'.freeze,
 
-      # TODO: Write general description for HEPPNER_FR
+      # Heppner France.
       HEPPNER_FR = 'HEPPNER_FR'.freeze,
 
-      # TODO: Write general description for EMPS_CN
+      # EMPS Express.
       EMPS_CN = 'EMPS_CN'.freeze,
 
-      # TODO: Write general description for FONSEN
+      # Fonsen Logistics.
       FONSEN = 'FONSEN'.freeze,
 
-      # TODO: Write general description for PICKRR
+      # Pickrr.
       PICKRR = 'PICKRR'.freeze,
 
-      # TODO: Write general description for APC_OVERNIGHT_CONNUM
+      # APC Overnight Consignment.
       APC_OVERNIGHT_CONNUM = 'APC_OVERNIGHT_CONNUM'.freeze,
 
-      # TODO: Write general description for STAR_TRACK_NEXT_FLIGHT
+      # Star Track Next Flight.
       STAR_TRACK_NEXT_FLIGHT = 'STAR_TRACK_NEXT_FLIGHT'.freeze,
 
-      # TODO: Write general description for DAJIN
+      # Shanghai Aqrum Chemical Logistics Co.Ltd.
       DAJIN = 'DAJIN'.freeze,
 
-      # TODO: Write general description for UPS_FREIGHT
+      # UPS Freight.
       UPS_FREIGHT = 'UPS_FREIGHT'.freeze,
 
-      # TODO: Write general description for POSTA_PLUS
+      # Posta Plus.
       POSTA_PLUS = 'POSTA_PLUS'.freeze,
 
-      # TODO: Write general description for CEVA
+      # CEVA LOGISTICS.
       CEVA = 'CEVA'.freeze,
 
-      # TODO: Write general description for ANSERX
+      # ANSERX courier.
       ANSERX = 'ANSERX'.freeze,
 
-      # TODO: Write general description for JS_EXPRESS
+      # JS EXPRESS.
       JS_EXPRESS = 'JS_EXPRESS'.freeze,
 
-      # TODO: Write general description for PADTF
+      # padtf.com.
       PADTF = 'PADTF'.freeze,
 
-      # TODO: Write general description for UPS_MAIL_INNOVATIONS
+      # UPS Mail Innovations.
       UPS_MAIL_INNOVATIONS = 'UPS_MAIL_INNOVATIONS'.freeze,
 
-      # TODO: Write general description for EZSHIP
-      EZSHIP = 'EZSHIP'.freeze,
-
-      # TODO: Write general description for SYPOST
+      # Sunyou Post.
       SYPOST = 'SYPOST'.freeze,
 
-      # TODO: Write general description for AMAZON_SHIP_MCF
+      # Amazon Shipping + Amazon MCF.
       AMAZON_SHIP_MCF = 'AMAZON_SHIP_MCF'.freeze,
 
-      # TODO: Write general description for YUSEN
+      # Yusen Logistics.
       YUSEN = 'YUSEN'.freeze,
 
-      # TODO: Write general description for BRING
+      # Bring.
       BRING = 'BRING'.freeze,
 
-      # TODO: Write general description for SDA_IT
+      # SDA Italy.
       SDA_IT = 'SDA_IT'.freeze,
 
-      # TODO: Write general description for GBA
+      # GBA Services Ltd.
       GBA = 'GBA'.freeze,
 
-      # TODO: Write general description for NEWEGGEXPRESS
+      # Newegg Express.
       NEWEGGEXPRESS = 'NEWEGGEXPRESS'.freeze,
 
-      # TODO: Write general description for SPEEDCOURIERS_GR
+      # Speed Couriers.
       SPEEDCOURIERS_GR = 'SPEEDCOURIERS_GR'.freeze,
 
-      # TODO: Write general description for FORRUN
+      # forrun Pvt Ltd (Arpatech Venture).
       FORRUN = 'FORRUN'.freeze,
 
-      # TODO: Write general description for PICKUP
+      # Pickupp.
       PICKUP = 'PICKUP'.freeze,
 
-      # TODO: Write general description for ECMS
+      # ECMS International Logistics Co..
       ECMS = 'ECMS'.freeze,
 
-      # TODO: Write general description for INTELIPOST
+      # Intelipost (TMS for LATAM).
       INTELIPOST = 'INTELIPOST'.freeze,
 
-      # TODO: Write general description for FLASHEXPRESS
+      # Flash Express.
       FLASHEXPRESS = 'FLASHEXPRESS'.freeze,
 
-      # TODO: Write general description for CN_STO
+      # STO Express.
       CN_STO = 'CN_STO'.freeze,
 
-      # TODO: Write general description for SEKO_SFTP
+      # SEKO Worldwide.
       SEKO_SFTP = 'SEKO_SFTP'.freeze,
 
-      # TODO: Write general description for HOME_DELIVERY_SOLUTIONS
+      # Home Delivery Solutions Ltd.
       HOME_DELIVERY_SOLUTIONS = 'HOME_DELIVERY_SOLUTIONS'.freeze,
 
-      # TODO: Write general description for DPD_HGRY
+      # DPD Hungary.
       DPD_HGRY = 'DPD_HGRY'.freeze,
 
-      # TODO: Write general description for KERRYTTC_VN
+      # Kerry Express (Vietnam) Co Ltd.
       KERRYTTC_VN = 'KERRYTTC_VN'.freeze,
 
-      # TODO: Write general description for JOYING_BOX
+      # Joying Box.
       JOYING_BOX = 'JOYING_BOX'.freeze,
 
-      # TODO: Write general description for TOTAL_EXPRESS
+      # Total Express.
       TOTAL_EXPRESS = 'TOTAL_EXPRESS'.freeze,
 
-      # TODO: Write general description for ZJS_EXPRESS
+      # ZJS International.
       ZJS_EXPRESS = 'ZJS_EXPRESS'.freeze,
 
-      # TODO: Write general description for STARKEN
+      # STARKEN couriers.
       STARKEN = 'STARKEN'.freeze,
 
-      # TODO: Write general description for DEMANDSHIP
+      # DemandShip.
       DEMANDSHIP = 'DEMANDSHIP'.freeze,
 
-      # TODO: Write general description for CN_DPEX
+      # DPEX.
       CN_DPEX = 'CN_DPEX'.freeze,
 
-      # TODO: Write general description for AUPOST_CN
+      # AuPost China.
       AUPOST_CN = 'AUPOST_CN'.freeze,
 
-      # TODO: Write general description for LOGISTERS
+      # Logisters.
       LOGISTERS = 'LOGISTERS'.freeze,
 
-      # TODO: Write general description for GOGLOBALPOST
+      # Global Post.
       GOGLOBALPOST = 'GOGLOBALPOST'.freeze,
 
-      # TODO: Write general description for GLS_CZ
+      # GLS Czech Republic.
       GLS_CZ = 'GLS_CZ'.freeze,
 
-      # TODO: Write general description for PAACK_WEBHOOK
+      # Paack courier.
       PAACK_WEBHOOK = 'PAACK_WEBHOOK'.freeze,
 
-      # TODO: Write general description for GRAB_WEBHOOK
+      # Grab courier.
       GRAB_WEBHOOK = 'GRAB_WEBHOOK'.freeze,
 
-      # TODO: Write general description for PARCELPOINT
+      # Parcelpoint.
       PARCELPOINT = 'PARCELPOINT'.freeze,
 
-      # TODO: Write general description for ICUMULUS
+      # iCumulus.
       ICUMULUS = 'ICUMULUS'.freeze,
 
-      # TODO: Write general description for DAIGLOBALTRACK
+      # DAI Post.
       DAIGLOBALTRACK = 'DAIGLOBALTRACK'.freeze,
 
-      # TODO: Write general description for GLOBAL_IPARCEL
+      # i-parcel.
       GLOBAL_IPARCEL = 'GLOBAL_IPARCEL'.freeze,
 
-      # TODO: Write general description for YURTICI_KARGO
+      # Yurtici Kargo.
       YURTICI_KARGO = 'YURTICI_KARGO'.freeze,
 
-      # TODO: Write general description for CN_PAYPAL_PACKAGE
+      # PayPal Package.
       CN_PAYPAL_PACKAGE = 'CN_PAYPAL_PACKAGE'.freeze,
 
-      # TODO: Write general description for PARCEL_2_POST
+      # Parcel To Post.
       PARCEL_2_POST = 'PARCEL_2_POST'.freeze,
 
-      # TODO: Write general description for GLS_IT
+      # GLS Italy.
       GLS_IT = 'GLS_IT'.freeze,
 
-      # TODO: Write general description for PIL_LOGISTICS
+      # PIL Logistics (China) Co..
       PIL_LOGISTICS = 'PIL_LOGISTICS'.freeze,
 
-      # TODO: Write general description for HEPPNER
+      # Heppner Internationale Spedition GmbH & Co..
       HEPPNER = 'HEPPNER'.freeze,
 
-      # TODO: Write general description for GENERAL_OVERNIGHT
+      # Go!Express and logistics.
       GENERAL_OVERNIGHT = 'GENERAL_OVERNIGHT'.freeze,
 
-      # TODO: Write general description for HAPPY2POINT
+      # Happy 2ThePoint.
       HAPPY2POINT = 'HAPPY2POINT'.freeze,
 
-      # TODO: Write general description for CHITCHATS
+      # Chit Chats.
       CHITCHATS = 'CHITCHATS'.freeze,
 
-      # TODO: Write general description for SMOOTH
+      # Smooth Couriers.
       SMOOTH = 'SMOOTH'.freeze,
 
-      # TODO: Write general description for CLE_LOGISTICS
+      # CL E-Logistics Solutions Limited.
       CLE_LOGISTICS = 'CLE_LOGISTICS'.freeze,
 
-      # TODO: Write general description for FIEGE
+      # Fiege Logistics.
       FIEGE = 'FIEGE'.freeze,
 
-      # TODO: Write general description for MX_CARGO
+      # M&X cargo.
       MX_CARGO = 'MX_CARGO'.freeze,
 
-      # TODO: Write general description for ZIINGFINALMILE
+      # Ziing Final Mile Inc.
       ZIINGFINALMILE = 'ZIINGFINALMILE'.freeze,
 
-      # TODO: Write general description for DAYTON_FREIGHT
+      # Dayton Freight.
       DAYTON_FREIGHT = 'DAYTON_FREIGHT'.freeze,
 
-      # TODO: Write general description for TCS
+      # TCS courier.
       TCS = 'TCS'.freeze,
 
-      # TODO: Write general description for AEX
+      # AEX Group.
       AEX = 'AEX'.freeze,
 
-      # TODO: Write general description for HERMES_DE
+      # Hermes Germany.
       HERMES_DE = 'HERMES_DE'.freeze,
 
-      # TODO: Write general description for ROUTIFIC_WEBHOOK
+      # Routific.
       ROUTIFIC_WEBHOOK = 'ROUTIFIC_WEBHOOK'.freeze,
 
-      # TODO: Write general description for GLOBAVEND
+      # Globavend.
       GLOBAVEND = 'GLOBAVEND'.freeze,
 
-      # TODO: Write general description for CJ_LOGISTICS
+      # CJ Logistics International.
       CJ_LOGISTICS = 'CJ_LOGISTICS'.freeze,
 
-      # TODO: Write general description for PALLET_NETWORK
+      # The Pallet Network.
       PALLET_NETWORK = 'PALLET_NETWORK'.freeze,
 
-      # TODO: Write general description for RAF_PH
+      # RAF Philippines.
       RAF_PH = 'RAF_PH'.freeze,
 
-      # TODO: Write general description for UK_XDP
+      # XDP Express.
       UK_XDP = 'UK_XDP'.freeze,
 
-      # TODO: Write general description for PAPER_EXPRESS
+      # Paper Express.
       PAPER_EXPRESS = 'PAPER_EXPRESS'.freeze,
 
-      # TODO: Write general description for LA_POSTE_SUIVI
+      # La Poste.
       LA_POSTE_SUIVI = 'LA_POSTE_SUIVI'.freeze,
 
-      # TODO: Write general description for PAQUETEXPRESS
+      # Paquetexpress.
       PAQUETEXPRESS = 'PAQUETEXPRESS'.freeze,
 
-      # TODO: Write general description for LIEFERY
+      # liefery.
       LIEFERY = 'LIEFERY'.freeze,
 
-      # TODO: Write general description for STRECK_TRANSPORT
+      # Streck Transport.
       STRECK_TRANSPORT = 'STRECK_TRANSPORT'.freeze,
 
-      # TODO: Write general description for PONY_EXPRESS
+      # Pony express.
       PONY_EXPRESS = 'PONY_EXPRESS'.freeze,
 
-      # TODO: Write general description for ALWAYS_EXPRESS
+      # Always Express.
       ALWAYS_EXPRESS = 'ALWAYS_EXPRESS'.freeze,
 
-      # TODO: Write general description for GBS_BROKER
+      # GBS-Broker.
       GBS_BROKER = 'GBS_BROKER'.freeze,
 
-      # TODO: Write general description for CITYLINK_MY
+      # City-Link Express.
       CITYLINK_MY = 'CITYLINK_MY'.freeze,
 
-      # TODO: Write general description for ALLJOY
+      # ALLJOY SUPPLY CHAIN.
       ALLJOY = 'ALLJOY'.freeze,
 
-      # TODO: Write general description for YODEL
+      # yodel.
       YODEL = 'YODEL'.freeze,
 
-      # TODO: Write general description for YODEL_DIR
+      # Yodel Direct.
       YODEL_DIR = 'YODEL_DIR'.freeze,
 
-      # TODO: Write general description for STONE3PL
+      # STONE3PL.
       STONE3PL = 'STONE3PL'.freeze,
 
-      # TODO: Write general description for PARCELPAL_WEBHOOK
+      # ParcelPal.
       PARCELPAL_WEBHOOK = 'PARCELPAL_WEBHOOK'.freeze,
 
-      # TODO: Write general description for DHL_ECOMERCE_ASA
+      # DHL eCommerce Asia (API).
       DHL_ECOMERCE_ASA = 'DHL_ECOMERCE_ASA'.freeze,
 
-      # TODO: Write general description for SIMPLYPOST
+      # J&T Express Singapore.
       SIMPLYPOST = 'SIMPLYPOST'.freeze,
 
-      # TODO: Write general description for KY_EXPRESS
+      # Kua Yue Express.
       KY_EXPRESS = 'KY_EXPRESS'.freeze,
 
-      # TODO: Write general description for SHENZHEN
+      # shenzhen 1st International Logistics(Group)Co.
       SHENZHEN = 'SHENZHEN'.freeze,
 
-      # TODO: Write general description for US_LASERSHIP
+      # LaserShip.
       US_LASERSHIP = 'US_LASERSHIP'.freeze,
 
-      # TODO: Write general description for UC_EXPRE
+      # ucexpress.
       UC_EXPRE = 'UC_EXPRE'.freeze,
 
-      # TODO: Write general description for DIDADI
+      # DIDADI Logistics tech.
       DIDADI = 'DIDADI'.freeze,
 
-      # TODO: Write general description for CJ_KR
+      # CJ Korea Express.
       CJ_KR = 'CJ_KR'.freeze,
 
-      # TODO: Write general description for DBSCHENKER_B2B
+      # DB Schenker B2B.
       DBSCHENKER_B2B = 'DBSCHENKER_B2B'.freeze,
 
-      # TODO: Write general description for MXE
+      # MXE Express.
       MXE = 'MXE'.freeze,
 
-      # TODO: Write general description for CAE_DELIVERS
+      # CAE Delivers.
       CAE_DELIVERS = 'CAE_DELIVERS'.freeze,
 
-      # TODO: Write general description for PFCEXPRESS
+      # PFC Express.
       PFCEXPRESS = 'PFCEXPRESS'.freeze,
 
-      # TODO: Write general description for WHISTL
+      # Whistl.
       WHISTL = 'WHISTL'.freeze,
 
-      # TODO: Write general description for WEPOST
+      # WePost Sdn Bhd.
       WEPOST = 'WEPOST'.freeze,
 
-      # TODO: Write general description for DHL_PARCEL_ES
+      # DHL parcel Spain(www.dhl.com).
       DHL_PARCEL_ES = 'DHL_PARCEL_ES'.freeze,
 
-      # TODO: Write general description for DDEXPRESS
+      # DD Express Courier.
       DDEXPRESS = 'DDEXPRESS'.freeze,
 
-      # TODO: Write general description for ARAMEX_AU
+      # Aramex Australia (formerly Fastway AU).
       ARAMEX_AU = 'ARAMEX_AU'.freeze,
 
-      # TODO: Write general description for BNEED
+      # Bneed courier.
       BNEED = 'BNEED'.freeze,
 
-      # TODO: Write general description for HK_TGX
+      # Kerry Express Hong Kong.
       HK_TGX = 'HK_TGX'.freeze,
 
-      # TODO: Write general description for LATVIJAS_PASTS
+      # Latvijas Pasts.
       LATVIJAS_PASTS = 'LATVIJAS_PASTS'.freeze,
 
-      # TODO: Write general description for VIAEUROPE
+      # ViaEurope.
       VIAEUROPE = 'VIAEUROPE'.freeze,
 
-      # TODO: Write general description for CORREO_UY
+      # Correo Uruguayo.
       CORREO_UY = 'CORREO_UY'.freeze,
 
-      # TODO: Write general description for CHRONOPOST_FR
+      # Chronopost france (www.chronopost.fr).
       CHRONOPOST_FR = 'CHRONOPOST_FR'.freeze,
 
-      # TODO: Write general description for J_NET
+      # J-Net.
       J_NET = 'J_NET'.freeze,
 
-      # TODO: Write general description for _6LS
+      # 6ls.com.
       _6LS = '_6LS'.freeze,
 
-      # TODO: Write general description for BLR_BELPOST
+      # Belpost.
       BLR_BELPOST = 'BLR_BELPOST'.freeze,
 
-      # TODO: Write general description for BIRDSYSTEM
+      # BirdSystem.
       BIRDSYSTEM = 'BIRDSYSTEM'.freeze,
 
-      # TODO: Write general description for DOBROPOST
+      # DobroPost.
       DOBROPOST = 'DOBROPOST'.freeze,
 
-      # TODO: Write general description for WAHANA_ID
+      # Wahana express (www.wahana.com).
       WAHANA_ID = 'WAHANA_ID'.freeze,
 
-      # TODO: Write general description for WEASHIP
+      # Weaship.
       WEASHIP = 'WEASHIP'.freeze,
 
-      # TODO: Write general description for SONICTL
+      # Sonic Transportation & Logistics.
       SONICTL = 'SONICTL'.freeze,
 
-      # TODO: Write general description for KWT
+      # Shenzhen Jinghuada Logistics Co..
       KWT = 'KWT'.freeze,
 
-      # TODO: Write general description for AFLLOG_FTP
+      # AFL LOGISTICS.
       AFLLOG_FTP = 'AFLLOG_FTP'.freeze,
 
-      # TODO: Write general description for SKYNET_WORLDWIDE
+      # SkyNet Worldwide Express.
       SKYNET_WORLDWIDE = 'SKYNET_WORLDWIDE'.freeze,
 
-      # TODO: Write general description for NOVA_POSHTA
+      # Nova Poshta (novaposhta.ua).
       NOVA_POSHTA = 'NOVA_POSHTA'.freeze,
 
-      # TODO: Write general description for SEINO
+      # Seino.
       SEINO = 'SEINO'.freeze,
 
-      # TODO: Write general description for SZENDEX
+      # SZENDEX.
       SZENDEX = 'SZENDEX'.freeze,
 
-      # TODO: Write general description for BPOST_INT
+      # Bpost international.
       BPOST_INT = 'BPOST_INT'.freeze,
 
-      # TODO: Write general description for DBSCHENKER_SV
+      # DB Schenker Sweden.
       DBSCHENKER_SV = 'DBSCHENKER_SV'.freeze,
 
-      # TODO: Write general description for AO_DEUTSCHLAND
+      # AO Deutschland.
       AO_DEUTSCHLAND = 'AO_DEUTSCHLAND'.freeze,
 
-      # TODO: Write general description for EU_FLEET_SOLUTIONS
+      # EU Fleet Solutions.
       EU_FLEET_SOLUTIONS = 'EU_FLEET_SOLUTIONS'.freeze,
 
-      # TODO: Write general description for PCFCORP
+      # PCF Final Mile.
       PCFCORP = 'PCFCORP'.freeze,
 
-      # TODO: Write general description for LINKBRIDGE
+      # Link Bridge(BeiJing)international logistics co..
       LINKBRIDGE = 'LINKBRIDGE'.freeze,
 
-      # TODO: Write general description for PRIMAMULTICIPTA
+      # PT Prima Multi Cipta.
       PRIMAMULTICIPTA = 'PRIMAMULTICIPTA'.freeze,
 
-      # TODO: Write general description for COUREX
+      # Urbanfox.
       COUREX = 'COUREX'.freeze,
 
-      # TODO: Write general description for ZAJIL_EXPRESS
+      # Zajil Express Company.
       ZAJIL_EXPRESS = 'ZAJIL_EXPRESS'.freeze,
 
-      # TODO: Write general description for COLLECTCO
+      # CollectCo.
       COLLECTCO = 'COLLECTCO'.freeze,
 
-      # TODO: Write general description for JTEXPRESS
+      # J&T EXPRESS MALAYSIA.
       JTEXPRESS = 'JTEXPRESS'.freeze,
 
-      # TODO: Write general description for FEDEX_UK
+      # FedEx® UK.
       FEDEX_UK = 'FEDEX_UK'.freeze,
 
-      # TODO: Write general description for USHIP
+      # uShip courier.
       USHIP = 'USHIP'.freeze,
 
-      # TODO: Write general description for PIXSELL
+      # PIXSELL LOGISTICS.
       PIXSELL = 'PIXSELL'.freeze,
 
-      # TODO: Write general description for SHIPTOR
+      # Shiptor.
       SHIPTOR = 'SHIPTOR'.freeze,
 
-      # TODO: Write general description for CDEK
+      # CDEK courier.
       CDEK = 'CDEK'.freeze,
 
-      # TODO: Write general description for VNM_VIETTELPOST
+      # ViettelPost.
       VNM_VIETTELPOST = 'VNM_VIETTELPOST'.freeze,
 
-      # TODO: Write general description for CJ_CENTURY
+      # CJ Century.
       CJ_CENTURY = 'CJ_CENTURY'.freeze,
 
-      # TODO: Write general description for GSO
+      # GSO(GLS-USA).
       GSO = 'GSO'.freeze,
 
-      # TODO: Write general description for VIWO
+      # VIWO IoT.
       VIWO = 'VIWO'.freeze,
 
-      # TODO: Write general description for SKYBOX
+      # SKYBOX.
       SKYBOX = 'SKYBOX'.freeze,
 
-      # TODO: Write general description for KERRYTJ
+      # Kerry TJ Logistics.
       KERRYTJ = 'KERRYTJ'.freeze,
 
-      # TODO: Write general description for NTLOGISTICS_VN
+      # Nhat Tin Logistics.
       NTLOGISTICS_VN = 'NTLOGISTICS_VN'.freeze,
 
-      # TODO: Write general description for SDH_SCM
+      # lightning monkey.
       SDH_SCM = 'SDH_SCM'.freeze,
 
-      # TODO: Write general description for ZINC
+      # Zinc courier.
       ZINC = 'ZINC'.freeze,
 
-      # TODO: Write general description for DPE_SOUTH_AFRC
+      # DPE South Africa.
       DPE_SOUTH_AFRC = 'DPE_SOUTH_AFRC'.freeze,
 
-      # TODO: Write general description for CESKA_CZ
+      # Czech Post.
       CESKA_CZ = 'CESKA_CZ'.freeze,
 
-      # TODO: Write general description for ACS_GR
+      # ACS Courier.
       ACS_GR = 'ACS_GR'.freeze,
 
-      # TODO: Write general description for DEALERSEND
+      # DealerSend.
       DEALERSEND = 'DEALERSEND'.freeze,
 
-      # TODO: Write general description for JOCOM
+      # Jocom.
       JOCOM = 'JOCOM'.freeze,
 
-      # TODO: Write general description for CSE
+      # CSE courier.
       CSE = 'CSE'.freeze,
 
-      # TODO: Write general description for TFORCE_FINALMILE
+      # TForce Final Mile.
       TFORCE_FINALMILE = 'TFORCE_FINALMILE'.freeze,
 
-      # TODO: Write general description for SHIP_GATE
+      # ShipGate.
       SHIP_GATE = 'SHIP_GATE'.freeze,
 
-      # TODO: Write general description for SHIPTER
+      # SHIPTER.
       SHIPTER = 'SHIPTER'.freeze,
 
-      # TODO: Write general description for NATIONAL_SAMEDAY
+      # National Sameday.
       NATIONAL_SAMEDAY = 'NATIONAL_SAMEDAY'.freeze,
 
-      # TODO: Write general description for YUNEXPRESS
+      # YunExpress.
       YUNEXPRESS = 'YUNEXPRESS'.freeze,
 
-      # TODO: Write general description for CAINIAO
+      # AliExpress Standard Shipping.
       CAINIAO = 'CAINIAO'.freeze,
 
-      # TODO: Write general description for DMS_MATRIX
+      # DMSMatrix.
       DMS_MATRIX = 'DMS_MATRIX'.freeze,
 
-      # TODO: Write general description for DIRECTLOG
+      # Directlog (www.directlog.com.br).
       DIRECTLOG = 'DIRECTLOG'.freeze,
 
-      # TODO: Write general description for ASENDIA_US
+      # Asendia USA.
       ASENDIA_US = 'ASENDIA_US'.freeze,
 
-      # TODO: Write general description for _3JMSLOGISTICS
+      # 3JMS Logistics.
       _3JMSLOGISTICS = '_3JMSLOGISTICS'.freeze,
 
-      # TODO: Write general description for LICCARDI_EXPRESS
+      # LICCARDI EXPRESS COURIER.
       LICCARDI_EXPRESS = 'LICCARDI_EXPRESS'.freeze,
 
-      # TODO: Write general description for SKY_POSTAL
+      # SkyPostal.
       SKY_POSTAL = 'SKY_POSTAL'.freeze,
 
-      # TODO: Write general description for CNWANGTONG
+      # cnwangtong.
       CNWANGTONG = 'CNWANGTONG'.freeze,
 
-      # TODO: Write general description for POSTNORD_LOGISTICS_DK
+      # ostnord denmark.
       POSTNORD_LOGISTICS_DK = 'POSTNORD_LOGISTICS_DK'.freeze,
 
-      # TODO: Write general description for LOGISTIKA
+      # Logistika.
       LOGISTIKA = 'LOGISTIKA'.freeze,
 
-      # TODO: Write general description for CELERITAS
+      # Celeritas Transporte.
       CELERITAS = 'CELERITAS'.freeze,
 
-      # TODO: Write general description for PRESSIODE
+      # Pressio.
       PRESSIODE = 'PRESSIODE'.freeze,
 
-      # TODO: Write general description for SHREE_MARUTI
+      # Shree Maruti Courier Services Pvt Ltd.
       SHREE_MARUTI = 'SHREE_MARUTI'.freeze,
 
-      # TODO: Write general description for LOGISTICSWORLDWIDE_HK
+      # Logistic Worldwide Express (LWE Honkong).
       LOGISTICSWORLDWIDE_HK = 'LOGISTICSWORLDWIDE_HK'.freeze,
 
-      # TODO: Write general description for EFEX
+      # eFEx (E-Commerce Fulfillment & Express).
       EFEX = 'EFEX'.freeze,
 
-      # TODO: Write general description for LOTTE
+      # Lotte Global Logistics.
       LOTTE = 'LOTTE'.freeze,
 
-      # TODO: Write general description for LONESTAR
+      # Lone Star Overnight.
       LONESTAR = 'LONESTAR'.freeze,
 
-      # TODO: Write general description for APRISAEXPRESS
+      # Aprisa Express.
       APRISAEXPRESS = 'APRISAEXPRESS'.freeze,
 
-      # TODO: Write general description for BEL_RS
+      # BEL North Russia.
       BEL_RS = 'BEL_RS'.freeze,
 
-      # TODO: Write general description for OSM_WORLDWIDE
+      # OSM Worldwide.
       OSM_WORLDWIDE = 'OSM_WORLDWIDE'.freeze,
 
-      # TODO: Write general description for WESTGATE_GL
+      # Westgate Global.
       WESTGATE_GL = 'WESTGATE_GL'.freeze,
 
-      # TODO: Write general description for FASTRACK
+      # Fasttrack.
       FASTRACK = 'FASTRACK'.freeze,
 
-      # TODO: Write general description for DTD_EXPR
+      # DTD Express.
       DTD_EXPR = 'DTD_EXPR'.freeze,
 
-      # TODO: Write general description for ALFATREX
+      # AlfaTrex.
       ALFATREX = 'ALFATREX'.freeze,
 
-      # TODO: Write general description for PROMEDDELIVERY
+      # ProMed Delivery.
       PROMEDDELIVERY = 'PROMEDDELIVERY'.freeze,
 
-      # TODO: Write general description for THABIT_LOGISTICS
+      # Thabit Logistics.
       THABIT_LOGISTICS = 'THABIT_LOGISTICS'.freeze,
 
-      # TODO: Write general description for HCT_LOGISTICS
+      # HCT LOGISTICS CO.LTD..
       HCT_LOGISTICS = 'HCT_LOGISTICS'.freeze,
 
-      # TODO: Write general description for CARRY_FLAP
+      # Carry-Flap Co..
       CARRY_FLAP = 'CARRY_FLAP'.freeze,
 
-      # TODO: Write general description for US_OLD_DOMINION
+      # Old Dominion Freight Line.
       US_OLD_DOMINION = 'US_OLD_DOMINION'.freeze,
 
-      # TODO: Write general description for ANICAM_BOX
+      # ANICAM BOX EXPRESS.
       ANICAM_BOX = 'ANICAM_BOX'.freeze,
 
-      # TODO: Write general description for WANBEXPRESS
+      # WanbExpress.
       WANBEXPRESS = 'WANBEXPRESS'.freeze,
 
-      # TODO: Write general description for AN_POST
+      # An Post.
       AN_POST = 'AN_POST'.freeze,
 
-      # TODO: Write general description for DPD_LOCAL
+      # DPD Local.
       DPD_LOCAL = 'DPD_LOCAL'.freeze,
 
-      # TODO: Write general description for STALLIONEXPRESS
+      # Stallion Express.
       STALLIONEXPRESS = 'STALLIONEXPRESS'.freeze,
 
-      # TODO: Write general description for RAIDEREX
+      # RaidereX.
       RAIDEREX = 'RAIDEREX'.freeze,
 
-      # TODO: Write general description for SHOPFANS
+      # ShopfansRU LLC.
       SHOPFANS = 'SHOPFANS'.freeze,
 
-      # TODO: Write general description for KYUNGDONG_PARCEL
+      # Kyungdong Parcel.
       KYUNGDONG_PARCEL = 'KYUNGDONG_PARCEL'.freeze,
 
-      # TODO: Write general description for CHAMPION_LOGISTICS
+      # Champion Logistics.
       CHAMPION_LOGISTICS = 'CHAMPION_LOGISTICS'.freeze,
 
-      # TODO: Write general description for PICKUPP_SGP
+      # PICK UPP (Singapore).
       PICKUPP_SGP = 'PICKUPP_SGP'.freeze,
 
-      # TODO: Write general description for MORNING_EXPRESS
+      # Morning Express.
       MORNING_EXPRESS = 'MORNING_EXPRESS'.freeze,
 
-      # TODO: Write general description for NACEX
+      # NACEX.
       NACEX = 'NACEX'.freeze,
 
-      # TODO: Write general description for THENILE_WEBHOOK
+      # SortHub courier.
       THENILE_WEBHOOK = 'THENILE_WEBHOOK'.freeze,
 
-      # TODO: Write general description for HOLISOL
+      # Holisol.
       HOLISOL = 'HOLISOL'.freeze,
 
-      # TODO: Write general description for LBCEXPRESS_FTP
+      # LBC EXPRESS INC..
       LBCEXPRESS_FTP = 'LBCEXPRESS_FTP'.freeze,
 
-      # TODO: Write general description for KURASI
+      # KURASI.
       KURASI = 'KURASI'.freeze,
 
-      # TODO: Write general description for USF_REDDAWAY
+      # USF Reddaway.
       USF_REDDAWAY = 'USF_REDDAWAY'.freeze,
 
-      # TODO: Write general description for APG
+      # APG eCommerce Solutions.
       APG = 'APG'.freeze,
 
-      # TODO: Write general description for CN_BOXC
+      # BoxC courier.
       CN_BOXC = 'CN_BOXC'.freeze,
 
-      # TODO: Write general description for ECOSCOOTING
+      # ECOSCOOTING.
       ECOSCOOTING = 'ECOSCOOTING'.freeze,
 
-      # TODO: Write general description for MAINWAY
+      # Mainway.
       MAINWAY = 'MAINWAY'.freeze,
 
-      # TODO: Write general description for PAPERFLY
+      # Paperfly Private Limited.
       PAPERFLY = 'PAPERFLY'.freeze,
 
-      # TODO: Write general description for HOUNDEXPRESS
+      # Hound Express.
       HOUNDEXPRESS = 'HOUNDEXPRESS'.freeze,
 
-      # TODO: Write general description for BOX_BERRY
+      # Boxberry courier.
       BOX_BERRY = 'BOX_BERRY'.freeze,
 
-      # TODO: Write general description for EP_BOX
+      # EP-Box courier.
       EP_BOX = 'EP_BOX'.freeze,
 
-      # TODO: Write general description for PLUS_LOG_UK
+      # Plus UK Logistics.
       PLUS_LOG_UK = 'PLUS_LOG_UK'.freeze,
 
-      # TODO: Write general description for FULFILLA
+      # Fulfilla.
       FULFILLA = 'FULFILLA'.freeze,
 
-      # TODO: Write general description for ASE
+      # ASE KARGO.
       ASE = 'ASE'.freeze,
 
-      # TODO: Write general description for MAIL_PLUS
+      # MailPlus.
       MAIL_PLUS = 'MAIL_PLUS'.freeze,
 
-      # TODO: Write general description for XPO_LOGISTICS
+      # XPO logistics.
       XPO_LOGISTICS = 'XPO_LOGISTICS'.freeze,
 
-      # TODO: Write general description for WNDIRECT
+      # wnDirect.
       WNDIRECT = 'WNDIRECT'.freeze,
 
-      # TODO: Write general description for CLOUDWISH_ASIA
+      # Cloudwish Asia.
       CLOUDWISH_ASIA = 'CLOUDWISH_ASIA'.freeze,
 
-      # TODO: Write general description for ZELERIS
+      # Zeleris.
       ZELERIS = 'ZELERIS'.freeze,
 
-      # TODO: Write general description for GIO_EXPRESS
+      # Gio Express.
       GIO_EXPRESS = 'GIO_EXPRESS'.freeze,
 
-      # TODO: Write general description for OCS_WORLDWIDE
+      # OCS WORLDWIDE.
       OCS_WORLDWIDE = 'OCS_WORLDWIDE'.freeze,
 
-      # TODO: Write general description for ARK_LOGISTICS
+      # ARK Logistics.
       ARK_LOGISTICS = 'ARK_LOGISTICS'.freeze,
 
-      # TODO: Write general description for AQUILINE
+      # Aquiline.
       AQUILINE = 'AQUILINE'.freeze,
 
-      # TODO: Write general description for PILOT_FREIGHT
+      # Pilot Freight Services.
       PILOT_FREIGHT = 'PILOT_FREIGHT'.freeze,
 
-      # TODO: Write general description for QWINTRY
+      # Qwintry Logistics.
       QWINTRY = 'QWINTRY'.freeze,
 
-      # TODO: Write general description for DANSKE_FRAGT
+      # Danske Fragtaend.
       DANSKE_FRAGT = 'DANSKE_FRAGT'.freeze,
 
-      # TODO: Write general description for CARRIERS
+      # Carriers courier.
       CARRIERS = 'CARRIERS'.freeze,
 
-      # TODO: Write general description for AIR_CANADA_GLOBAL
+      # Rivo (Air canada).
       AIR_CANADA_GLOBAL = 'AIR_CANADA_GLOBAL'.freeze,
 
-      # TODO: Write general description for PRESIDENT_TRANS
+      # PRESIDENT TRANSNET CORP.
       PRESIDENT_TRANS = 'PRESIDENT_TRANS'.freeze,
 
-      # TODO: Write general description for STEPFORWARDFS
+      # STEP FORWARD FREIGHT SERVICE CO LTD.
       STEPFORWARDFS = 'STEPFORWARDFS'.freeze,
 
-      # TODO: Write general description for SKYNET_UK
+      # Skynet UK.
       SKYNET_UK = 'SKYNET_UK'.freeze,
 
-      # TODO: Write general description for PITTOHIO
+      # PITT OHIO.
       PITTOHIO = 'PITTOHIO'.freeze,
 
-      # TODO: Write general description for CORREOS_EXPRESS
+      # Correos Express.
       CORREOS_EXPRESS = 'CORREOS_EXPRESS'.freeze,
 
-      # TODO: Write general description for RL_US
+      # RL Carriers.
       RL_US = 'RL_US'.freeze,
 
-      # TODO: Write general description for MARA_XPRESS
-      MARA_XPRESS = 'MARA_XPRESS'.freeze,
-
-      # TODO: Write general description for DESTINY
+      # Destiny Transportation.
       DESTINY = 'DESTINY'.freeze,
 
-      # TODO: Write general description for UK_YODEL
+      # Yodel (www.yodel.co.uk).
       UK_YODEL = 'UK_YODEL'.freeze,
 
-      # TODO: Write general description for COMET_TECH
+      # CometTech.
       COMET_TECH = 'COMET_TECH'.freeze,
 
-      # TODO: Write general description for DHL_PARCEL_RU
+      # DHL Parcel Russia.
       DHL_PARCEL_RU = 'DHL_PARCEL_RU'.freeze,
 
-      # TODO: Write general description for TNT_REFR
+      # TNT Reference.
       TNT_REFR = 'TNT_REFR'.freeze,
 
-      # TODO: Write general description for SHREE_ANJANI_COURIER
+      # Shree Anjani Courier.
       SHREE_ANJANI_COURIER = 'SHREE_ANJANI_COURIER'.freeze,
 
-      # TODO: Write general description for MIKROPAKKET_BE
+      # Mikropakket Belgium.
       MIKROPAKKET_BE = 'MIKROPAKKET_BE'.freeze,
 
-      # TODO: Write general description for ETS_EXPRESS
+      # RETS express.
       ETS_EXPRESS = 'ETS_EXPRESS'.freeze,
 
-      # TODO: Write general description for COLIS_PRIVE
+      # Colis Privé.
       COLIS_PRIVE = 'COLIS_PRIVE'.freeze,
 
-      # TODO: Write general description for CN_YUNDA
+      # Yunda Express.
       CN_YUNDA = 'CN_YUNDA'.freeze,
 
-      # TODO: Write general description for AAA_COOPER
+      # AAA Cooper.
       AAA_COOPER = 'AAA_COOPER'.freeze,
 
-      # TODO: Write general description for ROCKET_PARCEL
+      # Rocket Parcel International.
       ROCKET_PARCEL = 'ROCKET_PARCEL'.freeze,
 
-      # TODO: Write general description for _360LION
+      # 360 Lion Express.
       _360LION = '_360LION'.freeze,
 
-      # TODO: Write general description for PANDU
+      # PANDU.
       PANDU = 'PANDU'.freeze,
 
-      # TODO: Write general description for PROFESSIONAL_COURIERS
+      # PROFESSIONAL COURIERS.
       PROFESSIONAL_COURIERS = 'PROFESSIONAL_COURIERS'.freeze,
 
-      # TODO: Write general description for FLYTEXPRESS
+      # FLYTEXPRESS.
       FLYTEXPRESS = 'FLYTEXPRESS'.freeze,
 
-      # TODO: Write general description for LOGISTICSWORLDWIDE_MY
+      # LOGISTICSWORLDWIDE MY.
       LOGISTICSWORLDWIDE_MY = 'LOGISTICSWORLDWIDE_MY'.freeze,
 
-      # TODO: Write general description for CORREOS_DE_ESPANA
+      # CORREOS DE ESPANA.
       CORREOS_DE_ESPANA = 'CORREOS_DE_ESPANA'.freeze,
 
-      # TODO: Write general description for IMX
+      # IMX.
       IMX = 'IMX'.freeze,
 
-      # TODO: Write general description for FOUR_PX_EXPRESS
+      # FOUR PX EXPRESS.
       FOUR_PX_EXPRESS = 'FOUR_PX_EXPRESS'.freeze,
 
-      # TODO: Write general description for XPRESSBEES
+      # XPRESSBEES.
       XPRESSBEES = 'XPRESSBEES'.freeze,
 
-      # TODO: Write general description for PICKUPP_VNM
+      # pickupp_vnm.
       PICKUPP_VNM = 'PICKUPP_VNM'.freeze,
 
-      # TODO: Write general description for STARTRACK_EXPRESS1
+      # startrack_express.
       STARTRACK_EXPRESS1 = 'STARTRACK_EXPRESS'.freeze,
 
-      # TODO: Write general description for FR_COLISSIMO
+      # fr_colissimo.
       FR_COLISSIMO = 'FR_COLISSIMO'.freeze,
 
-      # TODO: Write general description for NACEX_SPAIN_REFERENCE
+      # nacex_spain_reference.
       NACEX_SPAIN_REFERENCE = 'NACEX_SPAIN_REFERENCE'.freeze,
 
-      # TODO: Write general description for DHL_SUPPLY_CHAIN_AU
+      # dhl_supply_chain_au.
       DHL_SUPPLY_CHAIN_AU = 'DHL_SUPPLY_CHAIN_AU'.freeze,
 
-      # TODO: Write general description for ESHIPPING
+      # Eshipping.
       ESHIPPING = 'ESHIPPING'.freeze,
 
-      # TODO: Write general description for SHREETIRUPATI
+      # SHREE TIRUPATI COURIER SERVICES PVT. LTD..
       SHREETIRUPATI = 'SHREETIRUPATI'.freeze,
 
-      # TODO: Write general description for HX_EXPRESS
+      # HX Express.
       HX_EXPRESS = 'HX_EXPRESS'.freeze,
 
-      # TODO: Write general description for INDOPAKET
+      # INDOPAKET.
       INDOPAKET = 'INDOPAKET'.freeze,
 
-      # TODO: Write general description for CN_17POST
+      # 17 Post Service.
       CN_17POST = 'CN_17POST'.freeze,
 
-      # TODO: Write general description for K1_EXPRESS
+      # K1 Express.
       K1_EXPRESS = 'K1_EXPRESS'.freeze,
 
-      # TODO: Write general description for CJ_GLS
+      # CJ GLS.
       CJ_GLS = 'CJ_GLS'.freeze,
 
-      # TODO: Write general description for MYS_GDEX
+      # GDEX courier.
       MYS_GDEX = 'MYS_GDEX'.freeze,
 
-      # TODO: Write general description for NATIONEX
+      # Nationex courier.
       NATIONEX = 'NATIONEX'.freeze,
 
-      # TODO: Write general description for ANJUN
+      # Anjun couriers.
       ANJUN = 'ANJUN'.freeze,
 
-      # TODO: Write general description for FARGOOD
+      # FarGood.
       FARGOOD = 'FARGOOD'.freeze,
 
-      # TODO: Write general description for SMG_EXPRESS
+      # SMG Direct.
       SMG_EXPRESS = 'SMG_EXPRESS'.freeze,
 
-      # TODO: Write general description for RZYEXPRESS
+      # RZY Express.
       RZYEXPRESS = 'RZYEXPRESS'.freeze,
 
-      # TODO: Write general description for SEFL
+      # Southeastern Freight Lines.
       SEFL = 'SEFL'.freeze,
 
-      # TODO: Write general description for TNT_CLICK_IT
+      # TNT-Click Italy.
       TNT_CLICK_IT = 'TNT_CLICK_IT'.freeze,
 
-      # TODO: Write general description for HDB
+      # Haidaibao.
       HDB = 'HDB'.freeze,
 
-      # TODO: Write general description for HIPSHIPPER
+      # Hipshipper.
       HIPSHIPPER = 'HIPSHIPPER'.freeze,
 
-      # TODO: Write general description for RPXLOGISTICS
+      # RPX Logistics.
       RPXLOGISTICS = 'RPXLOGISTICS'.freeze,
 
-      # TODO: Write general description for KUEHNE
+      # Kuehne + Nagel.
       KUEHNE = 'KUEHNE'.freeze,
 
-      # TODO: Write general description for IT_NEXIVE
+      # Nexive (TNT Post Italy).
       IT_NEXIVE = 'IT_NEXIVE'.freeze,
 
-      # TODO: Write general description for PTS
+      # PTS courier.
       PTS = 'PTS'.freeze,
 
-      # TODO: Write general description for SWISS_POST_FTP
+      # Swiss Post FTP.
       SWISS_POST_FTP = 'SWISS_POST_FTP'.freeze,
 
-      # TODO: Write general description for FASTRK_SERV
+      # Fastrak Services.
       FASTRK_SERV = 'FASTRK_SERV'.freeze,
 
-      # TODO: Write general description for _4_72
+      # 4-72 Entregando.
       _4_72 = '_4_72'.freeze,
 
-      # TODO: Write general description for US_YRC
+      # YRC courier.
       US_YRC = 'US_YRC'.freeze,
 
-      # TODO: Write general description for POSTNL_INTL_3S
+      # PostNL International 3S.
       POSTNL_INTL_3S = 'POSTNL_INTL_3S'.freeze,
 
-      # TODO: Write general description for ELIAN_POST
+      # Yilian (Elian) Supply Chain.
       ELIAN_POST = 'ELIAN_POST'.freeze,
 
-      # TODO: Write general description for CUBYN
+      # Cubyn.
       CUBYN = 'CUBYN'.freeze,
 
-      # TODO: Write general description for SAU_SAUDI_POST
+      # Saudi Post.
       SAU_SAUDI_POST = 'SAU_SAUDI_POST'.freeze,
 
-      # TODO: Write general description for ABXEXPRESS_MY
+      # ABX Express.
       ABXEXPRESS_MY = 'ABXEXPRESS_MY'.freeze,
 
-      # TODO: Write general description for HUAHAN_EXPRESS
+      # HUAHANG EXPRESS.
       HUAHAN_EXPRESS = 'HUAHAN_EXPRESS'.freeze,
 
-      # TODO: Write general description for IND_JAYONEXPRESS
-      IND_JAYONEXPRESS = 'IND_JAYONEXPRESS'.freeze,
-
-      # TODO: Write general description for ZES_EXPRESS
+      # Eshun international Logistic.
       ZES_EXPRESS = 'ZES_EXPRESS'.freeze,
 
-      # TODO: Write general description for ZEPTO_EXPRESS
+      # ZeptoExpress.
       ZEPTO_EXPRESS = 'ZEPTO_EXPRESS'.freeze,
 
-      # TODO: Write general description for SKYNET_ZA
+      # Skynet World Wide Express South Africa.
       SKYNET_ZA = 'SKYNET_ZA'.freeze,
 
-      # TODO: Write general description for ZEEK_2_DOOR
+      # Zeek2Door.
       ZEEK_2_DOOR = 'ZEEK_2_DOOR'.freeze,
 
-      # TODO: Write general description for BLINKLASTMILE
+      # Blink.
       BLINKLASTMILE = 'BLINKLASTMILE'.freeze,
 
-      # TODO: Write general description for POSTA_UKR
+      # UkrPoshta.
       POSTA_UKR = 'POSTA_UKR'.freeze,
 
-      # TODO: Write general description for CHROBINSON
+      # C.H. Robinson Worldwide.
       CHROBINSON = 'CHROBINSON'.freeze,
 
-      # TODO: Write general description for CN_POST56
+      # Post56.
       CN_POST56 = 'CN_POST56'.freeze,
 
-      # TODO: Write general description for COURANT_PLUS
+      # Courant Plus.
       COURANT_PLUS = 'COURANT_PLUS'.freeze,
 
-      # TODO: Write general description for SCUDEX_EXPRESS
+      # Scudex Express.
       SCUDEX_EXPRESS = 'SCUDEX_EXPRESS'.freeze,
 
-      # TODO: Write general description for SHIPENTEGRA
+      # ShipEntegra.
       SHIPENTEGRA = 'SHIPENTEGRA'.freeze,
 
-      # TODO: Write general description for B_TWO_C_EUROPE
+      # B2C courier Europe.
       B_TWO_C_EUROPE = 'B_TWO_C_EUROPE'.freeze,
 
-      # TODO: Write general description for COPE
+      # Cope Sensitive Freight.
       COPE = 'COPE'.freeze,
 
-      # TODO: Write general description for IND_GATI
+      # Gati-KWE.
       IND_GATI = 'IND_GATI'.freeze,
 
-      # TODO: Write general description for CN_WISHPOST
+      # WishPost.
       CN_WISHPOST = 'CN_WISHPOST'.freeze,
 
-      # TODO: Write general description for NACEX_ES
+      # NACEX Spain.
       NACEX_ES = 'NACEX_ES'.freeze,
 
-      # TODO: Write general description for TAQBIN_HK
+      # TAQBIN Hong Kong.
       TAQBIN_HK = 'TAQBIN_HK'.freeze,
 
-      # TODO: Write general description for GLOBALTRANZ
+      # GlobalTranz.
       GLOBALTRANZ = 'GLOBALTRANZ'.freeze,
 
-      # TODO: Write general description for HKD
+      # Qingdao HKD International Logistics.
       HKD = 'HKD'.freeze,
 
-      # TODO: Write general description for BJSHOMEDELIVERY
+      # BJS Distribution courier.
       BJSHOMEDELIVERY = 'BJSHOMEDELIVERY'.freeze,
 
-      # TODO: Write general description for OMNIVA
+      # Omniva.
       OMNIVA = 'OMNIVA'.freeze,
 
-      # TODO: Write general description for SUTTON
+      # Sutton Transport.
       SUTTON = 'SUTTON'.freeze,
 
-      # TODO: Write general description for PANTHER_REFERENCE
+      # Panther Reference.
       PANTHER_REFERENCE = 'PANTHER_REFERENCE'.freeze,
 
-      # TODO: Write general description for SFCSERVICE
+      # SFC Service.
       SFCSERVICE = 'SFCSERVICE'.freeze,
 
-      # TODO: Write general description for LTL
+      # LTL COURIER.
       LTL = 'LTL'.freeze,
 
-      # TODO: Write general description for PARKNPARCEL
+      # Park N Parcel.
       PARKNPARCEL = 'PARKNPARCEL'.freeze,
 
-      # TODO: Write general description for SPRING_GDS
+      # Spring GDS.
       SPRING_GDS = 'SPRING_GDS'.freeze,
 
-      # TODO: Write general description for ECEXPRESS
+      # ECexpress.
       ECEXPRESS = 'ECEXPRESS'.freeze,
 
-      # TODO: Write general description for INTERPARCEL_AU
+      # Interparcel Australia.
       INTERPARCEL_AU = 'INTERPARCEL_AU'.freeze,
 
-      # TODO: Write general description for AGILITY
+      # Agility.
       AGILITY = 'AGILITY'.freeze,
 
-      # TODO: Write general description for XL_EXPRESS
+      # XL Express.
       XL_EXPRESS = 'XL_EXPRESS'.freeze,
 
-      # TODO: Write general description for ADERONLINE
+      # Ader couriers.
       ADERONLINE = 'ADERONLINE'.freeze,
 
-      # TODO: Write general description for DIRECTCOURIERS
+      # Direct Couriers.
       DIRECTCOURIERS = 'DIRECTCOURIERS'.freeze,
 
-      # TODO: Write general description for PLANZER
+      # Planzer Group.
       PLANZER = 'PLANZER'.freeze,
 
-      # TODO: Write general description for SENDING
+      # Sending Transporte Urgente y Comunicacion.
       SENDING = 'SENDING'.freeze,
 
-      # TODO: Write general description for NINJAVAN_WB
+      # Ninjavan Webhook.
       NINJAVAN_WB = 'NINJAVAN_WB'.freeze,
 
-      # TODO: Write general description for NATIONWIDE_MY
+      # Nationwide Express Courier Services Bhd (www.nationwide.com.my).
       NATIONWIDE_MY = 'NATIONWIDE_MY'.freeze,
 
-      # TODO: Write general description for SENDIT
+      # Sendit.
       SENDIT = 'SENDIT'.freeze,
 
-      # TODO: Write general description for GB_ARROW
+      # Arrow XL.
       GB_ARROW = 'GB_ARROW'.freeze,
 
-      # TODO: Write general description for IND_GOJAVAS
+      # GoJavas.
       IND_GOJAVAS = 'IND_GOJAVAS'.freeze,
 
-      # TODO: Write general description for KPOST
+      # Korea Post.
       KPOST = 'KPOST'.freeze,
 
-      # TODO: Write general description for DHL_FREIGHT
+      # DHL Freight.
       DHL_FREIGHT = 'DHL_FREIGHT'.freeze,
 
-      # TODO: Write general description for BLUECARE
+      # Bluecare Express Ltd.
       BLUECARE = 'BLUECARE'.freeze,
 
-      # TODO: Write general description for JINDOUYUN
+      # jindouyun courier.
       JINDOUYUN = 'JINDOUYUN'.freeze,
 
-      # TODO: Write general description for TRACKON
+      # Trackon Couriers Pvt. Ltd.
       TRACKON = 'TRACKON'.freeze,
 
-      # TODO: Write general description for GB_TUFFNELLS
+      # Tuffnells Parcels Express.
       GB_TUFFNELLS = 'GB_TUFFNELLS'.freeze,
 
-      # TODO: Write general description for TRUMPCARD
+      # TRUMPCARD LLC.
       TRUMPCARD = 'TRUMPCARD'.freeze,
 
-      # TODO: Write general description for ETOTAL
+      # eTotal Solution Limited.
       ETOTAL = 'ETOTAL'.freeze,
 
-      # TODO: Write general description for SFPLUS_WEBHOOK
+      # Zeek courier.
       SFPLUS_WEBHOOK = 'SFPLUS_WEBHOOK'.freeze,
 
-      # TODO: Write general description for SEKOLOGISTICS
+      # SEKO Logistics.
       SEKOLOGISTICS = 'SEKOLOGISTICS'.freeze,
 
-      # TODO: Write general description for HERMES_2MANN_HANDLING
+      # Hermes Einrichtungs Service GmbH & Co. KG.
       HERMES_2MANN_HANDLING = 'HERMES_2MANN_HANDLING'.freeze,
 
-      # TODO: Write general description for DPD_LOCAL_REF
+      # DPD Local reference.
       DPD_LOCAL_REF = 'DPD_LOCAL_REF'.freeze,
 
-      # TODO: Write general description for UDS
+      # United Delivery Service.
       UDS = 'UDS'.freeze,
 
-      # TODO: Write general description for ZA_SPECIALISED_FREIGHT
+      # Specialised Freight.
       ZA_SPECIALISED_FREIGHT = 'ZA_SPECIALISED_FREIGHT'.freeze,
 
-      # TODO: Write general description for THA_KERRY
+      # Kerry Express Thailand.
       THA_KERRY = 'THA_KERRY'.freeze,
 
-      # TODO: Write general description for PRT_INT_SEUR
+      # SEUR International.
       PRT_INT_SEUR = 'PRT_INT_SEUR'.freeze,
 
-      # TODO: Write general description for BRA_CORREIOS
+      # Correios Brazil.
       BRA_CORREIOS = 'BRA_CORREIOS'.freeze,
 
-      # TODO: Write general description for NZ_NZ_POST
+      # New Zealand Post.
       NZ_NZ_POST = 'NZ_NZ_POST'.freeze,
 
-      # TODO: Write general description for CN_EQUICK
+      # Equick China.
       CN_EQUICK = 'CN_EQUICK'.freeze,
 
-      # TODO: Write general description for MYS_EMS
+      # Malaysia Post EMS / Pos Laju.
       MYS_EMS = 'MYS_EMS'.freeze,
 
-      # TODO: Write general description for GB_NORSK
+      # Norsk Global.
       GB_NORSK = 'GB_NORSK'.freeze,
 
-      # TODO: Write general description for ESP_MRW
+      # MRW spain.
       ESP_MRW = 'ESP_MRW'.freeze,
 
-      # TODO: Write general description for ESP_PACKLINK
+      # Packlink.
       ESP_PACKLINK = 'ESP_PACKLINK'.freeze,
 
-      # TODO: Write general description for KANGAROO_MY
+      # Kangaroo Worldwide Express.
       KANGAROO_MY = 'KANGAROO_MY'.freeze,
 
-      # TODO: Write general description for RPX
+      # RPX Online.
       RPX = 'RPX'.freeze,
 
-      # TODO: Write general description for XDP_UK_REFERENCE
+      # XDP Express Reference.
       XDP_UK_REFERENCE = 'XDP_UK_REFERENCE'.freeze,
 
-      # TODO: Write general description for NINJAVAN_MY
+      # ninja van (www.ninjavan.co).
       NINJAVAN_MY = 'NINJAVAN_MY'.freeze,
 
-      # TODO: Write general description for ADICIONAL
+      # Adicional Logistics.
       ADICIONAL = 'ADICIONAL'.freeze,
 
-      # TODO: Write general description for NINJAVAN_ID
-      NINJAVAN_ID = 'NINJAVAN_ID'.freeze,
-
-      # TODO: Write general description for ROADBULL
+      # Red Carpet Logistics.
       ROADBULL = 'ROADBULL'.freeze,
 
-      # TODO: Write general description for YAKIT
+      # Yakit courier.
       YAKIT = 'YAKIT'.freeze,
 
-      # TODO: Write general description for MAILAMERICAS
+      # MailAmericas.
       MAILAMERICAS = 'MAILAMERICAS'.freeze,
 
-      # TODO: Write general description for MIKROPAKKET
+      # Mikropakket.
       MIKROPAKKET = 'MIKROPAKKET'.freeze,
 
-      # TODO: Write general description for DYNALOGIC
+      # Dynamic Logistics.
       DYNALOGIC = 'DYNALOGIC'.freeze,
 
-      # TODO: Write general description for DHL_ES
+      # DHL Spain(www.dhl.com).
       DHL_ES = 'DHL_ES'.freeze,
 
-      # TODO: Write general description for DHL_PARCEL_NL
+      # DHL Parcel NL.
       DHL_PARCEL_NL = 'DHL_PARCEL_NL'.freeze,
 
-      # TODO: Write general description for DHL_GLOBAL_MAIL_ASIA
+      # DHL Global Mail Asia (www.dhl.com).
       DHL_GLOBAL_MAIL_ASIA = 'DHL_GLOBAL_MAIL_ASIA'.freeze,
 
-      # TODO: Write general description for DAWN_WING
+      # Dawn Wing.
       DAWN_WING = 'DAWN_WING'.freeze,
 
-      # TODO: Write general description for GENIKI_GR
+      # Geniki Taxydromiki.
       GENIKI_GR = 'GENIKI_GR'.freeze,
 
-      # TODO: Write general description for HERMESWORLD_UK
+      # hermesworld_uk.
       HERMESWORLD_UK = 'HERMESWORLD_UK'.freeze,
 
-      # TODO: Write general description for ALPHAFAST
+      # Alphafast (www.alphafast.com).
       ALPHAFAST = 'ALPHAFAST'.freeze,
 
-      # TODO: Write general description for BUYLOGIC
+      # buylogic.
       BUYLOGIC = 'BUYLOGIC'.freeze,
 
-      # TODO: Write general description for EKART
+      # Ekart logistics (ekartlogistics.com).
       EKART = 'EKART'.freeze,
 
-      # TODO: Write general description for MEX_SENDA
+      # mexico senda express.
       MEX_SENDA = 'MEX_SENDA'.freeze,
 
-      # TODO: Write general description for SFC_LOGISTICS
+      # SFC.
       SFC_LOGISTICS = 'SFC_LOGISTICS'.freeze,
 
-      # TODO: Write general description for POST_SERBIA
+      # Posta Serbia.
       POST_SERBIA = 'POST_SERBIA'.freeze,
 
-      # TODO: Write general description for IND_DELHIVERY
+      # Delhivery India.
       IND_DELHIVERY = 'IND_DELHIVERY'.freeze,
 
-      # TODO: Write general description for DE_DPD_DELISTRACK
+      # DPD Germany.
       DE_DPD_DELISTRACK = 'DE_DPD_DELISTRACK'.freeze,
 
-      # TODO: Write general description for RPD2MAN
+      # RPD2man Deliveries.
       RPD2MAN = 'RPD2MAN'.freeze,
 
-      # TODO: Write general description for CN_SF_EXPRESS
+      # SF Express (www.sf-express.com).
       CN_SF_EXPRESS = 'CN_SF_EXPRESS'.freeze,
 
-      # TODO: Write general description for YANWEN
+      # Yanwen Logistics.
       YANWEN = 'YANWEN'.freeze,
 
-      # TODO: Write general description for MYS_SKYNET
+      # Skynet Malaysia.
       MYS_SKYNET = 'MYS_SKYNET'.freeze,
 
-      # TODO: Write general description for CORREOS_DE_MEXICO
+      # correos mexico.
       CORREOS_DE_MEXICO = 'CORREOS_DE_MEXICO'.freeze,
 
-      # TODO: Write general description for CBL_LOGISTICA
+      # CBL Logistica.
       CBL_LOGISTICA = 'CBL_LOGISTICA'.freeze,
 
-      # TODO: Write general description for MEX_ESTAFETA
+      # Estafeta (www.estafeta.com).
       MEX_ESTAFETA = 'MEX_ESTAFETA'.freeze,
 
-      # TODO: Write general description for AU_AUSTRIAN_POST
+      # Austrian Post (Registered).
       AU_AUSTRIAN_POST = 'AU_AUSTRIAN_POST'.freeze,
 
-      # TODO: Write general description for RINCOS
+      # Rincos.
       RINCOS = 'RINCOS'.freeze,
 
-      # TODO: Write general description for NLD_DHL
+      # DHL Netherland.
       NLD_DHL = 'NLD_DHL'.freeze,
 
-      # TODO: Write general description for RUSSIAN_POST
+      # Russian post.
       RUSSIAN_POST = 'RUSSIAN_POST'.freeze,
 
-      # TODO: Write general description for COURIERS_PLEASE
+      # CouriersPlease (couriersplease.com.au).
       COURIERS_PLEASE = 'COURIERS_PLEASE'.freeze,
 
-      # TODO: Write general description for POSTNORD_LOGISTICS
+      # PostNord Logistics.
       POSTNORD_LOGISTICS = 'POSTNORD_LOGISTICS'.freeze,
 
-      # TODO: Write general description for FEDEX
+      # Fedex.
       FEDEX = 'FEDEX'.freeze,
 
-      # TODO: Write general description for DPE_EXPRESS
+      # DPE Express.
       DPE_EXPRESS = 'DPE_EXPRESS'.freeze,
 
-      # TODO: Write general description for DPD
+      # DPD.
       DPD = 'DPD'.freeze,
 
-      # TODO: Write general description for ADSONE
+      # ADSone.
       ADSONE = 'ADSONE'.freeze,
 
-      # TODO: Write general description for IDN_JNE
+      # JNE Express (Jalur Nugraha Ekakurir).
       IDN_JNE = 'IDN_JNE'.freeze,
 
-      # TODO: Write general description for THECOURIERGUY
+      # The Courier Guy.
       THECOURIERGUY = 'THECOURIERGUY'.freeze,
 
-      # TODO: Write general description for CNEXPS
+      # CNE Express.
       CNEXPS = 'CNEXPS'.freeze,
 
-      # TODO: Write general description for PRT_CHRONOPOST
+      # Chronopost Portugal.
       PRT_CHRONOPOST = 'PRT_CHRONOPOST'.freeze,
 
-      # TODO: Write general description for LANDMARK_GLOBAL
+      # Landmark Global.
       LANDMARK_GLOBAL = 'LANDMARK_GLOBAL'.freeze,
 
-      # TODO: Write general description for IT_DHL_ECOMMERCE
+      # DHL International.
       IT_DHL_ECOMMERCE = 'IT_DHL_ECOMMERCE'.freeze,
 
-      # TODO: Write general description for ESP_NACEX
+      # NACEX Spain.
       ESP_NACEX = 'ESP_NACEX'.freeze,
 
-      # TODO: Write general description for PRT_CTT
+      # CTT Portugal.
       PRT_CTT = 'PRT_CTT'.freeze,
 
-      # TODO: Write general description for BE_KIALA
+      # Kiala.
       BE_KIALA = 'BE_KIALA'.freeze,
 
-      # TODO: Write general description for ASENDIA_UK
+      # Asendia UK.
       ASENDIA_UK = 'ASENDIA_UK'.freeze,
 
-      # TODO: Write general description for GLOBAL_TNT
+      # TNT global.
       GLOBAL_TNT = 'GLOBAL_TNT'.freeze,
 
-      # TODO: Write general description for POSTUR_IS
+      # Iceland Post.
       POSTUR_IS = 'POSTUR_IS'.freeze,
 
-      # TODO: Write general description for EPARCEL_KR
+      # eParcel Korea.
       EPARCEL_KR = 'EPARCEL_KR'.freeze,
 
-      # TODO: Write general description for INPOST_PACZKOMATY
+      # InPost Paczkomaty.
       INPOST_PACZKOMATY = 'INPOST_PACZKOMATY'.freeze,
 
-      # TODO: Write general description for IT_POSTE_ITALIA
+      # Poste italiane (www.poste.it).
       IT_POSTE_ITALIA = 'IT_POSTE_ITALIA'.freeze,
 
-      # TODO: Write general description for BE_BPOST
+      # Bpost (www.bpost.be).
       BE_BPOST = 'BE_BPOST'.freeze,
 
-      # TODO: Write general description for PL_POCZTA_POLSKA
+      # Poczta Polska (www.poczta-polska.pl).
       PL_POCZTA_POLSKA = 'PL_POCZTA_POLSKA'.freeze,
 
-      # TODO: Write general description for MYS_MYS_POST
+      # Malaysia Post.
       MYS_MYS_POST = 'MYS_MYS_POST'.freeze,
 
-      # TODO: Write general description for SG_SG_POST
+      # Singapore Post.
       SG_SG_POST = 'SG_SG_POST'.freeze,
 
-      # TODO: Write general description for THA_THAILAND_POST
+      # Thailand Post (www.thailandpost.co.th).
       THA_THAILAND_POST = 'THA_THAILAND_POST'.freeze,
 
-      # TODO: Write general description for LEXSHIP
+      # LexShip.
       LEXSHIP = 'LEXSHIP'.freeze,
 
-      # TODO: Write general description for FASTWAY_NZ
+      # Fastway New Zealand.
       FASTWAY_NZ = 'FASTWAY_NZ'.freeze,
 
-      # TODO: Write general description for DHL_AU
+      # DHL Supply Chain Australia.
       DHL_AU = 'DHL_AU'.freeze,
 
-      # TODO: Write general description for COSTMETICSNOW
+      # Cosmetics Now.
       COSTMETICSNOW = 'COSTMETICSNOW'.freeze,
 
-      # TODO: Write general description for PFLOGISTICS
+      # PFL.
       PFLOGISTICS = 'PFLOGISTICS'.freeze,
 
-      # TODO: Write general description for LOOMIS_EXPRESS
+      # Loomis Express.
       LOOMIS_EXPRESS = 'LOOMIS_EXPRESS'.freeze,
 
-      # TODO: Write general description for GLS_ITALY
+      # GLS Italy.
       GLS_ITALY = 'GLS_ITALY'.freeze,
 
-      # TODO: Write general description for LINE
+      # Line Clear Express & Logistics Sdn Bhd.
       LINE = 'LINE'.freeze,
 
-      # TODO: Write general description for GEL_EXPRESS
+      # Gel Express Logistik.
       GEL_EXPRESS = 'GEL_EXPRESS'.freeze,
 
-      # TODO: Write general description for HUODULL
+      # Huodull.
       HUODULL = 'HUODULL'.freeze,
 
-      # TODO: Write general description for NINJAVAN_SG
+      # Ninja van Singapore.
       NINJAVAN_SG = 'NINJAVAN_SG'.freeze,
 
-      # TODO: Write general description for JANIO
+      # Janio Asia.
       JANIO = 'JANIO'.freeze,
 
-      # TODO: Write general description for AO_COURIER
+      # AO Logistics.
       AO_COURIER = 'AO_COURIER'.freeze,
 
-      # TODO: Write general description for BRT_IT_SENDER_REF
+      # BRT Bartolini(Sender Reference).
       BRT_IT_SENDER_REF = 'BRT_IT_SENDER_REF'.freeze,
 
-      # TODO: Write general description for SAILPOST
+      # SAILPOST.
       SAILPOST = 'SAILPOST'.freeze,
 
-      # TODO: Write general description for LALAMOVE
+      # Lalamove.
       LALAMOVE = 'LALAMOVE'.freeze,
 
-      # TODO: Write general description for NEWZEALAND_COURIERS
+      # NEW ZEALAND COURIERS.
       NEWZEALAND_COURIERS = 'NEWZEALAND_COURIERS'.freeze,
 
-      # TODO: Write general description for ETOMARS
+      # Etomars.
       ETOMARS = 'ETOMARS'.freeze,
 
-      # TODO: Write general description for VIRTRANSPORT
+      # VIR Transport.
       VIRTRANSPORT = 'VIRTRANSPORT'.freeze,
 
-      # TODO: Write general description for WIZMO
+      # Wizmo.
       WIZMO = 'WIZMO'.freeze,
 
-      # TODO: Write general description for PALLETWAYS
+      # Palletways.
       PALLETWAYS = 'PALLETWAYS'.freeze,
 
-      # TODO: Write general description for I_DIKA
+      # i-dika.
       I_DIKA = 'I_DIKA'.freeze,
 
-      # TODO: Write general description for CFL_LOGISTICS
+      # CFL Logistics.
       CFL_LOGISTICS = 'CFL_LOGISTICS'.freeze,
 
-      # TODO: Write general description for GEMWORLDWIDE
+      # GEM Worldwide.
       GEMWORLDWIDE = 'GEMWORLDWIDE'.freeze,
 
-      # TODO: Write general description for GLOBAL_EXPRESS
+      # Tai Wan Global Business.
       GLOBAL_EXPRESS = 'GLOBAL_EXPRESS'.freeze,
 
-      # TODO: Write general description for LOGISTYX_TRANSGROUP
+      # Transgroup courier.
       LOGISTYX_TRANSGROUP = 'LOGISTYX_TRANSGROUP'.freeze,
 
-      # TODO: Write general description for WESTBANK_COURIER
+      # West Bank Courier.
       WESTBANK_COURIER = 'WESTBANK_COURIER'.freeze,
 
-      # TODO: Write general description for ARCO_SPEDIZIONI
+      # Arco Spedizioni SP.
       ARCO_SPEDIZIONI = 'ARCO_SPEDIZIONI'.freeze,
 
-      # TODO: Write general description for YDH_EXPRESS
+      # YDH express.
       YDH_EXPRESS = 'YDH_EXPRESS'.freeze,
 
-      # TODO: Write general description for PARCELINKLOGISTICS
+      # Parcelink Logistics.
       PARCELINKLOGISTICS = 'PARCELINKLOGISTICS'.freeze,
 
-      # TODO: Write general description for CNDEXPRESS
+      # CND Express.
       CNDEXPRESS = 'CNDEXPRESS'.freeze,
 
-      # TODO: Write general description for NOX_NIGHT_TIME_EXPRESS
+      # NOX NightTimeExpress.
       NOX_NIGHT_TIME_EXPRESS = 'NOX_NIGHT_TIME_EXPRESS'.freeze,
 
-      # TODO: Write general description for AERONET
+      # Aeronet couriers.
       AERONET = 'AERONET'.freeze,
 
-      # TODO: Write general description for LTIANEXP
+      # LTIAN EXP.
       LTIANEXP = 'LTIANEXP'.freeze,
 
-      # TODO: Write general description for INTEGRA2_FTP
+      # Integra2.
       INTEGRA2_FTP = 'INTEGRA2_FTP'.freeze,
 
-      # TODO: Write general description for PARCELONE
+      # PARCEL ONE.
       PARCELONE = 'PARCELONE'.freeze,
 
-      # TODO: Write general description for NOX_NACHTEXPRESS
+      # Innight Express Germany GmbH (nox NachtExpress).
       NOX_NACHTEXPRESS = 'NOX_NACHTEXPRESS'.freeze,
 
-      # TODO: Write general description for CN_CHINA_POST_EMS
+      # China Post.
       CN_CHINA_POST_EMS = 'CN_CHINA_POST_EMS'.freeze,
 
-      # TODO: Write general description for CHUKOU1
+      # Chukou1.
       CHUKOU1 = 'CHUKOU1'.freeze,
 
-      # TODO: Write general description for GLS_SLOV
+      # GLS General Logistics Systems Slovakia s.r.o..
       GLS_SLOV = 'GLS_SLOV'.freeze,
 
-      # TODO: Write general description for ORANGE_DS
+      # OrangeDS (Orange Distribution Solutions Inc).
       ORANGE_DS = 'ORANGE_DS'.freeze,
 
-      # TODO: Write general description for JOOM_LOGIS
+      # Joom Logistics.
       JOOM_LOGIS = 'JOOM_LOGIS'.freeze,
 
-      # TODO: Write general description for AUS_STARTRACK
+      # StarTrack (startrack.com.au).
       AUS_STARTRACK = 'AUS_STARTRACK'.freeze,
 
-      # TODO: Write general description for DHL
+      # dhl Global.
       DHL = 'DHL'.freeze,
 
-      # TODO: Write general description for GB_APC
+      # APC postal logistics germany.
       GB_APC = 'GB_APC'.freeze,
 
-      # TODO: Write general description for BONDSCOURIERS
+      # Bonds Courier Service (bondscouriers.com.au).
       BONDSCOURIERS = 'BONDSCOURIERS'.freeze,
 
-      # TODO: Write general description for JPN_JAPAN_POST
+      # Japan Post.
       JPN_JAPAN_POST = 'JPN_JAPAN_POST'.freeze,
 
-      # TODO: Write general description for USPS
+      # United States Postal Service.
       USPS = 'USPS'.freeze,
 
-      # TODO: Write general description for WINIT
+      # WinIt.
       WINIT = 'WINIT'.freeze,
 
-      # TODO: Write general description for ARG_OCA
+      # OCA Argentina.
       ARG_OCA = 'ARG_OCA'.freeze,
 
-      # TODO: Write general description for TW_TAIWAN_POST
+      # Taiwan Post.
       TW_TAIWAN_POST = 'TW_TAIWAN_POST'.freeze,
 
-      # TODO: Write general description for DMM_NETWORK
+      # DMM Network.
       DMM_NETWORK = 'DMM_NETWORK'.freeze,
 
-      # TODO: Write general description for TNT
+      # TNT Express.
       TNT = 'TNT'.freeze,
 
-      # TODO: Write general description for BH_POSTA
+      # BH Posta (www.posta.ba).
       BH_POSTA = 'BH_POSTA'.freeze,
 
-      # TODO: Write general description for SWE_POSTNORD
+      # Postnord sweden.
       SWE_POSTNORD = 'SWE_POSTNORD'.freeze,
 
-      # TODO: Write general description for CA_CANADA_POST
+      # Canada Post.
       CA_CANADA_POST = 'CA_CANADA_POST'.freeze,
 
-      # TODO: Write general description for WISELOADS
+      # Wiseloads.
       WISELOADS = 'WISELOADS'.freeze,
 
-      # TODO: Write general description for ASENDIA_HK
+      # Asendia HonKong.
       ASENDIA_HK = 'ASENDIA_HK'.freeze,
 
-      # TODO: Write general description for NLD_GLS
+      # GLS Netherland.
       NLD_GLS = 'NLD_GLS'.freeze,
 
-      # TODO: Write general description for MEX_REDPACK
+      # Redpack.
       MEX_REDPACK = 'MEX_REDPACK'.freeze,
 
-      # TODO: Write general description for JET_SHIP
+      # Jet-Ship Worldwide.
       JET_SHIP = 'JET_SHIP'.freeze,
 
-      # TODO: Write general description for DE_DHL_EXPRESS
+      # DHL Express.
       DE_DHL_EXPRESS = 'DE_DHL_EXPRESS'.freeze,
 
-      # TODO: Write general description for NINJAVAN_THAI
+      # Ninja van Thai.
       NINJAVAN_THAI = 'NINJAVAN_THAI'.freeze,
 
-      # TODO: Write general description for RABEN_GROUP
+      # Raben Group.
       RABEN_GROUP = 'RABEN_GROUP'.freeze,
 
-      # TODO: Write general description for ESP_ASM
+      # ASM(GLS Spain).
       ESP_ASM = 'ESP_ASM'.freeze,
 
-      # TODO: Write general description for HRV_HRVATSKA
+      # Hrvatska posta.
       HRV_HRVATSKA = 'HRV_HRVATSKA'.freeze,
 
-      # TODO: Write general description for GLOBAL_ESTES
+      # Estes Express Lines.
       GLOBAL_ESTES = 'GLOBAL_ESTES'.freeze,
 
-      # TODO: Write general description for LTU_LIETUVOS
+      # Lietuvos pastas.
       LTU_LIETUVOS = 'LTU_LIETUVOS'.freeze,
 
-      # TODO: Write general description for BEL_DHL
+      # DHL Benelux.
       BEL_DHL = 'BEL_DHL'.freeze,
 
-      # TODO: Write general description for AU_AU_POST
+      # Australia Post.
       AU_AU_POST = 'AU_AU_POST'.freeze,
 
-      # TODO: Write general description for SPEEDEXCOURIER
+      # SPEEDEX couriers.
       SPEEDEXCOURIER = 'SPEEDEXCOURIER'.freeze,
 
-      # TODO: Write general description for FR_COLIS
+      # Colissimo.
       FR_COLIS = 'FR_COLIS'.freeze,
 
-      # TODO: Write general description for ARAMEX
+      # Aramex.
       ARAMEX = 'ARAMEX'.freeze,
 
-      # TODO: Write general description for DPEX
+      # DPEX (www.dpex.com).
       DPEX = 'DPEX'.freeze,
 
-      # TODO: Write general description for MYS_AIRPAK
+      # Airpak Express.
       MYS_AIRPAK = 'MYS_AIRPAK'.freeze,
 
-      # TODO: Write general description for CUCKOOEXPRESS
+      # Cuckoo Express.
       CUCKOOEXPRESS = 'CUCKOOEXPRESS'.freeze,
 
-      # TODO: Write general description for DPD_POLAND
+      # DPD Poland.
       DPD_POLAND = 'DPD_POLAND'.freeze,
 
-      # TODO: Write general description for NLD_POSTNL
+      # PostNL International.
       NLD_POSTNL = 'NLD_POSTNL'.freeze,
 
-      # TODO: Write general description for NIM_EXPRESS
+      # Nim Express.
       NIM_EXPRESS = 'NIM_EXPRESS'.freeze,
 
-      # TODO: Write general description for QUANTIUM
+      # Quantium.
       QUANTIUM = 'QUANTIUM'.freeze,
 
-      # TODO: Write general description for SENDLE
+      # Sendle.
       SENDLE = 'SENDLE'.freeze,
 
-      # TODO: Write general description for ESP_REDUR
+      # Redur Spain.
       ESP_REDUR = 'ESP_REDUR'.freeze,
 
-      # TODO: Write general description for MATKAHUOLTO
+      # Matkahuolto.
       MATKAHUOLTO = 'MATKAHUOLTO'.freeze,
 
-      # TODO: Write general description for CPACKET
+      # Cpacket couriers.
       CPACKET = 'CPACKET'.freeze,
 
-      # TODO: Write general description for POSTI
+      # Posti courier.
       POSTI = 'POSTI'.freeze,
 
-      # TODO: Write general description for HUNTER_EXPRESS
+      # Hunter Express.
       HUNTER_EXPRESS = 'HUNTER_EXPRESS'.freeze,
 
-      # TODO: Write general description for CHOIR_EXP
+      # Choir Express Indonesia.
       CHOIR_EXP = 'CHOIR_EXP'.freeze,
 
-      # TODO: Write general description for LEGION_EXPRESS
+      # Legion Express.
       LEGION_EXPRESS = 'LEGION_EXPRESS'.freeze,
 
-      # TODO: Write general description for AUSTRIAN_POST_EXPRESS
+      # austrian post.
       AUSTRIAN_POST_EXPRESS = 'AUSTRIAN_POST_EXPRESS'.freeze,
 
-      # TODO: Write general description for GRUPO
+      # Grupo ampm.
       GRUPO = 'GRUPO'.freeze,
 
-      # TODO: Write general description for POSTA_RO
+      # Post Roman (www.posta-romana.ro).
       POSTA_RO = 'POSTA_RO'.freeze,
 
-      # TODO: Write general description for INTERPARCEL_UK
+      # Interparcel UK.
       INTERPARCEL_UK = 'INTERPARCEL_UK'.freeze,
 
-      # TODO: Write general description for GLOBAL_ABF
+      # ABF Freight.
       GLOBAL_ABF = 'GLOBAL_ABF'.freeze,
 
-      # TODO: Write general description for POSTEN_NORGE
+      # Posten Norge (www.posten.no).
       POSTEN_NORGE = 'POSTEN_NORGE'.freeze,
 
-      # TODO: Write general description for XPERT_DELIVERY
+      # Xpert Delivery.
       XPERT_DELIVERY = 'XPERT_DELIVERY'.freeze,
 
-      # TODO: Write general description for DHL_REFR
+      # DHl (Reference number).
       DHL_REFR = 'DHL_REFR'.freeze,
 
-      # TODO: Write general description for DHL_HK
+      # DHL HonKong.
       DHL_HK = 'DHL_HK'.freeze,
 
-      # TODO: Write general description for SKYNET_UAE
+      # SKYNET UAE.
       SKYNET_UAE = 'SKYNET_UAE'.freeze,
 
-      # TODO: Write general description for GOJEK
+      # Gojek.
       GOJEK = 'GOJEK'.freeze,
 
-      # TODO: Write general description for YODEL_INTNL
+      # Yodel International.
       YODEL_INTNL = 'YODEL_INTNL'.freeze,
 
-      # TODO: Write general description for JANCO
+      # Janco Ecommerce.
       JANCO = 'JANCO'.freeze,
 
-      # TODO: Write general description for YTO
+      # YTO Express.
       YTO = 'YTO'.freeze,
 
-      # TODO: Write general description for WISE_EXPRESS
+      # Wise Express.
       WISE_EXPRESS = 'WISE_EXPRESS'.freeze,
 
-      # TODO: Write general description for JTEXPRESS_VN
+      # J&T Express Vietnam.
       JTEXPRESS_VN = 'JTEXPRESS_VN'.freeze,
 
-      # TODO: Write general description for FEDEX_INTL_MLSERV
+      # FedEx International MailService.
       FEDEX_INTL_MLSERV = 'FEDEX_INTL_MLSERV'.freeze,
 
-      # TODO: Write general description for VAMOX
+      # VAMOX.
       VAMOX = 'VAMOX'.freeze,
 
-      # TODO: Write general description for AMS_GRP
+      # AMS Group.
       AMS_GRP = 'AMS_GRP'.freeze,
 
-      # TODO: Write general description for DHL_JP
+      # DHL Japan.
       DHL_JP = 'DHL_JP'.freeze,
 
-      # TODO: Write general description for HRPARCEL
+      # HR Parcel.
       HRPARCEL = 'HRPARCEL'.freeze,
 
-      # TODO: Write general description for GESWL
+      # GESWL Express.
       GESWL = 'GESWL'.freeze,
 
-      # TODO: Write general description for BLUESTAR
+      # Blue Star.
       BLUESTAR = 'BLUESTAR'.freeze,
 
-      # TODO: Write general description for CDEK_TR
+      # CDEK TR.
       CDEK_TR = 'CDEK_TR'.freeze,
 
-      # TODO: Write general description for DESCARTES
+      # Innovel courier.
       DESCARTES = 'DESCARTES'.freeze,
 
-      # TODO: Write general description for DELTEC_UK
+      # Deltec Courier.
       DELTEC_UK = 'DELTEC_UK'.freeze,
 
-      # TODO: Write general description for DTDC_EXPRESS
+      # DTDC express.
       DTDC_EXPRESS = 'DTDC_EXPRESS'.freeze,
 
-      # TODO: Write general description for TOURLINE
+      # tourline.
       TOURLINE = 'TOURLINE'.freeze,
 
-      # TODO: Write general description for BH_WORLDWIDE
+      # B&H Worldwide.
       BH_WORLDWIDE = 'BH_WORLDWIDE'.freeze,
 
-      # TODO: Write general description for OCS
+      # OCS ANA Group.
       OCS = 'OCS'.freeze,
 
-      # TODO: Write general description for YINGNUO_LOGISTICS
+      # yingnuo logistics.
       YINGNUO_LOGISTICS = 'YINGNUO_LOGISTICS'.freeze,
 
-      # TODO: Write general description for UPS
+      # United Parcel Service.
       UPS = 'UPS'.freeze,
 
-      # TODO: Write general description for TOLL
+      # Toll IPEC.
       TOLL = 'TOLL'.freeze,
 
-      # TODO: Write general description for PRT_SEUR
+      # SEUR portugal.
       PRT_SEUR = 'PRT_SEUR'.freeze,
 
-      # TODO: Write general description for DTDC_AU
+      # DTDC Australia.
       DTDC_AU = 'DTDC_AU'.freeze,
 
-      # TODO: Write general description for THA_DYNAMIC_LOGISTICS
+      # Dynamic Logistics.
       THA_DYNAMIC_LOGISTICS = 'THA_DYNAMIC_LOGISTICS'.freeze,
 
-      # TODO: Write general description for UBI_LOGISTICS
+      # UBI Smart Parcel.
       UBI_LOGISTICS = 'UBI_LOGISTICS'.freeze,
 
-      # TODO: Write general description for FEDEX_CROSSBORDER
+      # FedEx Cross Border.
       FEDEX_CROSSBORDER = 'FEDEX_CROSSBORDER'.freeze,
 
-      # TODO: Write general description for A1POST
+      # A1Post.
       A1POST = 'A1POST'.freeze,
 
-      # TODO: Write general description for TAZMANIAN_FREIGHT
+      # Tazmanian Freight Systems.
       TAZMANIAN_FREIGHT = 'TAZMANIAN_FREIGHT'.freeze,
 
-      # TODO: Write general description for CJ_INT_MY
+      # CJ International malaysia.
       CJ_INT_MY = 'CJ_INT_MY'.freeze,
 
-      # TODO: Write general description for SAIA_FREIGHT
+      # Saia LTL Freight.
       SAIA_FREIGHT = 'SAIA_FREIGHT'.freeze,
 
-      # TODO: Write general description for SG_QXPRESS
+      # Qxpress.
       SG_QXPRESS = 'SG_QXPRESS'.freeze,
 
-      # TODO: Write general description for NHANS_SOLUTIONS
+      # Nhans Solutions.
       NHANS_SOLUTIONS = 'NHANS_SOLUTIONS'.freeze,
 
-      # TODO: Write general description for DPD_FR
+      # DPD France.
       DPD_FR = 'DPD_FR'.freeze,
 
-      # TODO: Write general description for COORDINADORA
+      # Coordinadora.
       COORDINADORA = 'COORDINADORA'.freeze,
 
-      # TODO: Write general description for ANDREANI
+      # Grupo logistico Andreani.
       ANDREANI = 'ANDREANI'.freeze,
 
-      # TODO: Write general description for DOORA
+      # Doora Logistics.
       DOORA = 'DOORA'.freeze,
 
-      # TODO: Write general description for INTERPARCEL_NZ
+      # Interparcel New Zealand.
       INTERPARCEL_NZ = 'INTERPARCEL_NZ'.freeze,
 
-      # TODO: Write general description for PHL_JAMEXPRESS
+      # Jam Express Philippines.
       PHL_JAMEXPRESS = 'PHL_JAMEXPRESS'.freeze,
 
-      # TODO: Write general description for BEL_BELGIUM_POST
+      # bel_belgium_post.
       BEL_BELGIUM_POST = 'BEL_BELGIUM_POST'.freeze,
 
-      # TODO: Write general description for US_APC
+      # us_apc.
       US_APC = 'US_APC'.freeze,
 
-      # TODO: Write general description for IDN_POS
+      # idn_pos.
       IDN_POS = 'IDN_POS'.freeze,
 
-      # TODO: Write general description for FR_MONDIAL
+      # fr_mondial.
       FR_MONDIAL = 'FR_MONDIAL'.freeze,
 
-      # TODO: Write general description for DE_DHL
+      # DE DHL.
       DE_DHL = 'DE_DHL'.freeze,
 
-      # TODO: Write general description for HK_RPX
+      # hk_rpx.
       HK_RPX = 'HK_RPX'.freeze,
 
-      # TODO: Write general description for DHL_PIECEID
+      # dhl_pieceid.
       DHL_PIECEID = 'DHL_PIECEID'.freeze,
 
-      # TODO: Write general description for VNPOST_EMS
+      # vnpost_ems.
       VNPOST_EMS = 'VNPOST_EMS'.freeze,
 
-      # TODO: Write general description for RRDONNELLEY
+      # rrdonnelley.
       RRDONNELLEY = 'RRDONNELLEY'.freeze,
 
-      # TODO: Write general description for DPD_DE
+      # dpd_de.
       DPD_DE = 'DPD_DE'.freeze,
 
-      # TODO: Write general description for DELCART_IN
+      # delcart_in.
       DELCART_IN = 'DELCART_IN'.freeze,
 
-      # TODO: Write general description for IMEXGLOBALSOLUTIONS
+      # imexglobalsolutions.
       IMEXGLOBALSOLUTIONS = 'IMEXGLOBALSOLUTIONS'.freeze,
 
-      # TODO: Write general description for ACOMMERCE
+      # ACOMMERCE.
       ACOMMERCE = 'ACOMMERCE'.freeze,
 
-      # TODO: Write general description for EURODIS
+      # eurodis.
       EURODIS = 'EURODIS'.freeze,
 
-      # TODO: Write general description for CANPAR
+      # CANPAR.
       CANPAR = 'CANPAR'.freeze,
 
-      # TODO: Write general description for GLS
+      # GLS.
       GLS = 'GLS'.freeze,
 
-      # TODO: Write general description for IND_ECOM
+      # Ecom Express.
       IND_ECOM = 'IND_ECOM'.freeze,
 
-      # TODO: Write general description for ESP_ENVIALIA
+      # Envialia.
       ESP_ENVIALIA = 'ESP_ENVIALIA'.freeze,
 
-      # TODO: Write general description for DHL_UK
+      # dhl UK.
       DHL_UK = 'DHL_UK'.freeze,
 
-      # TODO: Write general description for SMSA_EXPRESS
+      # SMSA Express.
       SMSA_EXPRESS = 'SMSA_EXPRESS'.freeze,
 
-      # TODO: Write general description for TNT_FR
+      # TNT France.
       TNT_FR = 'TNT_FR'.freeze,
 
-      # TODO: Write general description for DEX_I
+      # DEX-I courier.
       DEX_I = 'DEX_I'.freeze,
 
-      # TODO: Write general description for BUDBEE_WEBHOOK
+      # Budbee courier.
       BUDBEE_WEBHOOK = 'BUDBEE_WEBHOOK'.freeze,
 
-      # TODO: Write general description for COPA_COURIER
+      # Copa Airlines Courier.
       COPA_COURIER = 'COPA_COURIER'.freeze,
 
-      # TODO: Write general description for VNM_VIETNAM_POST
+      # Vietnam Post.
       VNM_VIETNAM_POST = 'VNM_VIETNAM_POST'.freeze,
 
-      # TODO: Write general description for DPD_HK
+      # DPD HongKong.
       DPD_HK = 'DPD_HK'.freeze,
 
-      # TODO: Write general description for TOLL_NZ
+      # Toll New Zealand.
       TOLL_NZ = 'TOLL_NZ'.freeze,
 
-      # TODO: Write general description for ECHO
+      # Echo courier.
       ECHO = 'ECHO'.freeze,
 
-      # TODO: Write general description for FEDEX_FR
+      # FedEx® Freight.
       FEDEX_FR = 'FEDEX_FR'.freeze,
 
-      # TODO: Write general description for BORDEREXPRESS
+      # Border Express.
       BORDEREXPRESS = 'BORDEREXPRESS'.freeze,
 
-      # TODO: Write general description for MAILPLUS_JPN
+      # MailPlus (Japan).
       MAILPLUS_JPN = 'MAILPLUS_JPN'.freeze,
 
-      # TODO: Write general description for TNT_UK_REFR
+      # TNT UK Reference.
       TNT_UK_REFR = 'TNT_UK_REFR'.freeze,
 
-      # TODO: Write general description for KEC
+      # KEC courier.
       KEC = 'KEC'.freeze,
 
-      # TODO: Write general description for DPD_RO
+      # DPD Romania.
       DPD_RO = 'DPD_RO'.freeze,
 
-      # TODO: Write general description for TNT_JP
+      # TNT_JP.
       TNT_JP = 'TNT_JP'.freeze,
 
-      # TODO: Write general description for TH_CJ
+      # TH_CJ.
       TH_CJ = 'TH_CJ'.freeze,
 
-      # TODO: Write general description for EC_CN
+      # EC_CN.
       EC_CN = 'EC_CN'.freeze,
 
-      # TODO: Write general description for FASTWAY_UK
+      # FASTWAY_UK.
       FASTWAY_UK = 'FASTWAY_UK'.freeze,
 
-      # TODO: Write general description for FASTWAY_US
+      # FASTWAY_US.
       FASTWAY_US = 'FASTWAY_US'.freeze,
 
-      # TODO: Write general description for GLS_DE
+      # GLS_DE.
       GLS_DE = 'GLS_DE'.freeze,
 
-      # TODO: Write general description for GLS_ES
+      # GLS_ES.
       GLS_ES = 'GLS_ES'.freeze,
 
-      # TODO: Write general description for GLS_FR
+      # GLS_FR.
       GLS_FR = 'GLS_FR'.freeze,
 
-      # TODO: Write general description for MONDIAL_BE
+      # MONDIAL_BE.
       MONDIAL_BE = 'MONDIAL_BE'.freeze,
 
-      # TODO: Write general description for SGT_IT
+      # SGT_IT.
       SGT_IT = 'SGT_IT'.freeze,
 
-      # TODO: Write general description for TNT_CN
+      # TNT_CN.
       TNT_CN = 'TNT_CN'.freeze,
 
-      # TODO: Write general description for TNT_DE
+      # TNT_DE.
       TNT_DE = 'TNT_DE'.freeze,
 
-      # TODO: Write general description for TNT_ES
+      # TNT_ES.
       TNT_ES = 'TNT_ES'.freeze,
 
-      # TODO: Write general description for TNT_PL
+      # TNT_PL.
       TNT_PL = 'TNT_PL'.freeze,
 
-      # TODO: Write general description for PARCELFORCE
+      # PARCELFORCE.
       PARCELFORCE = 'PARCELFORCE'.freeze,
 
-      # TODO: Write general description for SWISS_POST
+      # SWISS POST.
       SWISS_POST = 'SWISS_POST'.freeze,
 
-      # TODO: Write general description for TOLL_IPEC
+      # TOLL IPEC.
       TOLL_IPEC = 'TOLL_IPEC'.freeze,
 
-      # TODO: Write general description for AIR_21
+      # AIR 21.
       AIR_21 = 'AIR_21'.freeze,
 
-      # TODO: Write general description for AIRSPEED
+      # AIRSPEED.
       AIRSPEED = 'AIRSPEED'.freeze,
 
-      # TODO: Write general description for BERT
+      # BERT.
       BERT = 'BERT'.freeze,
 
-      # TODO: Write general description for BLUEDART
+      # BLUEDART.
       BLUEDART = 'BLUEDART'.freeze,
 
-      # TODO: Write general description for COLLECTPLUS
+      # COLLECTPLUS.
       COLLECTPLUS = 'COLLECTPLUS'.freeze,
 
-      # TODO: Write general description for COURIERPLUS
+      # COURIERPLUS.
       COURIERPLUS = 'COURIERPLUS'.freeze,
 
-      # TODO: Write general description for COURIER_POST
+      # COURIER POST.
       COURIER_POST = 'COURIER_POST'.freeze,
 
-      # TODO: Write general description for DHL_GLOBAL_MAIL
+      # dhl_global_mail.
       DHL_GLOBAL_MAIL = 'DHL_GLOBAL_MAIL'.freeze,
 
-      # TODO: Write general description for DPD_UK
+      # dpd_uk.
       DPD_UK = 'DPD_UK'.freeze,
 
-      # TODO: Write general description for DELTEC_DE
+      # DELTEC DE.
       DELTEC_DE = 'DELTEC_DE'.freeze,
 
-      # TODO: Write general description for DEUTSCHE_DE
+      # deutsche_de.
       DEUTSCHE_DE = 'DEUTSCHE_DE'.freeze,
 
-      # TODO: Write general description for DOTZOT
+      # DOTZOT.
       DOTZOT = 'DOTZOT'.freeze,
 
-      # TODO: Write general description for ELTA_GR
+      # elta_gr.
       ELTA_GR = 'ELTA_GR'.freeze,
 
-      # TODO: Write general description for EMS_CN
+      # ems_cn.
       EMS_CN = 'EMS_CN'.freeze,
 
-      # TODO: Write general description for ECARGO
+      # ECARGO.
       ECARGO = 'ECARGO'.freeze,
 
-      # TODO: Write general description for ENSENDA
+      # ENSENDA.
       ENSENDA = 'ENSENDA'.freeze,
 
-      # TODO: Write general description for FERCAM_IT
+      # fercam_it.
       FERCAM_IT = 'FERCAM_IT'.freeze,
 
-      # TODO: Write general description for FASTWAY_ZA
+      # fastway_za.
       FASTWAY_ZA = 'FASTWAY_ZA'.freeze,
 
-      # TODO: Write general description for FASTWAY_AU
+      # fastway_au.
       FASTWAY_AU = 'FASTWAY_AU'.freeze,
 
-      # TODO: Write general description for FIRST_LOGISITCS
+      # first_logisitcs.
       FIRST_LOGISITCS = 'FIRST_LOGISITCS'.freeze,
 
-      # TODO: Write general description for GEODIS
+      # GEODIS.
       GEODIS = 'GEODIS'.freeze,
 
-      # TODO: Write general description for GLOBEGISTICS
+      # GLOBEGISTICS.
       GLOBEGISTICS = 'GLOBEGISTICS'.freeze,
 
-      # TODO: Write general description for GREYHOUND
+      # GREYHOUND.
       GREYHOUND = 'GREYHOUND'.freeze,
 
-      # TODO: Write general description for JETSHIP_MY
+      # jetship_my.
       JETSHIP_MY = 'JETSHIP_MY'.freeze,
 
-      # TODO: Write general description for LION_PARCEL
+      # LION PARCEL.
       LION_PARCEL = 'LION_PARCEL'.freeze,
 
-      # TODO: Write general description for AEROFLASH
+      # AEROFLASH.
       AEROFLASH = 'AEROFLASH'.freeze,
 
-      # TODO: Write general description for ONTRAC
+      # ONTRAC.
       ONTRAC = 'ONTRAC'.freeze,
 
-      # TODO: Write general description for SAGAWA
+      # SAGAWA.
       SAGAWA = 'SAGAWA'.freeze,
 
-      # TODO: Write general description for SIODEMKA
+      # SIODEMKA.
       SIODEMKA = 'SIODEMKA'.freeze,
 
-      # TODO: Write general description for STARTRACK
+      # startrack.
       STARTRACK = 'STARTRACK'.freeze,
 
-      # TODO: Write general description for TNT_AU
+      # tnt_au.
       TNT_AU = 'TNT_AU'.freeze,
 
-      # TODO: Write general description for TNT_IT
+      # tnt_it.
       TNT_IT = 'TNT_IT'.freeze,
 
-      # TODO: Write general description for TRANSMISSION
+      # TRANSMISSION.
       TRANSMISSION = 'TRANSMISSION'.freeze,
 
-      # TODO: Write general description for YAMATO
+      # YAMATO.
       YAMATO = 'YAMATO'.freeze,
 
-      # TODO: Write general description for DHL_IT
+      # dhl_it.
       DHL_IT = 'DHL_IT'.freeze,
 
-      # TODO: Write general description for DHL_AT
+      # dhl_at.
       DHL_AT = 'DHL_AT'.freeze,
 
-      # TODO: Write general description for LOGISTICSWORLDWIDE_KR
+      # LOGISTICSWORLDWIDE KR.
       LOGISTICSWORLDWIDE_KR = 'LOGISTICSWORLDWIDE_KR'.freeze,
 
-      # TODO: Write general description for GLS_SPAIN
+      # gls_spain.
       GLS_SPAIN = 'GLS_SPAIN'.freeze,
 
-      # TODO: Write general description for AMAZON_UK_API
+      # amazon_uk_api.
       AMAZON_UK_API = 'AMAZON_UK_API'.freeze,
 
-      # TODO: Write general description for DPD_FR_REFERENCE
+      # dpd_fr_reference.
       DPD_FR_REFERENCE = 'DPD_FR_REFERENCE'.freeze,
 
-      # TODO: Write general description for DHLPARCEL_UK
+      # dhlparcel_uk.
       DHLPARCEL_UK = 'DHLPARCEL_UK'.freeze,
 
-      # TODO: Write general description for MEGASAVE
+      # megasave.
       MEGASAVE = 'MEGASAVE'.freeze,
 
-      # TODO: Write general description for QUALITYPOST
+      # qualitypost.
       QUALITYPOST = 'QUALITYPOST'.freeze,
 
-      # TODO: Write general description for IDS_LOGISTICS
+      # ids_logistics.
       IDS_LOGISTICS = 'IDS_LOGISTICS'.freeze,
 
-      # TODO: Write general description for JOYINGBOX1
+      # joyingbox.
       JOYINGBOX1 = 'JOYINGBOX'.freeze,
 
-      # TODO: Write general description for PANTHER_ORDER_NUMBER
+      # panther_order_number.
       PANTHER_ORDER_NUMBER = 'PANTHER_ORDER_NUMBER'.freeze,
 
-      # TODO: Write general description for WATKINS_SHEPARD
+      # watkins_shepard.
       WATKINS_SHEPARD = 'WATKINS_SHEPARD'.freeze,
 
-      # TODO: Write general description for FASTTRACK
+      # fasttrack.
       FASTTRACK = 'FASTTRACK'.freeze,
 
-      # TODO: Write general description for UP_EXPRESS
+      # up_express.
       UP_EXPRESS = 'UP_EXPRESS'.freeze,
 
-      # TODO: Write general description for ELOGISTICA
+      # elogistica.
       ELOGISTICA = 'ELOGISTICA'.freeze,
 
-      # TODO: Write general description for ECOURIER
+      # ecourier.
       ECOURIER = 'ECOURIER'.freeze,
 
-      # TODO: Write general description for CJ_PHILIPPINES
+      # cj_philippines.
       CJ_PHILIPPINES = 'CJ_PHILIPPINES'.freeze,
 
-      # TODO: Write general description for SPEEDEX
+      # speedex.
       SPEEDEX = 'SPEEDEX'.freeze,
 
-      # TODO: Write general description for ORANGECONNEX
+      # orangeconnex.
       ORANGECONNEX = 'ORANGECONNEX'.freeze,
 
-      # TODO: Write general description for TECOR
+      # tecor.
       TECOR = 'TECOR'.freeze,
 
-      # TODO: Write general description for SAEE
+      # saee.
       SAEE = 'SAEE'.freeze,
 
-      # TODO: Write general description for GLS_ITALY_FTP
+      # gls_italy_ftp.
       GLS_ITALY_FTP = 'GLS_ITALY_FTP'.freeze,
 
-      # TODO: Write general description for DELIVERE
+      # delivere.
       DELIVERE = 'DELIVERE'.freeze,
 
-      # TODO: Write general description for YYCOM
+      # yycom.
       YYCOM = 'YYCOM'.freeze,
 
-      # TODO: Write general description for ADICIONAL_PT
+      # Adicional Logistics.
       ADICIONAL_PT = 'ADICIONAL_PT'.freeze,
 
-      # TODO: Write general description for DKSH
+      # DKSH.
       DKSH = 'DKSH'.freeze,
 
-      # TODO: Write general description for NIPPON_EXPRESS_FTP
+      # Nippon Express.
       NIPPON_EXPRESS_FTP = 'NIPPON_EXPRESS_FTP'.freeze,
 
-      # TODO: Write general description for GOLS
+      # GO Logistics & Storage.
       GOLS = 'GOLS'.freeze,
 
-      # TODO: Write general description for FUJEXP
+      # FUJIE EXPRESS.
       FUJEXP = 'FUJEXP'.freeze,
 
-      # TODO: Write general description for QTRACK
+      # QTrack.
       QTRACK = 'QTRACK'.freeze,
 
-      # TODO: Write general description for OMLOGISTICS_API
+      # OM LOGISTICS LTD.
       OMLOGISTICS_API = 'OMLOGISTICS_API'.freeze,
 
-      # TODO: Write general description for GDPHARM
+      # GDPharm Logistics.
       GDPHARM = 'GDPHARM'.freeze,
 
-      # TODO: Write general description for MISUMI_CN
+      # MISUMI Group Inc..
       MISUMI_CN = 'MISUMI_CN'.freeze,
 
-      # TODO: Write general description for AIR_CANADA
+      # Rivo.
       AIR_CANADA = 'AIR_CANADA'.freeze,
 
-      # TODO: Write general description for CITY56_WEBHOOK
+      # City Express.
       CITY56_WEBHOOK = 'CITY56_WEBHOOK'.freeze,
 
-      # TODO: Write general description for SAGAWA_API
+      # Sagawa.
       SAGAWA_API = 'SAGAWA_API'.freeze,
 
-      # TODO: Write general description for KEDAEX
+      # KedaEX.
       KEDAEX = 'KEDAEX'.freeze,
 
-      # TODO: Write general description for PGEON_API
+      # Pgeon.
       PGEON_API = 'PGEON_API'.freeze,
 
-      # TODO: Write general description for WEWORLDEXPRESS
+      # We World Express.
       WEWORLDEXPRESS = 'WEWORLDEXPRESS'.freeze,
 
-      # TODO: Write general description for JT_LOGISTICS
+      # J&T International logistics.
       JT_LOGISTICS = 'JT_LOGISTICS'.freeze,
 
-      # TODO: Write general description for TRUSK
+      # Trusk France.
       TRUSK = 'TRUSK'.freeze,
 
-      # TODO: Write general description for VIAXPRESS
+      # ViaXpress.
       VIAXPRESS = 'VIAXPRESS'.freeze,
 
-      # TODO: Write general description for DHL_SUPPLYCHAIN_ID
+      # DHL Supply Chain Indonesia.
       DHL_SUPPLYCHAIN_ID = 'DHL_SUPPLYCHAIN_ID'.freeze,
 
-      # TODO: Write general description for ZUELLIGPHARMA_SFTP
+      # Zuellig Pharma Korea.
       ZUELLIGPHARMA_SFTP = 'ZUELLIGPHARMA_SFTP'.freeze,
 
-      # TODO: Write general description for MEEST
+      # Meest.
       MEEST = 'MEEST'.freeze,
 
-      # TODO: Write general description for TOLL_PRIORITY
+      # Toll Priority.
       TOLL_PRIORITY = 'TOLL_PRIORITY'.freeze,
 
-      # TODO: Write general description for MOTHERSHIP_API
+      # Mothership.
       MOTHERSHIP_API = 'MOTHERSHIP_API'.freeze,
 
-      # TODO: Write general description for CAPITAL
+      # Capital Transport.
       CAPITAL = 'CAPITAL'.freeze,
 
-      # TODO: Write general description for EUROPAKET_API
+      # Europacket+.
       EUROPAKET_API = 'EUROPAKET_API'.freeze,
 
-      # TODO: Write general description for HFD
+      # HFD.
       HFD = 'HFD'.freeze,
 
-      # TODO: Write general description for TOURLINE_REFERENCE
+      # Tourline Express.
       TOURLINE_REFERENCE = 'TOURLINE_REFERENCE'.freeze,
 
-      # TODO: Write general description for GIO_ECOURIER
+      # GIO Express Inc.
       GIO_ECOURIER = 'GIO_ECOURIER'.freeze,
 
-      # TODO: Write general description for CN_LOGISTICS
+      # CN Logistics.
       CN_LOGISTICS = 'CN_LOGISTICS'.freeze,
 
-      # TODO: Write general description for PANDION
+      # Pandion.
       PANDION = 'PANDION'.freeze,
 
-      # TODO: Write general description for BPOST_API
+      # Bpost API.
       BPOST_API = 'BPOST_API'.freeze,
 
-      # TODO: Write general description for PASSPORTSHIPPING
+      # Passport Shipping.
       PASSPORTSHIPPING = 'PASSPORTSHIPPING'.freeze,
 
-      # TODO: Write general description for PAKAJO
+      # Pakajo World.
       PAKAJO = 'PAKAJO'.freeze,
 
-      # TODO: Write general description for DACHSER
+      # DACHSER.
       DACHSER = 'DACHSER'.freeze,
 
-      # TODO: Write general description for YUSEN_SFTP
+      # Yusen Logistics.
       YUSEN_SFTP = 'YUSEN_SFTP'.freeze,
 
-      # TODO: Write general description for SHYPLITE
+      # Shypmax.
       SHYPLITE = 'SHYPLITE'.freeze,
 
-      # TODO: Write general description for XYY
+      # Xingyunyi Logistics.
       XYY = 'XYY'.freeze,
 
-      # TODO: Write general description for MWD
+      # Metropolitan Warehouse & Delivery.
       MWD = 'MWD'.freeze,
 
-      # TODO: Write general description for FAXECARGO
+      # Faxe Cargo.
       FAXECARGO = 'FAXECARGO'.freeze,
 
-      # TODO: Write general description for MAZET
+      # Groupe Mazet.
       MAZET = 'MAZET'.freeze,
 
-      # TODO: Write general description for FIRST_LOGISTICS_API
+      # First Logistics.
       FIRST_LOGISTICS_API = 'FIRST_LOGISTICS_API'.freeze,
 
-      # TODO: Write general description for SPRINT_PACK
+      # SPRINT PACK.
       SPRINT_PACK = 'SPRINT_PACK'.freeze,
 
-      # TODO: Write general description for HERMES_DE_FTP
+      # Hermes Germany.
       HERMES_DE_FTP = 'HERMES_DE_FTP'.freeze,
 
-      # TODO: Write general description for CONCISE
+      # Concise.
       CONCISE = 'CONCISE'.freeze,
 
-      # TODO: Write general description for KERRY_EXPRESS_TW_API
+      # Kerry Express TaiWan.
       KERRY_EXPRESS_TW_API = 'KERRY_EXPRESS_TW_API'.freeze,
 
-      # TODO: Write general description for EWE
+      # EWE Global Express.
       EWE = 'EWE'.freeze,
 
-      # TODO: Write general description for FASTDESPATCH
+      # Fast Despatch Logistics Limited.
       FASTDESPATCH = 'FASTDESPATCH'.freeze,
 
-      # TODO: Write general description for ABCUSTOM_SFTP
+      # AB Custom Group.
       ABCUSTOM_SFTP = 'ABCUSTOM_SFTP'.freeze,
 
-      # TODO: Write general description for CHAZKI
+      # Chazki.
       CHAZKI = 'CHAZKI'.freeze,
 
-      # TODO: Write general description for SHIPPIE
+      # Shippie.
       SHIPPIE = 'SHIPPIE'.freeze,
 
-      # TODO: Write general description for GEODIS_API
+      # GEODIS - Distribution & Express.
       GEODIS_API = 'GEODIS_API'.freeze,
 
-      # TODO: Write general description for NAQEL_EXPRESS
+      # Naqel Express.
       NAQEL_EXPRESS = 'NAQEL_EXPRESS'.freeze,
 
-      # TODO: Write general description for PAPA_WEBHOOK
+      # Papa.
       PAPA_WEBHOOK = 'PAPA_WEBHOOK'.freeze,
 
-      # TODO: Write general description for FORWARDAIR
+      # Forward Air.
       FORWARDAIR = 'FORWARDAIR'.freeze,
 
-      # TODO: Write general description for DIALOGO_LOGISTICA_API
+      # Dialogo Logistica.
       DIALOGO_LOGISTICA_API = 'DIALOGO_LOGISTICA_API'.freeze,
 
-      # TODO: Write general description for LALAMOVE_API
+      # Lalamove.
       LALAMOVE_API = 'LALAMOVE_API'.freeze,
 
-      # TODO: Write general description for TOMYDOOR
+      # Tomydoor.
       TOMYDOOR = 'TOMYDOOR'.freeze,
 
-      # TODO: Write general description for KRONOS_WEBHOOK
+      # Kronos Express.
       KRONOS_WEBHOOK = 'KRONOS_WEBHOOK'.freeze,
 
-      # TODO: Write general description for JTCARGO
+      # J&T CARGO.
       JTCARGO = 'JTCARGO'.freeze,
 
-      # TODO: Write general description for T_CAT
+      # T-cat.
       T_CAT = 'T_CAT'.freeze,
 
-      # TODO: Write general description for CONCISE_WEBHOOK
+      # Concise.
       CONCISE_WEBHOOK = 'CONCISE_WEBHOOK'.freeze,
 
-      # TODO: Write general description for TELEPORT_WEBHOOK
+      # Teleport.
       TELEPORT_WEBHOOK = 'TELEPORT_WEBHOOK'.freeze,
 
-      # TODO: Write general description for CUSTOMCO_API
+      # The Custom Companies.
       CUSTOMCO_API = 'CUSTOMCO_API'.freeze,
 
-      # TODO: Write general description for SPX_TH
+      # Shopee Xpress.
       SPX_TH = 'SPX_TH'.freeze,
 
-      # TODO: Write general description for BOLLORE_LOGISTICS
+      # Bollore Logistics.
       BOLLORE_LOGISTICS = 'BOLLORE_LOGISTICS'.freeze,
 
-      # TODO: Write general description for CLICKLINK_SFTP
+      # ClickLink.
       CLICKLINK_SFTP = 'CLICKLINK_SFTP'.freeze,
 
-      # TODO: Write general description for M3LOGISTICS
+      # M3 Logistics.
       M3LOGISTICS = 'M3LOGISTICS'.freeze,
 
-      # TODO: Write general description for VNPOST_API
+      # Vietnam Post.
       VNPOST_API = 'VNPOST_API'.freeze,
 
-      # TODO: Write general description for AXLEHIRE_FTP
+      # Axlehire.
       AXLEHIRE_FTP = 'AXLEHIRE_FTP'.freeze,
 
-      # TODO: Write general description for SHADOWFAX
+      # Shadowfax.
       SHADOWFAX = 'SHADOWFAX'.freeze,
 
-      # TODO: Write general description for MYHERMES_UK_API
+      # EVRi.
       MYHERMES_UK_API = 'MYHERMES_UK_API'.freeze,
 
-      # TODO: Write general description for DAIICHI
+      # Daiichi Freight System Inc.
       DAIICHI = 'DAIICHI'.freeze,
 
-      # TODO: Write general description for MENSAJEROSURBANOS_API
+      # Mensajeros Urbanos.
       MENSAJEROSURBANOS_API = 'MENSAJEROSURBANOS_API'.freeze,
 
-      # TODO: Write general description for POLARSPEED
+      # PolarSpeed Inc.
       POLARSPEED = 'POLARSPEED'.freeze,
 
-      # TODO: Write general description for IDEXPRESS_ID
+      # iDexpress Indonesia.
       IDEXPRESS_ID = 'IDEXPRESS_ID'.freeze,
 
-      # TODO: Write general description for PAYO
+      # Payo.
       PAYO = 'PAYO'.freeze,
 
-      # TODO: Write general description for WHISTL_SFTP
+      # Whistl.
       WHISTL_SFTP = 'WHISTL_SFTP'.freeze,
 
-      # TODO: Write general description for INTEX_DE
+      # INTEX Paketdienst GmbH.
       INTEX_DE = 'INTEX_DE'.freeze,
 
-      # TODO: Write general description for TRANS2U
+      # Trans2u.
       TRANS2U = 'TRANS2U'.freeze,
 
-      # TODO: Write general description for PRODUCTCAREGROUP_SFTP
+      # Product Care Services Limited.
       PRODUCTCAREGROUP_SFTP = 'PRODUCTCAREGROUP_SFTP'.freeze,
 
-      # TODO: Write general description for BIGSMART
+      # Big Smart.
       BIGSMART = 'BIGSMART'.freeze,
 
-      # TODO: Write general description for EXPEDITORS_API_REF
+      # Expeditors API Reference.
       EXPEDITORS_API_REF = 'EXPEDITORS_API_REF'.freeze,
 
-      # TODO: Write general description for AITWORLDWIDE_API
+      # AIT.
       AITWORLDWIDE_API = 'AITWORLDWIDE_API'.freeze,
 
-      # TODO: Write general description for WORLDCOURIER
+      # World Courier.
       WORLDCOURIER = 'WORLDCOURIER'.freeze,
 
-      # TODO: Write general description for QUIQUP
+      # Quiqup.
       QUIQUP = 'QUIQUP'.freeze,
 
-      # TODO: Write general description for AGEDISS_SFTP
+      # Agediss.
       AGEDISS_SFTP = 'AGEDISS_SFTP'.freeze,
 
-      # TODO: Write general description for ANDREANI_API
+      # Andreani.
       ANDREANI_API = 'ANDREANI_API'.freeze,
 
-      # TODO: Write general description for CRLEXPRESS
+      # CRL Express.
       CRLEXPRESS = 'CRLEXPRESS'.freeze,
 
-      # TODO: Write general description for SMARTCAT
+      # SMARTCAT.
       SMARTCAT = 'SMARTCAT'.freeze,
 
-      # TODO: Write general description for CROSSFLIGHT
+      # Crossflight Limited.
       CROSSFLIGHT = 'CROSSFLIGHT'.freeze,
 
-      # TODO: Write general description for PROCARRIER
+      # Pro Carrier.
       PROCARRIER = 'PROCARRIER'.freeze,
 
-      # TODO: Write general description for DHL_REFERENCE_API
+      # DHL (Reference number).
       DHL_REFERENCE_API = 'DHL_REFERENCE_API'.freeze,
 
-      # TODO: Write general description for SEINO_API
+      # Seino.
       SEINO_API = 'SEINO_API'.freeze,
 
-      # TODO: Write general description for WSPEXPRESS
+      # WSP Express.
       WSPEXPRESS = 'WSPEXPRESS'.freeze,
 
-      # TODO: Write general description for KRONOS
+      # Kronos Express.
       KRONOS = 'KRONOS'.freeze,
 
-      # TODO: Write general description for TOTAL_EXPRESS_API
+      # Total Express.
       TOTAL_EXPRESS_API = 'TOTAL_EXPRESS_API'.freeze,
 
-      # TODO: Write general description for PARCLL
+      # PARCLL.
       PARCLL = 'PARCLL'.freeze,
 
-      # TODO: Write general description for XPEDIGO
+      # Xpedigo.
       XPEDIGO = 'XPEDIGO'.freeze,
 
-      # TODO: Write general description for STAR_TRACK_WEBHOOK
+      # StarTrack.
       STAR_TRACK_WEBHOOK = 'STAR_TRACK_WEBHOOK'.freeze,
 
-      # TODO: Write general description for GPOST
+      # Georgian Post.
       GPOST = 'GPOST'.freeze,
 
-      # TODO: Write general description for UCS
+      # UCS.
       UCS = 'UCS'.freeze,
 
-      # TODO: Write general description for DMFGROUP
+      # DMF.
       DMFGROUP = 'DMFGROUP'.freeze,
 
-      # TODO: Write general description for COORDINADORA_API
+      # Coordinadora.
       COORDINADORA_API = 'COORDINADORA_API'.freeze,
 
-      # TODO: Write general description for MARKEN
+      # Marken.
       MARKEN = 'MARKEN'.freeze,
 
-      # TODO: Write general description for NTL
+      # NTL logistics.
       NTL = 'NTL'.freeze,
 
-      # TODO: Write general description for REDJEPAKKETJE
+      # Red je Pakketje.
       REDJEPAKKETJE = 'REDJEPAKKETJE'.freeze,
 
-      # TODO: Write general description for ALLIED_EXPRESS_FTP
+      # Allied Express (FTP).
       ALLIED_EXPRESS_FTP = 'ALLIED_EXPRESS_FTP'.freeze,
 
-      # TODO: Write general description for MONDIALRELAY_ES
+      # Mondial Relay Spain(Punto Pack).
       MONDIALRELAY_ES = 'MONDIALRELAY_ES'.freeze,
 
-      # TODO: Write general description for NAEKO_FTP
+      # Naeko Logistics.
       NAEKO_FTP = 'NAEKO_FTP'.freeze,
 
-      # TODO: Write general description for MHI
+      # Mhi.
       MHI = 'MHI'.freeze,
 
-      # TODO: Write general description for SHIPPIFY
+      # Shippify, Inc.
       SHIPPIFY = 'SHIPPIFY'.freeze,
 
-      # TODO: Write general description for MALCA_AMIT_API
+      # Malca Amit.
       MALCA_AMIT_API = 'MALCA_AMIT_API'.freeze,
 
-      # TODO: Write general description for JTEXPRESS_SG_API
+      # J&T Express Singapore.
       JTEXPRESS_SG_API = 'JTEXPRESS_SG_API'.freeze,
 
-      # TODO: Write general description for DACHSER_WEB
+      # DACHSER.
       DACHSER_WEB = 'DACHSER_WEB'.freeze,
 
-      # TODO: Write general description for FLIGHTLG
+      # Flight Logistics Group.
       FLIGHTLG = 'FLIGHTLG'.freeze,
 
-      # TODO: Write general description for CAGO
+      # Cago.
       CAGO = 'CAGO'.freeze,
 
-      # TODO: Write general description for COM1EXPRESS
+      # ComOne Express.
       COM1EXPRESS = 'COM1EXPRESS'.freeze,
 
-      # TODO: Write general description for TONAMI_FTP
+      # Tonami.
       TONAMI_FTP = 'TONAMI_FTP'.freeze,
 
-      # TODO: Write general description for PACKFLEET
+      # PACKFLEET.
       PACKFLEET = 'PACKFLEET'.freeze,
 
-      # TODO: Write general description for PUROLATOR_INTERNATIONAL
+      # Purolator International.
       PUROLATOR_INTERNATIONAL = 'PUROLATOR_INTERNATIONAL'.freeze,
 
-      # TODO: Write general description for WINESHIPPING_WEBHOOK
+      # Wineshipping.
       WINESHIPPING_WEBHOOK = 'WINESHIPPING_WEBHOOK'.freeze,
 
-      # TODO: Write general description for DHL_ES_SFTP
+      # DHL Spain Domestic.
       DHL_ES_SFTP = 'DHL_ES_SFTP'.freeze,
 
-      # TODO: Write general description for PCHOME_API
+      # 網家速配股份有限公司.
       PCHOME_API = 'PCHOME_API'.freeze,
 
-      # TODO: Write general description for CESKAPOSTA_API
+      # Czech Post.
       CESKAPOSTA_API = 'CESKAPOSTA_API'.freeze,
 
-      # TODO: Write general description for GORUSH
+      # Go Rush.
       GORUSH = 'GORUSH'.freeze,
 
-      # TODO: Write general description for HOMERUNNER
+      # HomeRunner.
       HOMERUNNER = 'HOMERUNNER'.freeze,
 
-      # TODO: Write general description for AMAZON_ORDER
+      # Amazon order.
       AMAZON_ORDER = 'AMAZON_ORDER'.freeze,
 
-      # TODO: Write general description for EFWNOW_API
+      # Estes Forwarding Worldwide.
       EFWNOW_API = 'EFWNOW_API'.freeze,
 
-      # TODO: Write general description for CBL_LOGISTICA_API
+      # CBL Logistica (API).
       CBL_LOGISTICA_API = 'CBL_LOGISTICA_API'.freeze,
 
-      # TODO: Write general description for NIMBUSPOST
+      # NimbusPost.
       NIMBUSPOST = 'NIMBUSPOST'.freeze,
 
-      # TODO: Write general description for LOGWIN_LOGISTICS
+      # Logwin Logistics.
       LOGWIN_LOGISTICS = 'LOGWIN_LOGISTICS'.freeze,
 
-      # TODO: Write general description for NOWLOG_API
+      # Sequoialog.
       NOWLOG_API = 'NOWLOG_API'.freeze,
 
-      # TODO: Write general description for DPD_NL
+      # DPD Netherlands.
       DPD_NL = 'DPD_NL'.freeze,
 
-      # TODO: Write general description for GODEPENDABLE
+      # Dependable Supply Chain Services.
       GODEPENDABLE = 'GODEPENDABLE'.freeze,
 
-      # TODO: Write general description for ESDEX
+      # Top Ideal Express.
       ESDEX = 'ESDEX'.freeze,
 
-      # TODO: Write general description for LOGISYSTEMS_SFTP
+      # Kiitäjät.
       LOGISYSTEMS_SFTP = 'LOGISYSTEMS_SFTP'.freeze,
 
-      # TODO: Write general description for EXPEDITORS
+      # Expeditors.
       EXPEDITORS = 'EXPEDITORS'.freeze,
 
-      # TODO: Write general description for SNTGLOBAL_API
+      # Snt Global Etrax.
       SNTGLOBAL_API = 'SNTGLOBAL_API'.freeze,
 
-      # TODO: Write general description for SHIPX
+      # ShipX.
       SHIPX = 'SHIPX'.freeze,
 
-      # TODO: Write general description for QINTL_API
+      # Quickstat Courier LLC.
       QINTL_API = 'QINTL_API'.freeze,
 
-      # TODO: Write general description for PACKS
+      # Packs.
       PACKS = 'PACKS'.freeze,
 
-      # TODO: Write general description for POSTNL_INTERNATIONAL
+      # PostNL International.
       POSTNL_INTERNATIONAL = 'POSTNL_INTERNATIONAL'.freeze,
 
-      # TODO: Write general description for AMAZON_EMAIL_PUSH
+      # Amazon.
       AMAZON_EMAIL_PUSH = 'AMAZON_EMAIL_PUSH'.freeze,
 
-      # TODO: Write general description for DHL_API
+      # DHL.
       DHL_API = 'DHL_API'.freeze,
 
-      # TODO: Write general description for SPX
+      # Shopee Express.
       SPX = 'SPX'.freeze,
 
-      # TODO: Write general description for AXLEHIRE
+      # AxleHire.
       AXLEHIRE = 'AXLEHIRE'.freeze,
 
-      # TODO: Write general description for ICSCOURIER
+      # ICS COURIER.
       ICSCOURIER = 'ICSCOURIER'.freeze,
 
-      # TODO: Write general description for DIALOGO_LOGISTICA
+      # Dialogo Logistica.
       DIALOGO_LOGISTICA = 'DIALOGO_LOGISTICA'.freeze,
 
-      # TODO: Write general description for SHUNBANG_EXPRESS
+      # ShunBang Express.
       SHUNBANG_EXPRESS = 'SHUNBANG_EXPRESS'.freeze,
 
-      # TODO: Write general description for TCS_API
+      # TCS.
       TCS_API = 'TCS_API'.freeze,
 
-      # TODO: Write general description for SF_EXPRESS_CN
+      # SF Express China.
       SF_EXPRESS_CN = 'SF_EXPRESS_CN'.freeze,
 
-      # TODO: Write general description for PACKETA
+      # Packeta.
       PACKETA = 'PACKETA'.freeze,
 
-      # TODO: Write general description for SIC_TELIWAY
+      # Teliway SIC Express.
       SIC_TELIWAY = 'SIC_TELIWAY'.freeze,
 
-      # TODO: Write general description for MONDIALRELAY_FR
+      # Mondial Relay France.
       MONDIALRELAY_FR = 'MONDIALRELAY_FR'.freeze,
 
-      # TODO: Write general description for INTIME_FTP
+      # InTime.
       INTIME_FTP = 'INTIME_FTP'.freeze,
 
-      # TODO: Write general description for JD_EXPRESS
+      # 京东物流.
       JD_EXPRESS = 'JD_EXPRESS'.freeze,
 
-      # TODO: Write general description for FASTBOX
+      # Fastbox.
       FASTBOX = 'FASTBOX'.freeze,
 
-      # TODO: Write general description for PATHEON
+      # Patheon Logistics.
       PATHEON = 'PATHEON'.freeze,
 
-      # TODO: Write general description for INDIA_POST
+      # India Post Domestic.
       INDIA_POST = 'INDIA_POST'.freeze,
 
-      # TODO: Write general description for TIPSA_REF
+      # Tipsa Reference.
       TIPSA_REF = 'TIPSA_REF'.freeze,
 
-      # TODO: Write general description for ECOFREIGHT
+      # Eco Freight.
       ECOFREIGHT = 'ECOFREIGHT'.freeze,
 
-      # TODO: Write general description for VOX
+      # VOX SOLUCION EMPRESARIAL SRL.
       VOX = 'VOX'.freeze,
 
-      # TODO: Write general description for DIRECTFREIGHT_AU_REF
+      # Direct Freight Express.
       DIRECTFREIGHT_AU_REF = 'DIRECTFREIGHT_AU_REF'.freeze,
 
-      # TODO: Write general description for BESTTRANSPORT_SFTP
+      # Best Transport.
       BESTTRANSPORT_SFTP = 'BESTTRANSPORT_SFTP'.freeze,
 
-      # TODO: Write general description for AUSTRALIA_POST_API
+      # Australia Post.
       AUSTRALIA_POST_API = 'AUSTRALIA_POST_API'.freeze,
 
-      # TODO: Write general description for FRAGILEPAK_SFTP
+      # FragilePAK.
       FRAGILEPAK_SFTP = 'FRAGILEPAK_SFTP'.freeze,
 
-      # TODO: Write general description for FLIPXP
+      # FlipXpress.
       FLIPXP = 'FLIPXP'.freeze,
 
-      # TODO: Write general description for VALUE_WEBHOOK
+      # Value Logistics.
       VALUE_WEBHOOK = 'VALUE_WEBHOOK'.freeze,
 
-      # TODO: Write general description for DAESHIN
+      # Daeshin.
       DAESHIN = 'DAESHIN'.freeze,
 
-      # TODO: Write general description for SHERPA
+      # Sherpa.
       SHERPA = 'SHERPA'.freeze,
 
-      # TODO: Write general description for MWD_API
+      # Metropolitan Warehouse & Delivery.
       MWD_API = 'MWD_API'.freeze,
 
-      # TODO: Write general description for SMARTKARGO
+      # SmartKargo.
       SMARTKARGO = 'SMARTKARGO'.freeze,
 
-      # TODO: Write general description for DNJ_EXPRESS
+      # DNJ Express.
       DNJ_EXPRESS = 'DNJ_EXPRESS'.freeze,
 
-      # TODO: Write general description for GOPEOPLE
+      # Go People.
       GOPEOPLE = 'GOPEOPLE'.freeze,
 
-      # TODO: Write general description for MYSENDLE_API
+      # mySendle.
       MYSENDLE_API = 'MYSENDLE_API'.freeze,
 
-      # TODO: Write general description for ARAMEX_API
+      # Aramex.
       ARAMEX_API = 'ARAMEX_API'.freeze,
 
-      # TODO: Write general description for PIDGE
+      # Pidge.
       PIDGE = 'PIDGE'.freeze,
 
-      # TODO: Write general description for THAIPARCELS
+      # TP Logistic.
       THAIPARCELS = 'THAIPARCELS'.freeze,
 
-      # TODO: Write general description for PANTHER_REFERENCE_API
+      # Panther Reference.
       PANTHER_REFERENCE_API = 'PANTHER_REFERENCE_API'.freeze,
 
-      # TODO: Write general description for POSTAPLUS1
+      # Posta Plus.
       POSTAPLUS1 = 'POSTAPLUS'.freeze,
 
-      # TODO: Write general description for BUFFALO
+      # BUFFALO.
       BUFFALO = 'BUFFALO'.freeze,
 
-      # TODO: Write general description for U_ENVIOS
+      # U-ENVIOS.
       U_ENVIOS = 'U_ENVIOS'.freeze,
 
-      # TODO: Write general description for ELITE_CO
+      # Elite Express.
       ELITE_CO = 'ELITE_CO'.freeze,
 
-      # TODO: Write general description for BARQEXP
-      BARQEXP = 'BARQEXP'.freeze,
-
-      # TODO: Write general description for ROCHE_INTERNAL_SFTP
+      # Roche Internal Courier.
       ROCHE_INTERNAL_SFTP = 'ROCHE_INTERNAL_SFTP'.freeze,
 
-      # TODO: Write general description for DBSCHENKER_ICELAND
+      # DB Schenker Iceland.
       DBSCHENKER_ICELAND = 'DBSCHENKER_ICELAND'.freeze,
 
-      # TODO: Write general description for TNT_FR_REFERENCE
+      # TNT France Reference.
       TNT_FR_REFERENCE = 'TNT_FR_REFERENCE'.freeze,
 
-      # TODO: Write general description for NEWGISTICSAPI
+      # Newgistics API.
       NEWGISTICSAPI = 'NEWGISTICSAPI'.freeze,
 
-      # TODO: Write general description for GLOVO
+      # Glovo.
       GLOVO = 'GLOVO'.freeze,
 
-      # TODO: Write general description for GWLOGIS_API
+      # G.I.G.
       GWLOGIS_API = 'GWLOGIS_API'.freeze,
 
-      # TODO: Write general description for SPREETAIL_API
+      # Spreetail.
       SPREETAIL_API = 'SPREETAIL_API'.freeze,
 
-      # TODO: Write general description for MOOVA
+      # Moova.
       MOOVA = 'MOOVA'.freeze,
 
-      # TODO: Write general description for PLYCONGROUP
+      # Plycon Transportation Group.
       PLYCONGROUP = 'PLYCONGROUP'.freeze,
 
-      # TODO: Write general description for USPS_WEBHOOK
+      # USPS Informed Visibility - Webhook.
       USPS_WEBHOOK = 'USPS_WEBHOOK'.freeze,
 
-      # TODO: Write general description for REIMAGINEDELIVERY
+      # maergo.
       REIMAGINEDELIVERY = 'REIMAGINEDELIVERY'.freeze,
 
-      # TODO: Write general description for EDF_FTP
+      # Eurodifarm.
       EDF_FTP = 'EDF_FTP'.freeze,
 
-      # TODO: Write general description for DAO365
+      # DAO365.
       DAO365 = 'DAO365'.freeze,
 
-      # TODO: Write general description for BIOCAIR_FTP
+      # BioCair.
       BIOCAIR_FTP = 'BIOCAIR_FTP'.freeze,
 
-      # TODO: Write general description for RANSA_WEBHOOK
+      # Ransa.
       RANSA_WEBHOOK = 'RANSA_WEBHOOK'.freeze,
 
-      # TODO: Write general description for SHIPXPRES
+      # SHIPXPRESS.
       SHIPXPRES = 'SHIPXPRES'.freeze,
 
-      # TODO: Write general description for COURANT_PLUS_API
+      # Courant Plus.
       COURANT_PLUS_API = 'COURANT_PLUS_API'.freeze,
 
-      # TODO: Write general description for SHIPA
+      # SHIPA.
       SHIPA = 'SHIPA'.freeze,
 
-      # TODO: Write general description for HOMELOGISTICS
+      # Home Logistics.
       HOMELOGISTICS = 'HOMELOGISTICS'.freeze,
 
-      # TODO: Write general description for DX
+      # DX.
       DX = 'DX'.freeze,
 
-      # TODO: Write general description for POSTE_ITALIANE_PACCOCELERE
+      # Poste Italiane Paccocelere.
       POSTE_ITALIANE_PACCOCELERE = 'POSTE_ITALIANE_PACCOCELERE'.freeze,
 
-      # TODO: Write general description for TOLL_WEBHOOK
+      # Toll Group.
       TOLL_WEBHOOK = 'TOLL_WEBHOOK'.freeze,
 
-      # TODO: Write general description for LCTBR_API
+      # LCT do Brasil.
       LCTBR_API = 'LCTBR_API'.freeze,
 
-      # TODO: Write general description for DX_FREIGHT
+      # DX Freight.
       DX_FREIGHT = 'DX_FREIGHT'.freeze,
 
-      # TODO: Write general description for DHL_SFTP
+      # DHL Express.
       DHL_SFTP = 'DHL_SFTP'.freeze,
 
-      # TODO: Write general description for SHIPROCKET
+      # Shiprocket X.
       SHIPROCKET = 'SHIPROCKET'.freeze,
 
-      # TODO: Write general description for UBER_WEBHOOK
+      # Uber.
       UBER_WEBHOOK = 'UBER_WEBHOOK'.freeze,
 
-      # TODO: Write general description for STATOVERNIGHT
+      # Stat Overnight.
       STATOVERNIGHT = 'STATOVERNIGHT'.freeze,
 
-      # TODO: Write general description for BURD
+      # Burd Delivery.
       BURD = 'BURD'.freeze,
 
-      # TODO: Write general description for FASTSHIP
+      # Fastship Express.
       FASTSHIP = 'FASTSHIP'.freeze,
 
-      # TODO: Write general description for IBVENTURE_WEBHOOK
+      # IB Venture.
       IBVENTURE_WEBHOOK = 'IBVENTURE_WEBHOOK'.freeze,
 
-      # TODO: Write general description for GATI_KWE_API
+      # Gati-KWE.
       GATI_KWE_API = 'GATI_KWE_API'.freeze,
 
-      # TODO: Write general description for CRYOPDP_FTP
+      # CryoPDP.
       CRYOPDP_FTP = 'CRYOPDP_FTP'.freeze,
 
-      # TODO: Write general description for HUBBED
+      # HUBBED.
       HUBBED = 'HUBBED'.freeze,
 
-      # TODO: Write general description for TIPSA_API
+      # Tipsa API.
       TIPSA_API = 'TIPSA_API'.freeze,
 
-      # TODO: Write general description for ARASKARGO
+      # Aras Cargo.
       ARASKARGO = 'ARASKARGO'.freeze,
 
-      # TODO: Write general description for THIJS_NL
+      # Thijs Logistiek.
       THIJS_NL = 'THIJS_NL'.freeze,
 
-      # TODO: Write general description for ATSHEALTHCARE_REFERENCE
+      # ATS Healthcare.
       ATSHEALTHCARE_REFERENCE = 'ATSHEALTHCARE_REFERENCE'.freeze,
 
-      # TODO: Write general description for ENUM_99MINUTOS
+      # 99minutos.
       ENUM_99MINUTOS = '99MINUTOS'.freeze,
 
-      # TODO: Write general description for HELLENIC_POST
+      # Hellenic (Greece) Post.
       HELLENIC_POST = 'HELLENIC_POST'.freeze,
 
-      # TODO: Write general description for HSM_GLOBAL
+      # HSM Global.
       HSM_GLOBAL = 'HSM_GLOBAL'.freeze,
 
-      # TODO: Write general description for MNX
+      # MNX.
       MNX = 'MNX'.freeze,
 
-      # TODO: Write general description for NMTRANSFER
+      # N&M Transfer Co., Inc..
       NMTRANSFER = 'NMTRANSFER'.freeze,
 
-      # TODO: Write general description for LOGYSTO
+      # Logysto.
       LOGYSTO = 'LOGYSTO'.freeze,
 
-      # TODO: Write general description for INDIA_POST_INT
+      # India Post International.
       INDIA_POST_INT = 'INDIA_POST_INT'.freeze,
 
-      # TODO: Write general description for AMAZON_FBA_SWISHIP_IN
+      # Swiship IN.
       AMAZON_FBA_SWISHIP_IN = 'AMAZON_FBA_SWISHIP_IN'.freeze,
 
-      # TODO: Write general description for SRT_TRANSPORT
+      # SRT Transport.
       SRT_TRANSPORT = 'SRT_TRANSPORT'.freeze,
 
-      # TODO: Write general description for BOMI
+      # Bomi Group.
       BOMI = 'BOMI'.freeze,
 
-      # TODO: Write general description for DELIVERR_SFTP
+      # Deliverr.
       DELIVERR_SFTP = 'DELIVERR_SFTP'.freeze,
 
-      # TODO: Write general description for HSDEXPRESS
+      # HSDEXPRESS.
       HSDEXPRESS = 'HSDEXPRESS'.freeze,
 
-      # TODO: Write general description for SIMPLETIRE_WEBHOOK
+      # SimpleTire.
       SIMPLETIRE_WEBHOOK = 'SIMPLETIRE_WEBHOOK'.freeze,
 
-      # TODO: Write general description for HUNTER_EXPRESS_SFTP
+      # Hunter Express.
       HUNTER_EXPRESS_SFTP = 'HUNTER_EXPRESS_SFTP'.freeze,
 
-      # TODO: Write general description for UPS_API
+      # UPS.
       UPS_API = 'UPS_API'.freeze,
 
-      # TODO: Write general description for WOOYOUNG_LOGISTICS_SFTP
+      # WOO YOUNG LOGISTICS CO.,LTD..
       WOOYOUNG_LOGISTICS_SFTP = 'WOOYOUNG_LOGISTICS_SFTP'.freeze,
 
-      # TODO: Write general description for PHSE_API
+      # PHSE.
       PHSE_API = 'PHSE_API'.freeze,
 
-      # TODO: Write general description for WISH_EMAIL_PUSH
+      # Wish.
       WISH_EMAIL_PUSH = 'WISH_EMAIL_PUSH'.freeze,
 
-      # TODO: Write general description for NORTHLINE
+      # Northline.
       NORTHLINE = 'NORTHLINE'.freeze,
 
-      # TODO: Write general description for MEDAFRICA
+      # Med Africa Logistics.
       MEDAFRICA = 'MEDAFRICA'.freeze,
 
-      # TODO: Write general description for DPD_AT_SFTP
+      # DPD Austria.
       DPD_AT_SFTP = 'DPD_AT_SFTP'.freeze,
 
-      # TODO: Write general description for ANTERAJA
+      # Anteraja.
       ANTERAJA = 'ANTERAJA'.freeze,
 
-      # TODO: Write general description for DHL_GLOBAL_FORWARDING_API
+      # DHL Global Forwarding API.
       DHL_GLOBAL_FORWARDING_API = 'DHL_GLOBAL_FORWARDING_API'.freeze,
 
-      # TODO: Write general description for LBCEXPRESS_API
+      # LBC EXPRESS INC..
       LBCEXPRESS_API = 'LBCEXPRESS_API'.freeze,
 
-      # TODO: Write general description for SIMSGLOBAL
+      # Sims Global.
       SIMSGLOBAL = 'SIMSGLOBAL'.freeze,
 
-      # TODO: Write general description for CDLDELIVERS
+      # CDL Last Mile.
       CDLDELIVERS = 'CDLDELIVERS'.freeze,
 
-      # TODO: Write general description for TYP
+      # TYP.
       TYP = 'TYP'.freeze,
 
-      # TODO: Write general description for TESTING_COURIER_WEBHOOK
+      # Testing Courier.
       TESTING_COURIER_WEBHOOK = 'TESTING_COURIER_WEBHOOK'.freeze,
 
-      # TODO: Write general description for PANDAGO_API
+      # Pandago.
       PANDAGO_API = 'PANDAGO_API'.freeze,
 
-      # TODO: Write general description for ROYAL_MAIL_FTP
+      # Royal Mail.
       ROYAL_MAIL_FTP = 'ROYAL_MAIL_FTP'.freeze,
 
-      # TODO: Write general description for THUNDEREXPRESS
+      # Thunder Express Australia.
       THUNDEREXPRESS = 'THUNDEREXPRESS'.freeze,
 
-      # TODO: Write general description for SECRETLAB_WEBHOOK
+      # Secretlab.
       SECRETLAB_WEBHOOK = 'SECRETLAB_WEBHOOK'.freeze,
 
-      # TODO: Write general description for SETEL
+      # Setel Express.
       SETEL = 'SETEL'.freeze,
 
-      # TODO: Write general description for JD_WORLDWIDE
+      # JD Worldwide.
       JD_WORLDWIDE = 'JD_WORLDWIDE'.freeze,
 
-      # TODO: Write general description for DPD_RU_API
+      # DPD Russia.
       DPD_RU_API = 'DPD_RU_API'.freeze,
 
-      # TODO: Write general description for ARGENTS_WEBHOOK
+      # Argents Express Group.
       ARGENTS_WEBHOOK = 'ARGENTS_WEBHOOK'.freeze,
 
-      # TODO: Write general description for POSTONE
+      # Post ONE.
       POSTONE = 'POSTONE'.freeze,
 
-      # TODO: Write general description for TUSKLOGISTICS
+      # Tusk Logistics.
       TUSKLOGISTICS = 'TUSKLOGISTICS'.freeze,
 
-      # TODO: Write general description for RHENUS_UK_API
+      # Rhenus Logistics UK.
       RHENUS_UK_API = 'RHENUS_UK_API'.freeze,
 
-      # TODO: Write general description for TAQBIN_SG_API
+      # Yamato Singapore.
       TAQBIN_SG_API = 'TAQBIN_SG_API'.freeze,
 
-      # TODO: Write general description for INNTRALOG_SFTP
+      # Inntralog GmbH.
       INNTRALOG_SFTP = 'INNTRALOG_SFTP'.freeze,
 
-      # TODO: Write general description for DAYROSS
+      # Day & Ross.
       DAYROSS = 'DAYROSS'.freeze,
 
-      # TODO: Write general description for CORREOSEXPRESS_API
+      # Correos Express (API).
       CORREOSEXPRESS_API = 'CORREOSEXPRESS_API'.freeze,
 
-      # TODO: Write general description for INTERNATIONAL_SEUR_API
+      # International Seur API.
       INTERNATIONAL_SEUR_API = 'INTERNATIONAL_SEUR_API'.freeze,
 
-      # TODO: Write general description for YODEL_API
+      # Yodel API.
       YODEL_API = 'YODEL_API'.freeze,
 
-      # TODO: Write general description for HEROEXPRESS
+      # Hero Express.
       HEROEXPRESS = 'HEROEXPRESS'.freeze,
 
-      # TODO: Write general description for DHL_SUPPLYCHAIN_IN
+      # DHL supply chain India.
       DHL_SUPPLYCHAIN_IN = 'DHL_SUPPLYCHAIN_IN'.freeze,
 
-      # TODO: Write general description for URGENT_CARGUS
+      # Urgent Cargus.
       URGENT_CARGUS = 'URGENT_CARGUS'.freeze,
 
-      # TODO: Write general description for FRONTDOORCORP
+      # FRONTdoor Collective.
       FRONTDOORCORP = 'FRONTDOORCORP'.freeze,
 
-      # TODO: Write general description for JTEXPRESS_PH
+      # J&T Express Philippines.
       JTEXPRESS_PH = 'JTEXPRESS_PH'.freeze,
 
-      # TODO: Write general description for PARCELSTARS_WEBHOOK
+      # Parcelstars.
       PARCELSTARS_WEBHOOK = 'PARCELSTARS_WEBHOOK'.freeze,
 
-      # TODO: Write general description for DPD_SK_SFTP
+      # DPD Slovakia.
       DPD_SK_SFTP = 'DPD_SK_SFTP'.freeze,
 
-      # TODO: Write general description for MOVIANTO
+      # Movianto.
       MOVIANTO = 'MOVIANTO'.freeze,
 
-      # TODO: Write general description for OZEPARTS_SHIPPING
+      # Ozeparts Shipping.
       OZEPARTS_SHIPPING = 'OZEPARTS_SHIPPING'.freeze,
 
-      # TODO: Write general description for KARGOMKOLAY
+      # KargomKolay (CargoMini).
       KARGOMKOLAY = 'KARGOMKOLAY'.freeze,
 
-      # TODO: Write general description for TRUNKRS
+      # Trunkrs.
       TRUNKRS = 'TRUNKRS'.freeze,
 
-      # TODO: Write general description for OMNIRPS_WEBHOOK
+      # Omni Returns.
       OMNIRPS_WEBHOOK = 'OMNIRPS_WEBHOOK'.freeze,
 
-      # TODO: Write general description for CHILEXPRESS
+      # Chile Express.
       CHILEXPRESS = 'CHILEXPRESS'.freeze,
 
-      # TODO: Write general description for TESTING_COURIER
+      # Testing Courier.
       TESTING_COURIER = 'TESTING_COURIER'.freeze,
 
-      # TODO: Write general description for JNE_API
+      # JNE (API).
       JNE_API = 'JNE_API'.freeze,
 
-      # TODO: Write general description for BJSHOMEDELIVERY_FTP
+      # BJS Distribution, Storage & Couriers - FTP.
       BJSHOMEDELIVERY_FTP = 'BJSHOMEDELIVERY_FTP'.freeze,
 
-      # TODO: Write general description for DEXPRESS_WEBHOOK
+      # D Express.
       DEXPRESS_WEBHOOK = 'DEXPRESS_WEBHOOK'.freeze,
 
-      # TODO: Write general description for USPS_API
+      # USPS API.
       USPS_API = 'USPS_API'.freeze,
 
-      # TODO: Write general description for TRANSVIRTUAL
+      # TransVirtual.
       TRANSVIRTUAL = 'TRANSVIRTUAL'.freeze,
 
-      # TODO: Write general description for SOLISTICA_API
+      # solistica.
       SOLISTICA_API = 'SOLISTICA_API'.freeze,
 
-      # TODO: Write general description for CHIENVENTURE_WEBHOOK
+      # Chienventure.
       CHIENVENTURE_WEBHOOK = 'CHIENVENTURE_WEBHOOK'.freeze,
 
-      # TODO: Write general description for DPD_UK_SFTP
+      # DPD UK.
       DPD_UK_SFTP = 'DPD_UK_SFTP'.freeze,
 
-      # TODO: Write general description for INPOST_UK
+      # InPost.
       INPOST_UK = 'INPOST_UK'.freeze,
 
-      # TODO: Write general description for JAVIT
+      # Javit.
       JAVIT = 'JAVIT'.freeze,
 
-      # TODO: Write general description for ZTO_DOMESTIC
+      # ZTO Express China.
       ZTO_DOMESTIC = 'ZTO_DOMESTIC'.freeze,
 
-      # TODO: Write general description for DHL_GT_API
+      # DHL Global Forwarding Guatemala.
       DHL_GT_API = 'DHL_GT_API'.freeze,
 
-      # TODO: Write general description for CEVA_TRACKING
+      # CEVA Package.
       CEVA_TRACKING = 'CEVA_TRACKING'.freeze,
 
-      # TODO: Write general description for KOMON_EXPRESS
+      # Komon Express.
       KOMON_EXPRESS = 'KOMON_EXPRESS'.freeze,
 
-      # TODO: Write general description for EASTWESTCOURIER_FTP
+      # East West Courier Pte Ltd.
       EASTWESTCOURIER_FTP = 'EASTWESTCOURIER_FTP'.freeze,
 
-      # TODO: Write general description for DANNIAO
+      # Danniao.
       DANNIAO = 'DANNIAO'.freeze,
 
-      # TODO: Write general description for SPECTRAN
+      # Spectran.
       SPECTRAN = 'SPECTRAN'.freeze,
 
-      # TODO: Write general description for DELIVER_IT
+      # Deliver-iT.
       DELIVER_IT = 'DELIVER_IT'.freeze,
 
-      # TODO: Write general description for RELAISCOLIS
+      # Relais Colis.
       RELAISCOLIS = 'RELAISCOLIS'.freeze,
 
-      # TODO: Write general description for GLS_SPAIN_API
+      # GLS Spain.
       GLS_SPAIN_API = 'GLS_SPAIN_API'.freeze,
 
-      # TODO: Write general description for POSTPLUS
+      # PostPlus.
       POSTPLUS = 'POSTPLUS'.freeze,
 
-      # TODO: Write general description for AIRTERRA
+      # Airterra.
       AIRTERRA = 'AIRTERRA'.freeze,
 
-      # TODO: Write general description for GIO_ECOURIER_API
+      # GIO Express Ecourier.
       GIO_ECOURIER_API = 'GIO_ECOURIER_API'.freeze,
 
-      # TODO: Write general description for DPD_CH_SFTP
+      # DPD Switzerland.
       DPD_CH_SFTP = 'DPD_CH_SFTP'.freeze,
 
-      # TODO: Write general description for FEDEX_API
+      # FedEx®.
       FEDEX_API = 'FEDEX_API'.freeze,
 
-      # TODO: Write general description for INTERSMARTTRANS
+      # INTERSMARTTRANS & SOLUTIONS SL.
       INTERSMARTTRANS = 'INTERSMARTTRANS'.freeze,
 
-      # TODO: Write general description for HERMES_UK_SFTP
+      # Hermes UK.
       HERMES_UK_SFTP = 'HERMES_UK_SFTP'.freeze,
 
-      # TODO: Write general description for EXELOT_FTP
+      # Exelot Ltd..
       EXELOT_FTP = 'EXELOT_FTP'.freeze,
 
-      # TODO: Write general description for DHL_PA_API
+      # DHL GLOBAL FORWARDING PANAMÁ.
       DHL_PA_API = 'DHL_PA_API'.freeze,
 
-      # TODO: Write general description for VIRTRANSPORT_SFTP
+      # Vir Transport.
       VIRTRANSPORT_SFTP = 'VIRTRANSPORT_SFTP'.freeze,
 
-      # TODO: Write general description for WORLDNET
+      # Worldnet Logistics.
       WORLDNET = 'WORLDNET'.freeze,
 
-      # TODO: Write general description for INSTABOX_WEBHOOK
+      # Instabox.
       INSTABOX_WEBHOOK = 'INSTABOX_WEBHOOK'.freeze,
 
-      # TODO: Write general description for KNG
+      # Keuhne + Nagel Global.
       KNG = 'KNG'.freeze,
 
-      # TODO: Write general description for FLASHEXPRESS_WEBHOOK
+      # Flash Express.
       FLASHEXPRESS_WEBHOOK = 'FLASHEXPRESS_WEBHOOK'.freeze,
 
-      # TODO: Write general description for MAGYAR_POSTA_API
+      # Magyar Posta.
       MAGYAR_POSTA_API = 'MAGYAR_POSTA_API'.freeze,
 
-      # TODO: Write general description for WESHIP_API
+      # WeShip.
       WESHIP_API = 'WESHIP_API'.freeze,
 
-      # TODO: Write general description for OHI_WEBHOOK
+      # Ohi.
       OHI_WEBHOOK = 'OHI_WEBHOOK'.freeze,
 
-      # TODO: Write general description for MUDITA
+      # MUDITA.
       MUDITA = 'MUDITA'.freeze,
 
-      # TODO: Write general description for BLUEDART_API
+      # Bluedart.
       BLUEDART_API = 'BLUEDART_API'.freeze,
 
-      # TODO: Write general description for T_CAT_API
+      # T-cat.
       T_CAT_API = 'T_CAT_API'.freeze,
 
-      # TODO: Write general description for ADS
+      # ADS Express.
       ADS = 'ADS'.freeze,
 
-      # TODO: Write general description for HERMES_IT
+      # HR Parcel.
       HERMES_IT = 'HERMES_IT'.freeze,
 
-      # TODO: Write general description for FITZMARK_API
+      # FitzMark.
       FITZMARK_API = 'FITZMARK_API'.freeze,
 
-      # TODO: Write general description for POSTI_API
+      # Posti API.
       POSTI_API = 'POSTI_API'.freeze,
 
-      # TODO: Write general description for SMSA_EXPRESS_WEBHOOK
+      # SMSA Express.
       SMSA_EXPRESS_WEBHOOK = 'SMSA_EXPRESS_WEBHOOK'.freeze,
 
-      # TODO: Write general description for TAMERGROUP_WEBHOOK
+      # Tamer Logistics.
       TAMERGROUP_WEBHOOK = 'TAMERGROUP_WEBHOOK'.freeze,
 
-      # TODO: Write general description for LIVRAPIDE
+      # Livrapide.
       LIVRAPIDE = 'LIVRAPIDE'.freeze,
 
-      # TODO: Write general description for NIPPON_EXPRESS
+      # Nippon Express.
       NIPPON_EXPRESS = 'NIPPON_EXPRESS'.freeze,
 
-      # TODO: Write general description for BETTERTRUCKS
+      # Better Trucks.
       BETTERTRUCKS = 'BETTERTRUCKS'.freeze,
 
-      # TODO: Write general description for FAN
+      # FAN COURIER EXPRESS.
       FAN = 'FAN'.freeze,
 
-      # TODO: Write general description for PB_USPSFLATS_FTP
+      # USPS Flats (Pitney Bowes).
       PB_USPSFLATS_FTP = 'PB_USPSFLATS_FTP'.freeze,
 
-      # TODO: Write general description for PARCELRIGHT
+      # Parcel Right.
       PARCELRIGHT = 'PARCELRIGHT'.freeze,
 
-      # TODO: Write general description for ITHINKLOGISTICS
+      # iThink Logistics.
       ITHINKLOGISTICS = 'ITHINKLOGISTICS'.freeze,
 
-      # TODO: Write general description for KERRY_EXPRESS_TH_WEBHOOK
+      # Kerry Logistics.
       KERRY_EXPRESS_TH_WEBHOOK = 'KERRY_EXPRESS_TH_WEBHOOK'.freeze,
 
-      # TODO: Write general description for ECOUTIER
+      # eCoutier.
       ECOUTIER = 'ECOUTIER'.freeze,
 
-      # TODO: Write general description for SHOWL
+      # SENHONG INTERNATIONAL LOGISTICS.
       SHOWL = 'SHOWL'.freeze,
 
-      # TODO: Write general description for BRT_IT_API
+      # BRT Bartolini API.
       BRT_IT_API = 'BRT_IT_API'.freeze,
 
-      # TODO: Write general description for RIXONHK_API
+      # Rixon Logistics.
       RIXONHK_API = 'RIXONHK_API'.freeze,
 
-      # TODO: Write general description for DBSCHENKER_API
+      # DB Schenker.
       DBSCHENKER_API = 'DBSCHENKER_API'.freeze,
 
-      # TODO: Write general description for ILYANGLOGIS
+      # Ilyang logistics.
       ILYANGLOGIS = 'ILYANGLOGIS'.freeze,
 
-      # TODO: Write general description for MAIL_BOX_ETC
+      # Mail Boxes Etc..
       MAIL_BOX_ETC = 'MAIL_BOX_ETC'.freeze,
 
-      # TODO: Write general description for WESHIP
+      # WeShip.
       WESHIP = 'WESHIP'.freeze,
 
-      # TODO: Write general description for DHL_GLOBAL_MAIL_API
+      # DHL eCommerce Solutions.
       DHL_GLOBAL_MAIL_API = 'DHL_GLOBAL_MAIL_API'.freeze,
 
-      # TODO: Write general description for ACTIVOS24_API
+      # Activos24.
       ACTIVOS24_API = 'ACTIVOS24_API'.freeze,
 
-      # TODO: Write general description for ATSHEALTHCARE
+      # ATS Healthcare.
       ATSHEALTHCARE = 'ATSHEALTHCARE'.freeze,
 
-      # TODO: Write general description for LUWJISTIK
+      # Luwjistik.
       LUWJISTIK = 'LUWJISTIK'.freeze,
 
-      # TODO: Write general description for GW_WORLD
+      # Gebrüder Weiss.
       GW_WORLD = 'GW_WORLD'.freeze,
 
-      # TODO: Write general description for FAIRSENDEN_API
+      # fairsenden.
       FAIRSENDEN_API = 'FAIRSENDEN_API'.freeze,
 
-      # TODO: Write general description for SERVIP_WEBHOOK
+      # SerVIP.
       SERVIP_WEBHOOK = 'SERVIP_WEBHOOK'.freeze,
 
-      # TODO: Write general description for SWISHIP
+      # Swiship.
       SWISHIP = 'SWISHIP'.freeze,
 
-      # TODO: Write general description for TANET
+      # Transport Ambientales.
       TANET = 'TANET'.freeze,
 
-      # TODO: Write general description for HOTSIN_CARGO
+      # SHENZHEN HOTSIN CARGO INT'L FORWARDING CO.,LTD.
       HOTSIN_CARGO = 'HOTSIN_CARGO'.freeze,
 
-      # TODO: Write general description for DIREX
+      # Direx.
       DIREX = 'DIREX'.freeze,
 
-      # TODO: Write general description for HUANTONG
+      # HuanTong.
       HUANTONG = 'HUANTONG'.freeze,
 
-      # TODO: Write general description for IMILE_API
+      # iMile.
       IMILE_API = 'IMILE_API'.freeze,
 
-      # TODO: Write general description for BDMNET
-      BDMNET = 'BDMNET'.freeze,
-
-      # TODO: Write general description for AUEXPRESS
+      # Au Express.
       AUEXPRESS = 'AUEXPRESS'.freeze,
 
-      # TODO: Write general description for NYTLOGISTICS
+      # NYT SUPPLY CHAIN LOGISTICS Co.,LTD.
       NYTLOGISTICS = 'NYTLOGISTICS'.freeze,
 
-      # TODO: Write general description for DSV_REFERENCE
+      # DSV Futurewave.
       DSV_REFERENCE = 'DSV_REFERENCE'.freeze,
 
-      # TODO: Write general description for NOVOFARMA_WEBHOOK
+      # Novofarma.
       NOVOFARMA_WEBHOOK = 'NOVOFARMA_WEBHOOK'.freeze,
 
-      # TODO: Write general description for AITWORLDWIDE_SFTP
+      # AIT.
       AITWORLDWIDE_SFTP = 'AITWORLDWIDE_SFTP'.freeze,
 
-      # TODO: Write general description for SHOPOLIVE
+      # Olive.
       SHOPOLIVE = 'SHOPOLIVE'.freeze,
 
-      # TODO: Write general description for FNF_ZA
+      # Fast & Furious.
       FNF_ZA = 'FNF_ZA'.freeze,
 
-      # TODO: Write general description for DHL_ECOMMERCE_GC
+      # DHL eCommerce Greater China.
       DHL_ECOMMERCE_GC = 'DHL_ECOMMERCE_GC'.freeze,
 
-      # TODO: Write general description for FETCHR
+      # Fetchr.
       FETCHR = 'FETCHR'.freeze,
 
-      # TODO: Write general description for STARLINKS_API
+      # Starlinks Global.
       STARLINKS_API = 'STARLINKS_API'.freeze,
 
-      # TODO: Write general description for YYEXPRESS
+      # YYEXPRESS.
       YYEXPRESS = 'YYEXPRESS'.freeze,
 
-      # TODO: Write general description for SERVIENTREGA
+      # Servientrega.
       SERVIENTREGA = 'SERVIENTREGA'.freeze,
 
-      # TODO: Write general description for HANJIN
+      # HanJin.
       HANJIN = 'HANJIN'.freeze,
 
-      # TODO: Write general description for SPANISH_SEUR_FTP
+      # Spanish Seur.
       SPANISH_SEUR_FTP = 'SPANISH_SEUR_FTP'.freeze,
 
-      # TODO: Write general description for DX_B2B_CONNUM
+      # DX (B2B).
       DX_B2B_CONNUM = 'DX_B2B_CONNUM'.freeze,
 
-      # TODO: Write general description for HELTHJEM_API
+      # Helthjem.
       HELTHJEM_API = 'HELTHJEM_API'.freeze,
 
-      # TODO: Write general description for INEXPOST
+      # Inexpost.
       INEXPOST = 'INEXPOST'.freeze,
 
-      # TODO: Write general description for A2B_BA
+      # A2B Express Logistics.
       A2B_BA = 'A2B_BA'.freeze,
 
-      # TODO: Write general description for RHENUS_GROUP
+      # Rhenus Logistics.
       RHENUS_GROUP = 'RHENUS_GROUP'.freeze,
 
-      # TODO: Write general description for SBERLOGISTICS_RU
+      # Sber Logistics.
       SBERLOGISTICS_RU = 'SBERLOGISTICS_RU'.freeze,
 
-      # TODO: Write general description for MALCA_AMIT
+      # Malca-Amit.
       MALCA_AMIT = 'MALCA_AMIT'.freeze,
 
-      # TODO: Write general description for PPL
+      # Professional Parcel Logistics.
       PPL = 'PPL'.freeze,
 
-      # TODO: Write general description for OSM_WORLDWIDE_SFTP
+      # OSM Worldwide.
       OSM_WORLDWIDE_SFTP = 'OSM_WORLDWIDE_SFTP'.freeze,
 
-      # TODO: Write general description for ACILOGISTIX
+      # ACI Logistix.
       ACILOGISTIX = 'ACILOGISTIX'.freeze,
 
-      # TODO: Write general description for OPTIMACOURIER
+      # Optima Courier.
       OPTIMACOURIER = 'OPTIMACOURIER'.freeze,
 
-      # TODO: Write general description for NOVA_POSHTA_API
+      # Nova Poshta API.
       NOVA_POSHTA_API = 'NOVA_POSHTA_API'.freeze,
 
-      # TODO: Write general description for LOGGI
+      # Loggi.
       LOGGI = 'LOGGI'.freeze,
 
-      # TODO: Write general description for YIFAN
+      # YiFan Express.
       YIFAN = 'YIFAN'.freeze,
 
-      # TODO: Write general description for MYDYNALOGIC
+      # My DynaLogic.
       MYDYNALOGIC = 'MYDYNALOGIC'.freeze,
 
-      # TODO: Write general description for MORNINGLOBAL
+      # Morning Global.
       MORNINGLOBAL = 'MORNINGLOBAL'.freeze,
 
-      # TODO: Write general description for CONCISE_API
+      # Concise.
       CONCISE_API = 'CONCISE_API'.freeze,
 
-      # TODO: Write general description for FXTRAN
+      # Falcon Express.
       FXTRAN = 'FXTRAN'.freeze,
 
-      # TODO: Write general description for DELIVERYOURPARCEL_ZA
+      # Deliver Your Parcel.
       DELIVERYOURPARCEL_ZA = 'DELIVERYOURPARCEL_ZA'.freeze,
 
-      # TODO: Write general description for UPARCEL
+      # uParcel.
       UPARCEL = 'UPARCEL'.freeze,
 
-      # TODO: Write general description for MOBI_BR
+      # Mobi Logistica.
       MOBI_BR = 'MOBI_BR'.freeze,
 
-      # TODO: Write general description for LOGINEXT_WEBHOOK
+      # T&W Delivery.
       LOGINEXT_WEBHOOK = 'LOGINEXT_WEBHOOK'.freeze,
 
-      # TODO: Write general description for EMS
+      # EMS.
       EMS = 'EMS'.freeze,
 
-      # TODO: Write general description for SPEEDY
+      # Speedy.
       SPEEDY = 'SPEEDY'.freeze,
 
-      # TODO: Write general description for ZOOM_RED
+      # Zoom.
       ZOOM_RED = 'ZOOM_RED'.freeze,
 
-      # TODO: Write general description for NAVLUNGO
+      # Navlungo.
       NAVLUNGO = 'NAVLUNGO'.freeze,
 
-      # TODO: Write general description for CASTLEPARCELS
+      # Castle Parcels.
       CASTLEPARCELS = 'CASTLEPARCELS'.freeze,
 
-      # TODO: Write general description for WEEE
+      # Weee.
       WEEE = 'WEEE'.freeze,
 
-      # TODO: Write general description for PACKALY
+      # Packaly.
       PACKALY = 'PACKALY'.freeze,
 
-      # TODO: Write general description for YUNHUIPOST
+      # Yunhuipost.
       YUNHUIPOST = 'YUNHUIPOST'.freeze,
 
-      # TODO: Write general description for YOUPARCEL
+      # YouParcel.
       YOUPARCEL = 'YOUPARCEL'.freeze,
 
-      # TODO: Write general description for LEMAN
+      # Leman.
       LEMAN = 'LEMAN'.freeze,
 
-      # TODO: Write general description for MOOVIN
+      # Moovin.
       MOOVIN = 'MOOVIN'.freeze,
 
-      # TODO: Write general description for URB_IT
+      # Urb-it.
       URB_IT = 'URB_IT'.freeze,
 
-      # TODO: Write general description for MULTIENTREGAPANAMA
+      # Multientrega.
       MULTIENTREGAPANAMA = 'MULTIENTREGAPANAMA'.freeze,
 
-      # TODO: Write general description for JUSDASR
+      # Jusdasr.
       JUSDASR = 'JUSDASR'.freeze,
 
-      # TODO: Write general description for DISCOUNTPOST
+      # Discount Post.
       DISCOUNTPOST = 'DISCOUNTPOST'.freeze,
 
-      # TODO: Write general description for RHENUS_UK
+      # Rhenus Logistics UK.
       RHENUS_UK = 'RHENUS_UK'.freeze,
 
-      # TODO: Write general description for SWISHIP_JP
+      # Swiship JP.
       SWISHIP_JP = 'SWISHIP_JP'.freeze,
 
-      # TODO: Write general description for GLS_US
+      # GLS USA.
       GLS_US = 'GLS_US'.freeze,
 
-      # TODO: Write general description for SMTL
+      # Southwestern Motor Transport. Inc.
       SMTL = 'SMTL'.freeze,
 
-      # TODO: Write general description for EMEGA
+      # Discount Post Emega.
       EMEGA = 'EMEGA'.freeze,
 
-      # TODO: Write general description for EXPRESSONE_SV
+      # EXPRESSONE Slovenia.
       EXPRESSONE_SV = 'EXPRESSONE_SV'.freeze,
 
-      # TODO: Write general description for HEPSIJET
+      # hepsiJET.
       HEPSIJET = 'HEPSIJET'.freeze,
 
-      # TODO: Write general description for WELIVERY
+      # Welivery.
       WELIVERY = 'WELIVERY'.freeze,
 
-      # TODO: Write general description for BRINGER
+      # Bringer Parcel Services.
       BRINGER = 'BRINGER'.freeze,
 
-      # TODO: Write general description for EASYROUTES
+      # EasyRoutes.
       EASYROUTES = 'EASYROUTES'.freeze,
 
-      # TODO: Write general description for MRW
+      # MRW.
       MRW = 'MRW'.freeze,
 
-      # TODO: Write general description for RPM
+      # RPM.
       RPM = 'RPM'.freeze,
 
-      # TODO: Write general description for DPD_PRT
+      # DPD Portugal.
       DPD_PRT = 'DPD_PRT'.freeze,
 
-      # TODO: Write general description for GLS_ROMANIA
+      # GLS Romania.
       GLS_ROMANIA = 'GLS_ROMANIA'.freeze,
 
-      # TODO: Write general description for LMPARCEL
+      # LM Parcel.
       LMPARCEL = 'LMPARCEL'.freeze,
 
-      # TODO: Write general description for GTAGSM
+      # GTA GSM.
       GTAGSM = 'GTAGSM'.freeze,
 
-      # TODO: Write general description for DOMINO
+      # DOMINO.
       DOMINO = 'DOMINO'.freeze,
 
-      # TODO: Write general description for ESHIPPER
+      # eShipper.
       ESHIPPER = 'ESHIPPER'.freeze,
 
-      # TODO: Write general description for TRANSPAK
+      # Transpak Inc..
       TRANSPAK = 'TRANSPAK'.freeze,
 
-      # TODO: Write general description for XINDUS
+      # Xindus.
       XINDUS = 'XINDUS'.freeze,
 
-      # TODO: Write general description for AOYUE
+      # Aoyue.
       AOYUE = 'AOYUE'.freeze,
 
-      # TODO: Write general description for EASYPARCEL
+      # Easyparcel.
       EASYPARCEL = 'EASYPARCEL'.freeze,
 
-      # TODO: Write general description for EXPRESSONE
+      # EXPRESSONE.
       EXPRESSONE = 'EXPRESSONE'.freeze,
 
-      # TODO: Write general description for SENDEO_KARGO
+      # Sendeo Kargo.
       SENDEO_KARGO = 'SENDEO_KARGO'.freeze,
 
-      # TODO: Write general description for SPEEDAF
+      # Speedaf Express.
       SPEEDAF = 'SPEEDAF'.freeze,
 
-      # TODO: Write general description for ETOWER
+      # eTower.
       ETOWER = 'ETOWER'.freeze,
 
-      # TODO: Write general description for GCX
+      # GC Express.
       GCX = 'GCX'.freeze,
 
-      # TODO: Write general description for NINJAVAN_VN
+      # Ninjavan Vietnam.
       NINJAVAN_VN = 'NINJAVAN_VN'.freeze,
 
-      # TODO: Write general description for ALLEGRO
+      # Allegro.
       ALLEGRO = 'ALLEGRO'.freeze,
 
-      # TODO: Write general description for JUMPPOINT
+      # Jumppoint.
       JUMPPOINT = 'JUMPPOINT'.freeze,
 
-      # TODO: Write general description for SHIPGLOBAL_US
+      # ShipGlobal.
       SHIPGLOBAL_US = 'SHIPGLOBAL_US'.freeze,
 
-      # TODO: Write general description for KINISI
+      # Kinisi Transport Pty Ltd.
       KINISI = 'KINISI'.freeze,
 
-      # TODO: Write general description for OAKH
+      # Oakh Harbour Freight Lines.
       OAKH = 'OAKH'.freeze,
 
-      # TODO: Write general description for AWEST
+      # American West.
       AWEST = 'AWEST'.freeze,
 
-      # TODO: Write general description for BARSAN
+      # Barsan Global Lojistik.
       BARSAN = 'BARSAN'.freeze,
 
-      # TODO: Write general description for ENERGOLOGISTIC
+      # Energo Logistic.
       ENERGOLOGISTIC = 'ENERGOLOGISTIC'.freeze,
 
-      # TODO: Write general description for MADROOEX
+      # Madrooex.
       MADROOEX = 'MADROOEX'.freeze,
 
-      # TODO: Write general description for GOBOLT
+      # GoBolt.
       GOBOLT = 'GOBOLT'.freeze,
 
-      # TODO: Write general description for SWISS_UNIVERSAL_EXPRESS
+      # Swiss Universal Express.
       SWISS_UNIVERSAL_EXPRESS = 'SWISS_UNIVERSAL_EXPRESS'.freeze,
 
-      # TODO: Write general description for IORDIRECT
+      # IOR Direct Solutions.
       IORDIRECT = 'IORDIRECT'.freeze,
 
-      # TODO: Write general description for XMSZM
+      # xmszm.
       XMSZM = 'XMSZM'.freeze,
 
-      # TODO: Write general description for GLS_HUN
+      # GLS Hungary.
       GLS_HUN = 'GLS_HUN'.freeze,
 
-      # TODO: Write general description for SENDY
+      # Sendy Express.
       SENDY = 'SENDY'.freeze,
 
-      # TODO: Write general description for BRAUNSEXPRESS
+      # Brauns Express.
       BRAUNSEXPRESS = 'BRAUNSEXPRESS'.freeze,
 
-      # TODO: Write general description for GRANDSLAMEXPRESS
+      # Grand Slam Express.
       GRANDSLAMEXPRESS = 'GRANDSLAMEXPRESS'.freeze,
 
-      # TODO: Write general description for XGS
+      # XGS.
       XGS = 'XGS'.freeze,
 
-      # TODO: Write general description for OTSCHILE
+      # OTS.
       OTSCHILE = 'OTSCHILE'.freeze,
 
-      # TODO: Write general description for PACK_UP
+      # Pack-Up.
       PACK_UP = 'PACK_UP'.freeze,
 
-      # TODO: Write general description for PARCELSTARS
+      # Parcelstars.
       PARCELSTARS = 'PARCELSTARS'.freeze,
 
-      # TODO: Write general description for TEAMEXPRESSLLC
+      # Team Express Service LLC.
       TEAMEXPRESSLLC = 'TEAMEXPRESSLLC'.freeze,
 
-      # TODO: Write general description for ASYADEXPRESS
+      # Asyad Express.
       ASYADEXPRESS = 'ASYADEXPRESS'.freeze,
 
-      # TODO: Write general description for TDN
+      # TDN.
       TDN = 'TDN'.freeze,
 
-      # TODO: Write general description for EARLYBIRD
+      # Early Bird.
       EARLYBIRD = 'EARLYBIRD'.freeze,
 
-      # TODO: Write general description for CACESA
+      # Cacesa.
       CACESA = 'CACESA'.freeze,
 
-      # TODO: Write general description for PARCELJET
+      # Parceljet.
       PARCELJET = 'PARCELJET'.freeze,
 
-      # TODO: Write general description for MNG_KARGO
+      # MNG Kargo.
       MNG_KARGO = 'MNG_KARGO'.freeze,
 
-      # TODO: Write general description for SUPERPACKLINE
+      # Super Pac Line.
       SUPERPACKLINE = 'SUPERPACKLINE'.freeze,
 
-      # TODO: Write general description for SPEEDX
+      # SpeedX.
       SPEEDX = 'SPEEDX'.freeze,
 
-      # TODO: Write general description for VESYL
+      # Vesyl.
       VESYL = 'VESYL'.freeze,
 
-      # TODO: Write general description for SKYKING
+      # Sky King.
       SKYKING = 'SKYKING'.freeze,
 
-      # TODO: Write general description for DIRMENSAJERIA
+      # DIR.
       DIRMENSAJERIA = 'DIRMENSAJERIA'.freeze,
 
-      # TODO: Write general description for NETLOGIXGROUP
+      # Netlogix.
       NETLOGIXGROUP = 'NETLOGIXGROUP'.freeze,
 
-      # TODO: Write general description for ZYOU
+      # ZYEX.
       ZYOU = 'ZYOU'.freeze,
 
-      # TODO: Write general description for JAWAR
+      # Jawar.
       JAWAR = 'JAWAR'.freeze,
 
-      # TODO: Write general description for AGSYSTEMS
+      # Associate Global Systems.
       AGSYSTEMS = 'AGSYSTEMS'.freeze,
 
-      # TODO: Write general description for GPS
+      # GPS.
       GPS = 'GPS'.freeze,
 
-      # TODO: Write general description for PTT_KARGO
+      # PTT Kargo.
       PTT_KARGO = 'PTT_KARGO'.freeze,
 
-      # TODO: Write general description for MAERGO
+      # Maergo.
       MAERGO = 'MAERGO'.freeze,
 
-      # TODO: Write general description for ARIHANTCOURIER
+      # AICS.
       ARIHANTCOURIER = 'ARIHANTCOURIER'.freeze,
 
-      # TODO: Write general description for VTFE
+      # VicTas Freight Express.
       VTFE = 'VTFE'.freeze,
 
-      # TODO: Write general description for YUNANT
+      # Yunant.
       YUNANT = 'YUNANT'.freeze,
 
-      # TODO: Write general description for URBIFY
+      # Urbify.
       URBIFY = 'URBIFY'.freeze,
 
-      # TODO: Write general description for PACK_MAN
+      # pack-man.
       PACK_MAN = 'PACK_MAN'.freeze,
 
-      # TODO: Write general description for LIEFERGRUN
+      # LIEFERGRUN.
       LIEFERGRUN = 'LIEFERGRUN'.freeze,
 
-      # TODO: Write general description for OBIBOX
+      # Obibox.
       OBIBOX = 'OBIBOX'.freeze,
 
-      # TODO: Write general description for PAIKEDA
+      # Paikeda.
       PAIKEDA = 'PAIKEDA'.freeze,
 
-      # TODO: Write general description for SCOTTY
+      # Scotty.
       SCOTTY = 'SCOTTY'.freeze,
 
-      # TODO: Write general description for INTELCOM_CA
+      # Intelcom.
       INTELCOM_CA = 'INTELCOM_CA'.freeze,
 
-      # TODO: Write general description for SWE
+      # swe.
       SWE = 'SWE'.freeze,
 
-      # TODO: Write general description for ASENDIA
+      # Asendia Global.
       ASENDIA = 'ASENDIA'.freeze,
 
-      # TODO: Write general description for DPD_AT
+      # DPD Austria.
       DPD_AT = 'DPD_AT'.freeze,
 
-      # TODO: Write general description for RELAY
+      # Relay.
       RELAY = 'RELAY'.freeze,
 
-      # TODO: Write general description for ATA
+      # ATA.
       ATA = 'ATA'.freeze,
 
-      # TODO: Write general description for SKYEXPRESS_INTERNATIONAL
+      # SkyExpress Internationals.
       SKYEXPRESS_INTERNATIONAL = 'SKYEXPRESS_INTERNATIONAL'.freeze,
 
-      # TODO: Write general description for SURAT_KARGO
+      # Surat Kargo.
       SURAT_KARGO = 'SURAT_KARGO'.freeze,
 
-      # TODO: Write general description for SGLINK
+      # SG LINK.
       SGLINK = 'SGLINK'.freeze,
 
-      # TODO: Write general description for FLEETOPTICSINC
+      # FleetOptics.
       FLEETOPTICSINC = 'FLEETOPTICSINC'.freeze,
 
-      # TODO: Write general description for SHOPLINE
+      # shopline.
       SHOPLINE = 'SHOPLINE'.freeze,
 
-      # TODO: Write general description for PIGGYSHIP
+      # PIGGYSHIP.
       PIGGYSHIP = 'PIGGYSHIP'.freeze,
 
-      # TODO: Write general description for LOGOIX
+      # LogoiX.
       LOGOIX = 'LOGOIX'.freeze,
 
-      # TODO: Write general description for KOLAY_GELSIN
+      # Kolay Gelsin.
       KOLAY_GELSIN = 'KOLAY_GELSIN'.freeze,
 
-      # TODO: Write general description for ASSOCIATED_COURIERS
+      # Associated Couriers.
       ASSOCIATED_COURIERS = 'ASSOCIATED_COURIERS'.freeze,
 
-      # TODO: Write general description for UPS_CHECKER
+      # ups-checker.
       UPS_CHECKER = 'UPS_CHECKER'.freeze,
 
-      # TODO: Write general description for WINESHIPPING
+      # Wineshipping.
       WINESHIPPING = 'WINESHIPPING'.freeze,
 
-      # TODO: Write general description for SPEDISCI
+      # Spedisci online.
       SPEDISCI = 'SPEDISCI'.freeze
     ].freeze
 

@@ -51,9 +51,8 @@ module PaypalServerSdk
 
     # The date and time, in [Internet date and time
     # format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are
-    # required while fractional seconds are
-    # optional.<blockquote><strong>Note:</strong> The regular expression
-    # provides guidance but does not reject all invalid dates.</blockquote>
+    # required while fractional seconds are optional. Note: The regular
+    # expression provides guidance but does not reject all invalid dates.
     # @return [String]
     attr_accessor :expiration_time
 
@@ -64,17 +63,15 @@ module PaypalServerSdk
 
     # The date and time, in [Internet date and time
     # format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are
-    # required while fractional seconds are
-    # optional.<blockquote><strong>Note:</strong> The regular expression
-    # provides guidance but does not reject all invalid dates.</blockquote>
+    # required while fractional seconds are optional. Note: The regular
+    # expression provides guidance but does not reject all invalid dates.
     # @return [String]
     attr_accessor :create_time
 
     # The date and time, in [Internet date and time
     # format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are
-    # required while fractional seconds are
-    # optional.<blockquote><strong>Note:</strong> The regular expression
-    # provides guidance but does not reject all invalid dates.</blockquote>
+    # required while fractional seconds are optional. Note: The regular
+    # expression provides guidance but does not reject all invalid dates.
     # @return [String]
     attr_accessor :update_time
 
@@ -84,7 +81,7 @@ module PaypalServerSdk
 
     # The details for the merchant who receives the funds and fulfills the
     # order. The merchant is also known as the payee.
-    # @return [Payee]
+    # @return [PayeeBase]
     attr_accessor :payee
 
     # A mapping from model property names to API property names.
@@ -190,7 +187,7 @@ module PaypalServerSdk
       update_time = hash.key?('update_time') ? hash['update_time'] : SKIP
       supplementary_data = PaymentSupplementaryData.from_hash(hash['supplementary_data']) if
         hash['supplementary_data']
-      payee = Payee.from_hash(hash['payee']) if hash['payee']
+      payee = PayeeBase.from_hash(hash['payee']) if hash['payee']
 
       # Create object from extracted values.
       PaymentAuthorization.new(status: status,
@@ -207,6 +204,30 @@ module PaypalServerSdk
                                update_time: update_time,
                                supplementary_data: supplementary_data,
                                payee: payee)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} status: #{@status}, status_details: #{@status_details}, id: #{@id}, amount:"\
+      " #{@amount}, invoice_id: #{@invoice_id}, custom_id: #{@custom_id},"\
+      " network_transaction_reference: #{@network_transaction_reference}, seller_protection:"\
+      " #{@seller_protection}, expiration_time: #{@expiration_time}, links: #{@links},"\
+      " create_time: #{@create_time}, update_time: #{@update_time}, supplementary_data:"\
+      " #{@supplementary_data}, payee: #{@payee}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} status: #{@status.inspect}, status_details: #{@status_details.inspect}, id:"\
+      " #{@id.inspect}, amount: #{@amount.inspect}, invoice_id: #{@invoice_id.inspect}, custom_id:"\
+      " #{@custom_id.inspect}, network_transaction_reference:"\
+      " #{@network_transaction_reference.inspect}, seller_protection:"\
+      " #{@seller_protection.inspect}, expiration_time: #{@expiration_time.inspect}, links:"\
+      " #{@links.inspect}, create_time: #{@create_time.inspect}, update_time:"\
+      " #{@update_time.inspect}, supplementary_data: #{@supplementary_data.inspect}, payee:"\
+      " #{@payee.inspect}>"
     end
   end
 end

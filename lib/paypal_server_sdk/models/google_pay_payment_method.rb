@@ -7,7 +7,7 @@ module PaypalServerSdk
   # The type of the payment credential. Currently, only CARD is supported.
   class GooglePayPaymentMethod
     GOOGLE_PAY_PAYMENT_METHOD = [
-      # TODO: Write general description for CARD
+      # CARD is the only value that Google Pay accepts.
       CARD = 'CARD'.freeze
     ].freeze
 

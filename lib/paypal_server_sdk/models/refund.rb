@@ -64,17 +64,15 @@ module PaypalServerSdk
 
     # The date and time, in [Internet date and time
     # format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are
-    # required while fractional seconds are
-    # optional.<blockquote><strong>Note:</strong> The regular expression
-    # provides guidance but does not reject all invalid dates.</blockquote>
+    # required while fractional seconds are optional. Note: The regular
+    # expression provides guidance but does not reject all invalid dates.
     # @return [String]
     attr_accessor :create_time
 
     # The date and time, in [Internet date and time
     # format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are
-    # required while fractional seconds are
-    # optional.<blockquote><strong>Note:</strong> The regular expression
-    # provides guidance but does not reject all invalid dates.</blockquote>
+    # required while fractional seconds are optional. Note: The regular
+    # expression provides guidance but does not reject all invalid dates.
     # @return [String]
     attr_accessor :update_time
 
@@ -190,6 +188,27 @@ module PaypalServerSdk
                  links: links,
                  create_time: create_time,
                  update_time: update_time)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} status: #{@status}, status_details: #{@status_details}, id: #{@id}, amount:"\
+      " #{@amount}, invoice_id: #{@invoice_id}, custom_id: #{@custom_id},"\
+      " acquirer_reference_number: #{@acquirer_reference_number}, note_to_payer:"\
+      " #{@note_to_payer}, seller_payable_breakdown: #{@seller_payable_breakdown}, payer:"\
+      " #{@payer}, links: #{@links}, create_time: #{@create_time}, update_time: #{@update_time}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} status: #{@status.inspect}, status_details: #{@status_details.inspect}, id:"\
+      " #{@id.inspect}, amount: #{@amount.inspect}, invoice_id: #{@invoice_id.inspect}, custom_id:"\
+      " #{@custom_id.inspect}, acquirer_reference_number: #{@acquirer_reference_number.inspect},"\
+      " note_to_payer: #{@note_to_payer.inspect}, seller_payable_breakdown:"\
+      " #{@seller_payable_breakdown.inspect}, payer: #{@payer.inspect}, links: #{@links.inspect},"\
+      " create_time: #{@create_time.inspect}, update_time: #{@update_time.inspect}>"
     end
   end
 end

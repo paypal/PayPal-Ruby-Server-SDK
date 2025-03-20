@@ -13,22 +13,19 @@ module PaypalServerSdk
     # @return [PatchOp]
     attr_accessor :op
 
-    # The <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> to the
-    # target document location at which to complete the operation.
+    # The JSON Pointer to the target document location at which to complete the
+    # operation.
     # @return [String]
     attr_accessor :path
 
-    # The value to apply. The <code>remove</code>, <code>copy</code>, and
-    # <code>move</code> operations do not require a value. Since <a
-    # href="https://www.rfc-editor.org/rfc/rfc69021">JSON Patch</a> allows any
-    # type for <code>value</code>, the <code>type</code> property is not
-    # specified.
+    # The value to apply. The remove, copy, and move operations do not require a
+    # value. Since JSON Patch allows any type for value, the type property is
+    # not specified.
     # @return [Object]
     attr_accessor :value
 
-    # The <a href="https://tools.ietf.org/html/rfc6901">JSON Pointer</a> to the
-    # target document location from which to move the value. Required for the
-    # <code>move</code> operation.
+    # The JSON Pointer to the target document location from which to move the
+    # value. Required for the move operation.
     # @return [String]
     attr_accessor :from
 
@@ -78,6 +75,19 @@ module PaypalServerSdk
                 path: path,
                 value: value,
                 from: from)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} op: #{@op}, path: #{@path}, value: #{@value}, from: #{@from}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} op: #{@op.inspect}, path: #{@path.inspect}, value: #{@value.inspect}, from:"\
+      " #{@from.inspect}>"
     end
   end
 end

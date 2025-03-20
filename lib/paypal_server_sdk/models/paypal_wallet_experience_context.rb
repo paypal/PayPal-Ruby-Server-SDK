@@ -5,10 +5,9 @@
 
 module PaypalServerSdk
   # Customizes the payer experience during the approval process for payment with
-  # PayPal.<blockquote><strong>Note:</strong> Partners and Marketplaces might
-  # configure <code>brand_name</code> and <code>shipping_preference</code>
-  # during partner account setup, which overrides the request
-  # values.</blockquote>
+  # PayPal. Note: Partners and Marketplaces might configure brand_name and
+  # shipping_preference during partner account setup, which overrides the
+  # request values.
   class PaypalWalletExperienceContext < BaseModel
     SKIP = Object.new
     private_constant :SKIP
@@ -31,7 +30,7 @@ module PaypalServerSdk
     attr_accessor :locale
 
     # The location from which the shipping address is derived.
-    # @return [ShippingPreference]
+    # @return [PaypalWalletContextShippingPreference]
     attr_accessor :shipping_preference
 
     # Describes the URL.
@@ -46,14 +45,17 @@ module PaypalServerSdk
     # @return [PaypalExperienceLandingPage]
     attr_accessor :landing_page
 
-    # Configures a <strong>Continue</strong> or <strong>Pay Now</strong>
-    # checkout flow.
+    # Configures a Continue or Pay Now checkout flow.
     # @return [PaypalExperienceUserAction]
     attr_accessor :user_action
 
     # The merchant-preferred payment methods.
     # @return [PayeePaymentMethodPreference]
     attr_accessor :payment_method_preference
+
+    # CallBack Configuration that the merchant can provide to PayPal/Venmo.
+    # @return [CallbackConfiguration]
+    attr_accessor :order_update_callback_config
 
     # A mapping from model property names to API property names.
     def self.names
@@ -66,6 +68,7 @@ module PaypalServerSdk
       @_hash['landing_page'] = 'landing_page'
       @_hash['user_action'] = 'user_action'
       @_hash['payment_method_preference'] = 'payment_method_preference'
+      @_hash['order_update_callback_config'] = 'order_update_callback_config'
       @_hash
     end
 
@@ -80,6 +83,7 @@ module PaypalServerSdk
         landing_page
         user_action
         payment_method_preference
+        order_update_callback_config
       ]
     end
 
@@ -90,11 +94,12 @@ module PaypalServerSdk
 
     def initialize(
       brand_name: SKIP, locale: SKIP,
-      shipping_preference: ShippingPreference::GET_FROM_FILE, return_url: SKIP,
-      cancel_url: SKIP,
+      shipping_preference: PaypalWalletContextShippingPreference::GET_FROM_FILE,
+      return_url: SKIP, cancel_url: SKIP,
       landing_page: PaypalExperienceLandingPage::NO_PREFERENCE,
       user_action: PaypalExperienceUserAction::CONTINUE,
-      payment_method_preference: PayeePaymentMethodPreference::UNRESTRICTED
+      payment_method_preference: PayeePaymentMethodPreference::UNRESTRICTED,
+      order_update_callback_config: SKIP
     )
       @brand_name = brand_name unless brand_name == SKIP
       @locale = locale unless locale == SKIP
@@ -107,6 +112,10 @@ module PaypalServerSdk
         @payment_method_preference =
           payment_method_preference
       end
+      unless order_update_callback_config == SKIP
+        @order_update_callback_config =
+          order_update_callback_config
+      end
     end
 
     # Creates an instance of the object from a hash.
@@ -117,7 +126,7 @@ module PaypalServerSdk
       brand_name = hash.key?('brand_name') ? hash['brand_name'] : SKIP
       locale = hash.key?('locale') ? hash['locale'] : SKIP
       shipping_preference =
-        hash['shipping_preference'] ||= ShippingPreference::GET_FROM_FILE
+        hash['shipping_preference'] ||= PaypalWalletContextShippingPreference::GET_FROM_FILE
       return_url = hash.key?('return_url') ? hash['return_url'] : SKIP
       cancel_url = hash.key?('cancel_url') ? hash['cancel_url'] : SKIP
       landing_page =
@@ -125,6 +134,9 @@ module PaypalServerSdk
       user_action = hash['user_action'] ||= PaypalExperienceUserAction::CONTINUE
       payment_method_preference =
         hash['payment_method_preference'] ||= PayeePaymentMethodPreference::UNRESTRICTED
+      if hash['order_update_callback_config']
+        order_update_callback_config = CallbackConfiguration.from_hash(hash['order_update_callback_config'])
+      end
 
       # Create object from extracted values.
       PaypalWalletExperienceContext.new(brand_name: brand_name,
@@ -134,7 +146,28 @@ module PaypalServerSdk
                                         cancel_url: cancel_url,
                                         landing_page: landing_page,
                                         user_action: user_action,
-                                        payment_method_preference: payment_method_preference)
+                                        payment_method_preference: payment_method_preference,
+                                        order_update_callback_config: order_update_callback_config)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_name: #{@brand_name}, locale: #{@locale}, shipping_preference:"\
+      " #{@shipping_preference}, return_url: #{@return_url}, cancel_url: #{@cancel_url},"\
+      " landing_page: #{@landing_page}, user_action: #{@user_action}, payment_method_preference:"\
+      " #{@payment_method_preference}, order_update_callback_config:"\
+      " #{@order_update_callback_config}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_name: #{@brand_name.inspect}, locale: #{@locale.inspect},"\
+      " shipping_preference: #{@shipping_preference.inspect}, return_url: #{@return_url.inspect},"\
+      " cancel_url: #{@cancel_url.inspect}, landing_page: #{@landing_page.inspect}, user_action:"\
+      " #{@user_action.inspect}, payment_method_preference: #{@payment_method_preference.inspect},"\
+      " order_update_callback_config: #{@order_update_callback_config.inspect}>"
     end
   end
 end

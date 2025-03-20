@@ -7,16 +7,16 @@ module PaypalServerSdk
   # The status of the refund.
   class RefundStatus
     REFUND_STATUS = [
-      # TODO: Write general description for CANCELLED
+      # The refund was cancelled.
       CANCELLED = 'CANCELLED'.freeze,
 
-      # TODO: Write general description for FAILED
+      # The refund could not be processed.
       FAILED = 'FAILED'.freeze,
 
-      # TODO: Write general description for PENDING
+      # The refund is pending. For more information, see status_details.reason.
       PENDING = 'PENDING'.freeze,
 
-      # TODO: Write general description for COMPLETED
+      # The funds for this transaction were debited to the customer's account.
       COMPLETED = 'COMPLETED'.freeze
     ].freeze
 

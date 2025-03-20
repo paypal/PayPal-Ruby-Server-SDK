@@ -82,5 +82,18 @@ module PaypalServerSdk
                                     links: links,
                                     customer: customer)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, status: #{@status}, links: #{@links}, customer: #{@customer}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, status: #{@status.inspect}, links: #{@links.inspect},"\
+      " customer: #{@customer.inspect}>"
+    end
   end
 end

@@ -15,6 +15,10 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :description
 
+    # Expected business/charge model for the billing agreement.
+    # @return [UsagePattern]
+    attr_accessor :usage_pattern
+
     # The shipping details.
     # @return [VaultedDigitalWalletShippingDetails]
     attr_accessor :shipping
@@ -31,14 +35,19 @@ module PaypalServerSdk
     attr_accessor :permit_multiple_payment_tokens
 
     # The usage type associated with a digital wallet payment token.
-    # @return [String]
+    # @return [PaypalPaymentTokenUsageType]
     attr_accessor :usage_type
 
     # The customer type associated with a digital wallet payment token. This is
     # to indicate whether the customer acting on the merchant / platform is
     # either a business or a consumer.
-    # @return [String]
+    # @return [PaypalPaymentTokenCustomerType]
     attr_accessor :customer_type
+
+    # The merchant level Recurring Billing plan metadata for the Billing
+    # Agreement.
+    # @return [Plan]
+    attr_accessor :billing_plan
 
     # Customizes the Vault creation flow experience for your customers.
     # @return [VaultExperienceContext]
@@ -48,11 +57,13 @@ module PaypalServerSdk
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['description'] = 'description'
+      @_hash['usage_pattern'] = 'usage_pattern'
       @_hash['shipping'] = 'shipping'
       @_hash['permit_multiple_payment_tokens'] =
         'permit_multiple_payment_tokens'
       @_hash['usage_type'] = 'usage_type'
       @_hash['customer_type'] = 'customer_type'
+      @_hash['billing_plan'] = 'billing_plan'
       @_hash['experience_context'] = 'experience_context'
       @_hash
     end
@@ -61,10 +72,12 @@ module PaypalServerSdk
     def self.optionals
       %w[
         description
+        usage_pattern
         shipping
         permit_multiple_payment_tokens
         usage_type
         customer_type
+        billing_plan
         experience_context
       ]
     end
@@ -74,10 +87,12 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(description: SKIP, shipping: SKIP,
+    def initialize(description: SKIP, usage_pattern: SKIP, shipping: SKIP,
                    permit_multiple_payment_tokens: false, usage_type: SKIP,
-                   customer_type: SKIP, experience_context: SKIP)
+                   customer_type: SKIP, billing_plan: SKIP,
+                   experience_context: SKIP)
       @description = description unless description == SKIP
+      @usage_pattern = usage_pattern unless usage_pattern == SKIP
       @shipping = shipping unless shipping == SKIP
       unless permit_multiple_payment_tokens == SKIP
         @permit_multiple_payment_tokens =
@@ -85,6 +100,7 @@ module PaypalServerSdk
       end
       @usage_type = usage_type unless usage_type == SKIP
       @customer_type = customer_type unless customer_type == SKIP
+      @billing_plan = billing_plan unless billing_plan == SKIP
       @experience_context = experience_context unless experience_context == SKIP
     end
 
@@ -94,22 +110,45 @@ module PaypalServerSdk
 
       # Extract variables from the hash.
       description = hash.key?('description') ? hash['description'] : SKIP
+      usage_pattern = hash.key?('usage_pattern') ? hash['usage_pattern'] : SKIP
       shipping = VaultedDigitalWalletShippingDetails.from_hash(hash['shipping']) if
         hash['shipping']
       permit_multiple_payment_tokens =
         hash['permit_multiple_payment_tokens'] ||= false
       usage_type = hash.key?('usage_type') ? hash['usage_type'] : SKIP
       customer_type = hash.key?('customer_type') ? hash['customer_type'] : SKIP
+      billing_plan = Plan.from_hash(hash['billing_plan']) if hash['billing_plan']
       experience_context = VaultExperienceContext.from_hash(hash['experience_context']) if
         hash['experience_context']
 
       # Create object from extracted values.
       VaultPaypalWalletRequest.new(description: description,
+                                   usage_pattern: usage_pattern,
                                    shipping: shipping,
                                    permit_multiple_payment_tokens: permit_multiple_payment_tokens,
                                    usage_type: usage_type,
                                    customer_type: customer_type,
+                                   billing_plan: billing_plan,
                                    experience_context: experience_context)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} description: #{@description}, usage_pattern: #{@usage_pattern}, shipping:"\
+      " #{@shipping}, permit_multiple_payment_tokens: #{@permit_multiple_payment_tokens},"\
+      " usage_type: #{@usage_type}, customer_type: #{@customer_type}, billing_plan:"\
+      " #{@billing_plan}, experience_context: #{@experience_context}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} description: #{@description.inspect}, usage_pattern:"\
+      " #{@usage_pattern.inspect}, shipping: #{@shipping.inspect}, permit_multiple_payment_tokens:"\
+      " #{@permit_multiple_payment_tokens.inspect}, usage_type: #{@usage_type.inspect},"\
+      " customer_type: #{@customer_type.inspect}, billing_plan: #{@billing_plan.inspect},"\
+      " experience_context: #{@experience_context.inspect}>"
     end
   end
 end

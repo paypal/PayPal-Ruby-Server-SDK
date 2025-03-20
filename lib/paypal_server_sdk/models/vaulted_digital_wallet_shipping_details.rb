@@ -13,6 +13,11 @@ module PaypalServerSdk
     # @return [ShippingName]
     attr_accessor :name
 
+    # The phone number, in its canonical international [E.164 numbering plan
+    # format](https://www.itu.int/rec/T-REC-E.164/en).
+    # @return [PhoneNumberWithCountryCode]
+    attr_accessor :phone_number
+
     # A classification for the method of purchase fulfillment (e.g shipping,
     # in-store pickup, etc). Either `type` or `options` may be present, but not
     # both.
@@ -32,6 +37,7 @@ module PaypalServerSdk
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['name'] = 'name'
+      @_hash['phone_number'] = 'phone_number'
       @_hash['type'] = 'type'
       @_hash['address'] = 'address'
       @_hash
@@ -41,6 +47,7 @@ module PaypalServerSdk
     def self.optionals
       %w[
         name
+        phone_number
         type
         address
       ]
@@ -51,8 +58,9 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(name: SKIP, type: SKIP, address: SKIP)
+    def initialize(name: SKIP, phone_number: SKIP, type: SKIP, address: SKIP)
       @name = name unless name == SKIP
+      @phone_number = phone_number unless phone_number == SKIP
       @type = type unless type == SKIP
       @address = address unless address == SKIP
     end
@@ -63,13 +71,30 @@ module PaypalServerSdk
 
       # Extract variables from the hash.
       name = ShippingName.from_hash(hash['name']) if hash['name']
+      phone_number = PhoneNumberWithCountryCode.from_hash(hash['phone_number']) if
+        hash['phone_number']
       type = hash.key?('type') ? hash['type'] : SKIP
       address = Address.from_hash(hash['address']) if hash['address']
 
       # Create object from extracted values.
       VaultedDigitalWalletShippingDetails.new(name: name,
+                                              phone_number: phone_number,
                                               type: type,
                                               address: address)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, phone_number: #{@phone_number}, type: #{@type}, address:"\
+      " #{@address}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, phone_number: #{@phone_number.inspect}, type:"\
+      " #{@type.inspect}, address: #{@address.inspect}>"
     end
   end
 end

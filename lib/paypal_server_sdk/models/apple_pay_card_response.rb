@@ -51,6 +51,19 @@ module PaypalServerSdk
     # @return [BinDetails]
     attr_accessor :bin_details
 
+    # Provides additional details to process a payment using a `card` that has
+    # been stored or is intended to be stored (also referred to as
+    # stored_credential or card-on-file). Parameter compatibility:
+    # `payment_type=ONE_TIME` is compatible only with
+    # `payment_initiator=CUSTOMER`. `usage=FIRST` is compatible only with
+    # `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
+    # `previous_network_transaction_reference` is compatible only with
+    # `payment_initiator=MERCHANT`. Only one of the parameters -
+    # `previous_transaction_reference` and
+    # `previous_network_transaction_reference` - can be present in the request.
+    # @return [CardStoredCredential]
+    attr_accessor :stored_credential
+
     # The portable international postal address. Maps to
     # [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/
     # wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls:
@@ -61,11 +74,10 @@ module PaypalServerSdk
     attr_accessor :billing_address
 
     # The [two-character ISO 3166-1 code](/api/rest/reference/country-codes/)
-    # that identifies the country or region.<blockquote><strong>Note:</strong>
-    # The country code for Great Britain is <code>GB</code> and not
-    # <code>UK</code> as used in the top-level domain names for that country.
-    # Use the `C2` country code for China worldwide for comparable uncontrolled
-    # price (CUP) method, bank card, and cross-border transactions.</blockquote>
+    # that identifies the country or region. Note: The country code for Great
+    # Britain is GB and not UK as used in the top-level domain names for that
+    # country. Use the `C2` country code for China worldwide for comparable
+    # uncontrolled price (CUP) method, bank card, and cross-border transactions.
     # @return [String]
     attr_accessor :country_code
 
@@ -82,6 +94,7 @@ module PaypalServerSdk
       @_hash['from_request'] = 'from_request'
       @_hash['expiry'] = 'expiry'
       @_hash['bin_details'] = 'bin_details'
+      @_hash['stored_credential'] = 'stored_credential'
       @_hash['billing_address'] = 'billing_address'
       @_hash['country_code'] = 'country_code'
       @_hash
@@ -100,6 +113,7 @@ module PaypalServerSdk
         from_request
         expiry
         bin_details
+        stored_credential
         billing_address
         country_code
       ]
@@ -114,7 +128,8 @@ module PaypalServerSdk
                    available_networks: SKIP, type: SKIP,
                    authentication_result: SKIP, attributes: SKIP,
                    from_request: SKIP, expiry: SKIP, bin_details: SKIP,
-                   billing_address: SKIP, country_code: SKIP)
+                   stored_credential: SKIP, billing_address: SKIP,
+                   country_code: SKIP)
       @name = name unless name == SKIP
       @last_digits = last_digits unless last_digits == SKIP
       @brand = brand unless brand == SKIP
@@ -125,6 +140,7 @@ module PaypalServerSdk
       @from_request = from_request unless from_request == SKIP
       @expiry = expiry unless expiry == SKIP
       @bin_details = bin_details unless bin_details == SKIP
+      @stored_credential = stored_credential unless stored_credential == SKIP
       @billing_address = billing_address unless billing_address == SKIP
       @country_code = country_code unless country_code == SKIP
     end
@@ -146,6 +162,8 @@ module PaypalServerSdk
       from_request = CardFromRequest.from_hash(hash['from_request']) if hash['from_request']
       expiry = hash.key?('expiry') ? hash['expiry'] : SKIP
       bin_details = BinDetails.from_hash(hash['bin_details']) if hash['bin_details']
+      stored_credential = CardStoredCredential.from_hash(hash['stored_credential']) if
+        hash['stored_credential']
       billing_address = Address.from_hash(hash['billing_address']) if hash['billing_address']
       country_code = hash.key?('country_code') ? hash['country_code'] : SKIP
 
@@ -160,8 +178,32 @@ module PaypalServerSdk
                                from_request: from_request,
                                expiry: expiry,
                                bin_details: bin_details,
+                               stored_credential: stored_credential,
                                billing_address: billing_address,
                                country_code: country_code)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, last_digits: #{@last_digits}, brand: #{@brand},"\
+      " available_networks: #{@available_networks}, type: #{@type}, authentication_result:"\
+      " #{@authentication_result}, attributes: #{@attributes}, from_request: #{@from_request},"\
+      " expiry: #{@expiry}, bin_details: #{@bin_details}, stored_credential:"\
+      " #{@stored_credential}, billing_address: #{@billing_address}, country_code:"\
+      " #{@country_code}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, last_digits: #{@last_digits.inspect}, brand:"\
+      " #{@brand.inspect}, available_networks: #{@available_networks.inspect}, type:"\
+      " #{@type.inspect}, authentication_result: #{@authentication_result.inspect}, attributes:"\
+      " #{@attributes.inspect}, from_request: #{@from_request.inspect}, expiry:"\
+      " #{@expiry.inspect}, bin_details: #{@bin_details.inspect}, stored_credential:"\
+      " #{@stored_credential.inspect}, billing_address: #{@billing_address.inspect}, country_code:"\
+      " #{@country_code.inspect}>"
     end
   end
 end

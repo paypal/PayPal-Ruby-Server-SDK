@@ -10,15 +10,15 @@ module PaypalServerSdk
     SKIP = Object.new
     private_constant :SKIP
 
-    # Transaction Identifier as given by the network to indicate a previously
-    # executed CIT authorization. Only present when authorization is successful
-    # for a verification.
+    # DEPRECATED. This field is DEPRECATED. Please find the network transaction
+    # id data in the 'id' field under the 'network_transaction_reference' object
+    # instead of the 'verification' object.
     # @return [String]
     attr_accessor :network_transaction_id
 
-    # The date that the transaction was authorized by the scheme. This field may
-    # not be returned for all networks. MasterCard refers to this field as
-    # "BankNet reference date".
+    # DEPRECATED. This field is DEPRECATED. Please find the date data in the
+    # 'date' field under the 'network_transaction_reference' object instead of
+    # the 'verification' object.
     # @return [String]
     attr_accessor :date
 
@@ -29,9 +29,8 @@ module PaypalServerSdk
 
     # The date and time, in [Internet date and time
     # format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are
-    # required while fractional seconds are
-    # optional.<blockquote><strong>Note:</strong> The regular expression
-    # provides guidance but does not reject all invalid dates.</blockquote>
+    # required while fractional seconds are optional. Note: The regular
+    # expression provides guidance but does not reject all invalid dates.
     # @return [String]
     attr_accessor :time
 
@@ -46,8 +45,8 @@ module PaypalServerSdk
     attr_accessor :processor_response
 
     # DEPRECATED. This field is DEPRECATED. Please find the 3D secure
-    # authentication data in 'three_d_secure' object under
-    # 'authentication_result' object instead of the 'verification' field.
+    # authentication data in the 'three_d_secure' object under the
+    # 'authentication_result' object instead of the 'verification' object.
     # @return [Object]
     attr_accessor :three_d_secure
 
@@ -119,6 +118,23 @@ module PaypalServerSdk
                                   amount: amount,
                                   processor_response: processor_response,
                                   three_d_secure: three_d_secure)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} network_transaction_id: #{@network_transaction_id}, date: #{@date},"\
+      " network: #{@network}, time: #{@time}, amount: #{@amount}, processor_response:"\
+      " #{@processor_response}, three_d_secure: #{@three_d_secure}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} network_transaction_id: #{@network_transaction_id.inspect}, date:"\
+      " #{@date.inspect}, network: #{@network.inspect}, time: #{@time.inspect}, amount:"\
+      " #{@amount.inspect}, processor_response: #{@processor_response.inspect}, three_d_secure:"\
+      " #{@three_d_secure.inspect}>"
     end
   end
 end

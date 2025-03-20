@@ -44,5 +44,19 @@ module PaypalServerSdk
         hash.key?('error_description') ? hash['error_description'] : SKIP
       @error_uri = hash.key?('error_uri') ? hash['error_uri'] : SKIP
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} error: #{@error}, error_description: #{@error_description}, error_uri:"\
+      " #{@error_uri}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} error: #{@error.inspect}, error_description: #{@error_description.inspect},"\
+      " error_uri: #{@error_uri.inspect}>"
+    end
   end
 end

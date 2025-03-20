@@ -14,11 +14,10 @@ module PaypalServerSdk
     attr_accessor :name
 
     # The [two-character ISO 3166-1 code](/api/rest/reference/country-codes/)
-    # that identifies the country or region.<blockquote><strong>Note:</strong>
-    # The country code for Great Britain is <code>GB</code> and not
-    # <code>UK</code> as used in the top-level domain names for that country.
-    # Use the `C2` country code for China worldwide for comparable uncontrolled
-    # price (CUP) method, bank card, and cross-border transactions.</blockquote>
+    # that identifies the country or region. Note: The country code for Great
+    # Britain is GB and not UK as used in the top-level domain names for that
+    # country. Use the `C2` country code for China worldwide for comparable
+    # uncontrolled price (CUP) method, bank card, and cross-border transactions.
     # @return [String]
     attr_accessor :country_code
 
@@ -80,6 +79,20 @@ module PaypalServerSdk
                              country_code: country_code,
                              bic: bic,
                              iban_last_chars: iban_last_chars)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, country_code: #{@country_code}, bic: #{@bic},"\
+      " iban_last_chars: #{@iban_last_chars}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, country_code: #{@country_code.inspect}, bic:"\
+      " #{@bic.inspect}, iban_last_chars: #{@iban_last_chars.inspect}>"
     end
   end
 end

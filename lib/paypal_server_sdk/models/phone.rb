@@ -73,5 +73,19 @@ module PaypalServerSdk
                 national_number: national_number,
                 extension_number: extension_number)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} country_code: #{@country_code}, national_number: #{@national_number},"\
+      " extension_number: #{@extension_number}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} country_code: #{@country_code.inspect}, national_number:"\
+      " #{@national_number.inspect}, extension_number: #{@extension_number.inspect}>"
+    end
   end
 end

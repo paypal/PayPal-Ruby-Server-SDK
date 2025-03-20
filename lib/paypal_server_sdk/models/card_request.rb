@@ -4,15 +4,11 @@
 # ( https://apimatic.io ).
 
 module PaypalServerSdk
-  # The payment card to use to fund a payment. Can be a credit or debit
-  # card.<blockquote><strong>Note:</strong> Passing card number, cvv and expiry
-  # directly via the API requires <a
-  # href="https://www.pcisecuritystandards.org/pci_security/completing_self_asse
-  # ssment"> PCI SAQ D compliance</a>. <br>*PayPal offers a mechanism by which
-  # you do not have to take on the <strong>PCI SAQ D</strong> burden by using
-  # hosted fields - refer to <a
-  # href="https://developer.paypal.com/docs/checkout/advanced/integrate/">this
-  # Integration Guide</a>*.</blockquote>
+  # The payment card to use to fund a payment. Can be a credit or debit card.
+  # Note: Passing card number, cvv and expiry directly via the API requires PCI
+  # SAQ D compliance. *PayPal offers a mechanism by which you do not have to
+  # take on the PCI SAQ D burden by using hosted fields - refer to this
+  # Integration Guide*.
   class CardRequest < BaseModel
     SKIP = Object.new
     private_constant :SKIP
@@ -62,16 +58,14 @@ module PaypalServerSdk
 
     # Provides additional details to process a payment using a `card` that has
     # been stored or is intended to be stored (also referred to as
-    # stored_credential or card-on-file).<br/>Parameter
-    # compatibility:<br/><ul><li>`payment_type=ONE_TIME` is compatible only with
-    # `payment_initiator=CUSTOMER`.</li><li>`usage=FIRST` is compatible only
-    # with
-    # `payment_initiator=CUSTOMER`.</li><li>`previous_transaction_reference` or
+    # stored_credential or card-on-file). Parameter compatibility:
+    # `payment_type=ONE_TIME` is compatible only with
+    # `payment_initiator=CUSTOMER`. `usage=FIRST` is compatible only with
+    # `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
     # `previous_network_transaction_reference` is compatible only with
-    # `payment_initiator=MERCHANT`.</li><li>Only one of the parameters -
+    # `payment_initiator=MERCHANT`. Only one of the parameters -
     # `previous_transaction_reference` and
-    # `previous_network_transaction_reference` - can be present in the
-    # request.</li></ul>
+    # `previous_network_transaction_reference` - can be present in the request.
     # @return [CardStoredCredential]
     attr_accessor :stored_credential
 
@@ -171,6 +165,27 @@ module PaypalServerSdk
                       stored_credential: stored_credential,
                       network_token: network_token,
                       experience_context: experience_context)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, number: #{@number}, expiry: #{@expiry}, security_code:"\
+      " #{@security_code}, billing_address: #{@billing_address}, attributes: #{@attributes},"\
+      " vault_id: #{@vault_id}, single_use_token: #{@single_use_token}, stored_credential:"\
+      " #{@stored_credential}, network_token: #{@network_token}, experience_context:"\
+      " #{@experience_context}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, number: #{@number.inspect}, expiry:"\
+      " #{@expiry.inspect}, security_code: #{@security_code.inspect}, billing_address:"\
+      " #{@billing_address.inspect}, attributes: #{@attributes.inspect}, vault_id:"\
+      " #{@vault_id.inspect}, single_use_token: #{@single_use_token.inspect}, stored_credential:"\
+      " #{@stored_credential.inspect}, network_token: #{@network_token.inspect},"\
+      " experience_context: #{@experience_context.inspect}>"
     end
   end
 end

@@ -110,5 +110,22 @@ module PaypalServerSdk
                                       cryptogram: cryptogram,
                                       eci_indicator: eci_indicator)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} message_id: #{@message_id}, message_expiration: #{@message_expiration},"\
+      " payment_method: #{@payment_method}, card: #{@card}, authentication_method:"\
+      " #{@authentication_method}, cryptogram: #{@cryptogram}, eci_indicator: #{@eci_indicator}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} message_id: #{@message_id.inspect}, message_expiration:"\
+      " #{@message_expiration.inspect}, payment_method: #{@payment_method.inspect}, card:"\
+      " #{@card.inspect}, authentication_method: #{@authentication_method.inspect}, cryptogram:"\
+      " #{@cryptogram.inspect}, eci_indicator: #{@eci_indicator.inspect}>"
+    end
   end
 end

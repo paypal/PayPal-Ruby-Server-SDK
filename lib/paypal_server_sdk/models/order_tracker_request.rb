@@ -19,8 +19,7 @@ module PaypalServerSdk
     # your country. If the carrier is not available for your country, choose the
     # global version of the carrier. If your carrier name is not in the list,
     # set `carrier` to `OTHER` and set carrier name in `carrier_name_other`. For
-    # allowed values, see <a
-    # href="/docs/tracking/reference/carriers/">Carriers</a>.
+    # allowed values, see Carriers.
     # @return [ShipmentCarrier]
     attr_accessor :carrier
 
@@ -33,9 +32,11 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :capture_id
 
-    # If true, sends an email notification to the payer of the PayPal
-    # transaction. The email contains the tracking information that was uploaded
-    # through the API.
+    # If true, PayPal will send an email notification to the payer of the PayPal
+    # transaction. The email contains the tracking details provided through the
+    # Orders tracking API request. Independent of any value passed for
+    # `notify_payer`, the payer may receive tracking notifications within the
+    # PayPal app, based on the user's notification preferences.
     # @return [TrueClass | FalseClass]
     attr_accessor :notify_payer
 
@@ -111,6 +112,22 @@ module PaypalServerSdk
                               carrier_name_other: carrier_name_other,
                               notify_payer: notify_payer,
                               items: items)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} tracking_number: #{@tracking_number}, carrier: #{@carrier},"\
+      " carrier_name_other: #{@carrier_name_other}, capture_id: #{@capture_id}, notify_payer:"\
+      " #{@notify_payer}, items: #{@items}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} tracking_number: #{@tracking_number.inspect}, carrier: #{@carrier.inspect},"\
+      " carrier_name_other: #{@carrier_name_other.inspect}, capture_id: #{@capture_id.inspect},"\
+      " notify_payer: #{@notify_payer.inspect}, items: #{@items.inspect}>"
     end
   end
 end

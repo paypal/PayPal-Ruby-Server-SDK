@@ -19,11 +19,10 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :name
 
-    # The internationalized email address.<blockquote><strong>Note:</strong> Up
-    # to 64 characters are allowed before and 255 characters are allowed after
-    # the <code>@</code> sign. However, the generally accepted maximum length
-    # for an email address is 254 characters. The pattern verifies that an
-    # unquoted <code>@</code> sign exists.</blockquote>
+    # The internationalized email address. Note: Up to 64 characters are allowed
+    # before and 255 characters are allowed after the @ sign. However, the
+    # generally accepted maximum length for an email address is 254 characters.
+    # The pattern verifies that an unquoted @ sign exists.
     # @return [String]
     attr_accessor :email_address
 
@@ -38,16 +37,14 @@ module PaypalServerSdk
 
     # Provides additional details to process a payment using a `card` that has
     # been stored or is intended to be stored (also referred to as
-    # stored_credential or card-on-file).<br/>Parameter
-    # compatibility:<br/><ul><li>`payment_type=ONE_TIME` is compatible only with
-    # `payment_initiator=CUSTOMER`.</li><li>`usage=FIRST` is compatible only
-    # with
-    # `payment_initiator=CUSTOMER`.</li><li>`previous_transaction_reference` or
+    # stored_credential or card-on-file). Parameter compatibility:
+    # `payment_type=ONE_TIME` is compatible only with
+    # `payment_initiator=CUSTOMER`. `usage=FIRST` is compatible only with
+    # `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
     # `previous_network_transaction_reference` is compatible only with
-    # `payment_initiator=MERCHANT`.</li><li>Only one of the parameters -
+    # `payment_initiator=MERCHANT`. Only one of the parameters -
     # `previous_transaction_reference` and
-    # `previous_network_transaction_reference` - can be present in the
-    # request.</li></ul>
+    # `previous_network_transaction_reference` - can be present in the request.
     # @return [CardStoredCredential]
     attr_accessor :stored_credential
 
@@ -132,6 +129,23 @@ module PaypalServerSdk
                           stored_credential: stored_credential,
                           vault_id: vault_id,
                           attributes: attributes)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id}, name: #{@name}, email_address: #{@email_address}, phone_number:"\
+      " #{@phone_number}, decrypted_token: #{@decrypted_token}, stored_credential:"\
+      " #{@stored_credential}, vault_id: #{@vault_id}, attributes: #{@attributes}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} id: #{@id.inspect}, name: #{@name.inspect}, email_address:"\
+      " #{@email_address.inspect}, phone_number: #{@phone_number.inspect}, decrypted_token:"\
+      " #{@decrypted_token.inspect}, stored_credential: #{@stored_credential.inspect}, vault_id:"\
+      " #{@vault_id.inspect}, attributes: #{@attributes.inspect}>"
     end
   end
 end

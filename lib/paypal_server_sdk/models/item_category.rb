@@ -7,13 +7,16 @@ module PaypalServerSdk
   # The item category type.
   class ItemCategory
     ITEM_CATEGORY = [
-      # TODO: Write general description for DIGITAL_GOODS
+      # Goods that are stored, delivered, and used in their electronic format.
+      # This value is not currently supported for API callers that leverage the
+      # PayPal for Commerce Platform product.
       DIGITAL_GOODS = 'DIGITAL_GOODS'.freeze,
 
-      # TODO: Write general description for PHYSICAL_GOODS
+      # A tangible item that can be shipped with proof of delivery.
       PHYSICAL_GOODS = 'PHYSICAL_GOODS'.freeze,
 
-      # TODO: Write general description for DONATION
+      # A contribution or gift for which no good or service is exchanged,
+      # usually to a not for profit organization.
       DONATION = 'DONATION'.freeze
     ].freeze
 

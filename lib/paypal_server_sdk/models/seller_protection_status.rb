@@ -10,13 +10,16 @@ module PaypalServerSdk
   # .
   class SellerProtectionStatus
     SELLER_PROTECTION_STATUS = [
-      # TODO: Write general description for ELIGIBLE
+      # Your PayPal balance remains intact if the customer claims that they did
+      # not receive an item or the account holder claims that they did not
+      # authorize the payment.
       ELIGIBLE = 'ELIGIBLE'.freeze,
 
-      # TODO: Write general description for PARTIALLY_ELIGIBLE
+      # Your PayPal balance remains intact if the customer claims that they did
+      # not receive an item.
       PARTIALLY_ELIGIBLE = 'PARTIALLY_ELIGIBLE'.freeze,
 
-      # TODO: Write general description for NOT_ELIGIBLE
+      # This transaction is not eligible for seller protection.
       NOT_ELIGIBLE = 'NOT_ELIGIBLE'.freeze
     ].freeze
 

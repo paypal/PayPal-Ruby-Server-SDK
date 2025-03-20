@@ -9,24 +9,22 @@ module PaypalServerSdk
   # should be passed on the authorization transaction to the Gateway/Processor.
   class EciFlag
     ECI_FLAG = [
-      # TODO: Write general description for MASTERCARD_NON_3D_SECURE_TRANSACTION
+      # Mastercard non-3-D Secure transaction.
       MASTERCARD_NON_3D_SECURE_TRANSACTION = 'MASTERCARD_NON_3D_SECURE_TRANSACTION'.freeze,
 
-      # TODO: Write general description for
-      # MASTERCARD_ATTEMPTED_AUTHENTICATION_TRANSACTION
+      # Mastercard attempted authentication transaction.
       MASTERCARD_ATTEMPTED_AUTHENTICATION_TRANSACTION = 'MASTERCARD_ATTEMPTED_AUTHENTICATION_TRANSACTION'.freeze,
 
-      # TODO: Write general description for
-      # MASTERCARD_FULLY_AUTHENTICATED_TRANSACTION
+      # Mastercard fully authenticated transaction.
       MASTERCARD_FULLY_AUTHENTICATED_TRANSACTION = 'MASTERCARD_FULLY_AUTHENTICATED_TRANSACTION'.freeze,
 
-      # TODO: Write general description for FULLY_AUTHENTICATED_TRANSACTION
+      # VISA, AMEX, JCB, DINERS CLUB fully authenticated transaction.
       FULLY_AUTHENTICATED_TRANSACTION = 'FULLY_AUTHENTICATED_TRANSACTION'.freeze,
 
-      # TODO: Write general description for ATTEMPTED_AUTHENTICATION_TRANSACTION
+      # VISA, AMEX, JCB, DINERS CLUB attempted authentication transaction.
       ATTEMPTED_AUTHENTICATION_TRANSACTION = 'ATTEMPTED_AUTHENTICATION_TRANSACTION'.freeze,
 
-      # TODO: Write general description for NON_3D_SECURE_TRANSACTION
+      # VISA, AMEX, JCB, DINERS CLUB non-3-D Secure transaction.
       NON_3D_SECURE_TRANSACTION = 'NON_3D_SECURE_TRANSACTION'.freeze
     ].freeze
 

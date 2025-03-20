@@ -14,13 +14,19 @@ module PaypalServerSdk
     attr_accessor :name
 
     # The [two-character ISO 3166-1 code](/api/rest/reference/country-codes/)
-    # that identifies the country or region.<blockquote><strong>Note:</strong>
-    # The country code for Great Britain is <code>GB</code> and not
-    # <code>UK</code> as used in the top-level domain names for that country.
-    # Use the `C2` country code for China worldwide for comparable uncontrolled
-    # price (CUP) method, bank card, and cross-border transactions.</blockquote>
+    # that identifies the country or region. Note: The country code for Great
+    # Britain is GB and not UK as used in the top-level domain names for that
+    # country. Use the `C2` country code for China worldwide for comparable
+    # uncontrolled price (CUP) method, bank card, and cross-border transactions.
     # @return [String]
     attr_accessor :country_code
+
+    # The internationalized email address. Note: Up to 64 characters are allowed
+    # before and 255 characters are allowed after the @ sign. However, the
+    # generally accepted maximum length for an email address is 254 characters.
+    # The pattern verifies that an unquoted @ sign exists.
+    # @return [String]
+    attr_accessor :email
 
     # Customizes the payer experience during the approval process for the
     # payment.
@@ -32,6 +38,7 @@ module PaypalServerSdk
       @_hash = {} if @_hash.nil?
       @_hash['name'] = 'name'
       @_hash['country_code'] = 'country_code'
+      @_hash['email'] = 'email'
       @_hash['experience_context'] = 'experience_context'
       @_hash
     end
@@ -48,9 +55,10 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(name:, country_code:, experience_context: SKIP)
+    def initialize(name:, country_code:, email:, experience_context: SKIP)
       @name = name
       @country_code = country_code
+      @email = email
       @experience_context = experience_context unless experience_context == SKIP
     end
 
@@ -61,13 +69,29 @@ module PaypalServerSdk
       # Extract variables from the hash.
       name = hash.key?('name') ? hash['name'] : nil
       country_code = hash.key?('country_code') ? hash['country_code'] : nil
+      email = hash.key?('email') ? hash['email'] : nil
       experience_context = ExperienceContext.from_hash(hash['experience_context']) if
         hash['experience_context']
 
       # Create object from extracted values.
       TrustlyPaymentRequest.new(name: name,
                                 country_code: country_code,
+                                email: email,
                                 experience_context: experience_context)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, country_code: #{@country_code}, email: #{@email},"\
+      " experience_context: #{@experience_context}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, country_code: #{@country_code.inspect}, email:"\
+      " #{@email.inspect}, experience_context: #{@experience_context.inspect}>"
     end
   end
 end

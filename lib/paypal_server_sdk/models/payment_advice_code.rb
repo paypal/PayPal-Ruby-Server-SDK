@@ -8,17 +8,62 @@ module PaypalServerSdk
   # networks, like Visa and Mastercard, return payment advice codes.
   class PaymentAdviceCode
     PAYMENT_ADVICE_CODE = [
-      # TODO: Write general description for ENUM_01
-      ENUM_01 = '01'.freeze,
+      # For Mastercard, expired card account upgrade or portfolio sale
+      # conversion. Obtain new account information before next billing cycle.
+      PAYMENTADVICE_01 = '01'.freeze,
 
-      # TODO: Write general description for ENUM_02
-      ENUM_02 = '02'.freeze,
+      # For Mastercard, over credit limit or insufficient funds. Retry the
+      # transaction 72 hours later. For Visa, the card holder wants to stop only
+      # one specific payment in the recurring payment relationship. The merchant
+      # must NOT resubmit the same transaction. The merchant can continue the
+      # billing process in the subsequent billing period.
+      PAYMENTADVICE_02 = '02'.freeze,
 
-      # TODO: Write general description for ENUM_03
-      ENUM_03 = '03'.freeze,
+      # For Mastercard, account closed as fraudulent. Obtain another type of
+      # payment from customer due to account being closed or fraud. Possible
+      # reason: Account closed as fraudulent. For Visa, the card holder wants to
+      # stop all recurring payment transactions for a specific merchant. Stop
+      # recurring payment requests.
+      PAYMENTADVICE_03 = '03'.freeze,
 
-      # TODO: Write general description for ENUM_21
-      ENUM_21 = '21'.freeze
+      # For Mastercard, token requirements not fulfilled for this token type.
+      PAYMENTADVICE_04 = '04'.freeze,
+
+      # For Mastercard, the card holder has been unsuccessful at canceling
+      # recurring payment through merchant. Stop recurring payment requests. For
+      # Visa, all recurring payments were canceled for the card number
+      # requested. Stop recurring payment requests.
+      PAYMENTADVICE_21 = '21'.freeze,
+
+      # For Mastercard, merchant does not qualify for product code.
+      PAYMENTADVICE_22 = '22'.freeze,
+
+      # For Mastercard, retry after 1 hour.
+      PAYMENTADVICE_24 = '24'.freeze,
+
+      # For Mastercard, retry after 24 hours.
+      PAYMENTADVICE_25 = '25'.freeze,
+
+      # For Mastercard, retry after 2 days.
+      PAYMENTADVICE_26 = '26'.freeze,
+
+      # For Mastercard, retry after 4 days.
+      PAYMENTADVICE_27 = '27'.freeze,
+
+      # For Mastercard, retry after 6 days.
+      PAYMENTADVICE_28 = '28'.freeze,
+
+      # For Mastercard, retry after 8 days.
+      PAYMENTADVICE_29 = '29'.freeze,
+
+      # For Mastercard, retry after 10 days .
+      PAYMENTADVICE_30 = '30'.freeze,
+
+      # For Mastercard, consumer non-reloadable prepaid card.
+      PAYMENTADVICE_40 = '40'.freeze,
+
+      # For Mastercard, consumer multi-use virtual card number.
+      PAYMENTADVICE_43 = '43'.freeze
     ].freeze
 
     def self.validate(value)

@@ -66,5 +66,18 @@ module PaypalServerSdk
                         payee: payee,
                         amount: amount)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} labels: #{@labels}, payee: #{@payee}, amount: #{@amount}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} labels: #{@labels.inspect}, payee: #{@payee.inspect}, amount:"\
+      " #{@amount.inspect}>"
+    end
   end
 end
