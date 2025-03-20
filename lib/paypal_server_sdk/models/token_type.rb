@@ -7,7 +7,8 @@ module PaypalServerSdk
   # The tokenization method that generated the ID.
   class TokenType
     TOKEN_TYPE = [
-      # TODO: Write general description for BILLING_AGREEMENT
+      # The PayPal billing agreement ID. References an approved recurring
+      # payment for goods or services.
       BILLING_AGREEMENT = 'BILLING_AGREEMENT'.freeze
     ].freeze
 

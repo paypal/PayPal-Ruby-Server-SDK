@@ -58,5 +58,17 @@ module PaypalServerSdk
       CardVerificationProcessorResponse.new(avs_code: avs_code,
                                             cvv_code: cvv_code)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} avs_code: #{@avs_code}, cvv_code: #{@cvv_code}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} avs_code: #{@avs_code.inspect}, cvv_code: #{@cvv_code.inspect}>"
+    end
   end
 end

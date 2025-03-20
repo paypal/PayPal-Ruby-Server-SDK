@@ -69,5 +69,19 @@ module PaypalServerSdk
                                  converted_amount: converted_amount,
                                  exchange_rate: exchange_rate)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payable_amount: #{@payable_amount}, converted_amount: #{@converted_amount},"\
+      " exchange_rate: #{@exchange_rate}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payable_amount: #{@payable_amount.inspect}, converted_amount:"\
+      " #{@converted_amount.inspect}, exchange_rate: #{@exchange_rate.inspect}>"
+    end
   end
 end

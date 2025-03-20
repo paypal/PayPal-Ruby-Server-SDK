@@ -7,13 +7,16 @@ module PaypalServerSdk
   # The location from which the shipping address is derived.
   class ShippingPreference
     SHIPPING_PREFERENCE = [
-      # TODO: Write general description for GET_FROM_FILE
+      # Get the customer-provided shipping address on the PayPal site.
       GET_FROM_FILE = 'GET_FROM_FILE'.freeze,
 
-      # TODO: Write general description for NO_SHIPPING
+      # Redacts the shipping address from the PayPal site. Recommended for
+      # digital goods.
       NO_SHIPPING = 'NO_SHIPPING'.freeze,
 
-      # TODO: Write general description for SET_PROVIDED_ADDRESS
+      # Get the merchant-provided address. The customer cannot change this
+      # address on the PayPal site. If merchant does not pass an address,
+      # customer can choose the address on PayPal pages.
       SET_PROVIDED_ADDRESS = 'SET_PROVIDED_ADDRESS'.freeze
     ].freeze
 

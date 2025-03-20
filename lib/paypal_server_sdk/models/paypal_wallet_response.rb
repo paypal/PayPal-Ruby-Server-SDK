@@ -9,11 +9,10 @@ module PaypalServerSdk
     SKIP = Object.new
     private_constant :SKIP
 
-    # The internationalized email address.<blockquote><strong>Note:</strong> Up
-    # to 64 characters are allowed before and 255 characters are allowed after
-    # the <code>@</code> sign. However, the generally accepted maximum length
-    # for an email address is 254 characters. The pattern verifies that an
-    # unquoted <code>@</code> sign exists.</blockquote>
+    # The internationalized email address. Note: Up to 64 characters are allowed
+    # before and 255 characters are allowed after the @ sign. However, the
+    # generally accepted maximum length for an email address is 254 characters.
+    # The pattern verifies that an unquoted @ sign exists.
     # @return [String]
     attr_accessor :email_address
 
@@ -74,6 +73,12 @@ module PaypalServerSdk
     # @return [PaypalWalletAttributesResponse]
     attr_accessor :attributes
 
+    # Provides additional details to process a payment using the PayPal wallet
+    # billing agreement or a vaulted payment method that has been stored or is
+    # intended to be stored.
+    # @return [PaypalWalletStoredCredential]
+    attr_accessor :stored_credential
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -88,6 +93,7 @@ module PaypalServerSdk
       @_hash['tax_info'] = 'tax_info'
       @_hash['address'] = 'address'
       @_hash['attributes'] = 'attributes'
+      @_hash['stored_credential'] = 'stored_credential'
       @_hash
     end
 
@@ -105,6 +111,7 @@ module PaypalServerSdk
         tax_info
         address
         attributes
+        stored_credential
       ]
     end
 
@@ -116,7 +123,7 @@ module PaypalServerSdk
     def initialize(email_address: SKIP, account_id: SKIP, account_status: SKIP,
                    name: SKIP, phone_type: SKIP, phone_number: SKIP,
                    birth_date: SKIP, business_name: SKIP, tax_info: SKIP,
-                   address: SKIP, attributes: SKIP)
+                   address: SKIP, attributes: SKIP, stored_credential: SKIP)
       @email_address = email_address unless email_address == SKIP
       @account_id = account_id unless account_id == SKIP
       @account_status = account_status unless account_status == SKIP
@@ -128,6 +135,7 @@ module PaypalServerSdk
       @tax_info = tax_info unless tax_info == SKIP
       @address = address unless address == SKIP
       @attributes = attributes unless attributes == SKIP
+      @stored_credential = stored_credential unless stored_credential == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -148,6 +156,8 @@ module PaypalServerSdk
       address = Address.from_hash(hash['address']) if hash['address']
       attributes = PaypalWalletAttributesResponse.from_hash(hash['attributes']) if
         hash['attributes']
+      stored_credential = PaypalWalletStoredCredential.from_hash(hash['stored_credential']) if
+        hash['stored_credential']
 
       # Create object from extracted values.
       PaypalWalletResponse.new(email_address: email_address,
@@ -160,7 +170,29 @@ module PaypalServerSdk
                                business_name: business_name,
                                tax_info: tax_info,
                                address: address,
-                               attributes: attributes)
+                               attributes: attributes,
+                               stored_credential: stored_credential)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} email_address: #{@email_address}, account_id: #{@account_id},"\
+      " account_status: #{@account_status}, name: #{@name}, phone_type: #{@phone_type},"\
+      " phone_number: #{@phone_number}, birth_date: #{@birth_date}, business_name:"\
+      " #{@business_name}, tax_info: #{@tax_info}, address: #{@address}, attributes:"\
+      " #{@attributes}, stored_credential: #{@stored_credential}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} email_address: #{@email_address.inspect}, account_id:"\
+      " #{@account_id.inspect}, account_status: #{@account_status.inspect}, name:"\
+      " #{@name.inspect}, phone_type: #{@phone_type.inspect}, phone_number:"\
+      " #{@phone_number.inspect}, birth_date: #{@birth_date.inspect}, business_name:"\
+      " #{@business_name.inspect}, tax_info: #{@tax_info.inspect}, address: #{@address.inspect},"\
+      " attributes: #{@attributes.inspect}, stored_credential: #{@stored_credential.inspect}>"
     end
   end
 end

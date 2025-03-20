@@ -173,5 +173,26 @@ module PaypalServerSdk
                    total_amount: total_amount,
                    unit_of_measure: unit_of_measure)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, quantity: #{@quantity}, description: #{@description}, sku:"\
+      " #{@sku}, url: #{@url}, image_url: #{@image_url}, upc: #{@upc}, unit_amount:"\
+      " #{@unit_amount}, tax: #{@tax}, commodity_code: #{@commodity_code}, discount_amount:"\
+      " #{@discount_amount}, total_amount: #{@total_amount}, unit_of_measure:"\
+      " #{@unit_of_measure}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, quantity: #{@quantity.inspect}, description:"\
+      " #{@description.inspect}, sku: #{@sku.inspect}, url: #{@url.inspect}, image_url:"\
+      " #{@image_url.inspect}, upc: #{@upc.inspect}, unit_amount: #{@unit_amount.inspect}, tax:"\
+      " #{@tax.inspect}, commodity_code: #{@commodity_code.inspect}, discount_amount:"\
+      " #{@discount_amount.inspect}, total_amount: #{@total_amount.inspect}, unit_of_measure:"\
+      " #{@unit_of_measure.inspect}>"
+    end
   end
 end

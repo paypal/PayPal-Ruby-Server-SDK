@@ -10,7 +10,7 @@ module PaypalServerSdk
     private_constant :SKIP
 
     # Full representation of a Card Payment Token including network token.
-    # @return [CardPaymentToken]
+    # @return [CardPaymentTokenEntity]
     attr_accessor :card
 
     # Full representation of a Card Payment Token including network token.
@@ -25,10 +25,6 @@ module PaypalServerSdk
     # @return [ApplePayPaymentToken]
     attr_accessor :apple_pay
 
-    # Full representation of a Bank Payment Token.
-    # @return [Hash]
-    attr_accessor :bank
-
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -36,7 +32,6 @@ module PaypalServerSdk
       @_hash['paypal'] = 'paypal'
       @_hash['venmo'] = 'venmo'
       @_hash['apple_pay'] = 'apple_pay'
-      @_hash['bank'] = 'bank'
       @_hash
     end
 
@@ -47,7 +42,6 @@ module PaypalServerSdk
         paypal
         venmo
         apple_pay
-        bank
       ]
     end
 
@@ -56,13 +50,11 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(card: SKIP, paypal: SKIP, venmo: SKIP, apple_pay: SKIP,
-                   bank: SKIP)
+    def initialize(card: SKIP, paypal: SKIP, venmo: SKIP, apple_pay: SKIP)
       @card = card unless card == SKIP
       @paypal = paypal unless paypal == SKIP
       @venmo = venmo unless venmo == SKIP
       @apple_pay = apple_pay unless apple_pay == SKIP
-      @bank = bank unless bank == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -70,18 +62,30 @@ module PaypalServerSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      card = CardPaymentToken.from_hash(hash['card']) if hash['card']
+      card = CardPaymentTokenEntity.from_hash(hash['card']) if hash['card']
       paypal = PaypalPaymentToken.from_hash(hash['paypal']) if hash['paypal']
       venmo = VenmoPaymentToken.from_hash(hash['venmo']) if hash['venmo']
       apple_pay = ApplePayPaymentToken.from_hash(hash['apple_pay']) if hash['apple_pay']
-      bank = hash.key?('bank') ? hash['bank'] : SKIP
 
       # Create object from extracted values.
       PaymentTokenResponsePaymentSource.new(card: card,
                                             paypal: paypal,
                                             venmo: venmo,
-                                            apple_pay: apple_pay,
-                                            bank: bank)
+                                            apple_pay: apple_pay)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} card: #{@card}, paypal: #{@paypal}, venmo: #{@venmo}, apple_pay:"\
+      " #{@apple_pay}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} card: #{@card.inspect}, paypal: #{@paypal.inspect}, venmo:"\
+      " #{@venmo.inspect}, apple_pay: #{@apple_pay.inspect}>"
     end
   end
 end

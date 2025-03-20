@@ -55,5 +55,17 @@ module PaypalServerSdk
       CardExperienceContext.new(return_url: return_url,
                                 cancel_url: cancel_url)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} return_url: #{@return_url}, cancel_url: #{@cancel_url}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} return_url: #{@return_url.inspect}, cancel_url: #{@cancel_url.inspect}>"
+    end
   end
 end

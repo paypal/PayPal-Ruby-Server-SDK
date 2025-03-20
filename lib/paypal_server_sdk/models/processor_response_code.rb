@@ -7,467 +7,471 @@ module PaypalServerSdk
   # Processor response code for the non-PayPal payment processor errors.
   class ProcessorResponseCode
     PROCESSOR_RESPONSE_CODE = [
-      # TODO: Write general description for ENUM_0000
-      ENUM_0000 = '0000'.freeze,
+      # APPROVED.
+      RESPONSE_0000 = '0000'.freeze,
 
-      # TODO: Write general description for ENUM_00N7
-      ENUM_00N7 = '00N7'.freeze,
+      # CVV2_FAILURE_POSSIBLE_RETRY_WITH_CVV.
+      RESPONSE_00N7 = '00N7'.freeze,
 
-      # TODO: Write general description for ENUM_0100
-      ENUM_0100 = '0100'.freeze,
+      # REFERRAL.
+      RESPONSE_0100 = '0100'.freeze,
 
-      # TODO: Write general description for ENUM_0390
-      ENUM_0390 = '0390'.freeze,
+      # ACCOUNT_NOT_FOUND.
+      RESPONSE_0390 = '0390'.freeze,
 
-      # TODO: Write general description for ENUM_0500
-      ENUM_0500 = '0500'.freeze,
+      # DO_NOT_HONOR.
+      RESPONSE_0500 = '0500'.freeze,
 
-      # TODO: Write general description for ENUM_0580
-      ENUM_0580 = '0580'.freeze,
+      # UNAUTHORIZED_TRANSACTION.
+      RESPONSE_0580 = '0580'.freeze,
 
-      # TODO: Write general description for ENUM_0800
-      ENUM_0800 = '0800'.freeze,
+      # BAD_RESPONSE_REVERSAL_REQUIRED.
+      RESPONSE_0800 = '0800'.freeze,
 
-      # TODO: Write general description for ENUM_0880
-      ENUM_0880 = '0880'.freeze,
+      # CRYPTOGRAPHIC_FAILURE.
+      RESPONSE_0880 = '0880'.freeze,
 
-      # TODO: Write general description for ENUM_0890
-      ENUM_0890 = '0890'.freeze,
+      # UNACCEPTABLE_PIN.
+      RESPONSE_0890 = '0890'.freeze,
 
-      # TODO: Write general description for ENUM_0960
-      ENUM_0960 = '0960'.freeze,
+      # SYSTEM_MALFUNCTION.
+      RESPONSE_0960 = '0960'.freeze,
 
-      # TODO: Write general description for ENUM_0R00
-      ENUM_0R00 = '0R00'.freeze,
+      # CANCELLED_PAYMENT.
+      RESPONSE_0R00 = '0R00'.freeze,
 
-      # TODO: Write general description for ENUM_1000
-      ENUM_1000 = '1000'.freeze,
+      # PARTIAL_AUTHORIZATION.
+      RESPONSE_1000 = '1000'.freeze,
 
-      # TODO: Write general description for ENUM_10BR
-      ENUM_10BR = '10BR'.freeze,
+      # ISSUER_REJECTED.
+      RESPONSE_10BR = '10BR'.freeze,
 
-      # TODO: Write general description for ENUM_1300
-      ENUM_1300 = '1300'.freeze,
+      # INVALID_DATA_FORMAT.
+      RESPONSE_1300 = '1300'.freeze,
 
-      # TODO: Write general description for ENUM_1310
-      ENUM_1310 = '1310'.freeze,
+      # INVALID_AMOUNT.
+      RESPONSE_1310 = '1310'.freeze,
 
-      # TODO: Write general description for ENUM_1312
-      ENUM_1312 = '1312'.freeze,
+      # INVALID_TRANSACTION_CARD_ISSUER_ACQUIRER.
+      RESPONSE_1312 = '1312'.freeze,
 
-      # TODO: Write general description for ENUM_1317
-      ENUM_1317 = '1317'.freeze,
+      # INVALID_CAPTURE_DATE.
+      RESPONSE_1317 = '1317'.freeze,
 
-      # TODO: Write general description for ENUM_1320
-      ENUM_1320 = '1320'.freeze,
+      # INVALID_CURRENCY_CODE.
+      RESPONSE_1320 = '1320'.freeze,
 
-      # TODO: Write general description for ENUM_1330
-      ENUM_1330 = '1330'.freeze,
+      # INVALID_ACCOUNT.
+      RESPONSE_1330 = '1330'.freeze,
 
-      # TODO: Write general description for ENUM_1335
-      ENUM_1335 = '1335'.freeze,
+      # INVALID_ACCOUNT_RECURRING.
+      RESPONSE_1335 = '1335'.freeze,
 
-      # TODO: Write general description for ENUM_1340
-      ENUM_1340 = '1340'.freeze,
+      # INVALID_TERMINAL.
+      RESPONSE_1340 = '1340'.freeze,
 
-      # TODO: Write general description for ENUM_1350
-      ENUM_1350 = '1350'.freeze,
+      # INVALID_MERCHANT.
+      RESPONSE_1350 = '1350'.freeze,
 
-      # TODO: Write general description for ENUM_1352
-      ENUM_1352 = '1352'.freeze,
+      # RESTRICTED_OR_INACTIVE_ACCOUNT.
+      RESPONSE_1352 = '1352'.freeze,
 
-      # TODO: Write general description for ENUM_1360
-      ENUM_1360 = '1360'.freeze,
+      # BAD_PROCESSING_CODE.
+      RESPONSE_1360 = '1360'.freeze,
 
-      # TODO: Write general description for ENUM_1370
-      ENUM_1370 = '1370'.freeze,
+      # INVALID_MCC.
+      RESPONSE_1370 = '1370'.freeze,
 
-      # TODO: Write general description for ENUM_1380
-      ENUM_1380 = '1380'.freeze,
+      # INVALID_EXPIRATION.
+      RESPONSE_1380 = '1380'.freeze,
 
-      # TODO: Write general description for ENUM_1382
-      ENUM_1382 = '1382'.freeze,
+      # INVALID_CARD_VERIFICATION_VALUE.
+      RESPONSE_1382 = '1382'.freeze,
 
-      # TODO: Write general description for ENUM_1384
-      ENUM_1384 = '1384'.freeze,
+      # INVALID_LIFE_CYCLE_OF_TRANSACTION.
+      RESPONSE_1384 = '1384'.freeze,
 
-      # TODO: Write general description for ENUM_1390
-      ENUM_1390 = '1390'.freeze,
+      # INVALID_ORDER.
+      RESPONSE_1390 = '1390'.freeze,
 
-      # TODO: Write general description for ENUM_1393
-      ENUM_1393 = '1393'.freeze,
+      # TRANSACTION_CANNOT_BE_COMPLETED.
+      RESPONSE_1393 = '1393'.freeze,
 
-      # TODO: Write general description for ENUM_5100
-      ENUM_5100 = '5100'.freeze,
+      # GENERIC_DECLINE.
+      RESPONSE_5100 = '5100'.freeze,
 
-      # TODO: Write general description for ENUM_5110
-      ENUM_5110 = '5110'.freeze,
+      # CVV2_FAILURE.
+      RESPONSE_5110 = '5110'.freeze,
 
-      # TODO: Write general description for ENUM_5120
-      ENUM_5120 = '5120'.freeze,
+      # INSUFFICIENT_FUNDS.
+      RESPONSE_5120 = '5120'.freeze,
 
-      # TODO: Write general description for ENUM_5130
-      ENUM_5130 = '5130'.freeze,
+      # INVALID_PIN.
+      RESPONSE_5130 = '5130'.freeze,
 
-      # TODO: Write general description for ENUM_5135
-      ENUM_5135 = '5135'.freeze,
+      # DECLINED_PIN_TRY_EXCEEDED.
+      RESPONSE_5135 = '5135'.freeze,
 
-      # TODO: Write general description for ENUM_5140
-      ENUM_5140 = '5140'.freeze,
+      # CARD_CLOSED.
+      RESPONSE_5140 = '5140'.freeze,
 
-      # TODO: Write general description for ENUM_5150
-      ENUM_5150 = '5150'.freeze,
+      # PICKUP_CARD_SPECIAL_CONDITIONS. Try using another card. Do not retry the
+      # same card.
+      RESPONSE_5150 = '5150'.freeze,
 
-      # TODO: Write general description for ENUM_5160
-      ENUM_5160 = '5160'.freeze,
+      # UNAUTHORIZED_USER.
+      RESPONSE_5160 = '5160'.freeze,
 
-      # TODO: Write general description for ENUM_5170
-      ENUM_5170 = '5170'.freeze,
+      # AVS_FAILURE.
+      RESPONSE_5170 = '5170'.freeze,
 
-      # TODO: Write general description for ENUM_5180
-      ENUM_5180 = '5180'.freeze,
+      # INVALID_OR_RESTRICTED_CARD. Try using another card. Do not retry the
+      # same card.
+      RESPONSE_5180 = '5180'.freeze,
 
-      # TODO: Write general description for ENUM_5190
-      ENUM_5190 = '5190'.freeze,
+      # SOFT_AVS.
+      RESPONSE_5190 = '5190'.freeze,
 
-      # TODO: Write general description for ENUM_5200
-      ENUM_5200 = '5200'.freeze,
+      # DUPLICATE_TRANSACTION.
+      RESPONSE_5200 = '5200'.freeze,
 
-      # TODO: Write general description for ENUM_5210
-      ENUM_5210 = '5210'.freeze,
+      # INVALID_TRANSACTION.
+      RESPONSE_5210 = '5210'.freeze,
 
-      # TODO: Write general description for ENUM_5400
-      ENUM_5400 = '5400'.freeze,
+      # EXPIRED_CARD.
+      RESPONSE_5400 = '5400'.freeze,
 
-      # TODO: Write general description for ENUM_5500
-      ENUM_5500 = '5500'.freeze,
+      # INCORRECT_PIN_REENTER.
+      RESPONSE_5500 = '5500'.freeze,
 
-      # TODO: Write general description for ENUM_5650
-      ENUM_5650 = '5650'.freeze,
+      # DECLINED_SCA_REQUIRED.
+      RESPONSE_5650 = '5650'.freeze,
 
-      # TODO: Write general description for ENUM_5700
-      ENUM_5700 = '5700'.freeze,
+      # TRANSACTION_NOT_PERMITTED. Outside of scope of accepted business.
+      RESPONSE_5700 = '5700'.freeze,
 
-      # TODO: Write general description for ENUM_5710
-      ENUM_5710 = '5710'.freeze,
+      # TX_ATTEMPTS_EXCEED_LIMIT.
+      RESPONSE_5710 = '5710'.freeze,
 
-      # TODO: Write general description for ENUM_5800
-      ENUM_5800 = '5800'.freeze,
+      # REVERSAL_REJECTED.
+      RESPONSE_5800 = '5800'.freeze,
 
-      # TODO: Write general description for ENUM_5900
-      ENUM_5900 = '5900'.freeze,
+      # INVALID_ISSUE.
+      RESPONSE_5900 = '5900'.freeze,
 
-      # TODO: Write general description for ENUM_5910
-      ENUM_5910 = '5910'.freeze,
+      # ISSUER_NOT_AVAILABLE_NOT_RETRIABLE.
+      RESPONSE_5910 = '5910'.freeze,
 
-      # TODO: Write general description for ENUM_5920
-      ENUM_5920 = '5920'.freeze,
+      # ISSUER_NOT_AVAILABLE_RETRIABLE.
+      RESPONSE_5920 = '5920'.freeze,
 
-      # TODO: Write general description for ENUM_5930
-      ENUM_5930 = '5930'.freeze,
+      # CARD_NOT_ACTIVATED.
+      RESPONSE_5930 = '5930'.freeze,
 
-      # TODO: Write general description for ENUM_5950
-      ENUM_5950 = '5950'.freeze,
+      # DECLINED_DUE_TO_UPDATED_ACCOUNT. External decline as an updated card has
+      # been issued.
+      RESPONSE_5950 = '5950'.freeze,
 
-      # TODO: Write general description for ENUM_6300
-      ENUM_6300 = '6300'.freeze,
+      # ACCOUNT_NOT_ON_FILE.
+      RESPONSE_6300 = '6300'.freeze,
 
-      # TODO: Write general description for ENUM_7600
-      ENUM_7600 = '7600'.freeze,
+      # APPROVED_NON_CAPTURE.
+      RESPONSE_7600 = '7600'.freeze,
 
-      # TODO: Write general description for ENUM_7700
-      ENUM_7700 = '7700'.freeze,
+      # ERROR_3DS.
+      RESPONSE_7700 = '7700'.freeze,
 
-      # TODO: Write general description for ENUM_7710
-      ENUM_7710 = '7710'.freeze,
+      # AUTHENTICATION_FAILED.
+      RESPONSE_7710 = '7710'.freeze,
 
-      # TODO: Write general description for ENUM_7800
-      ENUM_7800 = '7800'.freeze,
+      # BIN_ERROR.
+      RESPONSE_7800 = '7800'.freeze,
 
-      # TODO: Write general description for ENUM_7900
-      ENUM_7900 = '7900'.freeze,
+      # PIN_ERROR.
+      RESPONSE_7900 = '7900'.freeze,
 
-      # TODO: Write general description for ENUM_8000
-      ENUM_8000 = '8000'.freeze,
+      # PROCESSOR_SYSTEM_ERROR.
+      RESPONSE_8000 = '8000'.freeze,
 
-      # TODO: Write general description for ENUM_8010
-      ENUM_8010 = '8010'.freeze,
+      # HOST_KEY_ERROR.
+      RESPONSE_8010 = '8010'.freeze,
 
-      # TODO: Write general description for ENUM_8020
-      ENUM_8020 = '8020'.freeze,
+      # CONFIGURATION_ERROR.
+      RESPONSE_8020 = '8020'.freeze,
 
-      # TODO: Write general description for ENUM_8030
-      ENUM_8030 = '8030'.freeze,
+      # UNSUPPORTED_OPERATION.
+      RESPONSE_8030 = '8030'.freeze,
 
-      # TODO: Write general description for ENUM_8100
-      ENUM_8100 = '8100'.freeze,
+      # FATAL_COMMUNICATION_ERROR.
+      RESPONSE_8100 = '8100'.freeze,
 
-      # TODO: Write general description for ENUM_8110
-      ENUM_8110 = '8110'.freeze,
+      # RETRIABLE_COMMUNICATION_ERROR.
+      RESPONSE_8110 = '8110'.freeze,
 
-      # TODO: Write general description for ENUM_8220
-      ENUM_8220 = '8220'.freeze,
+      # SYSTEM_UNAVAILABLE.
+      RESPONSE_8220 = '8220'.freeze,
 
-      # TODO: Write general description for ENUM_9100
-      ENUM_9100 = '9100'.freeze,
+      # DECLINED_PLEASE_RETRY. Retry.
+      RESPONSE_9100 = '9100'.freeze,
 
-      # TODO: Write general description for ENUM_9500
-      ENUM_9500 = '9500'.freeze,
+      # SUSPECTED_FRAUD. Try using another card. Do not retry the same card.
+      RESPONSE_9500 = '9500'.freeze,
 
-      # TODO: Write general description for ENUM_9510
-      ENUM_9510 = '9510'.freeze,
+      # SECURITY_VIOLATION.
+      RESPONSE_9510 = '9510'.freeze,
 
-      # TODO: Write general description for ENUM_9520
-      ENUM_9520 = '9520'.freeze,
+      # LOST_OR_STOLEN. Try using another card. Do not retry the same card.
+      RESPONSE_9520 = '9520'.freeze,
 
-      # TODO: Write general description for ENUM_9530
-      ENUM_9530 = '9530'.freeze,
+      # HOLD_CALL_CENTER. The merchant must call the number on the back of the
+      # card. POS scenario.
+      RESPONSE_9530 = '9530'.freeze,
 
-      # TODO: Write general description for ENUM_9540
-      ENUM_9540 = '9540'.freeze,
+      # REFUSED_CARD.
+      RESPONSE_9540 = '9540'.freeze,
 
-      # TODO: Write general description for ENUM_9600
-      ENUM_9600 = '9600'.freeze,
+      # UNRECOGNIZED_RESPONSE_CODE.
+      RESPONSE_9600 = '9600'.freeze,
 
-      # TODO: Write general description for PCNR
-      PCNR = 'PCNR'.freeze,
+      # CONTINGENCIES_NOT_RESOLVED.
+      RESPONSE_PCNR = 'PCNR'.freeze,
 
-      # TODO: Write general description for PCVV
-      PCVV = 'PCVV'.freeze,
+      # CVV_FAILURE.
+      RESPONSE_PCVV = 'PCVV'.freeze,
 
-      # TODO: Write general description for PP06
-      PP06 = 'PP06'.freeze,
+      # ACCOUNT_CLOSED. A previously open account is now closed
+      RESPONSE_PP06 = 'PP06'.freeze,
 
-      # TODO: Write general description for PPRN
-      PPRN = 'PPRN'.freeze,
+      # REATTEMPT_NOT_PERMITTED.
+      RESPONSE_PPRN = 'PPRN'.freeze,
 
-      # TODO: Write general description for PPAD
-      PPAD = 'PPAD'.freeze,
+      # BILLING_ADDRESS.
+      RESPONSE_PPAD = 'PPAD'.freeze,
 
-      # TODO: Write general description for PPAB
-      PPAB = 'PPAB'.freeze,
+      # ACCOUNT_BLOCKED_BY_ISSUER.
+      RESPONSE_PPAB = 'PPAB'.freeze,
 
-      # TODO: Write general description for PPAE
-      PPAE = 'PPAE'.freeze,
+      # AMEX_DISABLED.
+      RESPONSE_PPAE = 'PPAE'.freeze,
 
-      # TODO: Write general description for PPAG
-      PPAG = 'PPAG'.freeze,
+      # ADULT_GAMING_UNSUPPORTED.
+      RESPONSE_PPAG = 'PPAG'.freeze,
 
-      # TODO: Write general description for PPAI
-      PPAI = 'PPAI'.freeze,
+      # AMOUNT_INCOMPATIBLE.
+      RESPONSE_PPAI = 'PPAI'.freeze,
 
-      # TODO: Write general description for PPAR
-      PPAR = 'PPAR'.freeze,
+      # AUTH_RESULT.
+      RESPONSE_PPAR = 'PPAR'.freeze,
 
-      # TODO: Write general description for PPAU
-      PPAU = 'PPAU'.freeze,
+      # MCC_CODE.
+      RESPONSE_PPAU = 'PPAU'.freeze,
 
-      # TODO: Write general description for PPAV
-      PPAV = 'PPAV'.freeze,
+      # ARC_AVS.
+      RESPONSE_PPAV = 'PPAV'.freeze,
 
-      # TODO: Write general description for PPAX
-      PPAX = 'PPAX'.freeze,
+      # AMOUNT_EXCEEDED.
+      RESPONSE_PPAX = 'PPAX'.freeze,
 
-      # TODO: Write general description for PPBG
-      PPBG = 'PPBG'.freeze,
+      # BAD_GAMING.
+      RESPONSE_PPBG = 'PPBG'.freeze,
 
-      # TODO: Write general description for PPC2
-      PPC2 = 'PPC2'.freeze,
+      # ARC_CVV.
+      RESPONSE_PPC2 = 'PPC2'.freeze,
 
-      # TODO: Write general description for PPCE
-      PPCE = 'PPCE'.freeze,
+      # CE_REGISTRATION_INCOMPLETE.
+      RESPONSE_PPCE = 'PPCE'.freeze,
 
-      # TODO: Write general description for PPCO
-      PPCO = 'PPCO'.freeze,
+      # COUNTRY.
+      RESPONSE_PPCO = 'PPCO'.freeze,
 
-      # TODO: Write general description for PPCR
-      PPCR = 'PPCR'.freeze,
+      # CREDIT_ERROR.
+      RESPONSE_PPCR = 'PPCR'.freeze,
 
-      # TODO: Write general description for PPCT
-      PPCT = 'PPCT'.freeze,
+      # CARD_TYPE_UNSUPPORTED.
+      RESPONSE_PPCT = 'PPCT'.freeze,
 
-      # TODO: Write general description for PPCU
-      PPCU = 'PPCU'.freeze,
+      # CURRENCY_USED_INVALID.
+      RESPONSE_PPCU = 'PPCU'.freeze,
 
-      # TODO: Write general description for PPD3
-      PPD3 = 'PPD3'.freeze,
+      # SECURE_ERROR_3DS.
+      RESPONSE_PPD3 = 'PPD3'.freeze,
 
-      # TODO: Write general description for PPDC
-      PPDC = 'PPDC'.freeze,
+      # DCC_UNSUPPORTED.
+      RESPONSE_PPDC = 'PPDC'.freeze,
 
-      # TODO: Write general description for PPDI
-      PPDI = 'PPDI'.freeze,
+      # DINERS_REJECT.
+      RESPONSE_PPDI = 'PPDI'.freeze,
 
-      # TODO: Write general description for PPDV
-      PPDV = 'PPDV'.freeze,
+      # AUTH_MESSAGE.
+      RESPONSE_PPDV = 'PPDV'.freeze,
 
-      # TODO: Write general description for PPDT
-      PPDT = 'PPDT'.freeze,
+      # DECLINE_THRESHOLD_BREACH.
+      RESPONSE_PPDT = 'PPDT'.freeze,
 
-      # TODO: Write general description for PPEF
-      PPEF = 'PPEF'.freeze,
+      # EXPIRED_FUNDING_INSTRUMENT.
+      RESPONSE_PPEF = 'PPEF'.freeze,
 
-      # TODO: Write general description for PPEL
-      PPEL = 'PPEL'.freeze,
+      # EXCEEDS_FREQUENCY_LIMIT.
+      RESPONSE_PPEL = 'PPEL'.freeze,
 
-      # TODO: Write general description for PPER
-      PPER = 'PPER'.freeze,
+      # INTERNAL_SYSTEM_ERROR.
+      RESPONSE_PPER = 'PPER'.freeze,
 
-      # TODO: Write general description for PPEX
-      PPEX = 'PPEX'.freeze,
+      # EXPIRY_DATE.
+      RESPONSE_PPEX = 'PPEX'.freeze,
 
-      # TODO: Write general description for PPFE
-      PPFE = 'PPFE'.freeze,
+      # FUNDING_SOURCE_ALREADY_EXISTS.
+      RESPONSE_PPFE = 'PPFE'.freeze,
 
-      # TODO: Write general description for PPFI
-      PPFI = 'PPFI'.freeze,
+      # INVALID_FUNDING_INSTRUMENT.
+      RESPONSE_PPFI = 'PPFI'.freeze,
 
-      # TODO: Write general description for PPFR
-      PPFR = 'PPFR'.freeze,
+      # RESTRICTED_FUNDING_INSTRUMENT.
+      RESPONSE_PPFR = 'PPFR'.freeze,
 
-      # TODO: Write general description for PPFV
-      PPFV = 'PPFV'.freeze,
+      # FIELD_VALIDATION_FAILED.
+      RESPONSE_PPFV = 'PPFV'.freeze,
 
-      # TODO: Write general description for PPGR
-      PPGR = 'PPGR'.freeze,
+      # GAMING_REFUND_ERROR.
+      RESPONSE_PPGR = 'PPGR'.freeze,
 
-      # TODO: Write general description for PPH1
-      PPH1 = 'PPH1'.freeze,
+      # H1_ERROR.
+      RESPONSE_PPH1 = 'PPH1'.freeze,
 
-      # TODO: Write general description for PPIF
-      PPIF = 'PPIF'.freeze,
+      # IDEMPOTENCY_FAILURE.
+      RESPONSE_PPIF = 'PPIF'.freeze,
 
-      # TODO: Write general description for PPII
-      PPII = 'PPII'.freeze,
+      # INVALID_INPUT_FAILURE.
+      RESPONSE_PPII = 'PPII'.freeze,
 
-      # TODO: Write general description for PPIM
-      PPIM = 'PPIM'.freeze,
+      # ID_MISMATCH.
+      RESPONSE_PPIM = 'PPIM'.freeze,
 
-      # TODO: Write general description for PPIT
-      PPIT = 'PPIT'.freeze,
+      # INVALID_TRACE_ID.
+      RESPONSE_PPIT = 'PPIT'.freeze,
 
-      # TODO: Write general description for PPLR
-      PPLR = 'PPLR'.freeze,
+      # LATE_REVERSAL.
+      RESPONSE_PPLR = 'PPLR'.freeze,
 
-      # TODO: Write general description for PPLS
-      PPLS = 'PPLS'.freeze,
+      # LARGE_STATUS_CODE.
+      RESPONSE_PPLS = 'PPLS'.freeze,
 
-      # TODO: Write general description for PPMB
-      PPMB = 'PPMB'.freeze,
+      # MISSING_BUSINESS_RULE_OR_DATA.
+      RESPONSE_PPMB = 'PPMB'.freeze,
 
-      # TODO: Write general description for PPMC
-      PPMC = 'PPMC'.freeze,
+      # BLOCKED_Mastercard.
+      RESPONSE_PPMC = 'PPMC'.freeze,
 
-      # TODO: Write general description for PPMD
-      PPMD = 'PPMD'.freeze,
+      # DEPRECATED The PPMD value has been deprecated.
+      RESPONSE_PPMD = 'PPMD'.freeze,
 
-      # TODO: Write general description for PPNC
-      PPNC = 'PPNC'.freeze,
+      # NOT_SUPPORTED_NRC.
+      RESPONSE_PPNC = 'PPNC'.freeze,
 
-      # TODO: Write general description for PPNL
-      PPNL = 'PPNL'.freeze,
+      # EXCEEDS_NETWORK_FREQUENCY_LIMIT.
+      RESPONSE_PPNL = 'PPNL'.freeze,
 
-      # TODO: Write general description for PPNM
-      PPNM = 'PPNM'.freeze,
+      # NO_MID_FOUND.
+      RESPONSE_PPNM = 'PPNM'.freeze,
 
-      # TODO: Write general description for PPNT
-      PPNT = 'PPNT'.freeze,
+      # NETWORK_ERROR.
+      RESPONSE_PPNT = 'PPNT'.freeze,
 
-      # TODO: Write general description for PPPH
-      PPPH = 'PPPH'.freeze,
+      # NO_PHONE_FOR_DCC_TRANSACTION.
+      RESPONSE_PPPH = 'PPPH'.freeze,
 
-      # TODO: Write general description for PPPI
-      PPPI = 'PPPI'.freeze,
+      # INVALID_PRODUCT.
+      RESPONSE_PPPI = 'PPPI'.freeze,
 
-      # TODO: Write general description for PPPM
-      PPPM = 'PPPM'.freeze,
+      # INVALID_PAYMENT_METHOD.
+      RESPONSE_PPPM = 'PPPM'.freeze,
 
-      # TODO: Write general description for PPQC
-      PPQC = 'PPQC'.freeze,
+      # QUASI_CASH_UNSUPPORTED.
+      RESPONSE_PPQC = 'PPQC'.freeze,
 
-      # TODO: Write general description for PPRE
-      PPRE = 'PPRE'.freeze,
+      # UNSUPPORT_REFUND_ON_PENDING_BC.
+      RESPONSE_PPRE = 'PPRE'.freeze,
 
-      # TODO: Write general description for PPRF
-      PPRF = 'PPRF'.freeze,
+      # INVALID_PARENT_TRANSACTION_STATUS.
+      RESPONSE_PPRF = 'PPRF'.freeze,
 
-      # TODO: Write general description for PPRR
-      PPRR = 'PPRR'.freeze,
+      # MERCHANT_NOT_REGISTERED.
+      RESPONSE_PPRR = 'PPRR'.freeze,
 
-      # TODO: Write general description for PPS0
-      PPS0 = 'PPS0'.freeze,
+      # BANKAUTH_ROW_MISMATCH.
+      RESPONSE_PPS0 = 'PPS0'.freeze,
 
-      # TODO: Write general description for PPS1
-      PPS1 = 'PPS1'.freeze,
+      # BANKAUTH_ROW_SETTLED.
+      RESPONSE_PPS1 = 'PPS1'.freeze,
 
-      # TODO: Write general description for PPS2
-      PPS2 = 'PPS2'.freeze,
+      # BANKAUTH_ROW_VOIDED.
+      RESPONSE_PPS2 = 'PPS2'.freeze,
 
-      # TODO: Write general description for PPS3
-      PPS3 = 'PPS3'.freeze,
+      # BANKAUTH_EXPIRED.
+      RESPONSE_PPS3 = 'PPS3'.freeze,
 
-      # TODO: Write general description for PPS4
-      PPS4 = 'PPS4'.freeze,
+      # CURRENCY_MISMATCH.
+      RESPONSE_PPS4 = 'PPS4'.freeze,
 
-      # TODO: Write general description for PPS5
-      PPS5 = 'PPS5'.freeze,
+      # CREDITCARD_MISMATCH.
+      RESPONSE_PPS5 = 'PPS5'.freeze,
 
-      # TODO: Write general description for PPS6
-      PPS6 = 'PPS6'.freeze,
+      # AMOUNT_MISMATCH.
+      RESPONSE_PPS6 = 'PPS6'.freeze,
 
-      # TODO: Write general description for PPSC
-      PPSC = 'PPSC'.freeze,
+      # ARC_SCORE.
+      RESPONSE_PPSC = 'PPSC'.freeze,
 
-      # TODO: Write general description for PPSD
-      PPSD = 'PPSD'.freeze,
+      # STATUS_DESCRIPTION.
+      RESPONSE_PPSD = 'PPSD'.freeze,
 
-      # TODO: Write general description for PPSE
-      PPSE = 'PPSE'.freeze,
+      # AMEX_DENIED.
+      RESPONSE_PPSE = 'PPSE'.freeze,
 
-      # TODO: Write general description for PPTE
-      PPTE = 'PPTE'.freeze,
+      # VERIFICATION_TOKEN_EXPIRED.
+      RESPONSE_PPTE = 'PPTE'.freeze,
 
-      # TODO: Write general description for PPTF
-      PPTF = 'PPTF'.freeze,
+      # INVALID_TRACE_REFERENCE.
+      RESPONSE_PPTF = 'PPTF'.freeze,
 
-      # TODO: Write general description for PPTI
-      PPTI = 'PPTI'.freeze,
+      # INVALID_TRANSACTION_ID.
+      RESPONSE_PPTI = 'PPTI'.freeze,
 
-      # TODO: Write general description for PPTR
-      PPTR = 'PPTR'.freeze,
+      # VERIFICATION_TOKEN_REVOKED.
+      RESPONSE_PPTR = 'PPTR'.freeze,
 
-      # TODO: Write general description for PPTT
-      PPTT = 'PPTT'.freeze,
+      # TRANSACTION_TYPE_UNSUPPORTED.
+      RESPONSE_PPTT = 'PPTT'.freeze,
 
-      # TODO: Write general description for PPTV
-      PPTV = 'PPTV'.freeze,
+      # INVALID_VERIFICATION_TOKEN.
+      RESPONSE_PPTV = 'PPTV'.freeze,
 
-      # TODO: Write general description for PPUA
-      PPUA = 'PPUA'.freeze,
+      # USER_NOT_AUTHORIZED.
+      RESPONSE_PPUA = 'PPUA'.freeze,
 
-      # TODO: Write general description for PPUC
-      PPUC = 'PPUC'.freeze,
+      # CURRENCY_CODE_UNSUPPORTED.
+      RESPONSE_PPUC = 'PPUC'.freeze,
 
-      # TODO: Write general description for PPUE
-      PPUE = 'PPUE'.freeze,
+      # UNSUPPORT_ENTITY.
+      RESPONSE_PPUE = 'PPUE'.freeze,
 
-      # TODO: Write general description for PPUI
-      PPUI = 'PPUI'.freeze,
+      # UNSUPPORT_INSTALLMENT.
+      RESPONSE_PPUI = 'PPUI'.freeze,
 
-      # TODO: Write general description for PPUP
-      PPUP = 'PPUP'.freeze,
+      # UNSUPPORT_POS_FLAG.
+      RESPONSE_PPUP = 'PPUP'.freeze,
 
-      # TODO: Write general description for PPUR
-      PPUR = 'PPUR'.freeze,
+      # UNSUPPORTED_REVERSAL.
+      RESPONSE_PPUR = 'PPUR'.freeze,
 
-      # TODO: Write general description for PPVC
-      PPVC = 'PPVC'.freeze,
+      # VALIDATE_CURRENCY.
+      RESPONSE_PPVC = 'PPVC'.freeze,
 
-      # TODO: Write general description for PPVE
-      PPVE = 'PPVE'.freeze,
+      # VALIDATION_ERROR.
+      RESPONSE_PPVE = 'PPVE'.freeze,
 
-      # TODO: Write general description for PPVT
-      PPVT = 'PPVT'.freeze
+      # VIRTUAL_TERMINAL_UNSUPPORTED.
+      RESPONSE_PPVT = 'PPVT'.freeze
     ].freeze
 
     def self.validate(value)

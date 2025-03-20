@@ -8,47 +8,55 @@ module PaypalServerSdk
   # American Express.
   class CvvCode
     CVV_CODE = [
-      # TODO: Write general description for E
-      E = 'E'.freeze,
+      # For Visa, Mastercard, Discover, or American Express, error -
+      # unrecognized or unknown response.
+      CVV_E = 'E'.freeze,
 
-      # TODO: Write general description for I
-      I = 'I'.freeze,
+      # For Visa, Mastercard, Discover, or American Express, invalid or null.
+      CVV_I = 'I'.freeze,
 
-      # TODO: Write general description for M
-      M = 'M'.freeze,
+      # For Visa, Mastercard, Discover, or American Express, the CVV2/CSC
+      # matches.
+      CVV_M = 'M'.freeze,
 
-      # TODO: Write general description for N
-      N = 'N'.freeze,
+      # For Visa, Mastercard, Discover, or American Express, the CVV2/CSC does
+      # not match.
+      CVV_N = 'N'.freeze,
 
-      # TODO: Write general description for P
-      P = 'P'.freeze,
+      # For Visa, Mastercard, Discover, or American Express, it was not
+      # processed.
+      CVV_P = 'P'.freeze,
 
-      # TODO: Write general description for S
-      S = 'S'.freeze,
+      # For Visa, Mastercard, Discover, or American Express, the service is not
+      # supported.
+      CVV_S = 'S'.freeze,
 
-      # TODO: Write general description for U
-      U = 'U'.freeze,
+      # For Visa, Mastercard, Discover, or American Express, unknown - the
+      # issuer is not certified.
+      CVV_U = 'U'.freeze,
 
-      # TODO: Write general description for X
-      X = 'X'.freeze,
+      # For Visa, Mastercard, Discover, or American Express, no response. For
+      # Maestro, the service is not available.
+      CVV_X = 'X'.freeze,
 
-      # TODO: Write general description for ENUM_ALL_OTHERS
+      # For Visa, Mastercard, Discover, or American Express, error.
       ENUM_ALL_OTHERS = 'All others'.freeze,
 
-      # TODO: Write general description for ENUM_0
-      ENUM_0 = '0'.freeze,
+      # For Maestro, the CVV2 matched.
+      CVV_0 = '0'.freeze,
 
-      # TODO: Write general description for ENUM_1
-      ENUM_1 = '1'.freeze,
+      # For Maestro, the CVV2 did not match.
+      CVV_1 = '1'.freeze,
 
-      # TODO: Write general description for ENUM_2
-      ENUM_2 = '2'.freeze,
+      # For Maestro, the merchant has not implemented CVV2 code handling.
+      CVV_2 = '2'.freeze,
 
-      # TODO: Write general description for ENUM_3
-      ENUM_3 = '3'.freeze,
+      # For Maestro, the merchant has indicated that CVV2 is not present on
+      # card.
+      CVV_3 = '3'.freeze,
 
-      # TODO: Write general description for ENUM_4
-      ENUM_4 = '4'.freeze
+      # For Maestro, the service is not available.
+      CVV_4 = '4'.freeze
     ].freeze
 
     def self.validate(value)

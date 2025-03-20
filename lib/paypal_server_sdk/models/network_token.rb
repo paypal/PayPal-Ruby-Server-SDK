@@ -91,5 +91,20 @@ module PaypalServerSdk
                        eci_flag: eci_flag,
                        token_requestor_id: token_requestor_id)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} number: #{@number}, expiry: #{@expiry}, cryptogram: #{@cryptogram},"\
+      " eci_flag: #{@eci_flag}, token_requestor_id: #{@token_requestor_id}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} number: #{@number.inspect}, expiry: #{@expiry.inspect}, cryptogram:"\
+      " #{@cryptogram.inspect}, eci_flag: #{@eci_flag.inspect}, token_requestor_id:"\
+      " #{@token_requestor_id.inspect}>"
+    end
   end
 end

@@ -7,13 +7,16 @@ module PaypalServerSdk
   # Indicates the type of the stored payment_source payment.
   class StoredPaymentSourcePaymentType
     STORED_PAYMENT_SOURCE_PAYMENT_TYPE = [
-      # TODO: Write general description for ONE_TIME
+      # One Time payment such as online purchase or donation. (e.g. Checkout
+      # with one-click).
       ONE_TIME = 'ONE_TIME'.freeze,
 
-      # TODO: Write general description for RECURRING
+      # Payment which is part of a series of payments with fixed or variable
+      # amounts, following a fixed time interval. (e.g. Subscription payments).
       RECURRING = 'RECURRING'.freeze,
 
-      # TODO: Write general description for UNSCHEDULED
+      # Payment which is part of a series of payments that occur on a non-fixed
+      # schedule and/or have variable amounts. (e.g. Account Topup payments).
       UNSCHEDULED = 'UNSCHEDULED'.freeze
     ].freeze
 

@@ -37,16 +37,14 @@ module PaypalServerSdk
 
     # Provides additional details to process a payment using a `payment_source`
     # that has been stored or is intended to be stored (also referred to as
-    # stored_credential or card-on-file).<br/>Parameter
-    # compatibility:<br/><ul><li>`payment_type=ONE_TIME` is compatible only with
-    # `payment_initiator=CUSTOMER`.</li><li>`usage=FIRST` is compatible only
-    # with
-    # `payment_initiator=CUSTOMER`.</li><li>`previous_transaction_reference` or
+    # stored_credential or card-on-file). Parameter compatibility:
+    # `payment_type=ONE_TIME` is compatible only with
+    # `payment_initiator=CUSTOMER`. `usage=FIRST` is compatible only with
+    # `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
     # `previous_network_transaction_reference` is compatible only with
-    # `payment_initiator=MERCHANT`.</li><li>Only one of the parameters -
+    # `payment_initiator=MERCHANT`. Only one of the parameters -
     # `previous_transaction_reference` and
-    # `previous_network_transaction_reference` - can be present in the
-    # request.</li></ul>
+    # `previous_network_transaction_reference` - can be present in the request.
     # @return [StoredPaymentSource]
     attr_accessor :stored_payment_source
 
@@ -104,6 +102,21 @@ module PaypalServerSdk
                                          return_url: return_url,
                                          cancel_url: cancel_url,
                                          stored_payment_source: stored_payment_source)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_name: #{@brand_name}, locale: #{@locale}, return_url: #{@return_url},"\
+      " cancel_url: #{@cancel_url}, stored_payment_source: #{@stored_payment_source}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_name: #{@brand_name.inspect}, locale: #{@locale.inspect}, return_url:"\
+      " #{@return_url.inspect}, cancel_url: #{@cancel_url.inspect}, stored_payment_source:"\
+      " #{@stored_payment_source.inspect}>"
     end
   end
 end

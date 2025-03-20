@@ -30,10 +30,9 @@ module PaypalServerSdk
 
     # The highest-level sub-division in a country, which is usually a province,
     # state, or ISO-3166-2 subdivision. This data is formatted for postal
-    # delivery, for example, `CA` and not `California`. Value, by country,
-    # is:<ul><li>UK. A county.</li><li>US. A state.</li><li>Canada. A
-    # province.</li><li>Japan. A prefecture.</li><li>Switzerland. A
-    # *kanton*.</li></ul>
+    # delivery, for example, `CA` and not `California`. Value, by country, is:
+    # UK. A county. US. A state. Canada. A province. Japan. A prefecture.
+    # Switzerland. A *kanton*.
     # @return [String]
     attr_accessor :admin_area_1
 
@@ -44,11 +43,10 @@ module PaypalServerSdk
     attr_accessor :postal_code
 
     # The [2-character ISO 3166-1 code](/api/rest/reference/country-codes/) that
-    # identifies the country or region.<blockquote><strong>Note:</strong> The
-    # country code for Great Britain is <code>GB</code> and not <code>UK</code>
-    # as used in the top-level domain names for that country. Use the `C2`
-    # country code for China worldwide for comparable uncontrolled price (CUP)
-    # method, bank card, and cross-border transactions.</blockquote>
+    # identifies the country or region. Note: The country code for Great Britain
+    # is GB and not UK as used in the top-level domain names for that country.
+    # Use the `C2` country code for China worldwide for comparable uncontrolled
+    # price (CUP) method, bank card, and cross-border transactions.
     # @return [String]
     attr_accessor :country_code
 
@@ -111,6 +109,23 @@ module PaypalServerSdk
                   admin_area_2: admin_area_2,
                   admin_area_1: admin_area_1,
                   postal_code: postal_code)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} address_line_1: #{@address_line_1}, address_line_2: #{@address_line_2},"\
+      " admin_area_2: #{@admin_area_2}, admin_area_1: #{@admin_area_1}, postal_code:"\
+      " #{@postal_code}, country_code: #{@country_code}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} address_line_1: #{@address_line_1.inspect}, address_line_2:"\
+      " #{@address_line_2.inspect}, admin_area_2: #{@admin_area_2.inspect}, admin_area_1:"\
+      " #{@admin_area_1.inspect}, postal_code: #{@postal_code.inspect}, country_code:"\
+      " #{@country_code.inspect}>"
     end
   end
 end

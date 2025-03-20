@@ -7,42 +7,50 @@ module PaypalServerSdk
   # The reason why the captured payment status is `PENDING` or `DENIED`.
   class CaptureIncompleteReason
     CAPTURE_INCOMPLETE_REASON = [
-      # TODO: Write general description for BUYER_COMPLAINT
+      # The payer initiated a dispute for this captured payment with PayPal.
       BUYER_COMPLAINT = 'BUYER_COMPLAINT'.freeze,
 
-      # TODO: Write general description for CHARGEBACK
+      # The captured funds were reversed in response to the payer disputing this
+      # captured payment with the issuer of the financial instrument used to pay
+      # for this captured payment.
       CHARGEBACK = 'CHARGEBACK'.freeze,
 
-      # TODO: Write general description for ECHECK
+      # The payer paid by an eCheck that has not yet cleared.
       ECHECK = 'ECHECK'.freeze,
 
-      # TODO: Write general description for INTERNATIONAL_WITHDRAWAL
+      # Visit your online account. In your **Account Overview**, accept and deny
+      # this payment.
       INTERNATIONAL_WITHDRAWAL = 'INTERNATIONAL_WITHDRAWAL'.freeze,
 
-      # TODO: Write general description for OTHER
+      # No additional specific reason can be provided. For more information
+      # about this captured payment, visit your account online or contact
+      # PayPal.
       OTHER = 'OTHER'.freeze,
 
-      # TODO: Write general description for PENDING_REVIEW
+      # The captured payment is pending manual review.
       PENDING_REVIEW = 'PENDING_REVIEW'.freeze,
 
-      # TODO: Write general description for
-      # RECEIVING_PREFERENCE_MANDATES_MANUAL_ACTION
+      # The payee has not yet set up appropriate receiving preferences for their
+      # account. For more information about how to accept or deny this payment,
+      # visit your account online. This reason is typically offered in scenarios
+      # such as when the currency of the captured payment is different from the
+      # primary holding currency of the payee.
       RECEIVING_PREFERENCE_MANDATES_MANUAL_ACTION = 'RECEIVING_PREFERENCE_MANDATES_MANUAL_ACTION'.freeze,
 
-      # TODO: Write general description for REFUNDED
+      # The captured funds were refunded.
       REFUNDED = 'REFUNDED'.freeze,
 
-      # TODO: Write general description for
-      # TRANSACTION_APPROVED_AWAITING_FUNDING
+      # The payer must send the funds for this captured payment. This code
+      # generally appears for manual EFTs.
       TRANSACTION_APPROVED_AWAITING_FUNDING = 'TRANSACTION_APPROVED_AWAITING_FUNDING'.freeze,
 
-      # TODO: Write general description for UNILATERAL
+      # The payee does not have a PayPal account.
       UNILATERAL = 'UNILATERAL'.freeze,
 
-      # TODO: Write general description for VERIFICATION_REQUIRED
+      # The payee's PayPal account is not verified.
       VERIFICATION_REQUIRED = 'VERIFICATION_REQUIRED'.freeze,
 
-      # TODO: Write general description for DECLINED_BY_RISK_FRAUD_FILTERS
+      # Risk Filter set by the payee failed for the transaction.
       DECLINED_BY_RISK_FRAUD_FILTERS = 'DECLINED_BY_RISK_FRAUD_FILTERS'.freeze
     ].freeze
 

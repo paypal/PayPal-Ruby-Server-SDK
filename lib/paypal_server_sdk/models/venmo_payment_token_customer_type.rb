@@ -9,10 +9,12 @@ module PaypalServerSdk
   # business or a consumer.
   class VenmoPaymentTokenCustomerType
     VENMO_PAYMENT_TOKEN_CUSTOMER_TYPE = [
-      # TODO: Write general description for CONSUMER
+      # The customer vaulting the Venmo payment token is a consumer on the
+      # merchant / platform.
       CONSUMER = 'CONSUMER'.freeze,
 
-      # TODO: Write general description for BUSINESS
+      # The customer vaulting the Venmo payment token is a business on merchant
+      # / platform.
       BUSINESS = 'BUSINESS'.freeze
     ].freeze
 

@@ -16,12 +16,12 @@ module PaypalServerSdk
     attr_accessor :brand_name
 
     # The shipping preference. This only applies to PayPal payment source.
-    # @return [String]
+    # @return [OrderApplicationContextShippingPreference]
     attr_accessor :shipping_preference
 
     # Vault Instruction on action to be performed after a successful payer
     # approval.
-    # @return [String]
+    # @return [VaultInstructionAction]
     attr_accessor :vault_instruction
 
     # A mapping from model property names to API property names.
@@ -47,8 +47,11 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(brand_name: SKIP, shipping_preference: 'GET_FROM_FILE',
-                   vault_instruction: 'ON_CREATE_PAYMENT_TOKENS')
+    def initialize(
+      brand_name: SKIP,
+      shipping_preference: OrderApplicationContextShippingPreference::GET_FROM_FILE,
+      vault_instruction: VaultInstructionAction::ON_CREATE_PAYMENT_TOKENS
+    )
       @brand_name = brand_name unless brand_name == SKIP
       @shipping_preference = shipping_preference unless shipping_preference == SKIP
       @vault_instruction = vault_instruction unless vault_instruction == SKIP
@@ -60,14 +63,29 @@ module PaypalServerSdk
 
       # Extract variables from the hash.
       brand_name = hash.key?('brand_name') ? hash['brand_name'] : SKIP
-      shipping_preference = hash['shipping_preference'] ||= 'GET_FROM_FILE'
+      shipping_preference =
+        hash['shipping_preference'] ||= OrderApplicationContextShippingPreference::GET_FROM_FILE
       vault_instruction =
-        hash['vault_instruction'] ||= 'ON_CREATE_PAYMENT_TOKENS'
+        hash['vault_instruction'] ||= VaultInstructionAction::ON_CREATE_PAYMENT_TOKENS
 
       # Create object from extracted values.
       VaultVenmoExperienceContext.new(brand_name: brand_name,
                                       shipping_preference: shipping_preference,
                                       vault_instruction: vault_instruction)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_name: #{@brand_name}, shipping_preference: #{@shipping_preference},"\
+      " vault_instruction: #{@vault_instruction}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_name: #{@brand_name.inspect}, shipping_preference:"\
+      " #{@shipping_preference.inspect}, vault_instruction: #{@vault_instruction.inspect}>"
     end
   end
 end

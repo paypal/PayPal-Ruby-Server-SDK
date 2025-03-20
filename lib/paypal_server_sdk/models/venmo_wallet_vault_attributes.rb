@@ -110,5 +110,22 @@ module PaypalServerSdk
                                      customer_type: customer_type,
                                      permit_multiple_payment_tokens: permit_multiple_payment_tokens)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} store_in_vault: #{@store_in_vault}, description: #{@description},"\
+      " usage_pattern: #{@usage_pattern}, usage_type: #{@usage_type}, customer_type:"\
+      " #{@customer_type}, permit_multiple_payment_tokens: #{@permit_multiple_payment_tokens}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} store_in_vault: #{@store_in_vault.inspect}, description:"\
+      " #{@description.inspect}, usage_pattern: #{@usage_pattern.inspect}, usage_type:"\
+      " #{@usage_type.inspect}, customer_type: #{@customer_type.inspect},"\
+      " permit_multiple_payment_tokens: #{@permit_multiple_payment_tokens.inspect}>"
+    end
   end
 end

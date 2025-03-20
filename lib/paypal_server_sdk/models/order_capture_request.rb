@@ -47,5 +47,17 @@ module PaypalServerSdk
       # Create object from extracted values.
       OrderCaptureRequest.new(payment_source: payment_source)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payment_source: #{@payment_source}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payment_source: #{@payment_source.inspect}>"
+    end
   end
 end

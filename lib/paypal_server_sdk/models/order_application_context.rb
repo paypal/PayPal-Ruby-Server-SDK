@@ -5,10 +5,9 @@
 
 module PaypalServerSdk
   # Customizes the payer experience during the approval process for the payment
-  # with PayPal.<blockquote><strong>Note:</strong> Partners and Marketplaces
-  # might configure <code>brand_name</code> and <code>shipping_preference</code>
-  # during partner account setup, which overrides the request
-  # values.</blockquote>
+  # with PayPal. Note: Partners and Marketplaces might configure brand_name and
+  # shipping_preference during partner account setup, which overrides the
+  # request values.
   class OrderApplicationContext < BaseModel
     SKIP = Object.new
     private_constant :SKIP
@@ -44,22 +43,21 @@ module PaypalServerSdk
     # @return [OrderApplicationContextLandingPage]
     attr_accessor :landing_page
 
-    # DEPRECATED. DEPRECATED. The shipping preference:<ul><li>Displays the
-    # shipping address to the customer.</li><li>Enables the customer to choose
-    # an address on the PayPal site.</li><li>Restricts the customer from
-    # changing the address during the payment-approval process.</li></ul>.  The
-    # fields in `application_context` are now available in the
-    # `experience_context` object under the `payment_source` which supports them
-    # (eg. `payment_source.paypal.experience_context.shipping_preference`).
-    # Please specify this field in the `experience_context` object instead of
-    # the `application_context` object.
+    # DEPRECATED. DEPRECATED. The shipping preference: Displays the shipping
+    # address to the customer. Enables the customer to choose an address on the
+    # PayPal site. Restricts the customer from changing the address during the
+    # payment-approval process. .  The fields in `application_context` are now
+    # available in the `experience_context` object under the `payment_source`
+    # which supports them (eg.
+    # `payment_source.paypal.experience_context.shipping_preference`). Please
+    # specify this field in the `experience_context` object instead of the
+    # `application_context` object.
     # @return [OrderApplicationContextShippingPreference]
     attr_accessor :shipping_preference
 
-    # DEPRECATED. Configures a <strong>Continue</strong> or <strong>Pay
-    # Now</strong> checkout flow.  The fields in `application_context` are now
-    # available in the `experience_context` object under the `payment_source`
-    # which supports them (eg.
+    # DEPRECATED. Configures a Continue or Pay Now checkout flow.  The fields in
+    # `application_context` are now available in the `experience_context` object
+    # under the `payment_source` which supports them (eg.
     # `payment_source.paypal.experience_context.user_action`). Please specify
     # this field in the `experience_context` object instead of the
     # `application_context` object.
@@ -91,16 +89,14 @@ module PaypalServerSdk
 
     # Provides additional details to process a payment using a `payment_source`
     # that has been stored or is intended to be stored (also referred to as
-    # stored_credential or card-on-file).<br/>Parameter
-    # compatibility:<br/><ul><li>`payment_type=ONE_TIME` is compatible only with
-    # `payment_initiator=CUSTOMER`.</li><li>`usage=FIRST` is compatible only
-    # with
-    # `payment_initiator=CUSTOMER`.</li><li>`previous_transaction_reference` or
+    # stored_credential or card-on-file). Parameter compatibility:
+    # `payment_type=ONE_TIME` is compatible only with
+    # `payment_initiator=CUSTOMER`. `usage=FIRST` is compatible only with
+    # `payment_initiator=CUSTOMER`. `previous_transaction_reference` or
     # `previous_network_transaction_reference` is compatible only with
-    # `payment_initiator=MERCHANT`.</li><li>Only one of the parameters -
+    # `payment_initiator=MERCHANT`. Only one of the parameters -
     # `previous_transaction_reference` and
-    # `previous_network_transaction_reference` - can be present in the
-    # request.</li></ul>
+    # `previous_network_transaction_reference` - can be present in the request.
     # @return [StoredPaymentSource]
     attr_accessor :stored_payment_source
 
@@ -188,6 +184,25 @@ module PaypalServerSdk
                                   return_url: return_url,
                                   cancel_url: cancel_url,
                                   stored_payment_source: stored_payment_source)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_name: #{@brand_name}, locale: #{@locale}, landing_page:"\
+      " #{@landing_page}, shipping_preference: #{@shipping_preference}, user_action:"\
+      " #{@user_action}, payment_method: #{@payment_method}, return_url: #{@return_url},"\
+      " cancel_url: #{@cancel_url}, stored_payment_source: #{@stored_payment_source}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_name: #{@brand_name.inspect}, locale: #{@locale.inspect},"\
+      " landing_page: #{@landing_page.inspect}, shipping_preference:"\
+      " #{@shipping_preference.inspect}, user_action: #{@user_action.inspect}, payment_method:"\
+      " #{@payment_method.inspect}, return_url: #{@return_url.inspect}, cancel_url:"\
+      " #{@cancel_url.inspect}, stored_payment_source: #{@stored_payment_source.inspect}>"
     end
   end
 end

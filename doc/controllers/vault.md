@@ -12,44 +12,43 @@ vault_controller = client.vault
 
 ## Methods
 
-* [Payment-Tokens Create](../../doc/controllers/vault.md#payment-tokens-create)
-* [Customer Payment-Tokens Get](../../doc/controllers/vault.md#customer-payment-tokens-get)
-* [Payment-Tokens Get](../../doc/controllers/vault.md#payment-tokens-get)
-* [Payment-Tokens Delete](../../doc/controllers/vault.md#payment-tokens-delete)
-* [Setup-Tokens Create](../../doc/controllers/vault.md#setup-tokens-create)
-* [Setup-Tokens Get](../../doc/controllers/vault.md#setup-tokens-get)
+* [Create Payment Token](../../doc/controllers/vault.md#create-payment-token)
+* [List Customer Payment Tokens](../../doc/controllers/vault.md#list-customer-payment-tokens)
+* [Get Payment Token](../../doc/controllers/vault.md#get-payment-token)
+* [Delete Payment Token](../../doc/controllers/vault.md#delete-payment-token)
+* [Create Setup Token](../../doc/controllers/vault.md#create-setup-token)
+* [Get Setup Token](../../doc/controllers/vault.md#get-setup-token)
 
 
-# Payment-Tokens Create
+# Create Payment Token
 
 Creates a Payment Token from the given payment source and adds it to the Vault of the associated customer.
 
 ```ruby
-def payment_tokens_create(options = {})
+def create_payment_token(options = {})
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `paypal_request_id` | `String` | Header, Required | The server stores keys for 3 hours. |
 | `body` | [`PaymentTokenRequest`](../../doc/models/payment-token-request.md) | Body, Required | Payment Token creation with a financial instrument and an optional customer_id. |
+| `paypal_request_id` | `String` | Header, Optional | The server stores keys for 3 hours.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `10000`, *Pattern*: `^.*$` |
 
 ## Response Type
 
-This method returns a `ApiResponse` instance. The `data` property in this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property in this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
 
 ## Example Usage
 
 ```ruby
 collect = {
-  'paypal_request_id' => 'PayPal-Request-Id6',
   'body' => PaymentTokenRequest.new(
     payment_source: PaymentTokenRequestPaymentSource.new
   )
 }
 
-result = vault_controller.payment_tokens_create(collect)
+result = vault_controller.create_payment_token(collect)
 ```
 
 ## Errors
@@ -63,12 +62,12 @@ result = vault_controller.payment_tokens_create(collect)
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Customer Payment-Tokens Get
+# List Customer Payment Tokens
 
 Returns all payment tokens for a customer.
 
 ```ruby
-def customer_payment_tokens_get(options = {})
+def list_customer_payment_tokens(options = {})
 ```
 
 ## Parameters
@@ -76,13 +75,13 @@ def customer_payment_tokens_get(options = {})
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
 | `customer_id` | `String` | Query, Required | A unique identifier representing a specific customer in merchant's/partner's system or records.<br>**Constraints**: *Minimum Length*: `7`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
-| `page_size` | `Integer` | Query, Optional | A non-negative, non-zero integer indicating the maximum number of results to return at one time.<br>**Default**: `5`<br>**Constraints**: `>= 1` |
-| `page` | `Integer` | Query, Optional | A non-negative, non-zero integer representing the page of the results.<br>**Default**: `1`<br>**Constraints**: `>= 1` |
+| `page_size` | `Integer` | Query, Optional | A non-negative, non-zero integer indicating the maximum number of results to return at one time.<br>**Default**: `5`<br>**Constraints**: `>= 1`, `<= 5` |
+| `page` | `Integer` | Query, Optional | A non-negative, non-zero integer representing the page of the results.<br>**Default**: `1`<br>**Constraints**: `>= 1`, `<= 10` |
 | `total_required` | `TrueClass \| FalseClass` | Query, Optional | A boolean indicating total number of items (total_items) and pages (total_pages) are expected to be returned in the response.<br>**Default**: `false` |
 
 ## Response Type
 
-This method returns a `ApiResponse` instance. The `data` property in this instance returns the response data which is of type [`CustomerVaultPaymentTokensResponse`](../../doc/models/customer-vault-payment-tokens-response.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property in this instance returns the response data which is of type [`CustomerVaultPaymentTokensResponse`](../../doc/models/customer-vault-payment-tokens-response.md).
 
 ## Example Usage
 
@@ -94,7 +93,7 @@ collect = {
   'total_required' => false
 }
 
-result = vault_controller.customer_payment_tokens_get(collect)
+result = vault_controller.list_customer_payment_tokens(collect)
 ```
 
 ## Errors
@@ -106,30 +105,30 @@ result = vault_controller.customer_payment_tokens_get(collect)
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Payment-Tokens Get
+# Get Payment Token
 
 Returns a readable representation of vaulted payment source associated with the payment token id.
 
 ```ruby
-def payment_tokens_get(id)
+def get_payment_token(id)
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `String` | Template, Required | ID of the payment token.<br>**Constraints**: *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
+| `id` | `String` | Template, Required | ID of the payment token.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
 
-This method returns a `ApiResponse` instance. The `data` property in this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property in this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
 
 ## Example Usage
 
 ```ruby
 id = 'id0'
 
-result = vault_controller.payment_tokens_get(id)
+result = vault_controller.get_payment_token(id)
 ```
 
 ## Errors
@@ -142,30 +141,30 @@ result = vault_controller.payment_tokens_get(id)
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Payment-Tokens Delete
+# Delete Payment Token
 
 Delete the payment token associated with the payment token id.
 
 ```ruby
-def payment_tokens_delete(id)
+def delete_payment_token(id)
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `String` | Template, Required | ID of the payment token.<br>**Constraints**: *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
+| `id` | `String` | Template, Required | ID of the payment token.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
 
-This method returns a `ApiResponse` instance.
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
 ## Example Usage
 
 ```ruby
 id = 'id0'
 
-result = vault_controller.payment_tokens_delete(id)
+result = vault_controller.delete_payment_token(id)
 ```
 
 ## Errors
@@ -177,36 +176,35 @@ result = vault_controller.payment_tokens_delete(id)
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Setup-Tokens Create
+# Create Setup Token
 
 Creates a Setup Token from the given payment source and adds it to the Vault of the associated customer.
 
 ```ruby
-def setup_tokens_create(options = {})
+def create_setup_token(options = {})
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `paypal_request_id` | `String` | Header, Required | The server stores keys for 3 hours. |
 | `body` | [`SetupTokenRequest`](../../doc/models/setup-token-request.md) | Body, Required | Setup Token creation with a instrument type optional financial instrument details and customer_id. |
+| `paypal_request_id` | `String` | Header, Optional | The server stores keys for 3 hours.<br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `10000`, *Pattern*: `^.*$` |
 
 ## Response Type
 
-This method returns a `ApiResponse` instance. The `data` property in this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property in this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
 
 ## Example Usage
 
 ```ruby
 collect = {
-  'paypal_request_id' => 'PayPal-Request-Id6',
   'body' => SetupTokenRequest.new(
     payment_source: SetupTokenRequestPaymentSource.new
   )
 }
 
-result = vault_controller.setup_tokens_create(collect)
+result = vault_controller.create_setup_token(collect)
 ```
 
 ## Errors
@@ -219,12 +217,12 @@ result = vault_controller.setup_tokens_create(collect)
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Setup-Tokens Get
+# Get Setup Token
 
 Returns a readable representation of temporarily vaulted payment source associated with the setup token id.
 
 ```ruby
-def setup_tokens_get(id)
+def get_setup_token(id)
 ```
 
 ## Parameters
@@ -235,14 +233,14 @@ def setup_tokens_get(id)
 
 ## Response Type
 
-This method returns a `ApiResponse` instance. The `data` property in this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property in this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
 
 ## Example Usage
 
 ```ruby
 id = 'id0'
 
-result = vault_controller.setup_tokens_get(id)
+result = vault_controller.get_setup_token(id)
 ```
 
 ## Errors

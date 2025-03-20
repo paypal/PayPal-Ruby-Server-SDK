@@ -78,5 +78,20 @@ module PaypalServerSdk
                                      alias_label: alias_label,
                                      alias_key: alias_key)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} auth_code: #{@auth_code}, consumer_reference: #{@consumer_reference},"\
+      " alias_label: #{@alias_label}, alias_key: #{@alias_key}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} auth_code: #{@auth_code.inspect}, consumer_reference:"\
+      " #{@consumer_reference.inspect}, alias_label: #{@alias_label.inspect}, alias_key:"\
+      " #{@alias_key.inspect}>"
+    end
   end
 end

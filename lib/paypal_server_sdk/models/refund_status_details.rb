@@ -46,5 +46,17 @@ module PaypalServerSdk
       # Create object from extracted values.
       RefundStatusDetails.new(reason: reason)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} reason: #{@reason}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} reason: #{@reason.inspect}>"
+    end
   end
 end

@@ -17,11 +17,13 @@ module PaypalServerSdk
     # @return [Integer]
     attr_accessor :total_pages
 
-    # Customer in merchant's or partner's system of records.
-    # @return [CustomerRequest]
+    # This object defines a customer in your system. Use it to manage customer
+    # profiles, save payment methods and contact details.
+    # @return [VaultResponseCustomer]
     attr_accessor :customer
 
-    # Customer in merchant's or partner's system of records.
+    # This object defines a customer in your system. Use it to manage customer
+    # profiles, save payment methods and contact details.
     # @return [Array[PaymentTokenResponse]]
     attr_accessor :payment_tokens
 
@@ -72,7 +74,7 @@ module PaypalServerSdk
       # Extract variables from the hash.
       total_items = hash.key?('total_items') ? hash['total_items'] : SKIP
       total_pages = hash.key?('total_pages') ? hash['total_pages'] : SKIP
-      customer = CustomerRequest.from_hash(hash['customer']) if hash['customer']
+      customer = VaultResponseCustomer.from_hash(hash['customer']) if hash['customer']
       # Parameter is an array, so we need to iterate through it
       payment_tokens = nil
       unless hash['payment_tokens'].nil?
@@ -100,6 +102,21 @@ module PaypalServerSdk
                                              customer: customer,
                                              payment_tokens: payment_tokens,
                                              links: links)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} total_items: #{@total_items}, total_pages: #{@total_pages}, customer:"\
+      " #{@customer}, payment_tokens: #{@payment_tokens}, links: #{@links}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} total_items: #{@total_items.inspect}, total_pages: #{@total_pages.inspect},"\
+      " customer: #{@customer.inspect}, payment_tokens: #{@payment_tokens.inspect}, links:"\
+      " #{@links.inspect}>"
     end
   end
 end

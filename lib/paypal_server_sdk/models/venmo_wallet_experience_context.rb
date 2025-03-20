@@ -5,9 +5,8 @@
 
 module PaypalServerSdk
   # Customizes the buyer experience during the approval process for payment with
-  # Venmo.<blockquote><strong>Note:</strong> Partners and Marketplaces might
-  # configure <code>shipping_preference</code> during partner account setup,
-  # which overrides the request values.</blockquote>
+  # Venmo. Note: Partners and Marketplaces might configure shipping_preference
+  # during partner account setup, which overrides the request values.
   class VenmoWalletExperienceContext < BaseModel
     SKIP = Object.new
     private_constant :SKIP
@@ -21,11 +20,16 @@ module PaypalServerSdk
     # @return [ShippingPreference]
     attr_accessor :shipping_preference
 
+    # CallBack Configuration that the merchant can provide to PayPal/Venmo.
+    # @return [CallbackConfiguration]
+    attr_accessor :order_update_callback_config
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['brand_name'] = 'brand_name'
       @_hash['shipping_preference'] = 'shipping_preference'
+      @_hash['order_update_callback_config'] = 'order_update_callback_config'
       @_hash
     end
 
@@ -34,6 +38,7 @@ module PaypalServerSdk
       %w[
         brand_name
         shipping_preference
+        order_update_callback_config
       ]
     end
 
@@ -43,9 +48,14 @@ module PaypalServerSdk
     end
 
     def initialize(brand_name: SKIP,
-                   shipping_preference: ShippingPreference::GET_FROM_FILE)
+                   shipping_preference: ShippingPreference::GET_FROM_FILE,
+                   order_update_callback_config: SKIP)
       @brand_name = brand_name unless brand_name == SKIP
       @shipping_preference = shipping_preference unless shipping_preference == SKIP
+      unless order_update_callback_config == SKIP
+        @order_update_callback_config =
+          order_update_callback_config
+      end
     end
 
     # Creates an instance of the object from a hash.
@@ -56,10 +66,29 @@ module PaypalServerSdk
       brand_name = hash.key?('brand_name') ? hash['brand_name'] : SKIP
       shipping_preference =
         hash['shipping_preference'] ||= ShippingPreference::GET_FROM_FILE
+      if hash['order_update_callback_config']
+        order_update_callback_config = CallbackConfiguration.from_hash(hash['order_update_callback_config'])
+      end
 
       # Create object from extracted values.
       VenmoWalletExperienceContext.new(brand_name: brand_name,
-                                       shipping_preference: shipping_preference)
+                                       shipping_preference: shipping_preference,
+                                       order_update_callback_config: order_update_callback_config)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_name: #{@brand_name}, shipping_preference: #{@shipping_preference},"\
+      " order_update_callback_config: #{@order_update_callback_config}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} brand_name: #{@brand_name.inspect}, shipping_preference:"\
+      " #{@shipping_preference.inspect}, order_update_callback_config:"\
+      " #{@order_update_callback_config.inspect}>"
     end
   end
 end

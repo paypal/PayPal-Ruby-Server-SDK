@@ -13,26 +13,24 @@ module PaypalServerSdk
     # The API caller-provided external ID for the purchase unit. Required for
     # multiple purchase units when you must update the order through `PATCH`. If
     # you omit this value and the order contains only one purchase unit, PayPal
-    # sets this value to `default`. <blockquote><strong>Note:</strong> If there
-    # are multiple purchase units, <code>reference_id</code> is required for
-    # each purchase unit.</blockquote>
+    # sets this value to `default`. Note: If there are multiple purchase units,
+    # reference_id is required for each purchase unit.
     # @return [String]
     attr_accessor :reference_id
 
     # The total order amount with an optional breakdown that provides details,
     # such as the total item amount, total tax amount, shipping, handling,
-    # insurance, and discounts, if any.<br/>If you specify `amount.breakdown`,
-    # the amount equals `item_total` plus `tax_total` plus `shipping` plus
-    # `handling` plus `insurance` minus `shipping_discount` minus
-    # discount.<br/>The amount must be a positive number. For listed of
-    # supported currencies and decimal precision, see the PayPal REST APIs <a
-    # href="/docs/integration/direct/rest/currency-codes/">Currency Codes</a>.
+    # insurance, and discounts, if any. If you specify `amount.breakdown`, the
+    # amount equals `item_total` plus `tax_total` plus `shipping` plus
+    # `handling` plus `insurance` minus `shipping_discount` minus discount. The
+    # amount must be a positive number. For listed of supported currencies and
+    # decimal precision, see the PayPal REST APIs Currency Codes.
     # @return [AmountWithBreakdown]
     attr_accessor :amount
 
     # The merchant who receives the funds and fulfills the order. The merchant
     # is also known as the payee.
-    # @return [Payee]
+    # @return [PayeeBase]
     attr_accessor :payee
 
     # Any additional payment instructions to be consider during payment
@@ -60,26 +58,23 @@ module PaypalServerSdk
     # addition, this ID is available in transaction and settlement reports that
     # merchants and API callers can use to reconcile transactions. This ID is
     # only available when an order is saved by calling
-    # <code>v2/checkout/orders/id/save</code>.
+    # v2/checkout/orders/id/save.
     # @return [String]
     attr_accessor :id
 
     # The payment descriptor on account transactions on the customer's credit
     # card statement, that PayPal sends to processors. The maximum length of the
     # soft descriptor information that you can pass in the API field is 22
-    # characters, in the following format:<code>22 - len(PAYPAL * (8)) -
-    # len(<var>Descriptor in Payment Receiving Preferences of Merchant
-    # account</var> + 1)</code>The PAYPAL prefix uses 8 characters.<br/><br/>The
-    # soft descriptor supports the following ASCII
-    # characters:<ul><li>Alphanumeric
-    # characters</li><li>Dashes</li><li>Asterisks</li><li>Periods
-    # (.)</li><li>Spaces</li></ul>For Wallet payments marketplace
-    # integrations:<ul><li>The merchant descriptor in the Payment Receiving
-    # Preferences must be the marketplace name.</li><li>You can't use the
-    # remaining space to show the customer service number.</li><li>The remaining
-    # spaces can be a combination of seller name and country.</li></ul><br/>For
-    # unbranded payments (Direct Card) marketplace integrations, use a
-    # combination of the seller name and phone number.
+    # characters, in the following format:22 - len(PAYPAL * (8)) -
+    # len(Descriptor in Payment Receiving Preferences of Merchant account +
+    # 1)The PAYPAL prefix uses 8 characters. The soft descriptor supports the
+    # following ASCII characters: Alphanumeric characters Dashes Asterisks
+    # Periods (.) Spaces For Wallet payments marketplace integrations: The
+    # merchant descriptor in the Payment Receiving Preferences must be the
+    # marketplace name. You can't use the remaining space to show the customer
+    # service number. The remaining spaces can be a combination of seller name
+    # and country. For unbranded payments (Direct Card) marketplace
+    # integrations, use a combination of the seller name and phone number.
     # @return [String]
     attr_accessor :soft_descriptor
 
@@ -181,7 +176,7 @@ module PaypalServerSdk
       # Extract variables from the hash.
       reference_id = hash.key?('reference_id') ? hash['reference_id'] : SKIP
       amount = AmountWithBreakdown.from_hash(hash['amount']) if hash['amount']
-      payee = Payee.from_hash(hash['payee']) if hash['payee']
+      payee = PayeeBase.from_hash(hash['payee']) if hash['payee']
       payment_instruction = PaymentInstruction.from_hash(hash['payment_instruction']) if
         hash['payment_instruction']
       description = hash.key?('description') ? hash['description'] : SKIP
@@ -222,6 +217,29 @@ module PaypalServerSdk
                        supplementary_data: supplementary_data,
                        payments: payments,
                        most_recent_errors: most_recent_errors)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} reference_id: #{@reference_id}, amount: #{@amount}, payee: #{@payee},"\
+      " payment_instruction: #{@payment_instruction}, description: #{@description}, custom_id:"\
+      " #{@custom_id}, invoice_id: #{@invoice_id}, id: #{@id}, soft_descriptor:"\
+      " #{@soft_descriptor}, items: #{@items}, shipping: #{@shipping}, supplementary_data:"\
+      " #{@supplementary_data}, payments: #{@payments}, most_recent_errors:"\
+      " #{@most_recent_errors}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} reference_id: #{@reference_id.inspect}, amount: #{@amount.inspect}, payee:"\
+      " #{@payee.inspect}, payment_instruction: #{@payment_instruction.inspect}, description:"\
+      " #{@description.inspect}, custom_id: #{@custom_id.inspect}, invoice_id:"\
+      " #{@invoice_id.inspect}, id: #{@id.inspect}, soft_descriptor: #{@soft_descriptor.inspect},"\
+      " items: #{@items.inspect}, shipping: #{@shipping.inspect}, supplementary_data:"\
+      " #{@supplementary_data.inspect}, payments: #{@payments.inspect}, most_recent_errors:"\
+      " #{@most_recent_errors.inspect}>"
     end
   end
 end

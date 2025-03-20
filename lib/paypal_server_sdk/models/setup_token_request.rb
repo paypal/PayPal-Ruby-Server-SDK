@@ -10,8 +10,9 @@ module PaypalServerSdk
     SKIP = Object.new
     private_constant :SKIP
 
-    # Customer in merchant's or partner's system of records.
-    # @return [CustomerRequest]
+    # This object defines a customer in your system. Use it to manage customer
+    # profiles, save payment methods and contact details.
+    # @return [Customer]
     attr_accessor :customer
 
     # The payment method to vault with the instrument details.
@@ -50,11 +51,24 @@ module PaypalServerSdk
       # Extract variables from the hash.
       payment_source = SetupTokenRequestPaymentSource.from_hash(hash['payment_source']) if
         hash['payment_source']
-      customer = CustomerRequest.from_hash(hash['customer']) if hash['customer']
+      customer = Customer.from_hash(hash['customer']) if hash['customer']
 
       # Create object from extracted values.
       SetupTokenRequest.new(payment_source: payment_source,
                             customer: customer)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} customer: #{@customer}, payment_source: #{@payment_source}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} customer: #{@customer.inspect}, payment_source:"\
+      " #{@payment_source.inspect}>"
     end
   end
 end

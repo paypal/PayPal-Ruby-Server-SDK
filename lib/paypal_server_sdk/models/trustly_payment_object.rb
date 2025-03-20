@@ -14,13 +14,19 @@ module PaypalServerSdk
     attr_accessor :name
 
     # The [two-character ISO 3166-1 code](/api/rest/reference/country-codes/)
-    # that identifies the country or region.<blockquote><strong>Note:</strong>
-    # The country code for Great Britain is <code>GB</code> and not
-    # <code>UK</code> as used in the top-level domain names for that country.
-    # Use the `C2` country code for China worldwide for comparable uncontrolled
-    # price (CUP) method, bank card, and cross-border transactions.</blockquote>
+    # that identifies the country or region. Note: The country code for Great
+    # Britain is GB and not UK as used in the top-level domain names for that
+    # country. Use the `C2` country code for China worldwide for comparable
+    # uncontrolled price (CUP) method, bank card, and cross-border transactions.
     # @return [String]
     attr_accessor :country_code
+
+    # The internationalized email address. Note: Up to 64 characters are allowed
+    # before and 255 characters are allowed after the @ sign. However, the
+    # generally accepted maximum length for an email address is 254 characters.
+    # The pattern verifies that an unquoted @ sign exists.
+    # @return [String]
+    attr_accessor :email
 
     # The business identification code (BIC). In payments systems, a BIC is used
     # to identify a specific business, most commonly a bank.
@@ -36,6 +42,7 @@ module PaypalServerSdk
       @_hash = {} if @_hash.nil?
       @_hash['name'] = 'name'
       @_hash['country_code'] = 'country_code'
+      @_hash['email'] = 'email'
       @_hash['bic'] = 'bic'
       @_hash['iban_last_chars'] = 'iban_last_chars'
       @_hash
@@ -46,6 +53,7 @@ module PaypalServerSdk
       %w[
         name
         country_code
+        email
         bic
         iban_last_chars
       ]
@@ -56,10 +64,11 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(name: SKIP, country_code: SKIP, bic: SKIP,
+    def initialize(name: SKIP, country_code: SKIP, email: SKIP, bic: SKIP,
                    iban_last_chars: SKIP)
       @name = name unless name == SKIP
       @country_code = country_code unless country_code == SKIP
+      @email = email unless email == SKIP
       @bic = bic unless bic == SKIP
       @iban_last_chars = iban_last_chars unless iban_last_chars == SKIP
     end
@@ -71,6 +80,7 @@ module PaypalServerSdk
       # Extract variables from the hash.
       name = hash.key?('name') ? hash['name'] : SKIP
       country_code = hash.key?('country_code') ? hash['country_code'] : SKIP
+      email = hash.key?('email') ? hash['email'] : SKIP
       bic = hash.key?('bic') ? hash['bic'] : SKIP
       iban_last_chars =
         hash.key?('iban_last_chars') ? hash['iban_last_chars'] : SKIP
@@ -78,8 +88,23 @@ module PaypalServerSdk
       # Create object from extracted values.
       TrustlyPaymentObject.new(name: name,
                                country_code: country_code,
+                               email: email,
                                bic: bic,
                                iban_last_chars: iban_last_chars)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, country_code: #{@country_code}, email: #{@email}, bic:"\
+      " #{@bic}, iban_last_chars: #{@iban_last_chars}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, country_code: #{@country_code.inspect}, email:"\
+      " #{@email.inspect}, bic: #{@bic.inspect}, iban_last_chars: #{@iban_last_chars.inspect}>"
     end
   end
 end

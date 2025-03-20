@@ -11,7 +11,7 @@ module PaypalServerSdk
     private_constant :SKIP
 
     # The method used for card verification.
-    # @return [CardVerificationMethod]
+    # @return [OrdersCardVerificationMethod]
     attr_accessor :method
 
     # A mapping from model property names to API property names.
@@ -33,7 +33,7 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(method: CardVerificationMethod::SCA_WHEN_REQUIRED)
+    def initialize(method: OrdersCardVerificationMethod::SCA_WHEN_REQUIRED)
       @method = method unless method == SKIP
     end
 
@@ -42,10 +42,23 @@ module PaypalServerSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      method = hash['method'] ||= CardVerificationMethod::SCA_WHEN_REQUIRED
+      method =
+        hash['method'] ||= OrdersCardVerificationMethod::SCA_WHEN_REQUIRED
 
       # Create object from extracted values.
       CardVerification.new(method: method)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} method: #{@method}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} method: #{@method.inspect}>"
     end
   end
 end

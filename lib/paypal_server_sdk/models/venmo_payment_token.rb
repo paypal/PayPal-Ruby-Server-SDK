@@ -15,6 +15,10 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :description
 
+    # Expected business/charge model for the billing agreement.
+    # @return [UsagePattern]
+    attr_accessor :usage_pattern
+
     # The shipping details.
     # @return [VaultedDigitalWalletShippingDetails]
     attr_accessor :shipping
@@ -31,20 +35,19 @@ module PaypalServerSdk
     attr_accessor :permit_multiple_payment_tokens
 
     # The usage type associated with a digital wallet payment token.
-    # @return [String]
+    # @return [PaypalPaymentTokenUsageType]
     attr_accessor :usage_type
 
     # The customer type associated with a digital wallet payment token. This is
     # to indicate whether the customer acting on the merchant / platform is
     # either a business or a consumer.
-    # @return [String]
+    # @return [PaypalPaymentTokenCustomerType]
     attr_accessor :customer_type
 
-    # The internationalized email address.<blockquote><strong>Note:</strong> Up
-    # to 64 characters are allowed before and 255 characters are allowed after
-    # the <code>@</code> sign. However, the generally accepted maximum length
-    # for an email address is 254 characters. The pattern verifies that an
-    # unquoted <code>@</code> sign exists.</blockquote>
+    # The internationalized email address. Note: Up to 64 characters are allowed
+    # before and 255 characters are allowed after the @ sign. However, the
+    # generally accepted maximum length for an email address is 254 characters.
+    # The pattern verifies that an unquoted @ sign exists.
     # @return [String]
     attr_accessor :email_address
 
@@ -77,6 +80,7 @@ module PaypalServerSdk
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['description'] = 'description'
+      @_hash['usage_pattern'] = 'usage_pattern'
       @_hash['shipping'] = 'shipping'
       @_hash['permit_multiple_payment_tokens'] =
         'permit_multiple_payment_tokens'
@@ -95,6 +99,7 @@ module PaypalServerSdk
     def self.optionals
       %w[
         description
+        usage_pattern
         shipping
         permit_multiple_payment_tokens
         usage_type
@@ -113,11 +118,12 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(description: SKIP, shipping: SKIP,
+    def initialize(description: SKIP, usage_pattern: SKIP, shipping: SKIP,
                    permit_multiple_payment_tokens: false, usage_type: SKIP,
                    customer_type: SKIP, email_address: SKIP, payer_id: SKIP,
                    name: SKIP, phone: SKIP, address: SKIP, user_name: SKIP)
       @description = description unless description == SKIP
+      @usage_pattern = usage_pattern unless usage_pattern == SKIP
       @shipping = shipping unless shipping == SKIP
       unless permit_multiple_payment_tokens == SKIP
         @permit_multiple_payment_tokens =
@@ -139,6 +145,7 @@ module PaypalServerSdk
 
       # Extract variables from the hash.
       description = hash.key?('description') ? hash['description'] : SKIP
+      usage_pattern = hash.key?('usage_pattern') ? hash['usage_pattern'] : SKIP
       shipping = VaultedDigitalWalletShippingDetails.from_hash(hash['shipping']) if
         hash['shipping']
       permit_multiple_payment_tokens =
@@ -154,6 +161,7 @@ module PaypalServerSdk
 
       # Create object from extracted values.
       VenmoPaymentToken.new(description: description,
+                            usage_pattern: usage_pattern,
                             shipping: shipping,
                             permit_multiple_payment_tokens: permit_multiple_payment_tokens,
                             usage_type: usage_type,
@@ -164,6 +172,27 @@ module PaypalServerSdk
                             phone: phone,
                             address: address,
                             user_name: user_name)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} description: #{@description}, usage_pattern: #{@usage_pattern}, shipping:"\
+      " #{@shipping}, permit_multiple_payment_tokens: #{@permit_multiple_payment_tokens},"\
+      " usage_type: #{@usage_type}, customer_type: #{@customer_type}, email_address:"\
+      " #{@email_address}, payer_id: #{@payer_id}, name: #{@name}, phone: #{@phone}, address:"\
+      " #{@address}, user_name: #{@user_name}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} description: #{@description.inspect}, usage_pattern:"\
+      " #{@usage_pattern.inspect}, shipping: #{@shipping.inspect}, permit_multiple_payment_tokens:"\
+      " #{@permit_multiple_payment_tokens.inspect}, usage_type: #{@usage_type.inspect},"\
+      " customer_type: #{@customer_type.inspect}, email_address: #{@email_address.inspect},"\
+      " payer_id: #{@payer_id.inspect}, name: #{@name.inspect}, phone: #{@phone.inspect}, address:"\
+      " #{@address.inspect}, user_name: #{@user_name.inspect}>"
     end
   end
 end

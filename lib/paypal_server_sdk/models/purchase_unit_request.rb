@@ -19,18 +19,17 @@ module PaypalServerSdk
 
     # The total order amount with an optional breakdown that provides details,
     # such as the total item amount, total tax amount, shipping, handling,
-    # insurance, and discounts, if any.<br/>If you specify `amount.breakdown`,
-    # the amount equals `item_total` plus `tax_total` plus `shipping` plus
-    # `handling` plus `insurance` minus `shipping_discount` minus
-    # discount.<br/>The amount must be a positive number. For listed of
-    # supported currencies and decimal precision, see the PayPal REST APIs <a
-    # href="/docs/integration/direct/rest/currency-codes/">Currency Codes</a>.
+    # insurance, and discounts, if any. If you specify `amount.breakdown`, the
+    # amount equals `item_total` plus `tax_total` plus `shipping` plus
+    # `handling` plus `insurance` minus `shipping_discount` minus discount. The
+    # amount must be a positive number. For listed of supported currencies and
+    # decimal precision, see the PayPal REST APIs Currency Codes.
     # @return [AmountWithBreakdown]
     attr_accessor :amount
 
     # The merchant who receives the funds and fulfills the order. The merchant
     # is also known as the payee.
-    # @return [Payee]
+    # @return [PayeeBase]
     attr_accessor :payee
 
     # Any additional payment instructions to be consider during payment
@@ -60,21 +59,18 @@ module PaypalServerSdk
     attr_accessor :invoice_id
 
     # The soft descriptor is the dynamic text used to construct the statement
-    # descriptor that appears on a payer's card statement.<br><br>If an Order is
-    # paid using the "PayPal Wallet", the statement descriptor will appear in
+    # descriptor that appears on a payer's card statement. If an Order is paid
+    # using the "PayPal Wallet", the statement descriptor will appear in
     # following format on the payer's card statement:
-    # <code><var>PAYPAL_prefix</var>+(space)+<var>merchant_descriptor</var>+(spa
-    # ce)+ <var>soft_descriptor</var></code><blockquote><strong>Note:</strong>
+    # PAYPAL_prefix+(space)+merchant_descriptor+(space)+ soft_descriptor Note:
     # The merchant descriptor is the descriptor of the merchant’s payment
     # receiving preferences which can be seen by logging into the merchant
-    # account
-    # https://www.sandbox.paypal.com/businessprofile/settings/info/edit</blockqu
-    # ote>The <code>PAYPAL</code> prefix uses 8 characters. Only the first 22
-    # characters will be displayed in the statement. <br>For example,
-    # if:<ul><li>The PayPal prefix toggle is <code>PAYPAL *</code>.</li><li>The
-    # merchant descriptor in the profile is <code>Janes Gift</code>.</li><li>The
-    # soft descriptor is <code>800-123-1234</code>.</li></ul>Then, the statement
-    # descriptor on the card is <code>PAYPAL * Janes Gift 80</code>.
+    # account https://www.sandbox.paypal.com/businessprofile/settings/info/edit
+    # The PAYPAL prefix uses 8 characters. Only the first 22 characters will be
+    # displayed in the statement. For example, if: The PayPal prefix toggle is
+    # PAYPAL *. The merchant descriptor in the profile is Janes Gift. The soft
+    # descriptor is 800-123-1234. Then, the statement descriptor on the card is
+    # PAYPAL * Janes Gift 80.
     # @return [String]
     attr_accessor :soft_descriptor
 
@@ -154,7 +150,7 @@ module PaypalServerSdk
       # Extract variables from the hash.
       amount = AmountWithBreakdown.from_hash(hash['amount']) if hash['amount']
       reference_id = hash.key?('reference_id') ? hash['reference_id'] : SKIP
-      payee = Payee.from_hash(hash['payee']) if hash['payee']
+      payee = PayeeBase.from_hash(hash['payee']) if hash['payee']
       payment_instruction = PaymentInstruction.from_hash(hash['payment_instruction']) if
         hash['payment_instruction']
       description = hash.key?('description') ? hash['description'] : SKIP
@@ -188,6 +184,26 @@ module PaypalServerSdk
                               items: items,
                               shipping: shipping,
                               supplementary_data: supplementary_data)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} reference_id: #{@reference_id}, amount: #{@amount}, payee: #{@payee},"\
+      " payment_instruction: #{@payment_instruction}, description: #{@description}, custom_id:"\
+      " #{@custom_id}, invoice_id: #{@invoice_id}, soft_descriptor: #{@soft_descriptor}, items:"\
+      " #{@items}, shipping: #{@shipping}, supplementary_data: #{@supplementary_data}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} reference_id: #{@reference_id.inspect}, amount: #{@amount.inspect}, payee:"\
+      " #{@payee.inspect}, payment_instruction: #{@payment_instruction.inspect}, description:"\
+      " #{@description.inspect}, custom_id: #{@custom_id.inspect}, invoice_id:"\
+      " #{@invoice_id.inspect}, soft_descriptor: #{@soft_descriptor.inspect}, items:"\
+      " #{@items.inspect}, shipping: #{@shipping.inspect}, supplementary_data:"\
+      " #{@supplementary_data.inspect}>"
     end
   end
 end

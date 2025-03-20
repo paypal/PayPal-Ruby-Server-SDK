@@ -6,12 +6,11 @@
 module PaypalServerSdk
   # The total order amount with an optional breakdown that provides details,
   # such as the total item amount, total tax amount, shipping, handling,
-  # insurance, and discounts, if any.<br/>If you specify `amount.breakdown`, the
+  # insurance, and discounts, if any. If you specify `amount.breakdown`, the
   # amount equals `item_total` plus `tax_total` plus `shipping` plus `handling`
-  # plus `insurance` minus `shipping_discount` minus discount.<br/>The amount
-  # must be a positive number. For listed of supported currencies and decimal
-  # precision, see the PayPal REST APIs <a
-  # href="/docs/integration/direct/rest/currency-codes/">Currency Codes</a>.
+  # plus `insurance` minus `shipping_discount` minus discount. The amount must
+  # be a positive number. For listed of supported currencies and decimal
+  # precision, see the PayPal REST APIs Currency Codes.
   class AmountWithBreakdown < BaseModel
     SKIP = Object.new
     private_constant :SKIP
@@ -21,10 +20,10 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :currency_code
 
-    # The value, which might be:<ul><li>An integer for currencies like `JPY`
-    # that are not typically fractional.</li><li>A decimal fraction for
-    # currencies like `TND` that are subdivided into thousandths.</li></ul>For
-    # the required number of decimal places for a currency code, see [Currency
+    # The value, which might be: An integer for currencies like `JPY` that are
+    # not typically fractional. A decimal fraction for currencies like `TND`
+    # that are subdivided into thousandths. For the required number of decimal
+    # places for a currency code, see [Currency
     # Codes](/api/rest/reference/currency-codes/).
     # @return [String]
     attr_accessor :value
@@ -75,6 +74,20 @@ module PaypalServerSdk
       AmountWithBreakdown.new(currency_code: currency_code,
                               value: value,
                               breakdown: breakdown)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} currency_code: #{@currency_code}, value: #{@value}, breakdown:"\
+      " #{@breakdown}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} currency_code: #{@currency_code.inspect}, value: #{@value.inspect},"\
+      " breakdown: #{@breakdown.inspect}>"
     end
   end
 end

@@ -100,5 +100,21 @@ module PaypalServerSdk
                                 billing_address: billing_address,
                                 authentication_result: authentication_result)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name}, last_digits: #{@last_digits}, type: #{@type}, brand:"\
+      " #{@brand}, billing_address: #{@billing_address}, authentication_result:"\
+      " #{@authentication_result}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} name: #{@name.inspect}, last_digits: #{@last_digits.inspect}, type:"\
+      " #{@type.inspect}, brand: #{@brand.inspect}, billing_address: #{@billing_address.inspect},"\
+      " authentication_result: #{@authentication_result.inspect}>"
+    end
   end
 end

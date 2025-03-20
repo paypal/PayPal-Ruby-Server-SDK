@@ -68,5 +68,19 @@ module PaypalServerSdk
       PaymentMethodPreference.new(payee_preferred: payee_preferred,
                                   standard_entry_class_code: standard_entry_class_code)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payee_preferred: #{@payee_preferred}, standard_entry_class_code:"\
+      " #{@standard_entry_class_code}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} payee_preferred: #{@payee_preferred.inspect}, standard_entry_class_code:"\
+      " #{@standard_entry_class_code.inspect}>"
+    end
   end
 end

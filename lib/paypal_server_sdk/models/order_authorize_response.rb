@@ -11,17 +11,15 @@ module PaypalServerSdk
 
     # The date and time, in [Internet date and time
     # format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are
-    # required while fractional seconds are
-    # optional.<blockquote><strong>Note:</strong> The regular expression
-    # provides guidance but does not reject all invalid dates.</blockquote>
+    # required while fractional seconds are optional. Note: The regular
+    # expression provides guidance but does not reject all invalid dates.
     # @return [String]
     attr_accessor :create_time
 
     # The date and time, in [Internet date and time
     # format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are
-    # required while fractional seconds are
-    # optional.<blockquote><strong>Note:</strong> The regular expression
-    # provides guidance but does not reject all invalid dates.</blockquote>
+    # required while fractional seconds are optional. Note: The regular
+    # expression provides guidance but does not reject all invalid dates.
     # @return [String]
     attr_accessor :update_time
 
@@ -37,11 +35,6 @@ module PaypalServerSdk
     # for an order after order creation.
     # @return [CheckoutPaymentIntent]
     attr_accessor :intent
-
-    # The intent to either capture payment immediately or authorize a payment
-    # for an order after order creation.
-    # @return [Object]
-    attr_accessor :processing_instruction
 
     # The intent to either capture payment immediately or authorize a payment
     # for an order after order creation.
@@ -74,7 +67,6 @@ module PaypalServerSdk
       @_hash['id'] = 'id'
       @_hash['payment_source'] = 'payment_source'
       @_hash['intent'] = 'intent'
-      @_hash['processing_instruction'] = 'processing_instruction'
       @_hash['payer'] = 'payer'
       @_hash['purchase_units'] = 'purchase_units'
       @_hash['status'] = 'status'
@@ -90,7 +82,6 @@ module PaypalServerSdk
         id
         payment_source
         intent
-        processing_instruction
         payer
         purchase_units
         status
@@ -104,15 +95,13 @@ module PaypalServerSdk
     end
 
     def initialize(create_time: SKIP, update_time: SKIP, id: SKIP,
-                   payment_source: SKIP, intent: SKIP,
-                   processing_instruction: SKIP, payer: SKIP,
+                   payment_source: SKIP, intent: SKIP, payer: SKIP,
                    purchase_units: SKIP, status: SKIP, links: SKIP)
       @create_time = create_time unless create_time == SKIP
       @update_time = update_time unless update_time == SKIP
       @id = id unless id == SKIP
       @payment_source = payment_source unless payment_source == SKIP
       @intent = intent unless intent == SKIP
-      @processing_instruction = processing_instruction unless processing_instruction == SKIP
       @payer = payer unless payer == SKIP
       @purchase_units = purchase_units unless purchase_units == SKIP
       @status = status unless status == SKIP
@@ -130,8 +119,6 @@ module PaypalServerSdk
       payment_source = OrderAuthorizeResponsePaymentSource.from_hash(hash['payment_source']) if
         hash['payment_source']
       intent = hash.key?('intent') ? hash['intent'] : SKIP
-      processing_instruction =
-        hash.key?('processing_instruction') ? hash['processing_instruction'] : SKIP
       payer = Payer.from_hash(hash['payer']) if hash['payer']
       # Parameter is an array, so we need to iterate through it
       purchase_units = nil
@@ -161,11 +148,27 @@ module PaypalServerSdk
                                  id: id,
                                  payment_source: payment_source,
                                  intent: intent,
-                                 processing_instruction: processing_instruction,
                                  payer: payer,
                                  purchase_units: purchase_units,
                                  status: status,
                                  links: links)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} create_time: #{@create_time}, update_time: #{@update_time}, id: #{@id},"\
+      " payment_source: #{@payment_source}, intent: #{@intent}, payer: #{@payer}, purchase_units:"\
+      " #{@purchase_units}, status: #{@status}, links: #{@links}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} create_time: #{@create_time.inspect}, update_time: #{@update_time.inspect},"\
+      " id: #{@id.inspect}, payment_source: #{@payment_source.inspect}, intent:"\
+      " #{@intent.inspect}, payer: #{@payer.inspect}, purchase_units: #{@purchase_units.inspect},"\
+      " status: #{@status.inspect}, links: #{@links.inspect}>"
     end
   end
 end

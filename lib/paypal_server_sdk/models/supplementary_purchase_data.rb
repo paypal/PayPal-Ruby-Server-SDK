@@ -59,5 +59,18 @@ module PaypalServerSdk
       SupplementaryPurchaseData.new(invoice_id: invoice_id,
                                     note_to_payer: note_to_payer)
     end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} invoice_id: #{@invoice_id}, note_to_payer: #{@note_to_payer}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} invoice_id: #{@invoice_id.inspect}, note_to_payer:"\
+      " #{@note_to_payer.inspect}>"
+    end
   end
 end

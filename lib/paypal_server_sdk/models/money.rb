@@ -15,10 +15,10 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :currency_code
 
-    # The value, which might be:<ul><li>An integer for currencies like `JPY`
-    # that are not typically fractional.</li><li>A decimal fraction for
-    # currencies like `TND` that are subdivided into thousandths.</li></ul>For
-    # the required number of decimal places for a currency code, see [Currency
+    # The value, which might be: An integer for currencies like `JPY` that are
+    # not typically fractional. A decimal fraction for currencies like `TND`
+    # that are subdivided into thousandths. For the required number of decimal
+    # places for a currency code, see [Currency
     # Codes](/api/rest/reference/currency-codes/).
     # @return [String]
     attr_accessor :value
@@ -57,6 +57,18 @@ module PaypalServerSdk
       # Create object from extracted values.
       Money.new(currency_code: currency_code,
                 value: value)
+    end
+
+    # Provides a human-readable string representation of the object.
+    def to_s
+      class_name = self.class.name.split('::').last
+      "<#{class_name} currency_code: #{@currency_code}, value: #{@value}>"
+    end
+
+    # Provides a debugging-friendly string with detailed object information.
+    def inspect
+      class_name = self.class.name.split('::').last
+      "<#{class_name} currency_code: #{@currency_code.inspect}, value: #{@value.inspect}>"
     end
   end
 end

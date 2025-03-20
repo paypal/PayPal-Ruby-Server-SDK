@@ -8,77 +8,108 @@ module PaypalServerSdk
   # Express transactions.
   class AvsCode
     AVS_CODE = [
-      # TODO: Write general description for A
-      A = 'A'.freeze,
+      # For Visa, Mastercard, or Discover transactions, the address matches but
+      # the zip code does not match. For American Express transactions, the card
+      # holder address is correct.
+      AVS_A = 'A'.freeze,
 
-      # TODO: Write general description for B
-      B = 'B'.freeze,
+      # For Visa, Mastercard, or Discover transactions, the address matches.
+      # International A.
+      AVS_B = 'B'.freeze,
 
-      # TODO: Write general description for C
-      C = 'C'.freeze,
+      # For Visa, Mastercard, or Discover transactions, no values match.
+      # International N.
+      AVS_C = 'C'.freeze,
 
-      # TODO: Write general description for D
-      D = 'D'.freeze,
+      # For Visa, Mastercard, or Discover transactions, the address and postal
+      # code match. International X.
+      AVS_D = 'D'.freeze,
 
-      # TODO: Write general description for E
-      E = 'E'.freeze,
+      # For Visa, Mastercard, or Discover transactions, not allowed for Internet
+      # or phone transactions. For American Express card holder, the name is
+      # incorrect but the address and postal code match.
+      AVS_E = 'E'.freeze,
 
-      # TODO: Write general description for F
-      F = 'F'.freeze,
+      # For Visa, Mastercard, or Discover transactions, the address and postal
+      # code match. UK-specific X. For American Express card holder, the name is
+      # incorrect but the address matches.
+      AVS_F = 'F'.freeze,
 
-      # TODO: Write general description for G
-      G = 'G'.freeze,
+      # For Visa, Mastercard, or Discover transactions, global is unavailable.
+      # Nothing matches.
+      AVS_G = 'G'.freeze,
 
-      # TODO: Write general description for I
-      I = 'I'.freeze,
+      # For Visa, Mastercard, or Discover transactions, international is
+      # unavailable. Not applicable.
+      AVS_I = 'I'.freeze,
 
-      # TODO: Write general description for M
-      M = 'M'.freeze,
+      # For Visa, Mastercard, or Discover transactions, the address and postal
+      # code match. For American Express card holder, the name, address, and
+      # postal code match.
+      AVS_M = 'M'.freeze,
 
-      # TODO: Write general description for N
-      N = 'N'.freeze,
+      # For Visa, Mastercard, or Discover transactions, nothing matches. For
+      # American Express card holder, the address and postal code are both
+      # incorrect.
+      AVS_N = 'N'.freeze,
 
-      # TODO: Write general description for P
-      P = 'P'.freeze,
+      # For Visa, Mastercard, or Discover transactions, postal international Z.
+      # Postal code only.
+      AVS_P = 'P'.freeze,
 
-      # TODO: Write general description for R
-      R = 'R'.freeze,
+      # For Visa, Mastercard, or Discover transactions, re-try the request. For
+      # American Express, the system is unavailable.
+      AVS_R = 'R'.freeze,
 
-      # TODO: Write general description for S
-      S = 'S'.freeze,
+      # For Visa, Mastercard, Discover, or American Express, the service is not
+      # supported.
+      AVS_S = 'S'.freeze,
 
-      # TODO: Write general description for U
-      U = 'U'.freeze,
+      # For Visa, Mastercard, or Discover transactions, the service is
+      # unavailable. For American Express, information is not available. For
+      # Maestro, the address is not checked or the acquirer had no response. The
+      # service is not available.
+      AVS_U = 'U'.freeze,
 
-      # TODO: Write general description for W
-      W = 'W'.freeze,
+      # For Visa, Mastercard, or Discover transactions, whole ZIP code. For
+      # American Express, the card holder name, address, and postal code are all
+      # incorrect.
+      AVS_W = 'W'.freeze,
 
-      # TODO: Write general description for X
-      X = 'X'.freeze,
+      # For Visa, Mastercard, or Discover transactions, exact match of the
+      # address and the nine-digit ZIP code. For American Express, the card
+      # holder name, address, and postal code are all incorrect.
+      AVS_X = 'X'.freeze,
 
-      # TODO: Write general description for Y
-      Y = 'Y'.freeze,
+      # For Visa, Mastercard, or Discover transactions, the address and
+      # five-digit ZIP code match. For American Express, the card holder address
+      # and postal code are both correct.
+      AVS_Y = 'Y'.freeze,
 
-      # TODO: Write general description for Z
-      Z = 'Z'.freeze,
+      # For Visa, Mastercard, or Discover transactions, the five-digit ZIP code
+      # matches but no address. For American Express, only the card holder
+      # postal code is correct.
+      AVS_Z = 'Z'.freeze,
 
-      # TODO: Write general description for NULL
-      NULL = 'Null'.freeze,
+      # For Maestro, no AVS response was obtained.
+      AVS_NULL = 'Null'.freeze,
 
-      # TODO: Write general description for ENUM_0
-      ENUM_0 = '0'.freeze,
+      # For Maestro, all address information matches.
+      AVS_0 = '0'.freeze,
 
-      # TODO: Write general description for ENUM_1
-      ENUM_1 = '1'.freeze,
+      # For Maestro, none of the address information matches.
+      AVS_1 = '1'.freeze,
 
-      # TODO: Write general description for ENUM_2
-      ENUM_2 = '2'.freeze,
+      # For Maestro, part of the address information matches.
+      AVS_2 = '2'.freeze,
 
-      # TODO: Write general description for ENUM_3
-      ENUM_3 = '3'.freeze,
+      # For Maestro, the merchant did not provide AVS information. It was not
+      # processed.
+      AVS_3 = '3'.freeze,
 
-      # TODO: Write general description for ENUM_4
-      ENUM_4 = '4'.freeze
+      # For Maestro, the address was not checked or the acquirer had no
+      # response. The service is not available.
+      AVS_4 = '4'.freeze
     ].freeze
 
     def self.validate(value)
