@@ -20,11 +20,21 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :email_address
 
+    # The phone information.
+    # @return [PhoneWithType]
+    attr_accessor :phone
+
+    # The name of the party.
+    # @return [Name]
+    attr_accessor :name
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['id'] = 'id'
       @_hash['email_address'] = 'email_address'
+      @_hash['phone'] = 'phone'
+      @_hash['name'] = 'name'
       @_hash
     end
 
@@ -33,6 +43,8 @@ module PaypalServerSdk
       %w[
         id
         email_address
+        phone
+        name
       ]
     end
 
@@ -41,9 +53,11 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(id: SKIP, email_address: SKIP)
+    def initialize(id: SKIP, email_address: SKIP, phone: SKIP, name: SKIP)
       @id = id unless id == SKIP
       @email_address = email_address unless email_address == SKIP
+      @phone = phone unless phone == SKIP
+      @name = name unless name == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -53,22 +67,28 @@ module PaypalServerSdk
       # Extract variables from the hash.
       id = hash.key?('id') ? hash['id'] : SKIP
       email_address = hash.key?('email_address') ? hash['email_address'] : SKIP
+      phone = PhoneWithType.from_hash(hash['phone']) if hash['phone']
+      name = Name.from_hash(hash['name']) if hash['name']
 
       # Create object from extracted values.
       VenmoWalletCustomerInformation.new(id: id,
-                                         email_address: email_address)
+                                         email_address: email_address,
+                                         phone: phone,
+                                         name: name)
     end
 
     # Provides a human-readable string representation of the object.
     def to_s
       class_name = self.class.name.split('::').last
-      "<#{class_name} id: #{@id}, email_address: #{@email_address}>"
+      "<#{class_name} id: #{@id}, email_address: #{@email_address}, phone: #{@phone}, name:"\
+      " #{@name}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
     def inspect
       class_name = self.class.name.split('::').last
-      "<#{class_name} id: #{@id.inspect}, email_address: #{@email_address.inspect}>"
+      "<#{class_name} id: #{@id.inspect}, email_address: #{@email_address.inspect}, phone:"\
+      " #{@phone.inspect}, name: #{@name.inspect}>"
     end
   end
 end

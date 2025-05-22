@@ -9,7 +9,8 @@ module PaypalServerSdk
     SKIP = Object.new
     private_constant :SKIP
 
-    # The details about a customer in PayPal's system of record.
+    # This object represents a merchant’s customer, allowing them to store
+    # contact details, and track all payments associated with the same customer.
     # @return [CustomerInformation]
     attr_accessor :customer
 

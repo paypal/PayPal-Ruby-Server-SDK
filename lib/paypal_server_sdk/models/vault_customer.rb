@@ -4,7 +4,8 @@
 # ( https://apimatic.io ).
 
 module PaypalServerSdk
-  # The details about a customer in PayPal's system of record.
+  # This object represents a merchant’s customer, allowing them to store contact
+  # details, and track all payments associated with the same customer.
   class VaultCustomer < BaseModel
     SKIP = Object.new
     private_constant :SKIP
@@ -13,10 +14,15 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :id
 
+    # The name of the party.
+    # @return [Name]
+    attr_accessor :name
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['id'] = 'id'
+      @_hash['name'] = 'name'
       @_hash
     end
 
@@ -24,6 +30,7 @@ module PaypalServerSdk
     def self.optionals
       %w[
         id
+        name
       ]
     end
 
@@ -32,8 +39,9 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(id: SKIP)
+    def initialize(id: SKIP, name: SKIP)
       @id = id unless id == SKIP
+      @name = name unless name == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -42,21 +50,23 @@ module PaypalServerSdk
 
       # Extract variables from the hash.
       id = hash.key?('id') ? hash['id'] : SKIP
+      name = Name.from_hash(hash['name']) if hash['name']
 
       # Create object from extracted values.
-      VaultCustomer.new(id: id)
+      VaultCustomer.new(id: id,
+                        name: name)
     end
 
     # Provides a human-readable string representation of the object.
     def to_s
       class_name = self.class.name.split('::').last
-      "<#{class_name} id: #{@id}>"
+      "<#{class_name} id: #{@id}, name: #{@name}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
     def inspect
       class_name = self.class.name.split('::').last
-      "<#{class_name} id: #{@id.inspect}>"
+      "<#{class_name} id: #{@id.inspect}, name: #{@name.inspect}>"
     end
   end
 end

@@ -31,8 +31,8 @@ module PaypalServerSdk
     attr_accessor :links
 
     # The constructor.
-    # @param [String] The reason for raising an exception.
-    # @param [HttpResponse] The HttpReponse of the API call.
+    # @param [String] reason The reason for raising an exception.
+    # @param [HttpResponse] response The HttpReponse of the API call.
     def initialize(reason, response)
       super(reason, response)
       hash = APIHelper.json_deserialize(@response.raw_body)
@@ -40,9 +40,11 @@ module PaypalServerSdk
     end
 
     # Populates this object by extracting properties from a hash.
-    # @param [Hash] The deserialized response sent by the server in the
+    # @param [Hash] hash The deserialized response sent by the server in the
     # response body.
     def unbox(hash)
+      return nil unless hash
+
       @name = hash.key?('name') ? hash['name'] : nil
       @message = hash.key?('message') ? hash['message'] : nil
       @debug_id = hash.key?('debug_id') ? hash['debug_id'] : nil
