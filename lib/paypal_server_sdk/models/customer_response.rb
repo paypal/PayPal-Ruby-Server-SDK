@@ -4,8 +4,7 @@
 # ( https://apimatic.io ).
 
 module PaypalServerSdk
-  # This object defines a customer in your system. Use it to manage customer
-  # profiles, save payment methods and contact details.
+  # Customer in merchant's or partner's system of records.
   class CustomerResponse < BaseModel
     SKIP = Object.new
     private_constant :SKIP

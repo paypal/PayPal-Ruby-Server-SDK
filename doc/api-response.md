@@ -7,14 +7,14 @@ Represents the complete HTTP response received from the API.
 
 | Name | Type | Description |
 |  --- | --- | --- |
-| status_code | Integer | The HTTP status code of the response. |
-| reason_phrase | String | The reason phrase returned with the status code. |
-| headers | Hash<String, String> | The HTTP response headers. |
-| raw_body | String | The raw response body as a string. |
-| request | [HttpRequest](doc/http-request.md) | The original HTTP request sent. |
-| data | Object | The parsed response data, if applicable. |
+| status_code | `Integer` | The HTTP status code of the response. |
+| reason_phrase | `String` | The reason phrase returned with the status code. |
+| headers | `Hash<String, String>` | The HTTP response headers. |
+| raw_body | `String` | The raw response body as a string. |
+| request | [`HttpRequest`](../doc/http-request.md) | The original HTTP request sent. |
+| data | `Object` | The parsed response data, if applicable. |
 
-## Example Usage
+## Usage Example
 
 ```ruby
 begin

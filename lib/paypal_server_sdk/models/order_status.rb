@@ -23,11 +23,11 @@ module PaypalServerSdk
       # All purchase units in the order are voided.
       VOIDED = 'VOIDED'.freeze,
 
-      # The intent of the Order was completed and a `payments` resource was
-      # created. A completed Order may have authorized a payment, captured an
-      # authorized payment, or in some cases, the payment may have been
-      # declined. Please verify the payment status under
-      # purchase_unitsArray.payments before proceeding with Order fulfillment.
+      # The intent of the order was completed and a `payments` resource was
+      # created. Important: Check the payment status in
+      # `purchase_units[].payments.captures[].status` before fulfilling the
+      # order. A completed order can indicate a payment was authorized, an
+      # authorized payment was captured, or a payment was declined.
       COMPLETED = 'COMPLETED'.freeze,
 
       # The order requires an action from the payer (e.g. 3DS authentication).

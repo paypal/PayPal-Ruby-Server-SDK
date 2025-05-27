@@ -20,7 +20,7 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :merchant_customer_id
 
-    # An array of request-related HATEOAS links.
+    # DEPRECATED. This field is DEPRECATED.
     # @return [Array[Object]]
     attr_accessor :links
 

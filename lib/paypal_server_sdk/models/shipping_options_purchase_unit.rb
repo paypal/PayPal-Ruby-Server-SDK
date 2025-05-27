@@ -27,6 +27,10 @@ module PaypalServerSdk
     # @return [AmountWithBreakdown]
     attr_accessor :amount
 
+    # An array of items that the customer purchases from the merchant.
+    # @return [Array[Item]]
+    attr_accessor :items
+
     # An array of shipping options that the payee or merchant offers to the
     # payer to ship or pick up their items.
     # @return [Array[ShippingOption]]
@@ -37,6 +41,7 @@ module PaypalServerSdk
       @_hash = {} if @_hash.nil?
       @_hash['reference_id'] = 'reference_id'
       @_hash['amount'] = 'amount'
+      @_hash['items'] = 'items'
       @_hash['shipping_options'] = 'shipping_options'
       @_hash
     end
@@ -46,6 +51,7 @@ module PaypalServerSdk
       %w[
         reference_id
         amount
+        items
         shipping_options
       ]
     end
@@ -55,9 +61,11 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(reference_id: SKIP, amount: SKIP, shipping_options: SKIP)
+    def initialize(reference_id: SKIP, amount: SKIP, items: SKIP,
+                   shipping_options: SKIP)
       @reference_id = reference_id unless reference_id == SKIP
       @amount = amount unless amount == SKIP
+      @items = items unless items == SKIP
       @shipping_options = shipping_options unless shipping_options == SKIP
     end
 
@@ -68,6 +76,16 @@ module PaypalServerSdk
       # Extract variables from the hash.
       reference_id = hash.key?('reference_id') ? hash['reference_id'] : SKIP
       amount = AmountWithBreakdown.from_hash(hash['amount']) if hash['amount']
+      # Parameter is an array, so we need to iterate through it
+      items = nil
+      unless hash['items'].nil?
+        items = []
+        hash['items'].each do |structure|
+          items << (Item.from_hash(structure) if structure)
+        end
+      end
+
+      items = SKIP unless hash.key?('items')
       # Parameter is an array, so we need to iterate through it
       shipping_options = nil
       unless hash['shipping_options'].nil?
@@ -82,21 +100,22 @@ module PaypalServerSdk
       # Create object from extracted values.
       ShippingOptionsPurchaseUnit.new(reference_id: reference_id,
                                       amount: amount,
+                                      items: items,
                                       shipping_options: shipping_options)
     end
 
     # Provides a human-readable string representation of the object.
     def to_s
       class_name = self.class.name.split('::').last
-      "<#{class_name} reference_id: #{@reference_id}, amount: #{@amount}, shipping_options:"\
-      " #{@shipping_options}>"
+      "<#{class_name} reference_id: #{@reference_id}, amount: #{@amount}, items: #{@items},"\
+      " shipping_options: #{@shipping_options}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
     def inspect
       class_name = self.class.name.split('::').last
-      "<#{class_name} reference_id: #{@reference_id.inspect}, amount: #{@amount.inspect},"\
-      " shipping_options: #{@shipping_options.inspect}>"
+      "<#{class_name} reference_id: #{@reference_id.inspect}, amount: #{@amount.inspect}, items:"\
+      " #{@items.inspect}, shipping_options: #{@shipping_options.inspect}>"
     end
   end
 end

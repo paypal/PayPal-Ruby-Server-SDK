@@ -58,6 +58,11 @@ module PaypalServerSdk
     # @return [ApplePayAttributes]
     attr_accessor :attributes
 
+    # Customizes the payer experience during the approval process for the
+    # payment.
+    # @return [ApplePayExperienceContext]
+    attr_accessor :experience_context
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -69,6 +74,7 @@ module PaypalServerSdk
       @_hash['stored_credential'] = 'stored_credential'
       @_hash['vault_id'] = 'vault_id'
       @_hash['attributes'] = 'attributes'
+      @_hash['experience_context'] = 'experience_context'
       @_hash
     end
 
@@ -83,6 +89,7 @@ module PaypalServerSdk
         stored_credential
         vault_id
         attributes
+        experience_context
       ]
     end
 
@@ -93,7 +100,8 @@ module PaypalServerSdk
 
     def initialize(id: SKIP, name: SKIP, email_address: SKIP,
                    phone_number: SKIP, decrypted_token: SKIP,
-                   stored_credential: SKIP, vault_id: SKIP, attributes: SKIP)
+                   stored_credential: SKIP, vault_id: SKIP, attributes: SKIP,
+                   experience_context: SKIP)
       @id = id unless id == SKIP
       @name = name unless name == SKIP
       @email_address = email_address unless email_address == SKIP
@@ -102,6 +110,7 @@ module PaypalServerSdk
       @stored_credential = stored_credential unless stored_credential == SKIP
       @vault_id = vault_id unless vault_id == SKIP
       @attributes = attributes unless attributes == SKIP
+      @experience_context = experience_context unless experience_context == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -119,6 +128,8 @@ module PaypalServerSdk
         hash['stored_credential']
       vault_id = hash.key?('vault_id') ? hash['vault_id'] : SKIP
       attributes = ApplePayAttributes.from_hash(hash['attributes']) if hash['attributes']
+      experience_context = ApplePayExperienceContext.from_hash(hash['experience_context']) if
+        hash['experience_context']
 
       # Create object from extracted values.
       ApplePayRequest.new(id: id,
@@ -128,7 +139,8 @@ module PaypalServerSdk
                           decrypted_token: decrypted_token,
                           stored_credential: stored_credential,
                           vault_id: vault_id,
-                          attributes: attributes)
+                          attributes: attributes,
+                          experience_context: experience_context)
     end
 
     # Provides a human-readable string representation of the object.
@@ -136,7 +148,8 @@ module PaypalServerSdk
       class_name = self.class.name.split('::').last
       "<#{class_name} id: #{@id}, name: #{@name}, email_address: #{@email_address}, phone_number:"\
       " #{@phone_number}, decrypted_token: #{@decrypted_token}, stored_credential:"\
-      " #{@stored_credential}, vault_id: #{@vault_id}, attributes: #{@attributes}>"
+      " #{@stored_credential}, vault_id: #{@vault_id}, attributes: #{@attributes},"\
+      " experience_context: #{@experience_context}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
@@ -145,7 +158,8 @@ module PaypalServerSdk
       "<#{class_name} id: #{@id.inspect}, name: #{@name.inspect}, email_address:"\
       " #{@email_address.inspect}, phone_number: #{@phone_number.inspect}, decrypted_token:"\
       " #{@decrypted_token.inspect}, stored_credential: #{@stored_credential.inspect}, vault_id:"\
-      " #{@vault_id.inspect}, attributes: #{@attributes.inspect}>"
+      " #{@vault_id.inspect}, attributes: #{@attributes.inspect}, experience_context:"\
+      " #{@experience_context.inspect}>"
     end
   end
 end

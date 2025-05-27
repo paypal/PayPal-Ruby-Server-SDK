@@ -41,6 +41,11 @@ module PaypalServerSdk
     # @return [AssuranceDetails]
     attr_accessor :assurance_details
 
+    # Customizes the payer experience during the approval process for the
+    # payment.
+    # @return [GooglePayExperienceContext]
+    attr_accessor :experience_context
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -50,6 +55,7 @@ module PaypalServerSdk
       @_hash['card'] = 'card'
       @_hash['decrypted_token'] = 'decrypted_token'
       @_hash['assurance_details'] = 'assurance_details'
+      @_hash['experience_context'] = 'experience_context'
       @_hash
     end
 
@@ -62,6 +68,7 @@ module PaypalServerSdk
         card
         decrypted_token
         assurance_details
+        experience_context
       ]
     end
 
@@ -71,13 +78,15 @@ module PaypalServerSdk
     end
 
     def initialize(name: SKIP, email_address: SKIP, phone_number: SKIP,
-                   card: SKIP, decrypted_token: SKIP, assurance_details: SKIP)
+                   card: SKIP, decrypted_token: SKIP, assurance_details: SKIP,
+                   experience_context: SKIP)
       @name = name unless name == SKIP
       @email_address = email_address unless email_address == SKIP
       @phone_number = phone_number unless phone_number == SKIP
       @card = card unless card == SKIP
       @decrypted_token = decrypted_token unless decrypted_token == SKIP
       @assurance_details = assurance_details unless assurance_details == SKIP
+      @experience_context = experience_context unless experience_context == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -94,6 +103,8 @@ module PaypalServerSdk
         hash['decrypted_token']
       assurance_details = AssuranceDetails.from_hash(hash['assurance_details']) if
         hash['assurance_details']
+      experience_context = GooglePayExperienceContext.from_hash(hash['experience_context']) if
+        hash['experience_context']
 
       # Create object from extracted values.
       GooglePayRequest.new(name: name,
@@ -101,7 +112,8 @@ module PaypalServerSdk
                            phone_number: phone_number,
                            card: card,
                            decrypted_token: decrypted_token,
-                           assurance_details: assurance_details)
+                           assurance_details: assurance_details,
+                           experience_context: experience_context)
     end
 
     # Provides a human-readable string representation of the object.
@@ -109,7 +121,7 @@ module PaypalServerSdk
       class_name = self.class.name.split('::').last
       "<#{class_name} name: #{@name}, email_address: #{@email_address}, phone_number:"\
       " #{@phone_number}, card: #{@card}, decrypted_token: #{@decrypted_token}, assurance_details:"\
-      " #{@assurance_details}>"
+      " #{@assurance_details}, experience_context: #{@experience_context}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
@@ -117,7 +129,8 @@ module PaypalServerSdk
       class_name = self.class.name.split('::').last
       "<#{class_name} name: #{@name.inspect}, email_address: #{@email_address.inspect},"\
       " phone_number: #{@phone_number.inspect}, card: #{@card.inspect}, decrypted_token:"\
-      " #{@decrypted_token.inspect}, assurance_details: #{@assurance_details.inspect}>"
+      " #{@decrypted_token.inspect}, assurance_details: #{@assurance_details.inspect},"\
+      " experience_context: #{@experience_context.inspect}>"
     end
   end
 end
