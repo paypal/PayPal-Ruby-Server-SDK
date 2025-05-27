@@ -41,6 +41,11 @@ module PaypalServerSdk
     # @return [UniversalProductCode]
     attr_accessor :upc
 
+    # Metadata for merchant-managed recurring billing plans. Valid only during
+    # the saved payment method token or billing agreement creation.
+    # @return [OrderBillingPlan]
+    attr_accessor :billing_plan
+
     # The currency and amount for a financial transaction, such as a balance or
     # payment due.
     # @return [Money]
@@ -87,6 +92,7 @@ module PaypalServerSdk
       @_hash['url'] = 'url'
       @_hash['image_url'] = 'image_url'
       @_hash['upc'] = 'upc'
+      @_hash['billing_plan'] = 'billing_plan'
       @_hash['unit_amount'] = 'unit_amount'
       @_hash['tax'] = 'tax'
       @_hash['commodity_code'] = 'commodity_code'
@@ -104,6 +110,7 @@ module PaypalServerSdk
         url
         image_url
         upc
+        billing_plan
         unit_amount
         tax
         commodity_code
@@ -119,9 +126,10 @@ module PaypalServerSdk
     end
 
     def initialize(name:, quantity:, description: SKIP, sku: SKIP, url: SKIP,
-                   image_url: SKIP, upc: SKIP, unit_amount: SKIP, tax: SKIP,
-                   commodity_code: SKIP, discount_amount: SKIP,
-                   total_amount: SKIP, unit_of_measure: SKIP)
+                   image_url: SKIP, upc: SKIP, billing_plan: SKIP,
+                   unit_amount: SKIP, tax: SKIP, commodity_code: SKIP,
+                   discount_amount: SKIP, total_amount: SKIP,
+                   unit_of_measure: SKIP)
       @name = name
       @quantity = quantity
       @description = description unless description == SKIP
@@ -129,6 +137,7 @@ module PaypalServerSdk
       @url = url unless url == SKIP
       @image_url = image_url unless image_url == SKIP
       @upc = upc unless upc == SKIP
+      @billing_plan = billing_plan unless billing_plan == SKIP
       @unit_amount = unit_amount unless unit_amount == SKIP
       @tax = tax unless tax == SKIP
       @commodity_code = commodity_code unless commodity_code == SKIP
@@ -149,6 +158,7 @@ module PaypalServerSdk
       url = hash.key?('url') ? hash['url'] : SKIP
       image_url = hash.key?('image_url') ? hash['image_url'] : SKIP
       upc = UniversalProductCode.from_hash(hash['upc']) if hash['upc']
+      billing_plan = OrderBillingPlan.from_hash(hash['billing_plan']) if hash['billing_plan']
       unit_amount = Money.from_hash(hash['unit_amount']) if hash['unit_amount']
       tax = Money.from_hash(hash['tax']) if hash['tax']
       commodity_code =
@@ -166,6 +176,7 @@ module PaypalServerSdk
                    url: url,
                    image_url: image_url,
                    upc: upc,
+                   billing_plan: billing_plan,
                    unit_amount: unit_amount,
                    tax: tax,
                    commodity_code: commodity_code,
@@ -178,10 +189,10 @@ module PaypalServerSdk
     def to_s
       class_name = self.class.name.split('::').last
       "<#{class_name} name: #{@name}, quantity: #{@quantity}, description: #{@description}, sku:"\
-      " #{@sku}, url: #{@url}, image_url: #{@image_url}, upc: #{@upc}, unit_amount:"\
-      " #{@unit_amount}, tax: #{@tax}, commodity_code: #{@commodity_code}, discount_amount:"\
-      " #{@discount_amount}, total_amount: #{@total_amount}, unit_of_measure:"\
-      " #{@unit_of_measure}>"
+      " #{@sku}, url: #{@url}, image_url: #{@image_url}, upc: #{@upc}, billing_plan:"\
+      " #{@billing_plan}, unit_amount: #{@unit_amount}, tax: #{@tax}, commodity_code:"\
+      " #{@commodity_code}, discount_amount: #{@discount_amount}, total_amount: #{@total_amount},"\
+      " unit_of_measure: #{@unit_of_measure}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
@@ -189,10 +200,10 @@ module PaypalServerSdk
       class_name = self.class.name.split('::').last
       "<#{class_name} name: #{@name.inspect}, quantity: #{@quantity.inspect}, description:"\
       " #{@description.inspect}, sku: #{@sku.inspect}, url: #{@url.inspect}, image_url:"\
-      " #{@image_url.inspect}, upc: #{@upc.inspect}, unit_amount: #{@unit_amount.inspect}, tax:"\
-      " #{@tax.inspect}, commodity_code: #{@commodity_code.inspect}, discount_amount:"\
-      " #{@discount_amount.inspect}, total_amount: #{@total_amount.inspect}, unit_of_measure:"\
-      " #{@unit_of_measure.inspect}>"
+      " #{@image_url.inspect}, upc: #{@upc.inspect}, billing_plan: #{@billing_plan.inspect},"\
+      " unit_amount: #{@unit_amount.inspect}, tax: #{@tax.inspect}, commodity_code:"\
+      " #{@commodity_code.inspect}, discount_amount: #{@discount_amount.inspect}, total_amount:"\
+      " #{@total_amount.inspect}, unit_of_measure: #{@unit_of_measure.inspect}>"
     end
   end
 end

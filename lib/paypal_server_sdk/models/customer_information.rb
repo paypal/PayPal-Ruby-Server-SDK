@@ -4,7 +4,8 @@
 # ( https://apimatic.io ).
 
 module PaypalServerSdk
-  # The details about a customer in PayPal's system of record.
+  # This object represents a merchant’s customer, allowing them to store contact
+  # details, and track all payments associated with the same customer.
   class CustomerInformation < BaseModel
     SKIP = Object.new
     private_constant :SKIP
@@ -24,12 +25,17 @@ module PaypalServerSdk
     # @return [PhoneWithType]
     attr_accessor :phone
 
+    # The name of the party.
+    # @return [Name]
+    attr_accessor :name
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['id'] = 'id'
       @_hash['email_address'] = 'email_address'
       @_hash['phone'] = 'phone'
+      @_hash['name'] = 'name'
       @_hash
     end
 
@@ -39,6 +45,7 @@ module PaypalServerSdk
         id
         email_address
         phone
+        name
       ]
     end
 
@@ -47,10 +54,11 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(id: SKIP, email_address: SKIP, phone: SKIP)
+    def initialize(id: SKIP, email_address: SKIP, phone: SKIP, name: SKIP)
       @id = id unless id == SKIP
       @email_address = email_address unless email_address == SKIP
       @phone = phone unless phone == SKIP
+      @name = name unless name == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -61,24 +69,27 @@ module PaypalServerSdk
       id = hash.key?('id') ? hash['id'] : SKIP
       email_address = hash.key?('email_address') ? hash['email_address'] : SKIP
       phone = PhoneWithType.from_hash(hash['phone']) if hash['phone']
+      name = Name.from_hash(hash['name']) if hash['name']
 
       # Create object from extracted values.
       CustomerInformation.new(id: id,
                               email_address: email_address,
-                              phone: phone)
+                              phone: phone,
+                              name: name)
     end
 
     # Provides a human-readable string representation of the object.
     def to_s
       class_name = self.class.name.split('::').last
-      "<#{class_name} id: #{@id}, email_address: #{@email_address}, phone: #{@phone}>"
+      "<#{class_name} id: #{@id}, email_address: #{@email_address}, phone: #{@phone}, name:"\
+      " #{@name}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
     def inspect
       class_name = self.class.name.split('::').last
       "<#{class_name} id: #{@id.inspect}, email_address: #{@email_address.inspect}, phone:"\
-      " #{@phone.inspect}>"
+      " #{@phone.inspect}, name: #{@name.inspect}>"
     end
   end
 end

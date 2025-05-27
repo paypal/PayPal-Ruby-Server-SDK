@@ -17,7 +17,8 @@ module PaypalServerSdk
     # @return [VaultStatus]
     attr_accessor :status
 
-    # The details about a customer in PayPal's system of record.
+    # This object represents a merchant’s customer, allowing them to store
+    # contact details, and track all payments associated with the same customer.
     # @return [VaultCustomer]
     attr_accessor :customer
 

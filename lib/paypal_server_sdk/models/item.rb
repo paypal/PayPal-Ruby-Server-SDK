@@ -53,6 +53,11 @@ module PaypalServerSdk
     # @return [UniversalProductCode]
     attr_accessor :upc
 
+    # Metadata for merchant-managed recurring billing plans. Valid only during
+    # the saved payment method token or billing agreement creation.
+    # @return [OrderBillingPlan]
+    attr_accessor :billing_plan
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -66,6 +71,7 @@ module PaypalServerSdk
       @_hash['category'] = 'category'
       @_hash['image_url'] = 'image_url'
       @_hash['upc'] = 'upc'
+      @_hash['billing_plan'] = 'billing_plan'
       @_hash
     end
 
@@ -79,6 +85,7 @@ module PaypalServerSdk
         category
         image_url
         upc
+        billing_plan
       ]
     end
 
@@ -89,7 +96,7 @@ module PaypalServerSdk
 
     def initialize(name:, unit_amount:, quantity:, tax: SKIP, description: SKIP,
                    sku: SKIP, url: SKIP, category: SKIP, image_url: SKIP,
-                   upc: SKIP)
+                   upc: SKIP, billing_plan: SKIP)
       @name = name
       @unit_amount = unit_amount
       @tax = tax unless tax == SKIP
@@ -100,6 +107,7 @@ module PaypalServerSdk
       @category = category unless category == SKIP
       @image_url = image_url unless image_url == SKIP
       @upc = upc unless upc == SKIP
+      @billing_plan = billing_plan unless billing_plan == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -117,6 +125,7 @@ module PaypalServerSdk
       category = hash.key?('category') ? hash['category'] : SKIP
       image_url = hash.key?('image_url') ? hash['image_url'] : SKIP
       upc = UniversalProductCode.from_hash(hash['upc']) if hash['upc']
+      billing_plan = OrderBillingPlan.from_hash(hash['billing_plan']) if hash['billing_plan']
 
       # Create object from extracted values.
       Item.new(name: name,
@@ -128,7 +137,8 @@ module PaypalServerSdk
                url: url,
                category: category,
                image_url: image_url,
-               upc: upc)
+               upc: upc,
+               billing_plan: billing_plan)
     end
 
     # Provides a human-readable string representation of the object.
@@ -136,7 +146,7 @@ module PaypalServerSdk
       class_name = self.class.name.split('::').last
       "<#{class_name} name: #{@name}, unit_amount: #{@unit_amount}, tax: #{@tax}, quantity:"\
       " #{@quantity}, description: #{@description}, sku: #{@sku}, url: #{@url}, category:"\
-      " #{@category}, image_url: #{@image_url}, upc: #{@upc}>"
+      " #{@category}, image_url: #{@image_url}, upc: #{@upc}, billing_plan: #{@billing_plan}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
@@ -145,7 +155,7 @@ module PaypalServerSdk
       "<#{class_name} name: #{@name.inspect}, unit_amount: #{@unit_amount.inspect}, tax:"\
       " #{@tax.inspect}, quantity: #{@quantity.inspect}, description: #{@description.inspect},"\
       " sku: #{@sku.inspect}, url: #{@url.inspect}, category: #{@category.inspect}, image_url:"\
-      " #{@image_url.inspect}, upc: #{@upc.inspect}>"
+      " #{@image_url.inspect}, upc: #{@upc.inspect}, billing_plan: #{@billing_plan.inspect}>"
     end
   end
 end

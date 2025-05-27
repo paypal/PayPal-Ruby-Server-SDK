@@ -24,6 +24,10 @@ module PaypalServerSdk
     # @return [PhoneWithType]
     attr_accessor :phone
 
+    # The name of the party.
+    # @return [Name]
+    attr_accessor :name
+
     # Merchants and partners may already have a data-store where their customer
     # information is persisted. Use merchant_customer_id to associate the
     # PayPal-generated customer.id to your representation of a customer.
@@ -36,6 +40,7 @@ module PaypalServerSdk
       @_hash['id'] = 'id'
       @_hash['email_address'] = 'email_address'
       @_hash['phone'] = 'phone'
+      @_hash['name'] = 'name'
       @_hash['merchant_customer_id'] = 'merchant_customer_id'
       @_hash
     end
@@ -46,6 +51,7 @@ module PaypalServerSdk
         id
         email_address
         phone
+        name
         merchant_customer_id
       ]
     end
@@ -55,11 +61,12 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(id: SKIP, email_address: SKIP, phone: SKIP,
+    def initialize(id: SKIP, email_address: SKIP, phone: SKIP, name: SKIP,
                    merchant_customer_id: SKIP)
       @id = id unless id == SKIP
       @email_address = email_address unless email_address == SKIP
       @phone = phone unless phone == SKIP
+      @name = name unless name == SKIP
       @merchant_customer_id = merchant_customer_id unless merchant_customer_id == SKIP
     end
 
@@ -71,6 +78,7 @@ module PaypalServerSdk
       id = hash.key?('id') ? hash['id'] : SKIP
       email_address = hash.key?('email_address') ? hash['email_address'] : SKIP
       phone = PhoneWithType.from_hash(hash['phone']) if hash['phone']
+      name = Name.from_hash(hash['name']) if hash['name']
       merchant_customer_id =
         hash.key?('merchant_customer_id') ? hash['merchant_customer_id'] : SKIP
 
@@ -78,21 +86,23 @@ module PaypalServerSdk
       PaypalWalletCustomerRequest.new(id: id,
                                       email_address: email_address,
                                       phone: phone,
+                                      name: name,
                                       merchant_customer_id: merchant_customer_id)
     end
 
     # Provides a human-readable string representation of the object.
     def to_s
       class_name = self.class.name.split('::').last
-      "<#{class_name} id: #{@id}, email_address: #{@email_address}, phone: #{@phone},"\
-      " merchant_customer_id: #{@merchant_customer_id}>"
+      "<#{class_name} id: #{@id}, email_address: #{@email_address}, phone: #{@phone}, name:"\
+      " #{@name}, merchant_customer_id: #{@merchant_customer_id}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
     def inspect
       class_name = self.class.name.split('::').last
       "<#{class_name} id: #{@id.inspect}, email_address: #{@email_address.inspect}, phone:"\
-      " #{@phone.inspect}, merchant_customer_id: #{@merchant_customer_id.inspect}>"
+      " #{@phone.inspect}, name: #{@name.inspect}, merchant_customer_id:"\
+      " #{@merchant_customer_id.inspect}>"
     end
   end
 end

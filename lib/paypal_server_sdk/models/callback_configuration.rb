@@ -10,8 +10,7 @@ module PaypalServerSdk
     private_constant :SKIP
 
     # An array of callback events merchant can subscribe to for the
-    # corresponding callback url. The SHIPPING_ADDRESS callback event is
-    # required.
+    # corresponding callback url.
     # @return [Array[CallbackEvents]]
     attr_accessor :callback_events
 

@@ -6,53 +6,6 @@
 module PaypalServerSdk
   # PaymentsController
   class PaymentsController < BaseController
-    # Shows details for an authorized payment, by ID.
-    # @param [String] authorization_id Required parameter: The ID of the
-    # authorized payment for which to show details.
-    # @param [String] paypal_mock_response Optional parameter: PayPal's REST API
-    # uses a request header to invoke negative testing in the sandbox. This
-    # header configures the sandbox into a negative testing state for
-    # transactions that include the merchant.
-    # @param [String] paypal_auth_assertion Optional parameter: An
-    # API-caller-provided JSON Web Token (JWT) assertion that identifies the
-    # merchant. For details, see
-    # [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-asse
-    # rtion). Note:For three party transactions in which a partner is managing
-    # the API calls on behalf of a merchant, the partner must identify the
-    # merchant using either a PayPal-Auth-Assertion header or an access token
-    # with target_subject.
-    # @return [ApiResponse]  the complete http response with raw body and status code.
-    def get_authorized_payment(options = {})
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/v2/payments/authorizations/{authorization_id}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(options['authorization_id'], key: 'authorization_id')
-                                    .should_encode(true))
-                   .header_param(new_parameter(options['paypal_mock_response'], key: 'PayPal-Mock-Response'))
-                   .header_param(new_parameter(options['paypal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('Oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(PaymentAuthorization.method(:from_hash))
-                    .is_api_response(true)
-                    .local_error('401',
-                                 'Authentication failed due to missing authorization header, or'\
-                                  ' invalid authentication credentials.',
-                                 ErrorException)
-                    .local_error('404',
-                                 'The request failed because the resource does not exist.',
-                                 ErrorException)
-                    .local_error('500',
-                                 'The request failed because an internal server error occurred.',
-                                 APIException)
-                    .local_error('default',
-                                 'The error response.',
-                                 ErrorException))
-        .execute
-    end
-
     # Captures an authorized payment, by ID.
     # @param [String] authorization_id Required parameter: The PayPal-generated
     # ID for the authorized payment to capture.
@@ -76,7 +29,8 @@ module PaypalServerSdk
     # the API calls on behalf of a merchant, the partner must identify the
     # merchant using either a PayPal-Auth-Assertion header or an access token
     # with target_subject.
-    # @param [CaptureRequest] body Optional parameter: Example:
+    # @param [CaptureRequest] body Optional parameter: TODO: type description
+    # here
     # @return [ApiResponse]  the complete http response with raw body and status code.
     def capture_authorized_payment(options = {})
       new_api_call_builder
@@ -130,6 +84,48 @@ module PaypalServerSdk
         .execute
     end
 
+    # Shows details for a captured payment, by ID.
+    # @param [String] capture_id Required parameter: The PayPal-generated ID for
+    # the captured payment for which to show details.
+    # @param [String] paypal_mock_response Optional parameter: PayPal's REST API
+    # uses a request header to invoke negative testing in the sandbox. This
+    # header configures the sandbox into a negative testing state for
+    # transactions that include the merchant.
+    # @return [ApiResponse]  the complete http response with raw body and status code.
+    def get_captured_payment(options = {})
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/v2/payments/captures/{capture_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(options['capture_id'], key: 'capture_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter(options['paypal_mock_response'], key: 'PayPal-Mock-Response'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('Oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(CapturedPayment.method(:from_hash))
+                    .is_api_response(true)
+                    .local_error('401',
+                                 'Authentication failed due to missing authorization header, or'\
+                                  ' invalid authentication credentials.',
+                                 ErrorException)
+                    .local_error('403',
+                                 'The request failed because the caller has insufficient'\
+                                  ' permissions.',
+                                 ErrorException)
+                    .local_error('404',
+                                 'The request failed because the resource does not exist.',
+                                 ErrorException)
+                    .local_error('500',
+                                 'The request failed because an internal server error occurred.',
+                                 APIException)
+                    .local_error('default',
+                                 'The error response.',
+                                 ErrorException))
+        .execute
+    end
+
     # Reauthorizes an authorized PayPal account payment, by ID. To ensure that
     # funds are still available, reauthorize a payment after its initial
     # three-day honor period expires. Within the 29-day authorization period,
@@ -161,7 +157,8 @@ module PaypalServerSdk
     # the API calls on behalf of a merchant, the partner must identify the
     # merchant using either a PayPal-Auth-Assertion header or an access token
     # with target_subject.
-    # @param [ReauthorizeRequest] body Optional parameter: Example:
+    # @param [ReauthorizeRequest] body Optional parameter: TODO: type
+    # description here
     # @return [ApiResponse]  the complete http response with raw body and status code.
     def reauthorize_payment(options = {})
       new_api_call_builder
@@ -277,48 +274,6 @@ module PaypalServerSdk
         .execute
     end
 
-    # Shows details for a captured payment, by ID.
-    # @param [String] capture_id Required parameter: The PayPal-generated ID for
-    # the captured payment for which to show details.
-    # @param [String] paypal_mock_response Optional parameter: PayPal's REST API
-    # uses a request header to invoke negative testing in the sandbox. This
-    # header configures the sandbox into a negative testing state for
-    # transactions that include the merchant.
-    # @return [ApiResponse]  the complete http response with raw body and status code.
-    def get_captured_payment(options = {})
-      new_api_call_builder
-        .request(new_request_builder(HttpMethodEnum::GET,
-                                     '/v2/payments/captures/{capture_id}',
-                                     Server::DEFAULT)
-                   .template_param(new_parameter(options['capture_id'], key: 'capture_id')
-                                    .should_encode(true))
-                   .header_param(new_parameter(options['paypal_mock_response'], key: 'PayPal-Mock-Response'))
-                   .header_param(new_parameter('application/json', key: 'accept'))
-                   .auth(Single.new('Oauth2')))
-        .response(new_response_handler
-                    .deserializer(APIHelper.method(:custom_type_deserializer))
-                    .deserialize_into(CapturedPayment.method(:from_hash))
-                    .is_api_response(true)
-                    .local_error('401',
-                                 'Authentication failed due to missing authorization header, or'\
-                                  ' invalid authentication credentials.',
-                                 ErrorException)
-                    .local_error('403',
-                                 'The request failed because the caller has insufficient'\
-                                  ' permissions.',
-                                 ErrorException)
-                    .local_error('404',
-                                 'The request failed because the resource does not exist.',
-                                 ErrorException)
-                    .local_error('500',
-                                 'The request failed because an internal server error occurred.',
-                                 APIException)
-                    .local_error('default',
-                                 'The error response.',
-                                 ErrorException))
-        .execute
-    end
-
     # Refunds a captured payment, by ID. For a full refund, include an empty
     # payload in the JSON request body. For a partial refund, include an amount
     # object in the JSON request body.
@@ -344,7 +299,8 @@ module PaypalServerSdk
     # the API calls on behalf of a merchant, the partner must identify the
     # merchant using either a PayPal-Auth-Assertion header or an access token
     # with target_subject.
-    # @param [RefundRequest] body Optional parameter: Example:
+    # @param [RefundRequest] body Optional parameter: TODO: type description
+    # here
     # @return [ApiResponse]  the complete http response with raw body and status code.
     def refund_captured_payment(options = {})
       new_api_call_builder
@@ -388,6 +344,53 @@ module PaypalServerSdk
                     .local_error('422',
                                  'The request failed because it either is semantically incorrect'\
                                   ' or failed business validation.',
+                                 ErrorException)
+                    .local_error('500',
+                                 'The request failed because an internal server error occurred.',
+                                 APIException)
+                    .local_error('default',
+                                 'The error response.',
+                                 ErrorException))
+        .execute
+    end
+
+    # Shows details for an authorized payment, by ID.
+    # @param [String] authorization_id Required parameter: The ID of the
+    # authorized payment for which to show details.
+    # @param [String] paypal_mock_response Optional parameter: PayPal's REST API
+    # uses a request header to invoke negative testing in the sandbox. This
+    # header configures the sandbox into a negative testing state for
+    # transactions that include the merchant.
+    # @param [String] paypal_auth_assertion Optional parameter: An
+    # API-caller-provided JSON Web Token (JWT) assertion that identifies the
+    # merchant. For details, see
+    # [PayPal-Auth-Assertion](/docs/api/reference/api-requests/#paypal-auth-asse
+    # rtion). Note:For three party transactions in which a partner is managing
+    # the API calls on behalf of a merchant, the partner must identify the
+    # merchant using either a PayPal-Auth-Assertion header or an access token
+    # with target_subject.
+    # @return [ApiResponse]  the complete http response with raw body and status code.
+    def get_authorized_payment(options = {})
+      new_api_call_builder
+        .request(new_request_builder(HttpMethodEnum::GET,
+                                     '/v2/payments/authorizations/{authorization_id}',
+                                     Server::DEFAULT)
+                   .template_param(new_parameter(options['authorization_id'], key: 'authorization_id')
+                                    .should_encode(true))
+                   .header_param(new_parameter(options['paypal_mock_response'], key: 'PayPal-Mock-Response'))
+                   .header_param(new_parameter(options['paypal_auth_assertion'], key: 'PayPal-Auth-Assertion'))
+                   .header_param(new_parameter('application/json', key: 'accept'))
+                   .auth(Single.new('Oauth2')))
+        .response(new_response_handler
+                    .deserializer(APIHelper.method(:custom_type_deserializer))
+                    .deserialize_into(PaymentAuthorization.method(:from_hash))
+                    .is_api_response(true)
+                    .local_error('401',
+                                 'Authentication failed due to missing authorization header, or'\
+                                  ' invalid authentication credentials.',
+                                 ErrorException)
+                    .local_error('404',
+                                 'The request failed because the resource does not exist.',
                                  ErrorException)
                     .local_error('500',
                                  'The request failed because an internal server error occurred.',

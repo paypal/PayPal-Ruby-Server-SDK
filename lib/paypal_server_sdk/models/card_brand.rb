@@ -11,7 +11,7 @@ module PaypalServerSdk
       # Visa card.
       VISA = 'VISA'.freeze,
 
-      # Mastecard card.
+      # Mastercard card.
       MASTERCARD = 'MASTERCARD'.freeze,
 
       # Discover card.

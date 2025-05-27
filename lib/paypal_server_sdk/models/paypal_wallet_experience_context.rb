@@ -33,6 +33,12 @@ module PaypalServerSdk
     # @return [PaypalWalletContextShippingPreference]
     attr_accessor :shipping_preference
 
+    # The preference to display the contact information (buyer’s shipping email
+    # & phone number) on PayPal's checkout for easy merchant-buyer
+    # communication.
+    # @return [PaypalWalletContactPreference]
+    attr_accessor :contact_preference
+
     # Describes the URL.
     # @return [String]
     attr_accessor :return_url
@@ -63,6 +69,7 @@ module PaypalServerSdk
       @_hash['brand_name'] = 'brand_name'
       @_hash['locale'] = 'locale'
       @_hash['shipping_preference'] = 'shipping_preference'
+      @_hash['contact_preference'] = 'contact_preference'
       @_hash['return_url'] = 'return_url'
       @_hash['cancel_url'] = 'cancel_url'
       @_hash['landing_page'] = 'landing_page'
@@ -78,6 +85,7 @@ module PaypalServerSdk
         brand_name
         locale
         shipping_preference
+        contact_preference
         return_url
         cancel_url
         landing_page
@@ -95,6 +103,7 @@ module PaypalServerSdk
     def initialize(
       brand_name: SKIP, locale: SKIP,
       shipping_preference: PaypalWalletContextShippingPreference::GET_FROM_FILE,
+      contact_preference: PaypalWalletContactPreference::NO_CONTACT_INFO,
       return_url: SKIP, cancel_url: SKIP,
       landing_page: PaypalExperienceLandingPage::NO_PREFERENCE,
       user_action: PaypalExperienceUserAction::CONTINUE,
@@ -104,6 +113,7 @@ module PaypalServerSdk
       @brand_name = brand_name unless brand_name == SKIP
       @locale = locale unless locale == SKIP
       @shipping_preference = shipping_preference unless shipping_preference == SKIP
+      @contact_preference = contact_preference unless contact_preference == SKIP
       @return_url = return_url unless return_url == SKIP
       @cancel_url = cancel_url unless cancel_url == SKIP
       @landing_page = landing_page unless landing_page == SKIP
@@ -127,6 +137,8 @@ module PaypalServerSdk
       locale = hash.key?('locale') ? hash['locale'] : SKIP
       shipping_preference =
         hash['shipping_preference'] ||= PaypalWalletContextShippingPreference::GET_FROM_FILE
+      contact_preference =
+        hash['contact_preference'] ||= PaypalWalletContactPreference::NO_CONTACT_INFO
       return_url = hash.key?('return_url') ? hash['return_url'] : SKIP
       cancel_url = hash.key?('cancel_url') ? hash['cancel_url'] : SKIP
       landing_page =
@@ -142,6 +154,7 @@ module PaypalServerSdk
       PaypalWalletExperienceContext.new(brand_name: brand_name,
                                         locale: locale,
                                         shipping_preference: shipping_preference,
+                                        contact_preference: contact_preference,
                                         return_url: return_url,
                                         cancel_url: cancel_url,
                                         landing_page: landing_page,
@@ -154,18 +167,19 @@ module PaypalServerSdk
     def to_s
       class_name = self.class.name.split('::').last
       "<#{class_name} brand_name: #{@brand_name}, locale: #{@locale}, shipping_preference:"\
-      " #{@shipping_preference}, return_url: #{@return_url}, cancel_url: #{@cancel_url},"\
-      " landing_page: #{@landing_page}, user_action: #{@user_action}, payment_method_preference:"\
-      " #{@payment_method_preference}, order_update_callback_config:"\
-      " #{@order_update_callback_config}>"
+      " #{@shipping_preference}, contact_preference: #{@contact_preference}, return_url:"\
+      " #{@return_url}, cancel_url: #{@cancel_url}, landing_page: #{@landing_page}, user_action:"\
+      " #{@user_action}, payment_method_preference: #{@payment_method_preference},"\
+      " order_update_callback_config: #{@order_update_callback_config}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
     def inspect
       class_name = self.class.name.split('::').last
       "<#{class_name} brand_name: #{@brand_name.inspect}, locale: #{@locale.inspect},"\
-      " shipping_preference: #{@shipping_preference.inspect}, return_url: #{@return_url.inspect},"\
-      " cancel_url: #{@cancel_url.inspect}, landing_page: #{@landing_page.inspect}, user_action:"\
+      " shipping_preference: #{@shipping_preference.inspect}, contact_preference:"\
+      " #{@contact_preference.inspect}, return_url: #{@return_url.inspect}, cancel_url:"\
+      " #{@cancel_url.inspect}, landing_page: #{@landing_page.inspect}, user_action:"\
       " #{@user_action.inspect}, payment_method_preference: #{@payment_method_preference.inspect},"\
       " order_update_callback_config: #{@order_update_callback_config.inspect}>"
     end
