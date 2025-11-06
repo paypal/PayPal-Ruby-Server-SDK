@@ -15,13 +15,17 @@ The following parameters are configurable for the API Client:
 | retry_statuses | `Array` | A list of HTTP statuses to retry. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | retry_methods | `Array` | A list of HTTP methods to retry. <br> **Default: %i[get put]** |
 | http_callback | `HttpCallBack` | The Http CallBack allows defining callables for pre and post API calls. |
+| proxy_settings | [`ProxySettings`](../doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
 | logging_configuration | [`LoggingConfiguration`](../doc/logging-configuration.md) | The SDK logging configuration for API calls |
 | client_credentials_auth_credentials | [`ClientCredentialsAuthCredentials`](auth/oauth-2-client-credentials-grant.md) | The credential object for OAuth 2 Client Credentials Grant |
 
 The API client can be initialized as follows:
 
 ```ruby
-client = PaypalServerSdk::Client.new(
+require 'paypal_server_sdk'
+include PaypalServerSdk
+
+client = Client.new(
   client_credentials_auth_credentials: ClientCredentialsAuthCredentials.new(
     o_auth_client_id: 'OAuthClientId',
     o_auth_client_secret: 'OAuthClientSecret'
@@ -50,5 +54,7 @@ The gateway for the SDK. This class acts as a factory for the Controllers and al
 | orders | Gets OrdersController |
 | payments | Gets PaymentsController |
 | vault | Gets VaultController |
+| transaction_search | Gets TransactionSearchController |
+| subscriptions | Gets SubscriptionsController |
 | o_auth_authorization | Gets OAuthAuthorizationController |
 

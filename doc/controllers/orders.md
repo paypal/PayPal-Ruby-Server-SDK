@@ -12,14 +12,121 @@ orders_controller = client.orders
 
 ## Methods
 
-* [Patch Order](../../doc/controllers/orders.md#patch-order)
-* [Authorize Order](../../doc/controllers/orders.md#authorize-order)
-* [Update Order Tracking](../../doc/controllers/orders.md#update-order-tracking)
-* [Create Order Tracking](../../doc/controllers/orders.md#create-order-tracking)
 * [Create Order](../../doc/controllers/orders.md#create-order)
-* [Capture Order](../../doc/controllers/orders.md#capture-order)
 * [Get Order](../../doc/controllers/orders.md#get-order)
+* [Patch Order](../../doc/controllers/orders.md#patch-order)
 * [Confirm Order](../../doc/controllers/orders.md#confirm-order)
+* [Authorize Order](../../doc/controllers/orders.md#authorize-order)
+* [Capture Order](../../doc/controllers/orders.md#capture-order)
+* [Create Order Tracking](../../doc/controllers/orders.md#create-order-tracking)
+* [Update Order Tracking](../../doc/controllers/orders.md#update-order-tracking)
+
+
+# Create Order
+
+Creates an order. Merchants and partners can add Level 2 and 3 data to payments to reduce risk and payment processing costs. For more information about processing payments, see checkout or multiparty checkout. Note: For error handling and troubleshooting, see Orders v2 errors.
+
+```ruby
+def create_order(options = {})
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `body` | [`OrderRequest`](../../doc/models/order-request.md) | Body, Required | - |
+| `paypal_mock_response` | `String` | Header, Optional | PayPal's REST API uses a request header to invoke negative testing in the sandbox. This header configures the sandbox into a negative testing state for transactions that include the merchant. |
+| `paypal_request_id` | `String` | Header, Optional | The server stores keys for 6 hours. The API callers can request the times to up to 72 hours by speaking to their Account Manager. It is mandatory for all single-step create order calls (E.g. Create Order Request with payment source information like Card, PayPal.vault_id, PayPal.billing_agreement_id, etc).<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `108` |
+| `paypal_partner_attribution_id` | `String` | Header, Optional | **Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
+| `paypal_client_metadata_id` | `String` | Header, Optional | **Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
+| `prefer` | `String` | Header, Optional | The preferred server response upon successful completion of the request. Value is: return=minimal. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the id, status and HATEOAS links. return=representation. The server returns a complete resource representation, including the current state of the resource.<br><br>**Default**: `'return=minimal'`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `25`, *Pattern*: `^[a-zA-Z=,-]*$` |
+| `paypal_auth_assertion` | `String` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see PayPal-Auth-Assertion. |
+
+## Response Type
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+
+## Example Usage
+
+```ruby
+collect = {
+  'body' => OrderRequest.new(
+    intent: CheckoutPaymentIntent::CAPTURE,
+    purchase_units: [
+      PurchaseUnitRequest.new(
+        amount: AmountWithBreakdown.new(
+          currency_code: 'currency_code6',
+          value: 'value0'
+        )
+      )
+    ]
+  ),
+  'prefer' => 'return=minimal'
+}
+
+result = orders_controller.create_order(collect)
+
+if result.success?
+  puts result.data
+elsif result.error?
+  warn result.errors
+end
+```
+
+## Errors
+
+| HTTP Status Code | Error Description | Exception Class |
+|  --- | --- | --- |
+| 400 | Request is not well-formed, syntactically incorrect, or violates schema. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 401 | Authentication failed due to missing authorization header, or invalid authentication credentials. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 422 | The requested action could not be performed, semantically incorrect, or failed business validation. | [`ErrorException`](../../doc/models/error-exception.md) |
+| Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
+
+
+# Get Order
+
+Shows details for an order, by ID. Note: For error handling and troubleshooting, see Orders v2 errors.
+
+```ruby
+def get_order(options = {})
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `String` | Template, Required | The ID of the order for which to show details.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
+| `paypal_mock_response` | `String` | Header, Optional | PayPal's REST API uses a request header to invoke negative testing in the sandbox. This header configures the sandbox into a negative testing state for transactions that include the merchant. |
+| `paypal_auth_assertion` | `String` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see PayPal-Auth-Assertion. |
+| `fields` | `String` | Query, Optional | A comma-separated list of fields that should be returned for the order. Valid filter field is `payment_source`.<br><br>**Constraints**: *Pattern*: `^[a-z_]*$` |
+
+## Response Type
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+
+## Example Usage
+
+```ruby
+collect = {
+  'id' => 'id0'
+}
+
+result = orders_controller.get_order(collect)
+
+if result.success?
+  puts result.data
+elsif result.error?
+  warn result.errors
+end
+```
+
+## Errors
+
+| HTTP Status Code | Error Description | Exception Class |
+|  --- | --- | --- |
+| 401 | Authentication failed due to missing authorization header, or invalid authentication credentials. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 404 | The specified resource does not exist. | [`ErrorException`](../../doc/models/error-exception.md) |
+| Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
 # Patch Order
@@ -37,7 +144,7 @@ def patch_order(options = {})
 | `id` | `String` | Template, Required | The ID of the order to update.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
 | `paypal_mock_response` | `String` | Header, Optional | PayPal's REST API uses a request header to invoke negative testing in the sandbox. This header configures the sandbox into a negative testing state for transactions that include the merchant. |
 | `paypal_auth_assertion` | `String` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see PayPal-Auth-Assertion. |
-| `body` | [`Array<Patch>`](../../doc/models/patch.md) | Body, Optional | - |
+| `body` | [`Array[Patch]`](../../doc/models/patch.md) | Body, Optional | **Constraints**: *Minimum Items*: `0`, *Maximum Items*: `32767` |
 
 ## Response Type
 
@@ -56,6 +163,12 @@ collect = {
 }
 
 result = orders_controller.patch_order(collect)
+
+if result.success?
+  puts result.data
+elsif result.error?
+  warn result.errors
+end
 ```
 
 ## Errors
@@ -66,6 +179,56 @@ result = orders_controller.patch_order(collect)
 | 401 | Authentication failed due to missing authorization header, or invalid authentication credentials. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 404 | The specified resource does not exist. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 422 | The requested action could not be performed, semantically incorrect, or failed business validation. | [`ErrorException`](../../doc/models/error-exception.md) |
+| Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
+
+
+# Confirm Order
+
+Payer confirms their intent to pay for the the Order with the given payment source.
+
+```ruby
+def confirm_order(options = {})
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `String` | Template, Required | The ID of the order for which the payer confirms their intent to pay.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
+| `paypal_client_metadata_id` | `String` | Header, Optional | **Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
+| `paypal_auth_assertion` | `String` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see PayPal-Auth-Assertion. |
+| `prefer` | `String` | Header, Optional | The preferred server response upon successful completion of the request. Value is: return=minimal. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the id, status and HATEOAS links. return=representation. The server returns a complete resource representation, including the current state of the resource.<br><br>**Default**: `'return=minimal'`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `25`, *Pattern*: `^[a-zA-Z=]*$` |
+| `body` | [`ConfirmOrderRequest`](../../doc/models/confirm-order-request.md) | Body, Optional | - |
+
+## Response Type
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+
+## Example Usage
+
+```ruby
+collect = {
+  'id' => 'id0',
+  'prefer' => 'return=minimal'
+}
+
+result = orders_controller.confirm_order(collect)
+
+if result.success?
+  puts result.data
+elsif result.error?
+  warn result.errors
+end
+```
+
+## Errors
+
+| HTTP Status Code | Error Description | Exception Class |
+|  --- | --- | --- |
+| 400 | Request is not well-formed, syntactically incorrect, or violates schema. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 403 | Authorization failed due to insufficient permissions. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 422 | The requested action could not be performed, semantically incorrect, or failed business validation. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 | Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
@@ -91,7 +254,7 @@ def authorize_order(options = {})
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property in this instance returns the response data which is of type [`OrderAuthorizeResponse`](../../doc/models/order-authorize-response.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`OrderAuthorizeResponse`](../../doc/models/order-authorize-response.md).
 
 ## Example Usage
 
@@ -102,6 +265,12 @@ collect = {
 }
 
 result = orders_controller.authorize_order(collect)
+
+if result.success?
+  puts result.data
+elsif result.error?
+  warn result.errors
+end
 ```
 
 ## Errors
@@ -114,156 +283,6 @@ result = orders_controller.authorize_order(collect)
 | 404 | The specified resource does not exist. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 422 | The requested action could not be performed, semantically incorrect, or failed business validation. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
-| Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
-
-
-# Update Order Tracking
-
-Updates or cancels the tracking information for a PayPal order, by ID. Updatable attributes or objects: Attribute Op Notes items replace Using replace op for items will replace the entire items object with the value sent in request. notify_payer replace, add status replace Only patching status to CANCELLED is currently supported.
-
-```ruby
-def update_order_tracking(options = {})
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `String` | Template, Required | The ID of the order that the tracking information is associated with.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
-| `tracker_id` | `String` | Template, Required | The order tracking ID.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
-| `paypal_auth_assertion` | `String` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see PayPal-Auth-Assertion. |
-| `body` | [`Array<Patch>`](../../doc/models/patch.md) | Body, Optional | - |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
-
-## Example Usage
-
-```ruby
-collect = {
-  'id' => 'id0',
-  'tracker_id' => 'tracker_id2',
-  'body' => [
-    Patch.new(
-      op: PatchOp::ADD
-    )
-  ]
-}
-
-result = orders_controller.update_order_tracking(collect)
-```
-
-## Errors
-
-| HTTP Status Code | Error Description | Exception Class |
-|  --- | --- | --- |
-| 400 | Request is not well-formed, syntactically incorrect, or violates schema. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 403 | Authorization failed due to insufficient permissions. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 404 | The specified resource does not exist. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 422 | The requested action could not be performed, semantically incorrect, or failed business validation. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
-| Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
-
-
-# Create Order Tracking
-
-Adds tracking information for an Order.
-
-```ruby
-def create_order_tracking(options = {})
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `String` | Template, Required | The ID of the order that the tracking information is associated with.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
-| `body` | [`OrderTrackerRequest`](../../doc/models/order-tracker-request.md) | Body, Required | - |
-| `paypal_auth_assertion` | `String` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see PayPal-Auth-Assertion. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property in this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
-
-## Example Usage
-
-```ruby
-collect = {
-  'id' => 'id0',
-  'body' => OrderTrackerRequest.new(
-    capture_id: 'capture_id8',
-    notify_payer: false
-  )
-}
-
-result = orders_controller.create_order_tracking(collect)
-```
-
-## Errors
-
-| HTTP Status Code | Error Description | Exception Class |
-|  --- | --- | --- |
-| 400 | Request is not well-formed, syntactically incorrect, or violates schema. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 403 | Authorization failed due to insufficient permissions. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 404 | The specified resource does not exist. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 422 | The requested action could not be performed, semantically incorrect, or failed business validation. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
-| Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
-
-
-# Create Order
-
-Creates an order. Merchants and partners can add Level 2 and 3 data to payments to reduce risk and payment processing costs. For more information about processing payments, see checkout or multiparty checkout. Note: For error handling and troubleshooting, see Orders v2 errors.
-
-```ruby
-def create_order(options = {})
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `body` | [`OrderRequest`](../../doc/models/order-request.md) | Body, Required | - |
-| `paypal_mock_response` | `String` | Header, Optional | PayPal's REST API uses a request header to invoke negative testing in the sandbox. This header configures the sandbox into a negative testing state for transactions that include the merchant. |
-| `paypal_request_id` | `String` | Header, Optional | The server stores keys for 6 hours. The API callers can request the times to up to 72 hours by speaking to their Account Manager. It is mandatory for all single-step create order calls (E.g. Create Order Request with payment source information like Card, PayPal.vault_id, PayPal.billing_agreement_id, etc).<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `108` |
-| `paypal_partner_attribution_id` | `String` | Header, Optional | **Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
-| `paypal_client_metadata_id` | `String` | Header, Optional | **Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
-| `prefer` | `String` | Header, Optional | The preferred server response upon successful completion of the request. Value is: return=minimal. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the id, status and HATEOAS links. return=representation. The server returns a complete resource representation, including the current state of the resource.<br><br>**Default**: `'return=minimal'`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `25`, *Pattern*: `^[a-zA-Z=,-]*$` |
-| `paypal_auth_assertion` | `String` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see PayPal-Auth-Assertion. |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property in this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
-
-## Example Usage
-
-```ruby
-collect = {
-  'body' => OrderRequest.new(
-    intent: CheckoutPaymentIntent::CAPTURE,
-    purchase_units: [
-      PurchaseUnitRequest.new(
-        amount: AmountWithBreakdown.new(
-          currency_code: 'currency_code6',
-          value: 'value0'
-        )
-      )
-    ]
-  ),
-  'prefer' => 'return=minimal'
-}
-
-result = orders_controller.create_order(collect)
-```
-
-## Errors
-
-| HTTP Status Code | Error Description | Exception Class |
-|  --- | --- | --- |
-| 400 | Request is not well-formed, syntactically incorrect, or violates schema. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 401 | Authentication failed due to missing authorization header, or invalid authentication credentials. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 422 | The requested action could not be performed, semantically incorrect, or failed business validation. | [`ErrorException`](../../doc/models/error-exception.md) |
 | Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
@@ -289,7 +308,7 @@ def capture_order(options = {})
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property in this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
 ## Example Usage
 
@@ -300,6 +319,12 @@ collect = {
 }
 
 result = orders_controller.capture_order(collect)
+
+if result.success?
+  puts result.data
+elsif result.error?
+  warn result.errors
+end
 ```
 
 ## Errors
@@ -315,77 +340,44 @@ result = orders_controller.capture_order(collect)
 | Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
 
 
-# Get Order
+# Create Order Tracking
 
-Shows details for an order, by ID. Note: For error handling and troubleshooting, see Orders v2 errors.
+Adds tracking information for an Order.
 
 ```ruby
-def get_order(options = {})
+def create_order_tracking(options = {})
 ```
 
 ## Parameters
 
 | Parameter | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `id` | `String` | Template, Required | The ID of the order for which to show details.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
-| `paypal_mock_response` | `String` | Header, Optional | PayPal's REST API uses a request header to invoke negative testing in the sandbox. This header configures the sandbox into a negative testing state for transactions that include the merchant. |
+| `id` | `String` | Template, Required | The ID of the order that the tracking information is associated with.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
+| `body` | [`OrderTrackerRequest`](../../doc/models/order-tracker-request.md) | Body, Required | - |
 | `paypal_auth_assertion` | `String` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see PayPal-Auth-Assertion. |
-| `fields` | `String` | Query, Optional | A comma-separated list of fields that should be returned for the order. Valid filter field is `payment_source`.<br><br>**Constraints**: *Pattern*: `^[a-z_]*$` |
 
 ## Response Type
 
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property in this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
-
-## Example Usage
-
-```ruby
-collect = {
-  'id' => 'id0'
-}
-
-result = orders_controller.get_order(collect)
-```
-
-## Errors
-
-| HTTP Status Code | Error Description | Exception Class |
-|  --- | --- | --- |
-| 401 | Authentication failed due to missing authorization header, or invalid authentication credentials. | [`ErrorException`](../../doc/models/error-exception.md) |
-| 404 | The specified resource does not exist. | [`ErrorException`](../../doc/models/error-exception.md) |
-| Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
-
-
-# Confirm Order
-
-Payer confirms their intent to pay for the the Order with the given payment source.
-
-```ruby
-def confirm_order(options = {})
-```
-
-## Parameters
-
-| Parameter | Type | Tags | Description |
-|  --- | --- | --- | --- |
-| `id` | `String` | Template, Required | The ID of the order for which the payer confirms their intent to pay.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
-| `paypal_client_metadata_id` | `String` | Header, Optional | **Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36` |
-| `paypal_auth_assertion` | `String` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see PayPal-Auth-Assertion. |
-| `prefer` | `String` | Header, Optional | The preferred server response upon successful completion of the request. Value is: return=minimal. The server returns a minimal response to optimize communication between the API caller and the server. A minimal response includes the id, status and HATEOAS links. return=representation. The server returns a complete resource representation, including the current state of the resource.<br><br>**Default**: `'return=minimal'`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `25`, *Pattern*: `^[a-zA-Z=]*$` |
-| `body` | [`ConfirmOrderRequest`](../../doc/models/confirm-order-request.md) | Body, Optional | - |
-
-## Response Type
-
-This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property in this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
 ## Example Usage
 
 ```ruby
 collect = {
   'id' => 'id0',
-  'prefer' => 'return=minimal'
+  'body' => OrderTrackerRequest.new(
+    capture_id: 'capture_id8',
+    notify_payer: false
+  )
 }
 
-result = orders_controller.confirm_order(collect)
+result = orders_controller.create_order_tracking(collect)
+
+if result.success?
+  puts result.data
+elsif result.error?
+  warn result.errors
+end
 ```
 
 ## Errors
@@ -394,6 +386,62 @@ result = orders_controller.confirm_order(collect)
 |  --- | --- | --- |
 | 400 | Request is not well-formed, syntactically incorrect, or violates schema. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 403 | Authorization failed due to insufficient permissions. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 404 | The specified resource does not exist. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 422 | The requested action could not be performed, semantically incorrect, or failed business validation. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
+| Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |
+
+
+# Update Order Tracking
+
+Updates or cancels the tracking information for a PayPal order, by ID. Updatable attributes or objects: Attribute Op Notes items replace Using replace op for items will replace the entire items object with the value sent in request. notify_payer replace, add status replace Only patching status to CANCELLED is currently supported.
+
+```ruby
+def update_order_tracking(options = {})
+```
+
+## Parameters
+
+| Parameter | Type | Tags | Description |
+|  --- | --- | --- | --- |
+| `id` | `String` | Template, Required | The ID of the order that the tracking information is associated with.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
+| `tracker_id` | `String` | Template, Required | The order tracking ID.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[A-Z0-9]+$` |
+| `paypal_auth_assertion` | `String` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see PayPal-Auth-Assertion. |
+| `body` | [`Array[Patch]`](../../doc/models/patch.md) | Body, Optional | **Constraints**: *Minimum Items*: `0`, *Maximum Items*: `32767` |
+
+## Response Type
+
+This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
+
+## Example Usage
+
+```ruby
+collect = {
+  'id' => 'id0',
+  'tracker_id' => 'tracker_id2',
+  'body' => [
+    Patch.new(
+      op: PatchOp::ADD
+    )
+  ]
+}
+
+result = orders_controller.update_order_tracking(collect)
+
+if result.success?
+  puts result.data
+elsif result.error?
+  warn result.errors
+end
+```
+
+## Errors
+
+| HTTP Status Code | Error Description | Exception Class |
+|  --- | --- | --- |
+| 400 | Request is not well-formed, syntactically incorrect, or violates schema. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 403 | Authorization failed due to insufficient permissions. | [`ErrorException`](../../doc/models/error-exception.md) |
+| 404 | The specified resource does not exist. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 422 | The requested action could not be performed, semantically incorrect, or failed business validation. | [`ErrorException`](../../doc/models/error-exception.md) |
 | 500 | An internal server error has occurred. | [`ErrorException`](../../doc/models/error-exception.md) |
 | Default | The error response. | [`ErrorException`](../../doc/models/error-exception.md) |

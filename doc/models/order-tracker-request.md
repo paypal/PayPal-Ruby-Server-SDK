@@ -16,7 +16,7 @@ The tracking details of an order.
 | `carrier_name_other` | `String` | Optional | The name of the carrier for the shipment. Provide this value only if the carrier parameter is OTHER. This property supports Unicode.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `64` |
 | `capture_id` | `String` | Required | The PayPal capture ID.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `50`, *Pattern*: `^[a-zA-Z0-9]*$` |
 | `notify_payer` | `TrueClass \| FalseClass` | Optional | If true, PayPal will send an email notification to the payer of the PayPal transaction. The email contains the tracking details provided through the Orders tracking API request. Independent of any value passed for `notify_payer`, the payer may receive tracking notifications within the PayPal app, based on the user's notification preferences.<br><br>**Default**: `false` |
-| `items` | [`Array<OrderTrackerItem>`](../../doc/models/order-tracker-item.md) | Optional | An array of details of items in the shipment. |
+| `items` | [`Array[OrderTrackerItem]`](../../doc/models/order-tracker-item.md) | Optional | An array of details of items in the shipment. |
 
 ## Example (as JSON)
 
@@ -25,7 +25,7 @@ The tracking details of an order.
   "capture_id": "capture_id0",
   "notify_payer": false,
   "tracking_number": "tracking_number6",
-  "carrier": "LEADER",
+  "carrier": "ZELERIS",
   "carrier_name_other": "carrier_name_other0",
   "items": [
     {
