@@ -11,7 +11,7 @@ Metadata for merchant-managed recurring billing plans. Valid only during the sav
 
 | Name | Type | Tags | Description |
 |  --- | --- | --- | --- |
-| `billing_cycles` | [`Array<BillingCycle>`](../../doc/models/billing-cycle.md) | Required | An array of billing cycles for trial billing and regular billing. A plan can have at most two trial cycles and only one regular cycle.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `3` |
+| `billing_cycles` | [`Array[BillingCycle]`](../../doc/models/billing-cycle.md) | Required | An array of billing cycles for trial billing and regular billing. A plan can have at most two trial cycles and only one regular cycle.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `3` |
 | `setup_fee` | [`Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. |
 | `name` | `String` | Optional | Name of the recurring plan.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `127`, *Pattern*: `^[A-Za-z0-9() +',.:-]+$` |
 
@@ -34,10 +34,6 @@ Metadata for merchant-managed recurring billing plans. Valid only during the sav
           "currency_code": "currency_code0",
           "value": "value6"
         }
-      },
-      "frequency": {
-        "key1": "val1",
-        "key2": "val2"
       },
       "start_date": "start_date6"
     }

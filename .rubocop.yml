@@ -51,6 +51,9 @@ Style/MultilineTernaryOperator:
 Layout/MultilineMethodCallIndentation:
   Enabled: false
 
+Style/OptionalBooleanParameter:
+  Enabled: false
+
 Style/KeywordParametersOrder:
   Enabled: false
 

@@ -27,7 +27,10 @@ Documentation for accessing and setting credentials for Oauth2.
 You must initialize the client with *OAuth 2.0 Client Credentials Grant* credentials as shown in the following code snippet. This will fetch the OAuth token automatically when any of the endpoints, requiring *OAuth 2.0 Client Credentials Grant* authentication, are called.
 
 ```ruby
-client = PaypalServerSdk::Client.new(
+require 'paypal_server_sdk'
+include PaypalServerSdk
+
+client = Client.new(
   client_credentials_auth_credentials: ClientCredentialsAuthCredentials.new(
     o_auth_client_id: 'OAuthClientId',
     o_auth_client_secret: 'OAuthClientSecret'
@@ -44,7 +47,10 @@ Your application can also manually provide an OAuthToken using the setter `in` o
 Whenever the OAuth Token gets updated, the provided callback implementation will be executed. For instance, you may use it to store your access token whenever it gets updated.
 
 ```ruby
-client = PaypalServerSdk::Client.new(
+require 'paypal_server_sdk'
+include PaypalServerSdk
+
+client = Client.new(
   client_credentials_auth_credentials: ClientCredentialsAuthCredentials.new(
     o_auth_client_id: 'OAuthClientId',
     o_auth_client_secret: 'OAuthClientSecret',
@@ -62,6 +68,9 @@ client = PaypalServerSdk::Client.new(
 
 
 ```ruby
+require 'paypal_server_sdk'
+include PaypalServerSdk
+
 def o_auth_token_provider(last_oauth_token, auth_manager)
   # Add the callback handler to provide a new OAuth token
   # It will be triggered whenever the last provided o_auth_token is null or expired
@@ -75,7 +84,7 @@ _o_auth_token_provider = proc do | last_oauth_token, auth_manager |
 end
 
 
-client = PaypalServerSdk::Client.new(
+client = Client.new(
   client_credentials_auth_credentials: ClientCredentialsAuthCredentials.new(
     o_auth_client_id: 'OAuthClientId',
     o_auth_client_secret: 'OAuthClientSecret',

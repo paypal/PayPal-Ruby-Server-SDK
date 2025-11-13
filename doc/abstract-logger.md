@@ -38,7 +38,10 @@ end
 Following is how the custom logger implementation can be injected in the SDK client.
 
 ```ruby
-client = PaypalServerSdk::Client.new(
+require 'paypal_server_sdk'
+include PaypalServerSdk
+
+client = Client.new(
   logging_configuration: LoggingConfiguration.new(
     logger: CustomLogger.new
   )
