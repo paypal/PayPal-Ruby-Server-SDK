@@ -64,5 +64,30 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = CVV_E)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'cvv_e' then CVV_E
+      when 'cvv_i' then CVV_I
+      when 'cvv_m' then CVV_M
+      when 'cvv_n' then CVV_N
+      when 'cvv_p' then CVV_P
+      when 'cvv_s' then CVV_S
+      when 'cvv_u' then CVV_U
+      when 'cvv_x' then CVV_X
+      when 'enum_all_others' then ENUM_ALL_OTHERS
+      when 'cvv_0' then CVV_0
+      when 'cvv_1' then CVV_1
+      when 'cvv_2' then CVV_2
+      when 'cvv_3' then CVV_3
+      when 'cvv_4' then CVV_4
+      else
+        default_value
+      end
+    end
   end
 end

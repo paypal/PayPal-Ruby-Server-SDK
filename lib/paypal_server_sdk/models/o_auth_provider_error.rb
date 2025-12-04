@@ -41,5 +41,22 @@ module PaypalServerSdk
 
       O_AUTH_PROVIDER_ERROR.include?(value)
     end
+
+    def self.from_value(value, default_value = INVALID_REQUEST)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'invalid_request' then INVALID_REQUEST
+      when 'invalid_client' then INVALID_CLIENT
+      when 'invalid_grant' then INVALID_GRANT
+      when 'unauthorized_client' then UNAUTHORIZED_CLIENT
+      when 'unsupported_grant_type' then UNSUPPORTED_GRANT_TYPE
+      when 'invalid_scope' then INVALID_SCOPE
+      else
+        default_value
+      end
+    end
   end
 end

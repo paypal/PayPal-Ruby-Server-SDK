@@ -71,5 +71,31 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = PAYMENTADVICE_01)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'paymentadvice_01' then PAYMENTADVICE_01
+      when 'paymentadvice_02' then PAYMENTADVICE_02
+      when 'paymentadvice_03' then PAYMENTADVICE_03
+      when 'paymentadvice_04' then PAYMENTADVICE_04
+      when 'paymentadvice_21' then PAYMENTADVICE_21
+      when 'paymentadvice_22' then PAYMENTADVICE_22
+      when 'paymentadvice_24' then PAYMENTADVICE_24
+      when 'paymentadvice_25' then PAYMENTADVICE_25
+      when 'paymentadvice_26' then PAYMENTADVICE_26
+      when 'paymentadvice_27' then PAYMENTADVICE_27
+      when 'paymentadvice_28' then PAYMENTADVICE_28
+      when 'paymentadvice_29' then PAYMENTADVICE_29
+      when 'paymentadvice_30' then PAYMENTADVICE_30
+      when 'paymentadvice_40' then PAYMENTADVICE_40
+      when 'paymentadvice_43' then PAYMENTADVICE_43
+      else
+        default_value
+      end
+    end
   end
 end

@@ -24,5 +24,19 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = FIXED)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'fixed' then FIXED
+      when 'variable' then VARIABLE
+      when 'auto_reload' then AUTO_RELOAD
+      else
+        default_value
+      end
+    end
   end
 end

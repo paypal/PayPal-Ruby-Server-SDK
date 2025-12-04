@@ -32,5 +32,20 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = SHIPPING)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'shipping' then SHIPPING
+      when 'pickup_in_person' then PICKUP_IN_PERSON
+      when 'pickup_in_store' then PICKUP_IN_STORE
+      when 'pickup_from_person' then PICKUP_FROM_PERSON
+      else
+        default_value
+      end
+    end
   end
 end

@@ -35,5 +35,19 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = LOGIN)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'login' then LOGIN
+      when 'billing' then BILLING
+      when 'no_preference' then NO_PREFERENCE
+      else
+        default_value
+      end
+    end
   end
 end

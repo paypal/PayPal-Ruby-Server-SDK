@@ -25,5 +25,18 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = PAN_ONLY)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'pan_only' then PAN_ONLY
+      when 'cryptogram_3ds' then CRYPTOGRAM_3DS
+      else
+        default_value
+      end
+    end
   end
 end

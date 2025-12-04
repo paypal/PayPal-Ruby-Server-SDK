@@ -114,6 +114,21 @@ module PaypalServerSdk
       @o_auth_clock_skew = o_auth_clock_skew
     end
 
+    def self.from_env
+      o_auth_client_id = ENV['O_AUTH_CLIENT_ID']
+      o_auth_client_secret = ENV['O_AUTH_CLIENT_SECRET']
+      o_auth_clock_skew = ENV['O_AUTH_CLOCK_SKEW']
+      all_nil = [
+        o_auth_client_id,
+        o_auth_client_secret
+      ].all?(&:nil?)
+      return nil if all_nil
+
+      new(o_auth_client_id: o_auth_client_id,
+          o_auth_client_secret: o_auth_client_secret,
+          o_auth_clock_skew: o_auth_clock_skew)
+    end
+
     def clone_with(o_auth_client_id: nil, o_auth_client_secret: nil,
                    o_auth_token: nil, o_auth_token_provider: nil,
                    o_auth_on_token_update: nil, o_auth_clock_skew: nil)

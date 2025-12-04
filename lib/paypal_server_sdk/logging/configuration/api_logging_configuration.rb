@@ -34,22 +34,48 @@ module PaypalServerSdk
       headers_to_unmask ||= self.headers_to_unmask
       include_query_in_path ||= self.include_query_in_path
 
-      RequestLoggingConfiguration.class.new(log_body: log_body, log_headers: log_headers,
-                                            headers_to_include: headers_to_include,
-                                            headers_to_exclude: headers_to_exclude,
-                                            headers_to_unmask: headers_to_unmask,
-                                            include_query_in_path: include_query_in_path)
+      RequestLoggingConfiguration.new(
+        log_body: log_body,
+        log_headers: log_headers,
+        headers_to_include: headers_to_include,
+        headers_to_exclude: headers_to_exclude,
+        headers_to_unmask: headers_to_unmask,
+        include_query_in_path: include_query_in_path
+      )
+    end
+
+    def self.from_env
+      log_body = ENV['REQUEST_LOG_BODY']
+      log_headers = ENV['REQUEST_LOG_HEADERS']
+      headers_to_include = ENV['REQUEST_HEADERS_TO_INCLUDE']
+      headers_to_exclude = ENV['REQUEST_HEADERS_TO_EXCLUDE']
+      headers_to_unmask = ENV['REQUEST_HEADERS_TO_UNMASK']
+      include_query_in_path = ENV['REQUEST_INCLUDE_QUERY_IN_PATH']
+
+      new(
+        log_body: log_body,
+        log_headers: log_headers,
+        headers_to_include: headers_to_include,
+        headers_to_exclude: headers_to_exclude,
+        headers_to_unmask: headers_to_unmask,
+        include_query_in_path: include_query_in_path
+      )
+    end
+
+    def self.any_logging_configured?
+      %w[
+        REQUEST_LOG_BODY
+        REQUEST_LOG_HEADERS
+        REQUEST_HEADERS_TO_INCLUDE
+        REQUEST_HEADERS_TO_EXCLUDE
+        REQUEST_HEADERS_TO_UNMASK
+        REQUEST_INCLUDE_QUERY_IN_PATH
+      ].any? { |key| ENV.key?(key) && !ENV[key].nil? && !ENV[key].empty? }
     end
   end
 
   # Initializes a new instance of ResponseLoggingConfiguration.
   class ResponseLoggingConfiguration < CoreLibrary::ApiResponseLoggingConfiguration
-    # @param log_body [Boolean] Indicates whether the message body should be logged. Default is false.
-    # @param log_headers [Boolean] Indicates whether the message headers should be logged. Default is false.
-    # @param headers_to_exclude [Array<String>] Array of headers not displayed in logging. Default is an empty array.
-    # @param headers_to_include [Array<String>] Array of headers to be displayed in logging. Default is an empty array.
-    # @param headers_to_unmask [Array<String>] Array of headers which values are non-sensitive to display in logging.
-    #   Default is an empty array.
     def initialize(log_body: false, log_headers: false, headers_to_include: nil,
                    headers_to_exclude: nil, headers_to_unmask: nil)
       super(
@@ -69,20 +95,44 @@ module PaypalServerSdk
       headers_to_exclude ||= self.headers_to_exclude
       headers_to_unmask ||= self.headers_to_unmask
 
-      ResponseLoggingConfiguration.new(log_body: log_body, log_headers: log_headers,
-                                       headers_to_include: headers_to_include,
-                                       headers_to_exclude: headers_to_exclude,
-                                       headers_to_unmask: headers_to_unmask)
+      ResponseLoggingConfiguration.new(
+        log_body: log_body,
+        log_headers: log_headers,
+        headers_to_include: headers_to_include,
+        headers_to_exclude: headers_to_exclude,
+        headers_to_unmask: headers_to_unmask
+      )
+    end
+
+    def self.from_env
+      log_body = ENV['RESPONSE_LOG_BODY']
+      log_headers = ENV['RESPONSE_LOG_HEADERS']
+      headers_to_include = ENV['RESPONSE_HEADERS_TO_INCLUDE']
+      headers_to_exclude = ENV['RESPONSE_HEADERS_TO_EXCLUDE']
+      headers_to_unmask = ENV['RESPONSE_HEADERS_TO_UNMASK']
+
+      new(
+        log_body: log_body,
+        log_headers: log_headers,
+        headers_to_include: headers_to_include,
+        headers_to_exclude: headers_to_exclude,
+        headers_to_unmask: headers_to_unmask
+      )
+    end
+
+    def self.any_logging_configured?
+      %w[
+        RESPONSE_LOG_BODY
+        RESPONSE_LOG_HEADERS
+        RESPONSE_HEADERS_TO_INCLUDE
+        RESPONSE_HEADERS_TO_EXCLUDE
+        RESPONSE_HEADERS_TO_UNMASK
+      ].any? { |key| ENV.key?(key) && !ENV[key].nil? && !ENV[key].empty? }
     end
   end
 
   # Initializes a new instance of LoggingConfiguration.
   class LoggingConfiguration < CoreLibrary::ApiLoggingConfiguration
-    # @param logger [LoggerInterface] The logger to use for logging messages.
-    # @param log_level [LogLevel] The log level to determine which messages should be logged.
-    # @param request_logging_config [RequestLoggingConfiguration] Options for logging HTTP requests.
-    # @param response_logging_config [ResponseLoggingConfiguration] Options for logging HTTP responses.
-    # @param mask_sensitive_headers [Boolean] Indicates whether sensitive headers should be masked in logged messages.
     def initialize(logger: nil, log_level: nil, mask_sensitive_headers: true,
                    request_logging_config: nil,
                    response_logging_config: nil)
@@ -101,14 +151,36 @@ module PaypalServerSdk
                    request_logging_config: nil, response_logging_config: nil)
       logger ||= self.logger
       log_level ||= self.log_level
-      mask_sensitive_headers = self.mask_sensitive_headers ||= mask_sensitive_headers
+      mask_sensitive_headers ||= self.mask_sensitive_headers
       request_logging_config ||= self.request_logging_config.clone
       response_logging_config ||= self.response_logging_config.clone
 
-      LoggingConfiguration.new(logger: logger, log_level: log_level,
-                               mask_sensitive_headers: mask_sensitive_headers,
-                               request_logging_config: request_logging_config,
-                               response_logging_config: response_logging_config)
+      LoggingConfiguration.new(
+        logger: logger,
+        log_level: log_level,
+        mask_sensitive_headers: mask_sensitive_headers,
+        request_logging_config: request_logging_config,
+        response_logging_config: response_logging_config
+      )
+    end
+
+    def self.from_env
+      log_level = ENV['LOG_LEVEL']
+      mask_sensitive_headers = ENV['MASK_SENSITIVE_HEADERS']
+
+      new(
+        log_level: log_level,
+        mask_sensitive_headers: mask_sensitive_headers,
+        request_logging_config: RequestLoggingConfiguration.from_env,
+        response_logging_config: ResponseLoggingConfiguration.from_env
+      )
+    end
+
+    def self.any_logging_configured?
+      RequestLoggingConfiguration.any_logging_configured? ||
+        ResponseLoggingConfiguration.any_logging_configured? ||
+        ENV.key?('LOG_LEVEL') ||
+        ENV.key?('MASK_SENSITIVE_HEADERS')
     end
   end
 end

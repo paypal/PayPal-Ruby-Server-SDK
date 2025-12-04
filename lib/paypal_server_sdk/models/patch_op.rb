@@ -68,5 +68,22 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = ADD)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'add' then ADD
+      when 'remove' then REMOVE
+      when 'replace' then REPLACE
+      when 'move' then MOVE
+      when 'copy' then COPY
+      when 'test' then TEST
+      else
+        default_value
+      end
+    end
   end
 end

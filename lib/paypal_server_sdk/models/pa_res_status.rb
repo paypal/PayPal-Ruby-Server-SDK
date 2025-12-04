@@ -38,5 +38,24 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = SUCCESSFULAUTHENTICATION)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'successfulauthentication' then SUCCESSFULAUTHENTICATION
+      when 'failedauthentication' then FAILEDAUTHENTICATION
+      when 'unabletocompleteauthentication' then UNABLETOCOMPLETEAUTHENTICATION
+      when 'successfulattemptstransaction' then SUCCESSFULATTEMPTSTRANSACTION
+      when 'challengerequired' then CHALLENGEREQUIRED
+      when 'authenticationrejected' then AUTHENTICATIONREJECTED
+      when 'decoupledauthentication' then DECOUPLEDAUTHENTICATION
+      when 'informationalonly' then INFORMATIONALONLY
+      else
+        default_value
+      end
+    end
   end
 end

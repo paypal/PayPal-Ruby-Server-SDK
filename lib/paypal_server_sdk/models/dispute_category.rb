@@ -19,5 +19,18 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = ITEM_NOT_RECEIVED)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'item_not_received' then ITEM_NOT_RECEIVED
+      when 'unauthorized_transaction' then UNAUTHORIZED_TRANSACTION
+      else
+        default_value
+      end
+    end
   end
 end

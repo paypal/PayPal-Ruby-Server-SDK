@@ -24,5 +24,18 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = ENUM_3DSECURE)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'enum_3dsecure' then ENUM_3DSECURE
+      when 'emv' then EMV
+      else
+        default_value
+      end
+    end
   end
 end

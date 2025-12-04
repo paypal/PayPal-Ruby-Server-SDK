@@ -28,5 +28,18 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = CAPTURE)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'capture' then CAPTURE
+      when 'authorize' then AUTHORIZE
+      else
+        default_value
+      end
+    end
   end
 end

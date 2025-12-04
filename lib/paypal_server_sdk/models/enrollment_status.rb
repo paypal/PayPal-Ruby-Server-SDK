@@ -28,5 +28,20 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = ENROLLED)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'enrolled' then ENROLLED
+      when 'notenrolled' then NOTENROLLED
+      when 'unavailable' then UNAVAILABLE
+      when 'bypass' then BYPASS
+      else
+        default_value
+      end
+    end
   end
 end

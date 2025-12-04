@@ -22,20 +22,55 @@ The PayPal Server SDK provides integration access to the PayPal REST APIs. The A
 Install the gem from the command line:
 
 ```bash
-gem install paypal-server-sdk -v 2.0.0
+gem install paypal-server-sdk -v 2.1.0
 ```
 
 Or add the gem to your Gemfile and run `bundle`:
 
 ```ruby
-gem 'paypal-server-sdk', '2.0.0'
+gem 'paypal-server-sdk', '2.1.0'
 ```
 
-For additional gem details, see the [RubyGems page for the paypal-server-sdk gem](https://rubygems.org/gems/paypal-server-sdk/versions/2.0.0).
+For additional gem details, see the [RubyGems page for the paypal-server-sdk gem](https://rubygems.org/gems/paypal-server-sdk/versions/2.1.0).
+
+## IRB Console Usage
+
+You can explore the SDK interactively using IRB in two ways
+
+### 1. Use IRB with Installed Gem
+
+Open your system terminal (Command Prompt, Git Bash or macOS Terminal) and type the following command to start the irb console.
+
+```bash
+irb
+```
+
+Now you can load the SDK in the IRB
+
+```ruby
+require 'paypal_server_sdk'
+include PaypalServerSdk
+```
+
+### 2. Use IRB within SDK
+
+Open your system terminal (Command Prompt, Git Bash or macOS Terminal) and navigate to the root folder of SDK.
+
+```
+cd path/to/paypal_server_sdk
+```
+
+Now you can start the preconfigured irb console by running the following command
+
+```bash
+ruby bin/console
+```
+
+**_Note:_** This automatically loads the SDK from lib/
 
 ## Initialize the API Client
 
-**_Note:_** Documentation for the client can be found [here.](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/client.md)
+**_Note:_** Documentation for the client can be found [here.](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/client.md)
 
 The following parameters are configurable for the API Client:
 
@@ -51,11 +86,13 @@ The following parameters are configurable for the API Client:
 | retry_statuses | `Array` | A list of HTTP statuses to retry. <br> **Default: [408, 413, 429, 500, 502, 503, 504, 521, 522, 524]** |
 | retry_methods | `Array` | A list of HTTP methods to retry. <br> **Default: %i[get put]** |
 | http_callback | `HttpCallBack` | The Http CallBack allows defining callables for pre and post API calls. |
-| proxy_settings | [`ProxySettings`](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
-| logging_configuration | [`LoggingConfiguration`](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/logging-configuration.md) | The SDK logging configuration for API calls |
-| client_credentials_auth_credentials | [`ClientCredentialsAuthCredentials`](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/auth/oauth-2-client-credentials-grant.md) | The credential object for OAuth 2 Client Credentials Grant |
+| proxy_settings | [`ProxySettings`](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/proxy-settings.md) | Optional proxy configuration to route HTTP requests through a proxy server. |
+| logging_configuration | [`LoggingConfiguration`](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/logging-configuration.md) | The SDK logging configuration for API calls |
+| client_credentials_auth_credentials | [`ClientCredentialsAuthCredentials`](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/auth/oauth-2-client-credentials-grant.md) | The credential object for OAuth 2 Client Credentials Grant |
 
 The API client can be initialized as follows:
+
+### Code-Based Client Initialization
 
 ```ruby
 require 'paypal_server_sdk'
@@ -79,6 +116,18 @@ client = Client.new(
 )
 ```
 
+### Environment-Based Client Initialization
+
+```ruby
+require 'paypal_server_sdk'
+include PaypalServerSdk
+
+# Create client from environment
+client = Client.from_env
+```
+
+See the [`Environment-Based Client Initialization`](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/environment-based-client-initialization.md) section for details.
+
 ## Environments
 
 The SDK can be configured to use a different environment for making API calls. Available environments are:
@@ -94,34 +143,35 @@ The SDK can be configured to use a different environment for making API calls. A
 
 This API uses the following authentication schemes.
 
-* [`Oauth2 (OAuth 2 Client Credentials Grant)`](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/auth/oauth-2-client-credentials-grant.md)
+* [`Oauth2 (OAuth 2 Client Credentials Grant)`](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/auth/oauth-2-client-credentials-grant.md)
 
 ## List of APIs
 
-* [Transactionsearch](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/controllers/transactionsearch.md)
-* [Orders](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/controllers/orders.md)
-* [Payments](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/controllers/payments.md)
-* [Vault](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/controllers/vault.md)
-* [Subscriptions](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/controllers/subscriptions.md)
+* [Orders](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/controllers/orders.md)
+* [Payments](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/controllers/payments.md)
+* [Vault](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/controllers/vault.md)
+* [Transaction Search](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/controllers/transaction-search.md)
+* [Subscriptions](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/controllers/subscriptions.md)
 
 ## SDK Infrastructure
 
 ### Configuration
 
-* [ProxySettings](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/proxy-settings.md)
-* [AbstractLogger](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/abstract-logger.md)
-* [LoggingConfiguration](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/logging-configuration.md)
-* [RequestLoggingConfiguration](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/request-logging-configuration.md)
-* [ResponseLoggingConfiguration](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/response-logging-configuration.md)
+* [ProxySettings](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/proxy-settings.md)
+* [Environment-Based Client Initialization](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/environment-based-client-initialization.md)
+* [AbstractLogger](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/abstract-logger.md)
+* [LoggingConfiguration](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/logging-configuration.md)
+* [RequestLoggingConfiguration](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/request-logging-configuration.md)
+* [ResponseLoggingConfiguration](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/response-logging-configuration.md)
 
 ### HTTP
 
-* [HttpResponse](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/http-response.md)
-* [HttpRequest](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/http-request.md)
+* [HttpResponse](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/http-response.md)
+* [HttpRequest](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/http-request.md)
 
 ### Utilities
 
-* [ApiResponse](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/api-response.md)
-* [ApiHelper](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/api-helper.md)
-* [DateTimeHelper](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.0.0/doc/date-time-helper.md)
+* [ApiResponse](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/api-response.md)
+* [ApiHelper](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/api-helper.md)
+* [DateTimeHelper](https://www.github.com/paypal/PayPal-Ruby-Server-SDK/tree/2.1.0/doc/date-time-helper.md)
 

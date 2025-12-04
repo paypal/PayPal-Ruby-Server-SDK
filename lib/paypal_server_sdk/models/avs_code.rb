@@ -117,5 +117,40 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = AVS_A)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'avs_a' then AVS_A
+      when 'avs_b' then AVS_B
+      when 'avs_c' then AVS_C
+      when 'avs_d' then AVS_D
+      when 'avs_e' then AVS_E
+      when 'avs_f' then AVS_F
+      when 'avs_g' then AVS_G
+      when 'avs_i' then AVS_I
+      when 'avs_m' then AVS_M
+      when 'avs_n' then AVS_N
+      when 'avs_p' then AVS_P
+      when 'avs_r' then AVS_R
+      when 'avs_s' then AVS_S
+      when 'avs_u' then AVS_U
+      when 'avs_w' then AVS_W
+      when 'avs_x' then AVS_X
+      when 'avs_y' then AVS_Y
+      when 'avs_z' then AVS_Z
+      when 'avs_null' then AVS_NULL
+      when 'avs_0' then AVS_0
+      when 'avs_1' then AVS_1
+      when 'avs_2' then AVS_2
+      when 'avs_3' then AVS_3
+      when 'avs_4' then AVS_4
+      else
+        default_value
+      end
+    end
   end
 end

@@ -25,5 +25,19 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = ONE_TIME)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'one_time' then ONE_TIME
+      when 'recurring' then RECURRING
+      when 'unscheduled' then UNSCHEDULED
+      else
+        default_value
+      end
+    end
   end
 end

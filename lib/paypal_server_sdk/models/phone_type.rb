@@ -28,5 +28,21 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = FAX)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'fax' then FAX
+      when 'home' then HOME
+      when 'mobile' then MOBILE
+      when 'other' then OTHER
+      when 'pager' then PAGER
+      else
+        default_value
+      end
+    end
   end
 end

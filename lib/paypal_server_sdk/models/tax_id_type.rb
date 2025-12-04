@@ -19,5 +19,18 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = BR_CPF)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'br_cpf' then BR_CPF
+      when 'br_cnpj' then BR_CNPJ
+      else
+        default_value
+      end
+    end
   end
 end

@@ -34,5 +34,23 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = UPC_A)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'upc_a' then UPC_A
+      when 'upc_b' then UPC_B
+      when 'upc_c' then UPC_C
+      when 'upc_d' then UPC_D
+      when 'upc_e' then UPC_E
+      when 'upc_2' then UPC_2
+      when 'upc_5' then UPC_5
+      else
+        default_value
+      end
+    end
   end
 end
