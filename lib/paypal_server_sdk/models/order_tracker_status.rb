@@ -22,5 +22,18 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = CANCELLED)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'cancelled' then CANCELLED
+      when 'shipped' then SHIPPED
+      else
+        default_value
+      end
+    end
   end
 end

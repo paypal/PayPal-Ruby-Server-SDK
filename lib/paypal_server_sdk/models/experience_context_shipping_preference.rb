@@ -28,5 +28,19 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = GET_FROM_FILE)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'get_from_file' then GET_FROM_FILE
+      when 'no_shipping' then NO_SHIPPING
+      when 'set_provided_address' then SET_PROVIDED_ADDRESS
+      else
+        default_value
+      end
+    end
   end
 end

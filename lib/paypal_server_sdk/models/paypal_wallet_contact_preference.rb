@@ -30,5 +30,19 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = NO_CONTACT_INFO)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'no_contact_info' then NO_CONTACT_INFO
+      when 'update_contact_info' then UPDATE_CONTACT_INFO
+      when 'retain_contact_info' then RETAIN_CONTACT_INFO
+      else
+        default_value
+      end
+    end
   end
 end

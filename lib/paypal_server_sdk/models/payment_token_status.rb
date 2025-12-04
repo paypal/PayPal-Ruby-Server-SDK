@@ -32,5 +32,21 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = CREATED)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'created' then CREATED
+      when 'payer_action_required' then PAYER_ACTION_REQUIRED
+      when 'approved' then APPROVED
+      when 'vaulted' then VAULTED
+      when 'tokenized' then TOKENIZED
+      else
+        default_value
+      end
+    end
   end
 end

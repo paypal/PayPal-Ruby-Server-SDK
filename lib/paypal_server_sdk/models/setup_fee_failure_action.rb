@@ -20,5 +20,18 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = CONTINUE)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'continue' then CONTINUE
+      when 'cancel' then CANCEL
+      else
+        default_value
+      end
+    end
   end
 end

@@ -25,5 +25,20 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = DAY)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'day' then DAY
+      when 'week' then WEEK
+      when 'month' then MONTH
+      when 'year' then YEAR
+      else
+        default_value
+      end
+    end
   end
 end

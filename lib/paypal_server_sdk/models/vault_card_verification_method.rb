@@ -35,5 +35,18 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = SCA_WHEN_REQUIRED)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'sca_when_required' then SCA_WHEN_REQUIRED
+      when 'sca_always' then SCA_ALWAYS
+      else
+        default_value
+      end
+    end
   end
 end

@@ -21,6 +21,8 @@ The following parameters are configurable for the API Client:
 
 The API client can be initialized as follows:
 
+## Code-Based Client Initialization
+
 ```ruby
 require 'paypal_server_sdk'
 include PaypalServerSdk
@@ -42,6 +44,18 @@ client = Client.new(
   )
 )
 ```
+
+## Environment-Based Client Initialization
+
+```ruby
+require 'paypal_server_sdk'
+include PaypalServerSdk
+
+# Create client from environment
+client = Client.from_env
+```
+
+See the [`Environment-Based Client Initialization`](../doc/environment-based-client-initialization.md) section for details.
 
 ## PayPal Server SDK Client
 

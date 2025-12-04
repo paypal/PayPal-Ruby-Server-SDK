@@ -25,5 +25,19 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = DIGITAL_GOODS)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'digital_goods' then DIGITAL_GOODS
+      when 'physical_goods' then PHYSICAL_GOODS
+      when 'donation' then DONATION
+      else
+        default_value
+      end
+    end
   end
 end

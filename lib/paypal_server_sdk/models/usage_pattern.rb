@@ -68,5 +68,28 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = IMMEDIATE)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'immediate' then IMMEDIATE
+      when 'deferred' then DEFERRED
+      when 'recurring_prepaid' then RECURRING_PREPAID
+      when 'recurring_postpaid' then RECURRING_POSTPAID
+      when 'threshold_prepaid' then THRESHOLD_PREPAID
+      when 'threshold_postpaid' then THRESHOLD_POSTPAID
+      when 'subscription_prepaid' then SUBSCRIPTION_PREPAID
+      when 'subscription_postpaid' then SUBSCRIPTION_POSTPAID
+      when 'unscheduled_prepaid' then UNSCHEDULED_PREPAID
+      when 'unscheduled_postpaid' then UNSCHEDULED_POSTPAID
+      when 'installment_prepaid' then INSTALLMENT_PREPAID
+      when 'installment_postpaid' then INSTALLMENT_POSTPAID
+      else
+        default_value
+      end
+    end
   end
 end

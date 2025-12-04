@@ -23,5 +23,18 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = SHIPPING_ADDRESS)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'shipping_address' then SHIPPING_ADDRESS
+      when 'shipping_options' then SHIPPING_OPTIONS
+      else
+        default_value
+      end
+    end
   end
 end

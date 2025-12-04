@@ -33,5 +33,22 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = MASTERCARD_NON_3D_SECURE_TRANSACTION)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'mastercard_non_3d_secure_transaction' then MASTERCARD_NON_3D_SECURE_TRANSACTION
+      when 'mastercard_attempted_authentication_transaction' then MASTERCARD_ATTEMPTED_AUTHENTICATION_TRANSACTION
+      when 'mastercard_fully_authenticated_transaction' then MASTERCARD_FULLY_AUTHENTICATED_TRANSACTION
+      when 'fully_authenticated_transaction' then FULLY_AUTHENTICATED_TRANSACTION
+      when 'attempted_authentication_transaction' then ATTEMPTED_AUTHENTICATION_TRANSACTION
+      when 'non_3d_secure_transaction' then NON_3D_SECURE_TRANSACTION
+      else
+        default_value
+      end
+    end
   end
 end

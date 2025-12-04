@@ -23,5 +23,18 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = CONSUMER)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'consumer' then CONSUMER
+      when 'business' then BUSINESS
+      else
+        default_value
+      end
+    end
   end
 end

@@ -59,5 +59,28 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = BUYER_COMPLAINT)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'buyer_complaint' then BUYER_COMPLAINT
+      when 'chargeback' then CHARGEBACK
+      when 'echeck' then ECHECK
+      when 'international_withdrawal' then INTERNATIONAL_WITHDRAWAL
+      when 'other' then OTHER
+      when 'pending_review' then PENDING_REVIEW
+      when 'receiving_preference_mandates_manual_action' then RECEIVING_PREFERENCE_MANDATES_MANUAL_ACTION
+      when 'refunded' then REFUNDED
+      when 'transaction_approved_awaiting_funding' then TRANSACTION_APPROVED_AWAITING_FUNDING
+      when 'unilateral' then UNILATERAL
+      when 'verification_required' then VERIFICATION_REQUIRED
+      when 'declined_by_risk_fraud_filters' then DECLINED_BY_RISK_FRAUD_FILTERS
+      else
+        default_value
+      end
+    end
   end
 end

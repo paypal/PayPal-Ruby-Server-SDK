@@ -22,5 +22,18 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = MERCHANT)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'merchant' then MERCHANT
+      when 'platform' then PLATFORM
+      else
+        default_value
+      end
+    end
   end
 end
