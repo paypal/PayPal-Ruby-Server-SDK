@@ -22,5 +22,19 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = NO)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'no' then NO
+      when 'possible' then POSSIBLE
+      when 'unknown' then UNKNOWN
+      else
+        default_value
+      end
+    end
   end
 end

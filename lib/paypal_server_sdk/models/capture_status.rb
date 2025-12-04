@@ -35,5 +35,22 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = COMPLETED)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'completed' then COMPLETED
+      when 'declined' then DECLINED
+      when 'partially_refunded' then PARTIALLY_REFUNDED
+      when 'pending' then PENDING
+      when 'refunded' then REFUNDED
+      when 'failed' then FAILED
+      else
+        default_value
+      end
+    end
   end
 end

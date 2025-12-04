@@ -22,5 +22,18 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = ON_CREATE_PAYMENT_TOKENS)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'on_create_payment_tokens' then ON_CREATE_PAYMENT_TOKENS
+      when 'on_payer_approval' then ON_PAYER_APPROVAL
+      else
+        default_value
+      end
+    end
   end
 end

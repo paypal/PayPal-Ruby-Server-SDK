@@ -17,5 +17,11 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = ECHECK)
+      return default_value if value.nil?
+
+      default_value
+    end
   end
 end

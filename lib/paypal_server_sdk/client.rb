@@ -9,6 +9,10 @@ module PaypalServerSdk
     include CoreLibrary
     attr_reader :config, :auth_managers
 
+    def user_agent_detail
+      config.user_agent_detail
+    end
+
     # Returns the configured authentication Oauth2 instance.
     def oauth2
       @auth_managers['Oauth2']
@@ -93,6 +97,13 @@ module PaypalServerSdk
       %w[Oauth2].each { |auth| @auth_managers[auth] = nil }
       @auth_managers['Oauth2'] = OAuth2.new(http_client_config.client_credentials_auth_credentials,
                                             global_config)
+    end
+
+    # Creates a client directly from environment variables.
+    def self.from_env(**overrides)
+      default_config = Configuration.build_default_config_from_env
+      new_config = default_config.clone_with(**overrides)
+      new(config: new_config)
     end
   end
 end

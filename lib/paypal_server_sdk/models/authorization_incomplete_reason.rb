@@ -19,5 +19,18 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = PENDING_REVIEW)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'pending_review' then PENDING_REVIEW
+      when 'declined_by_risk_fraud_filters' then DECLINED_BY_RISK_FRAUD_FILTERS
+      else
+        default_value
+      end
+    end
   end
 end

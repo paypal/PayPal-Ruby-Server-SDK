@@ -28,5 +28,19 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = ELIGIBLE)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'eligible' then ELIGIBLE
+      when 'partially_eligible' then PARTIALLY_ELIGIBLE
+      when 'not_eligible' then NOT_ELIGIBLE
+      else
+        default_value
+      end
+    end
   end
 end

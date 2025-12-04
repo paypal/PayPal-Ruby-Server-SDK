@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+# Load the lib folder into Ruby's load path
+$LOAD_PATH.unshift(File.expand_path('../lib', __dir__))
+
+# Require the gem
+require 'paypal_server_sdk'
+
+puts 'PaypalServerSdk SDK loaded!'
+puts 'You can now create a client with: client = PaypalServerSdk::Client.new'
+puts 'Or use from_env: client = PaypalServerSdk::Client.from_env'
+
+# Start an interactive IRB session
+require 'irb'
+IRB.start

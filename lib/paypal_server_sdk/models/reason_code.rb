@@ -37,5 +37,24 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = PAYMENT_DENIED)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'payment_denied' then PAYMENT_DENIED
+      when 'internal_server_error' then INTERNAL_SERVER_ERROR
+      when 'payee_account_restricted' then PAYEE_ACCOUNT_RESTRICTED
+      when 'payer_account_restricted' then PAYER_ACCOUNT_RESTRICTED
+      when 'payer_cannot_pay' then PAYER_CANNOT_PAY
+      when 'sending_limit_exceeded' then SENDING_LIMIT_EXCEEDED
+      when 'transaction_receiving_limit_exceeded' then TRANSACTION_RECEIVING_LIMIT_EXCEEDED
+      when 'currency_mismatch' then CURRENCY_MISMATCH
+      else
+        default_value
+      end
+    end
   end
 end

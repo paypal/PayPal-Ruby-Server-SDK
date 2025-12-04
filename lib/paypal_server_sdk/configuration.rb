@@ -12,6 +12,21 @@ module PaypalServerSdk
       PRODUCTION = 'Production'.freeze,
       SANDBOX = 'Sandbox'.freeze
     ].freeze
+
+    # Converts a string or symbol into a valid Environment constant.
+    def self.from_value(value, default_value = PRODUCTION)
+      return default_value if value.nil?
+
+      str = value.to_s.strip.downcase
+      case str
+      when 'production' then PRODUCTION
+      when 'sandbox' then SANDBOX
+
+      else
+        warn "[Environment] Unknown environment '#{value}', falling back to #{default_value} "
+        default_value
+      end
+    end
   end
 
   # An enum for API servers.
@@ -19,6 +34,13 @@ module PaypalServerSdk
     SERVER = [
       DEFAULT = 'default'.freeze
     ].freeze
+
+    # Converts a string or symbol into a valid Server constant.
+    def self.from_value(value, default_value = DEFAULT)
+      return default_value if value.nil?
+
+      default_value
+    end
   end
 
   # All configuration including auth info and base URI for the API access
@@ -106,6 +128,50 @@ module PaypalServerSdk
     # @return [String] The base URI.
     def get_base_uri(server = Server::DEFAULT)
       ENVIRONMENTS[environment][server].clone
+    end
+
+    # Builds a Configuration instance using environment variables.
+    def self.build_default_config_from_env
+      # === Core environment ===
+      environment = Environment.from_value(ENV.fetch('ENVIRONMENT', 'sandbox'))
+      timeout = (ENV['TIMEOUT'] || 60).to_f
+      max_retries = (ENV['MAX_RETRIES'] || 0).to_i
+      retry_interval = (ENV['RETRY_INTERVAL'] || 1).to_f
+      backoff_factor = (ENV['BACKOFF_FACTOR'] || 2).to_f
+      retry_statuses = ENV.fetch('RETRY_STATUSES',
+                                 '[408, 413, 429, 500, 502, 503, 504, 521, 522, 524]').gsub(/[\[\]]/, '')
+                                          .split(',')
+                                          .map(&:strip)
+                                          .map do |item|
+                                            item.match?(/\A\d+\z/) ? item.to_i : item.downcase
+                                          end
+      retry_methods = ENV.fetch('RETRY_METHODS', '%i[get put]').gsub(/[\[\]]/, '')
+                                          .split(',')
+                                          .map(&:strip)
+                                          .map do |item|
+                                            item.match?(/\A\d+\z/) ? item.to_i : item.downcase
+                                          end
+
+      # === Authentication credentials ===
+      client_credentials_auth_credentials = ClientCredentialsAuthCredentials.from_env
+
+      # === Proxy settings ===
+      proxy_settings = ProxySettings.from_env
+      # === Logging Configuration ===
+      logging_configuration = LoggingConfiguration.from_env if LoggingConfiguration.any_logging_configured?
+
+      Configuration.new(
+        environment: environment,
+        timeout: timeout,
+        max_retries: max_retries,
+        retry_interval: retry_interval,
+        backoff_factor: backoff_factor,
+        retry_statuses: retry_statuses,
+        retry_methods: retry_methods,
+        client_credentials_auth_credentials: client_credentials_auth_credentials,
+        proxy_settings: proxy_settings,
+        logging_configuration: logging_configuration
+      )
     end
   end
 end

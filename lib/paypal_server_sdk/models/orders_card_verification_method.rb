@@ -47,5 +47,20 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = SCA_ALWAYS)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'sca_always' then SCA_ALWAYS
+      when 'sca_when_required' then SCA_WHEN_REQUIRED
+      when 'enum_3d_secure' then ENUM_3D_SECURE
+      when 'avs_cvv' then AVS_CVV
+      else
+        default_value
+      end
+    end
   end
 end

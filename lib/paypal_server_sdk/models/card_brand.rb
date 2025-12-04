@@ -108,5 +108,46 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = VISA)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'visa' then VISA
+      when 'mastercard' then MASTERCARD
+      when 'discover' then DISCOVER
+      when 'amex' then AMEX
+      when 'solo' then SOLO
+      when 'jcb' then JCB
+      when 'star' then STAR
+      when 'delta' then DELTA
+      when 'switch' then SWITCH
+      when 'maestro' then MAESTRO
+      when 'cb_nationale' then CB_NATIONALE
+      when 'configoga' then CONFIGOGA
+      when 'confidis' then CONFIDIS
+      when 'electron' then ELECTRON
+      when 'cetelem' then CETELEM
+      when 'china_union_pay' then CHINA_UNION_PAY
+      when 'diners' then DINERS
+      when 'elo' then ELO
+      when 'hiper' then HIPER
+      when 'hipercard' then HIPERCARD
+      when 'rupay' then RUPAY
+      when 'ge' then GE
+      when 'synchrony' then SYNCHRONY
+      when 'eftpos' then EFTPOS
+      when 'carte_bancaire' then CARTE_BANCAIRE
+      when 'star_access' then STAR_ACCESS
+      when 'pulse' then PULSE
+      when 'nyce' then NYCE
+      when 'accel' then ACCEL
+      when 'unknown' then UNKNOWN
+      else
+        default_value
+      end
+    end
   end
 end

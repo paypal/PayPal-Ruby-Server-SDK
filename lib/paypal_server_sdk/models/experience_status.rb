@@ -29,5 +29,20 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = NOT_STARTED)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'not_started' then NOT_STARTED
+      when 'in_progress' then IN_PROGRESS
+      when 'canceled' then CANCELED
+      when 'approved' then APPROVED
+      else
+        default_value
+      end
+    end
   end
 end

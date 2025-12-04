@@ -28,5 +28,21 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = CREDIT)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'credit' then CREDIT
+      when 'debit' then DEBIT
+      when 'prepaid' then PREPAID
+      when 'store' then STORE
+      when 'unknown' then UNKNOWN
+      else
+        default_value
+      end
+    end
   end
 end

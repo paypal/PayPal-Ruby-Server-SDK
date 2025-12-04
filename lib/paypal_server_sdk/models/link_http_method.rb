@@ -37,5 +37,24 @@ module PaypalServerSdk
 
       true
     end
+
+    def self.from_value(value, default_value = GET)
+      return default_value if value.nil?
+
+      str = value.to_s.strip
+
+      case str.downcase
+      when 'get' then GET
+      when 'post' then POST
+      when 'put' then PUT
+      when 'delete' then DELETE
+      when 'head' then HEAD
+      when 'connect' then CONNECT
+      when 'options' then OPTIONS
+      when 'patch' then PATCH
+      else
+        default_value
+      end
+    end
   end
 end
