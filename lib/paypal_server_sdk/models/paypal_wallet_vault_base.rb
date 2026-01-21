@@ -4,8 +4,9 @@
 # ( https://www.apimatic.io ).
 
 module PaypalServerSdk
-  # PaypalWalletVaultInstruction Model.
-  class PaypalWalletVaultInstruction < BaseModel
+  # Resource consolidating common request and response attributes for vaulting
+  # PayPal Wallet.
+  class PaypalWalletVaultBase < BaseModel
     SKIP = Object.new
     private_constant :SKIP
 
@@ -24,7 +25,7 @@ module PaypalServerSdk
     attr_accessor :usage_pattern
 
     # The usage type associated with the PayPal payment token.
-    # @return [PaypalPaymentTokenUsageType]
+    # @return [UsageType]
     attr_accessor :usage_type
 
     # The customer type associated with the PayPal payment token. This is to
@@ -63,6 +64,7 @@ module PaypalServerSdk
         store_in_vault
         description
         usage_pattern
+        usage_type
         customer_type
         permit_multiple_payment_tokens
       ]
@@ -73,14 +75,14 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(usage_type:, store_in_vault: SKIP, description: SKIP,
-                   usage_pattern: SKIP,
+    def initialize(store_in_vault: SKIP, description: SKIP, usage_pattern: SKIP,
+                   usage_type: SKIP,
                    customer_type: PaypalPaymentTokenCustomerType::CONSUMER,
                    permit_multiple_payment_tokens: false)
       @store_in_vault = store_in_vault unless store_in_vault == SKIP
       @description = description unless description == SKIP
       @usage_pattern = usage_pattern unless usage_pattern == SKIP
-      @usage_type = usage_type
+      @usage_type = usage_type unless usage_type == SKIP
       @customer_type = customer_type unless customer_type == SKIP
       unless permit_multiple_payment_tokens == SKIP
         @permit_multiple_payment_tokens =
@@ -93,23 +95,23 @@ module PaypalServerSdk
       return nil unless hash
 
       # Extract variables from the hash.
-      usage_type = hash.key?('usage_type') ? hash['usage_type'] : nil
       store_in_vault =
         hash.key?('store_in_vault') ? hash['store_in_vault'] : SKIP
       description = hash.key?('description') ? hash['description'] : SKIP
       usage_pattern = hash.key?('usage_pattern') ? hash['usage_pattern'] : SKIP
+      usage_type = hash.key?('usage_type') ? hash['usage_type'] : SKIP
       customer_type =
         hash['customer_type'] ||= PaypalPaymentTokenCustomerType::CONSUMER
       permit_multiple_payment_tokens =
         hash['permit_multiple_payment_tokens'] ||= false
 
       # Create object from extracted values.
-      PaypalWalletVaultInstruction.new(usage_type: usage_type,
-                                       store_in_vault: store_in_vault,
-                                       description: description,
-                                       usage_pattern: usage_pattern,
-                                       customer_type: customer_type,
-                                       permit_multiple_payment_tokens: permit_multiple_payment_tokens)
+      PaypalWalletVaultBase.new(store_in_vault: store_in_vault,
+                                description: description,
+                                usage_pattern: usage_pattern,
+                                usage_type: usage_type,
+                                customer_type: customer_type,
+                                permit_multiple_payment_tokens: permit_multiple_payment_tokens)
     end
 
     # Provides a human-readable string representation of the object.

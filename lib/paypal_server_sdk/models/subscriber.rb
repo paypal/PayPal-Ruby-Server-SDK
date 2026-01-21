@@ -9,6 +9,17 @@ module PaypalServerSdk
     SKIP = Object.new
     private_constant :SKIP
 
+    # The internationalized email address. Note: Up to 64 characters are allowed
+    # before and 255 characters are allowed after the @ sign. However, the
+    # generally accepted maximum length for an email address is 254 characters.
+    # The pattern verifies that an unquoted @ sign exists.
+    # @return [String]
+    attr_accessor :email_address
+
+    # The account identifier for a PayPal account.
+    # @return [String]
+    attr_accessor :payer_id
+
     # The name of the party.
     # @return [Name]
     attr_accessor :name
@@ -24,6 +35,8 @@ module PaypalServerSdk
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
+      @_hash['email_address'] = 'email_address'
+      @_hash['payer_id'] = 'payer_id'
       @_hash['name'] = 'name'
       @_hash['shipping_address'] = 'shipping_address'
       @_hash['payment_source'] = 'payment_source'
@@ -33,6 +46,8 @@ module PaypalServerSdk
     # An array for optional fields
     def self.optionals
       %w[
+        email_address
+        payer_id
         name
         shipping_address
         payment_source
@@ -44,7 +59,10 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(name: SKIP, shipping_address: SKIP, payment_source: SKIP)
+    def initialize(email_address: SKIP, payer_id: SKIP, name: SKIP,
+                   shipping_address: SKIP, payment_source: SKIP)
+      @email_address = email_address unless email_address == SKIP
+      @payer_id = payer_id unless payer_id == SKIP
       @name = name unless name == SKIP
       @shipping_address = shipping_address unless shipping_address == SKIP
       @payment_source = payment_source unless payment_source == SKIP
@@ -55,6 +73,8 @@ module PaypalServerSdk
       return nil unless hash
 
       # Extract variables from the hash.
+      email_address = hash.key?('email_address') ? hash['email_address'] : SKIP
+      payer_id = hash.key?('payer_id') ? hash['payer_id'] : SKIP
       name = Name.from_hash(hash['name']) if hash['name']
       shipping_address = ShippingDetails.from_hash(hash['shipping_address']) if
         hash['shipping_address']
@@ -62,7 +82,9 @@ module PaypalServerSdk
         hash['payment_source']
 
       # Create object from extracted values.
-      Subscriber.new(name: name,
+      Subscriber.new(email_address: email_address,
+                     payer_id: payer_id,
+                     name: name,
                      shipping_address: shipping_address,
                      payment_source: payment_source)
     end
@@ -70,15 +92,16 @@ module PaypalServerSdk
     # Provides a human-readable string representation of the object.
     def to_s
       class_name = self.class.name.split('::').last
-      "<#{class_name} name: #{@name}, shipping_address: #{@shipping_address}, payment_source:"\
-      " #{@payment_source}>"
+      "<#{class_name} email_address: #{@email_address}, payer_id: #{@payer_id}, name: #{@name},"\
+      " shipping_address: #{@shipping_address}, payment_source: #{@payment_source}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
     def inspect
       class_name = self.class.name.split('::').last
-      "<#{class_name} name: #{@name.inspect}, shipping_address: #{@shipping_address.inspect},"\
-      " payment_source: #{@payment_source.inspect}>"
+      "<#{class_name} email_address: #{@email_address.inspect}, payer_id: #{@payer_id.inspect},"\
+      " name: #{@name.inspect}, shipping_address: #{@shipping_address.inspect}, payment_source:"\
+      " #{@payment_source.inspect}>"
     end
   end
 end
