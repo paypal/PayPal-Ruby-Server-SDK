@@ -4,8 +4,9 @@
 # ( https://www.apimatic.io ).
 
 module PaypalServerSdk
-  # The subscriber request information .
-  class SubscriberRequest < BaseModel
+  # The customer who approves and pays for the order. The customer is also known
+  # as the payer.
+  class SubscriptionPayer < BaseModel
     SKIP = Object.new
     private_constant :SKIP
 
@@ -24,30 +25,12 @@ module PaypalServerSdk
     # @return [Name]
     attr_accessor :name
 
-    # The shipping details.
-    # @return [ShippingDetails]
-    attr_accessor :shipping_address
-
-    # The payment source definition. To be eligible to create subscription using
-    # debit or credit card, you will need to sign up here
-    # (https://www.paypal.com/bizsignup/entry/product/ppcp). Please note, its
-    # available only for non-3DS cards and for merchants in US and AU regions.
-    # @return [SubscriptionPaymentSource]
-    attr_accessor :payment_source
-
-    # The phone information.
-    # @return [PhoneWithType]
-    attr_accessor :phone
-
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['email_address'] = 'email_address'
       @_hash['payer_id'] = 'payer_id'
       @_hash['name'] = 'name'
-      @_hash['shipping_address'] = 'shipping_address'
-      @_hash['payment_source'] = 'payment_source'
-      @_hash['phone'] = 'phone'
       @_hash
     end
 
@@ -57,9 +40,6 @@ module PaypalServerSdk
         email_address
         payer_id
         name
-        shipping_address
-        payment_source
-        phone
       ]
     end
 
@@ -68,14 +48,10 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(email_address: SKIP, payer_id: SKIP, name: SKIP,
-                   shipping_address: SKIP, payment_source: SKIP, phone: SKIP)
+    def initialize(email_address: SKIP, payer_id: SKIP, name: SKIP)
       @email_address = email_address unless email_address == SKIP
       @payer_id = payer_id unless payer_id == SKIP
       @name = name unless name == SKIP
-      @shipping_address = shipping_address unless shipping_address == SKIP
-      @payment_source = payment_source unless payment_source == SKIP
-      @phone = phone unless phone == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -86,35 +62,24 @@ module PaypalServerSdk
       email_address = hash.key?('email_address') ? hash['email_address'] : SKIP
       payer_id = hash.key?('payer_id') ? hash['payer_id'] : SKIP
       name = Name.from_hash(hash['name']) if hash['name']
-      shipping_address = ShippingDetails.from_hash(hash['shipping_address']) if
-        hash['shipping_address']
-      payment_source = SubscriptionPaymentSource.from_hash(hash['payment_source']) if
-        hash['payment_source']
-      phone = PhoneWithType.from_hash(hash['phone']) if hash['phone']
 
       # Create object from extracted values.
-      SubscriberRequest.new(email_address: email_address,
+      SubscriptionPayer.new(email_address: email_address,
                             payer_id: payer_id,
-                            name: name,
-                            shipping_address: shipping_address,
-                            payment_source: payment_source,
-                            phone: phone)
+                            name: name)
     end
 
     # Provides a human-readable string representation of the object.
     def to_s
       class_name = self.class.name.split('::').last
-      "<#{class_name} email_address: #{@email_address}, payer_id: #{@payer_id}, name: #{@name},"\
-      " shipping_address: #{@shipping_address}, payment_source: #{@payment_source}, phone:"\
-      " #{@phone}>"
+      "<#{class_name} email_address: #{@email_address}, payer_id: #{@payer_id}, name: #{@name}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
     def inspect
       class_name = self.class.name.split('::').last
       "<#{class_name} email_address: #{@email_address.inspect}, payer_id: #{@payer_id.inspect},"\
-      " name: #{@name.inspect}, shipping_address: #{@shipping_address.inspect}, payment_source:"\
-      " #{@payment_source.inspect}, phone: #{@phone.inspect}>"
+      " name: #{@name.inspect}>"
     end
   end
 end
