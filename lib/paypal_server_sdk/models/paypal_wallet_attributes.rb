@@ -13,8 +13,7 @@ module PaypalServerSdk
     # @return [PaypalWalletCustomerRequest]
     attr_accessor :customer
 
-    # Resource consolidating common request and response attributes for vaulting
-    # PayPal Wallet.
+    # TODO: Write general description for this method
     # @return [PaypalWalletVaultInstruction]
     attr_accessor :vault
 
