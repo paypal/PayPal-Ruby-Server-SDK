@@ -11,12 +11,14 @@ module PaypalServerSdk
     private_constant :SKIP
 
     # The [three-character ISO-4217 currency
-    # code](/api/rest/reference/currency-codes/) that identifies the currency.
+    # code](https://developer.paypal.com/api/rest/reference/currency-codes/)
+    # that identifies the currency.
     # @return [String]
     attr_accessor :source_currency
 
     # The [three-character ISO-4217 currency
-    # code](/api/rest/reference/currency-codes/) that identifies the currency.
+    # code](https://developer.paypal.com/api/rest/reference/currency-codes/)
+    # that identifies the currency.
     # @return [String]
     attr_accessor :target_currency
 

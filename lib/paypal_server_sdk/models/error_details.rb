@@ -28,9 +28,9 @@ module PaypalServerSdk
     attr_accessor :issue
 
     # An array of request-related [HATEOAS
-    # links](/api/rest/responses/#hateoas-links) that are either relevant to the
-    # issue by providing additional information or offering potential
-    # resolutions.
+    # links](https://developer.paypal.com/api/rest/responses/#hateoas-links)
+    # that are either relevant to the issue by providing additional information
+    # or offering potential resolutions.
     # @return [Array[LinkDescription]]
     attr_accessor :links
 

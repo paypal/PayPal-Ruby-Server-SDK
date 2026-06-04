@@ -28,6 +28,10 @@ Creates a Payment Token from the given payment source and adds it to the Vault o
 def create_payment_token(options = {})
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -36,6 +40,8 @@ def create_payment_token(options = {})
 | `paypal_request_id` | `String` | Header, Optional | The server stores keys for 3 hours.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `108`, *Pattern*: `^.*$` |
 
 ## Response Type
+
+**200**: Idempotent response for a successful creation of payment token.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
 
@@ -76,6 +82,10 @@ Returns all payment tokens for a customer.
 def list_customer_payment_tokens(options = {})
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -86,6 +96,8 @@ def list_customer_payment_tokens(options = {})
 | `total_required` | `TrueClass \| FalseClass` | Query, Optional | A boolean indicating total number of items (total_items) and pages (total_pages) are expected to be returned in the response.<br><br>**Default**: `false` |
 
 ## Response Type
+
+**200**: Successful execution.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`CustomerVaultPaymentTokensResponse`](../../doc/models/customer-vault-payment-tokens-response.md).
 
@@ -125,6 +137,10 @@ Returns a readable representation of vaulted payment source associated with the 
 def get_payment_token(id)
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -132,6 +148,8 @@ def get_payment_token(id)
 | `id` | `String` | Template, Required | ID of the payment token.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
+
+**200**: Successful execution.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`PaymentTokenResponse`](../../doc/models/payment-token-response.md).
 
@@ -167,6 +185,10 @@ Delete the payment token associated with the payment token id.
 def delete_payment_token(id)
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -174,6 +196,8 @@ def delete_payment_token(id)
 | `id` | `String` | Template, Required | ID of the payment token.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
+
+**204**: The server has successfully executed the method, but there is no entity body to return.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -208,6 +232,10 @@ Creates a Setup Token from the given payment source and adds it to the Vault of 
 def create_setup_token(options = {})
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -216,6 +244,8 @@ def create_setup_token(options = {})
 | `paypal_request_id` | `String` | Header, Optional | The server stores keys for 3 hours.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `108`, *Pattern*: `^.*$` |
 
 ## Response Type
+
+**200**: Idempotent response for a successful creation of setup token.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
 
@@ -255,6 +285,10 @@ Returns a readable representation of temporarily vaulted payment source associat
 def get_setup_token(id)
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -262,6 +296,8 @@ def get_setup_token(id)
 | `id` | `String` | Template, Required | ID of the setup token.<br><br>**Constraints**: *Minimum Length*: `7`, *Maximum Length*: `36`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
 ## Response Type
+
+**200**: Found requested setup-token, returned a payment method associated with the token.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`SetupTokenResponse`](../../doc/models/setup-token-response.md).
 

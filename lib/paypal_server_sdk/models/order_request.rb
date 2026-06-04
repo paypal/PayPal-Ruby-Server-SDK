@@ -14,6 +14,10 @@ module PaypalServerSdk
     # @return [CheckoutPaymentIntent]
     attr_accessor :intent
 
+    # The instruction to process an order.
+    # @return [ProcessingInstruction]
+    attr_accessor :processing_instruction
+
     # DEPRECATED. The customer is also known as the payer. The Payer object was
     # intended to only be used with the `payment_source.paypal` object. In order
     # to make this design more clear, the details in the `payer` object are now
@@ -43,6 +47,7 @@ module PaypalServerSdk
     def self.names
       @_hash = {} if @_hash.nil?
       @_hash['intent'] = 'intent'
+      @_hash['processing_instruction'] = 'processing_instruction'
       @_hash['payer'] = 'payer'
       @_hash['purchase_units'] = 'purchase_units'
       @_hash['payment_source'] = 'payment_source'
@@ -53,6 +58,7 @@ module PaypalServerSdk
     # An array for optional fields
     def self.optionals
       %w[
+        processing_instruction
         payer
         payment_source
         application_context
@@ -64,9 +70,10 @@ module PaypalServerSdk
       []
     end
 
-    def initialize(intent:, purchase_units:, payer: SKIP, payment_source: SKIP,
-                   application_context: SKIP)
+    def initialize(intent:, purchase_units:, processing_instruction: SKIP,
+                   payer: SKIP, payment_source: SKIP, application_context: SKIP)
       @intent = intent
+      @processing_instruction = processing_instruction unless processing_instruction == SKIP
       @payer = payer unless payer == SKIP
       @purchase_units = purchase_units
       @payment_source = payment_source unless payment_source == SKIP
@@ -89,6 +96,8 @@ module PaypalServerSdk
       end
 
       purchase_units = nil unless hash.key?('purchase_units')
+      processing_instruction =
+        hash.key?('processing_instruction') ? hash['processing_instruction'] : SKIP
       payer = Payer.from_hash(hash['payer']) if hash['payer']
       payment_source = PaymentSource.from_hash(hash['payment_source']) if hash['payment_source']
       application_context = OrderApplicationContext.from_hash(hash['application_context']) if
@@ -97,6 +106,7 @@ module PaypalServerSdk
       # Create object from extracted values.
       OrderRequest.new(intent: intent,
                        purchase_units: purchase_units,
+                       processing_instruction: processing_instruction,
                        payer: payer,
                        payment_source: payment_source,
                        application_context: application_context)
@@ -105,14 +115,16 @@ module PaypalServerSdk
     # Provides a human-readable string representation of the object.
     def to_s
       class_name = self.class.name.split('::').last
-      "<#{class_name} intent: #{@intent}, payer: #{@payer}, purchase_units: #{@purchase_units},"\
-      " payment_source: #{@payment_source}, application_context: #{@application_context}>"
+      "<#{class_name} intent: #{@intent}, processing_instruction: #{@processing_instruction},"\
+      " payer: #{@payer}, purchase_units: #{@purchase_units}, payment_source: #{@payment_source},"\
+      " application_context: #{@application_context}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
     def inspect
       class_name = self.class.name.split('::').last
-      "<#{class_name} intent: #{@intent.inspect}, payer: #{@payer.inspect}, purchase_units:"\
+      "<#{class_name} intent: #{@intent.inspect}, processing_instruction:"\
+      " #{@processing_instruction.inspect}, payer: #{@payer.inspect}, purchase_units:"\
       " #{@purchase_units.inspect}, payment_source: #{@payment_source.inspect},"\
       " application_context: #{@application_context.inspect}>"
     end

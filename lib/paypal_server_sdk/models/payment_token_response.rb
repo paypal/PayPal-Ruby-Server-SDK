@@ -23,7 +23,8 @@ module PaypalServerSdk
     # @return [PaymentTokenResponsePaymentSource]
     attr_accessor :payment_source
 
-    # An array of related [HATEOAS links](/api/rest/responses/#hateoas).
+    # An array of related [HATEOAS
+    # links](https://developer.paypal.com/api/rest/responses/#hateoas).
     # @return [Array[LinkDescription]]
     attr_accessor :links
 
