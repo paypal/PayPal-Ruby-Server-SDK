@@ -36,6 +36,10 @@ module PaypalServerSdk
     # @return [CheckoutPaymentIntent]
     attr_accessor :intent
 
+    # The instruction to process an order.
+    # @return [ProcessingInstruction]
+    attr_accessor :processing_instruction
+
     # The customer who approves and pays for the order. The customer is also
     # known as the payer.
     # @return [Payer]
@@ -74,6 +78,7 @@ module PaypalServerSdk
       @_hash['id'] = 'id'
       @_hash['payment_source'] = 'payment_source'
       @_hash['intent'] = 'intent'
+      @_hash['processing_instruction'] = 'processing_instruction'
       @_hash['payer'] = 'payer'
       @_hash['purchase_units'] = 'purchase_units'
       @_hash['status'] = 'status'
@@ -89,6 +94,7 @@ module PaypalServerSdk
         id
         payment_source
         intent
+        processing_instruction
         payer
         purchase_units
         status
@@ -102,13 +108,15 @@ module PaypalServerSdk
     end
 
     def initialize(create_time: SKIP, update_time: SKIP, id: SKIP,
-                   payment_source: SKIP, intent: SKIP, payer: SKIP,
+                   payment_source: SKIP, intent: SKIP,
+                   processing_instruction: SKIP, payer: SKIP,
                    purchase_units: SKIP, status: SKIP, links: SKIP)
       @create_time = create_time unless create_time == SKIP
       @update_time = update_time unless update_time == SKIP
       @id = id unless id == SKIP
       @payment_source = payment_source unless payment_source == SKIP
       @intent = intent unless intent == SKIP
+      @processing_instruction = processing_instruction unless processing_instruction == SKIP
       @payer = payer unless payer == SKIP
       @purchase_units = purchase_units unless purchase_units == SKIP
       @status = status unless status == SKIP
@@ -126,6 +134,8 @@ module PaypalServerSdk
       payment_source = OrderAuthorizeResponsePaymentSource.from_hash(hash['payment_source']) if
         hash['payment_source']
       intent = hash.key?('intent') ? hash['intent'] : SKIP
+      processing_instruction =
+        hash.key?('processing_instruction') ? hash['processing_instruction'] : SKIP
       payer = Payer.from_hash(hash['payer']) if hash['payer']
       # Parameter is an array, so we need to iterate through it
       purchase_units = nil
@@ -155,6 +165,7 @@ module PaypalServerSdk
                                  id: id,
                                  payment_source: payment_source,
                                  intent: intent,
+                                 processing_instruction: processing_instruction,
                                  payer: payer,
                                  purchase_units: purchase_units,
                                  status: status,
@@ -165,8 +176,9 @@ module PaypalServerSdk
     def to_s
       class_name = self.class.name.split('::').last
       "<#{class_name} create_time: #{@create_time}, update_time: #{@update_time}, id: #{@id},"\
-      " payment_source: #{@payment_source}, intent: #{@intent}, payer: #{@payer}, purchase_units:"\
-      " #{@purchase_units}, status: #{@status}, links: #{@links}>"
+      " payment_source: #{@payment_source}, intent: #{@intent}, processing_instruction:"\
+      " #{@processing_instruction}, payer: #{@payer}, purchase_units: #{@purchase_units}, status:"\
+      " #{@status}, links: #{@links}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
@@ -174,8 +186,9 @@ module PaypalServerSdk
       class_name = self.class.name.split('::').last
       "<#{class_name} create_time: #{@create_time.inspect}, update_time: #{@update_time.inspect},"\
       " id: #{@id.inspect}, payment_source: #{@payment_source.inspect}, intent:"\
-      " #{@intent.inspect}, payer: #{@payer.inspect}, purchase_units: #{@purchase_units.inspect},"\
-      " status: #{@status.inspect}, links: #{@links.inspect}>"
+      " #{@intent.inspect}, processing_instruction: #{@processing_instruction.inspect}, payer:"\
+      " #{@payer.inspect}, purchase_units: #{@purchase_units.inspect}, status: #{@status.inspect},"\
+      " links: #{@links.inspect}>"
     end
   end
 end

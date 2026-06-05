@@ -29,7 +29,8 @@ module PaypalServerSdk
     attr_accessor :expiry
 
     # The [three-character ISO-4217 currency
-    # code](/api/rest/reference/currency-codes/) that identifies the currency.
+    # code](https://developer.paypal.com/api/rest/reference/currency-codes/)
+    # that identifies the currency.
     # @return [String]
     attr_accessor :currency_code
 

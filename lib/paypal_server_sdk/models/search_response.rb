@@ -53,7 +53,7 @@ module PaypalServerSdk
     attr_accessor :total_pages
 
     # An array of request-related [HATEOAS
-    # links](/api/rest/responses/#hateoas-links).
+    # links](https://developer.paypal.com/api/rest/responses/#hateoas-links).
     # @return [Array[LinkDescription]]
     attr_accessor :links
 

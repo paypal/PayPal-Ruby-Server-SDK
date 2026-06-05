@@ -4,7 +4,12 @@
 # ( https://www.apimatic.io ).
 
 module PaypalServerSdk
-  # The request-related [HATEOAS link](/api/rest/responses/#hateoas-links)
+  # The request-related [HATEOAS
+  # link](https://developer.paypal.com/api/rest/responses/#hateoas-links)
+  # information., The request-related [HATEOAS
+  # link](/api/rest/responses/#hateoas-links) information., The request-related
+  # [HATEOAS
+  # link](https://developer.paypal.com/api/rest/responses/#hateoas-links)
   # information.
   class LinkDescription < BaseModel
     SKIP = Object.new

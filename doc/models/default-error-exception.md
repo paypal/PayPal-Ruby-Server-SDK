@@ -14,9 +14,9 @@ The error details.
 | `name` | `String` | Required | The human-readable, unique name of the error. |
 | `message` | `String` | Required | The message that describes the error. |
 | `debug_id` | `String` | Required | The PayPal internal ID. Used for correlation purposes. |
-| `information_link` | `String` | Optional | The information link, or URI, that shows detailed information about this error for the developer. |
+| `information_link` | `String` | Optional, Read-only | The information link, or URI, that shows detailed information about this error for the developer. |
 | `details` | [`Array[TransactionSearchErrorDetails]`](../../doc/models/transaction-search-error-details.md) | Optional | An array of additional details about the error. |
-| `links` | [`Array[LinkDescription]`](../../doc/models/link-description.md) | Optional | An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). |
+| `links` | [`Array[LinkDescription]`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). |
 
 ## Example (as JSON)
 
