@@ -16,7 +16,8 @@ module PaypalServerSdk
     private_constant :SKIP
 
     # The [three-character ISO-4217 currency
-    # code](/api/rest/reference/currency-codes/) that identifies the currency.
+    # code](https://developer.paypal.com/api/rest/reference/currency-codes/)
+    # that identifies the currency.
     # @return [String]
     attr_accessor :currency_code
 
@@ -24,7 +25,7 @@ module PaypalServerSdk
     # not typically fractional. A decimal fraction for currencies like `TND`
     # that are subdivided into thousandths. For the required number of decimal
     # places for a currency code, see [Currency
-    # Codes](/api/rest/reference/currency-codes/).
+    # Codes](https://developer.paypal.com/api/rest/reference/currency-codes/).
     # @return [String]
     attr_accessor :value
 

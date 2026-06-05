@@ -50,8 +50,8 @@ module PaypalServerSdk
     # values must be URL encoded.
     # @param [String] transaction_currency Optional parameter: Filters the
     # transactions in the response by a [three-character ISO-4217 currency
-    # code](/api/rest/reference/currency-codes/) for the PayPal transaction
-    # currency.
+    # code](https://developer.paypal.com/api/rest/reference/currency-codes/) for
+    # the PayPal transaction currency.
     # @param [String] payment_instrument_type Optional parameter: Filters the
     # transactions in the response by a payment instrument type. Value is
     # either: CREDITCARD. Returns a direct credit card transaction with a
@@ -143,8 +143,8 @@ module PaypalServerSdk
     # in the system when not provided.
     # @param [String] currency_code Optional parameter: Filters the transactions
     # in the response by a [three-character ISO-4217 currency
-    # code](/api/rest/reference/currency-codes/) for the PayPal transaction
-    # currency.
+    # code](https://developer.paypal.com/api/rest/reference/currency-codes/) for
+    # the PayPal transaction currency.
     # @return [ApiResponse] Complete http response with raw body and status code.
     def search_balances(options = {})
       @api_call

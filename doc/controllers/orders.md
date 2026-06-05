@@ -30,6 +30,10 @@ Creates an order. Merchants and partners can add Level 2 and 3 data to payments 
 def create_order(options = {})
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -43,6 +47,8 @@ def create_order(options = {})
 | `paypal_auth_assertion` | `String` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see PayPal-Auth-Assertion. |
 
 ## Response Type
+
+**200**: A successful response to an idempotent request returns the HTTP `200 OK` status code with a JSON response body that shows order details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
@@ -91,6 +97,10 @@ Shows details for an order, by ID. Note: For error handling and troubleshooting,
 def get_order(options = {})
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -101,6 +111,8 @@ def get_order(options = {})
 | `fields` | `String` | Query, Optional | A comma-separated list of fields that should be returned for the order. Valid filter field is `payment_source`.<br><br>**Constraints**: *Pattern*: `^[a-z_]*$` |
 
 ## Response Type
+
+**200**: A successful request returns the HTTP `200 OK` status code and a JSON response body that shows order details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
@@ -137,6 +149,10 @@ Updates an order with a `CREATED` or `APPROVED` status. You cannot update an ord
 def patch_order(options = {})
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -147,6 +163,8 @@ def patch_order(options = {})
 | `body` | [`Array[Patch]`](../../doc/models/patch.md) | Body, Optional | **Constraints**: *Minimum Items*: `0`, *Maximum Items*: `32767` |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with an empty object in the JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
@@ -190,6 +208,10 @@ Payer confirms their intent to pay for the the Order with the given payment sour
 def confirm_order(options = {})
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -201,6 +223,8 @@ def confirm_order(options = {})
 | `body` | [`ConfirmOrderRequest`](../../doc/models/confirm-order-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**200**: A successful request indicates that the payment source was added to the Order. A successful request returns the HTTP `200 OK` status code with a JSON response body that shows order details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
@@ -240,6 +264,10 @@ Authorizes payment for an order. To successfully authorize payment for an order,
 def authorize_order(options = {})
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -253,6 +281,8 @@ def authorize_order(options = {})
 | `body` | [`OrderAuthorizeRequest`](../../doc/models/order-authorize-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**200**: A successful response to an idempotent request returns the HTTP `200 OK` status code with a JSON response body that shows authorized payment details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`OrderAuthorizeResponse`](../../doc/models/order-authorize-response.md).
 
@@ -294,6 +324,10 @@ Captures payment for an order. To successfully capture payment for an order, the
 def capture_order(options = {})
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -307,6 +341,8 @@ def capture_order(options = {})
 | `body` | [`OrderCaptureRequest`](../../doc/models/order-capture-request.md) | Body, Optional | - |
 
 ## Response Type
+
+**200**: A successful response to an idempotent request returns the HTTP `200 OK` status code with a JSON response body that shows captured payment details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
@@ -348,6 +384,10 @@ Adds tracking information for an Order.
 def create_order_tracking(options = {})
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -357,6 +397,8 @@ def create_order_tracking(options = {})
 | `paypal_auth_assertion` | `String` | Header, Optional | An API-caller-provided JSON Web Token (JWT) assertion that identifies the merchant. For details, see PayPal-Auth-Assertion. |
 
 ## Response Type
+
+**200**: A successful response to an idempotent request returns the HTTP `200 OK` status code with a JSON response body that shows tracker details.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance. The `data` property of this instance returns the response data which is of type [`Order`](../../doc/models/order.md).
 
@@ -400,6 +442,10 @@ Updates or cancels the tracking information for a PayPal order, by ID. Updatable
 def update_order_tracking(options = {})
 ```
 
+## Authentication
+
+This endpoint requires [Oauth2](../../doc/auth/oauth-2-client-credentials-grant.md)
+
 ## Parameters
 
 | Parameter | Type | Tags | Description |
@@ -410,6 +456,8 @@ def update_order_tracking(options = {})
 | `body` | [`Array[Patch]`](../../doc/models/patch.md) | Body, Optional | **Constraints**: *Minimum Items*: `0`, *Maximum Items*: `32767` |
 
 ## Response Type
+
+**204**: A successful request returns the HTTP `204 No Content` status code with an empty object in the JSON response body.
 
 This method returns an [`ApiResponse`](../../doc/api-response.md) instance.
 
