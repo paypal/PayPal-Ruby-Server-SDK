@@ -14,3 +14,9 @@ The pricing model for tiered plan. The `tiers` parameter is required.
 | `VOLUME` | A volume pricing model. |
 | `TIERED` | A tiered pricing model. |
 
+## Example
+
+```ruby
+subscription_pricing_model = SubscriptionPricingModel::VOLUME
+```
+

@@ -16,21 +16,21 @@ Customizes the buyer experience during the approval process for payment with Ven
 | `order_update_callback_config` | [`CallbackConfiguration`](../../doc/models/callback-configuration.md) | Optional | CallBack Configuration that the merchant can provide to PayPal/Venmo. |
 | `user_action` | [`VenmoWalletExperienceContextUserAction`](../../doc/models/venmo-wallet-experience-context-user-action.md) | Optional | Configures a Continue or Pay Now checkout flow.<br><br>**Default**: `VenmoWalletExperienceContextUserAction::CONTINUE`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `8`, *Pattern*: `^[0-9A-Z_]+$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "shipping_preference": "GET_FROM_FILE",
-  "user_action": "CONTINUE",
-  "brand_name": "brand_name6",
-  "order_update_callback_config": {
-    "callback_events": [
-      "SHIPPING_OPTIONS",
-      "SHIPPING_ADDRESS",
-      "SHIPPING_OPTIONS"
+```ruby
+venmo_wallet_experience_context = VenmoWalletExperienceContext.new(
+  brand_name: 'brand_name2',
+  shipping_preference: VenmoWalletExperienceContextShippingPreference::GET_FROM_FILE,
+  order_update_callback_config: CallbackConfiguration.new(
+    callback_events: [
+      CallbackEvents::SHIPPING_OPTIONS,
+      CallbackEvents::SHIPPING_ADDRESS,
+      CallbackEvents::SHIPPING_OPTIONS
     ],
-    "callback_url": "callback_url6"
-  }
-}
+    callback_url: 'callback_url6'
+  ),
+  user_action: VenmoWalletExperienceContextUserAction::CONTINUE
+)
 ```
 

@@ -14,39 +14,21 @@ The list of subscriptions.
 | `subscriptions` | [`Array[Subscription]`](../../doc/models/subscription.md) | Optional | An array of subscriptions.<br><br>**Constraints**: *Minimum Items*: `0`, *Maximum Items*: `32767` |
 | `links` | [`Array[LinkDescription]`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `10` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "subscriptions": [
-    {
-      "id": "id6",
-      "plan_id": "plan_id8",
-      "start_time": "start_time0",
-      "quantity": "quantity2",
-      "shipping_amount": {
-        "currency_code": "currency_code0",
-        "value": "value6"
-      }
-    },
-    {
-      "id": "id6",
-      "plan_id": "plan_id8",
-      "start_time": "start_time0",
-      "quantity": "quantity2",
-      "shipping_amount": {
-        "currency_code": "currency_code0",
-        "value": "value6"
-      }
-    }
-  ],
-  "links": [
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    }
+```ruby
+subscription_collection = SubscriptionCollection.new(
+  subscriptions: [
+    Subscription.new(
+      plan_id: 'plan_id8',
+      start_time: 'start_time0',
+      quantity: 'quantity2',
+      shipping_amount: Money.new(
+        currency_code: 'currency_code0',
+        value: 'value6'
+      )
+    )
   ]
-}
+)
 ```
 

@@ -13,3 +13,9 @@ The tokenization method that generated the ID.
 |  --- | --- |
 | `SETUP_TOKEN` | The setup token, which is a temporary reference to payment source. |
 
+## Example
+
+```ruby
+vault_token_request_type = VaultTokenRequestType::SETUP_TOKEN
+```
+

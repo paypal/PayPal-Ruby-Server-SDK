@@ -17,15 +17,15 @@ Information needed to pay using Trustly.
 | `bic` | `String` | Optional | The business identification code (BIC). In payments systems, a BIC is used to identify a specific business, most commonly a bank.<br><br>**Constraints**: *Minimum Length*: `8`, *Maximum Length*: `11`, *Pattern*: `^[A-Z-a-z0-9]{4}[A-Z-a-z]{2}[A-Z-a-z0-9]{2}([A-Z-a-z0-9]{3})?$` |
 | `iban_last_chars` | `String` | Optional | The last characters of the IBAN used to pay.<br><br>**Constraints**: *Minimum Length*: `4`, *Maximum Length*: `34`, *Pattern*: `[a-zA-Z0-9]{4}` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name6",
-  "country_code": "country_code6",
-  "email": "email0",
-  "bic": "bic8",
-  "iban_last_chars": "iban_last_chars4"
-}
+```ruby
+trustly_payment_object = TrustlyPaymentObject.new(
+  name: 'name2',
+  country_code: 'country_code2',
+  email: 'email4',
+  bic: 'bic4',
+  iban_last_chars: 'iban_last_chars0'
+)
 ```
 

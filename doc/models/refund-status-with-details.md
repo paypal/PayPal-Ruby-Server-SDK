@@ -14,14 +14,13 @@ The refund status with details.
 | `status` | [`RefundStatus`](../../doc/models/refund-status.md) | Optional, Read-only | The status of the refund. |
 | `status_details` | [`RefundStatusDetails`](../../doc/models/refund-status-details.md) | Optional | The details of the refund status. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "PENDING",
-  "status_details": {
-    "reason": "ECHECK"
-  }
-}
+```ruby
+refund_status_with_details = RefundStatusWithDetails.new(
+  status_details: RefundStatusDetails.new(
+    reason: RefundIncompleteReason::ECHECK
+  )
+)
 ```
 

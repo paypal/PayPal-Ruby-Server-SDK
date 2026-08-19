@@ -13,15 +13,15 @@ The supplementary data.
 |  --- | --- | --- | --- |
 | `related_ids` | [`RelatedIdentifiers`](../../doc/models/related-identifiers.md) | Optional | Identifiers related to a specific resource. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "related_ids": {
-    "order_id": "order_id2",
-    "authorization_id": "authorization_id0",
-    "capture_id": "capture_id0"
-  }
-}
+```ruby
+payment_supplementary_data = PaymentSupplementaryData.new(
+  related_ids: RelatedIdentifiers.new(
+    order_id: 'order_id2',
+    authorization_id: 'authorization_id0',
+    capture_id: 'capture_id0'
+  )
+)
 ```
 

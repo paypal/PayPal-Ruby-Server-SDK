@@ -13,3 +13,9 @@ The type of capture.
 |  --- | --- |
 | `OUTSTANDING_BALANCE` | The outstanding balance that the subscriber must clear. |
 
+## Example
+
+```ruby
+capture_type = CaptureType::OUTSTANDING_BALANCE
+```
+

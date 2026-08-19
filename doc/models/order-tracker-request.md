@@ -18,31 +18,24 @@ The tracking details of an order.
 | `notify_payer` | `TrueClass \| FalseClass` | Optional | If true, PayPal will send an email notification to the payer of the PayPal transaction. The email contains the tracking details provided through the Orders tracking API request. Independent of any value passed for `notify_payer`, the payer may receive tracking notifications within the PayPal app, based on the user's notification preferences.<br><br>**Default**: `false` |
 | `items` | [`Array[OrderTrackerItem]`](../../doc/models/order-tracker-item.md) | Optional | An array of details of items in the shipment. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "capture_id": "capture_id0",
-  "notify_payer": false,
-  "tracking_number": "tracking_number6",
-  "carrier": "ACS_GR",
-  "carrier_name_other": "carrier_name_other0",
-  "items": [
-    {
-      "name": "name8",
-      "quantity": "quantity4",
-      "sku": "sku6",
-      "url": "url2",
-      "image_url": "image_url4"
-    },
-    {
-      "name": "name8",
-      "quantity": "quantity4",
-      "sku": "sku6",
-      "url": "url2",
-      "image_url": "image_url4"
-    }
+```ruby
+order_tracker_request = OrderTrackerRequest.new(
+  capture_id: 'capture_id8',
+  tracking_number: 'tracking_number4',
+  carrier: ShipmentCarrier::IBVENTURE_WEBHOOK,
+  carrier_name_other: 'carrier_name_other8',
+  notify_payer: false,
+  items: [
+    OrderTrackerItem.new(
+      name: 'name8',
+      quantity: 'quantity4',
+      sku: 'sku6',
+      url: 'url2',
+      image_url: 'image_url4'
+    )
   ]
-}
+)
 ```
 

@@ -15,100 +15,79 @@ The collection of payments, or transactions, for a purchase unit in an order. Fo
 | `captures` | [`Array[OrdersCapture]`](../../doc/models/orders-capture.md) | Optional | An array of captured payments for a purchase unit. A purchase unit can have zero or more captured payments. |
 | `refunds` | [`Array[Refund]`](../../doc/models/refund.md) | Optional | An array of refunds for a purchase unit. A purchase unit can have zero or more refunds. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "authorizations": [
-    {
-      "status": "DENIED",
-      "status_details": {
-        "reason": "PENDING_REVIEW"
-      },
-      "id": "id2",
-      "amount": {
-        "currency_code": "currency_code6",
-        "value": "value0"
-      },
-      "invoice_id": "invoice_id2"
-    },
-    {
-      "status": "DENIED",
-      "status_details": {
-        "reason": "PENDING_REVIEW"
-      },
-      "id": "id2",
-      "amount": {
-        "currency_code": "currency_code6",
-        "value": "value0"
-      },
-      "invoice_id": "invoice_id2"
-    },
-    {
-      "status": "DENIED",
-      "status_details": {
-        "reason": "PENDING_REVIEW"
-      },
-      "id": "id2",
-      "amount": {
-        "currency_code": "currency_code6",
-        "value": "value0"
-      },
-      "invoice_id": "invoice_id2"
-    }
+```ruby
+payment_collection = PaymentCollection.new(
+  authorizations: [
+    AuthorizationWithAdditionalData.new(
+      status_details: AuthorizationStatusDetails.new(
+        reason: AuthorizationIncompleteReason::PENDING_REVIEW
+      ),
+      amount: Money.new(
+        currency_code: 'currency_code6',
+        value: 'value0'
+      )
+    ),
+    AuthorizationWithAdditionalData.new(
+      status_details: AuthorizationStatusDetails.new(
+        reason: AuthorizationIncompleteReason::PENDING_REVIEW
+      ),
+      amount: Money.new(
+        currency_code: 'currency_code6',
+        value: 'value0'
+      )
+    ),
+    AuthorizationWithAdditionalData.new(
+      status_details: AuthorizationStatusDetails.new(
+        reason: AuthorizationIncompleteReason::PENDING_REVIEW
+      ),
+      amount: Money.new(
+        currency_code: 'currency_code6',
+        value: 'value0'
+      )
+    )
   ],
-  "captures": [
-    {
-      "status": "REFUNDED",
-      "status_details": {
-        "reason": "VERIFICATION_REQUIRED"
-      },
-      "id": "id4",
-      "amount": {
-        "currency_code": "currency_code6",
-        "value": "value0"
-      },
-      "invoice_id": "invoice_id4"
-    },
-    {
-      "status": "REFUNDED",
-      "status_details": {
-        "reason": "VERIFICATION_REQUIRED"
-      },
-      "id": "id4",
-      "amount": {
-        "currency_code": "currency_code6",
-        "value": "value0"
-      },
-      "invoice_id": "invoice_id4"
-    }
+  captures: [
+    OrdersCapture.new(
+      status_details: CaptureStatusDetails.new(
+        reason: CaptureIncompleteReason::VERIFICATION_REQUIRED
+      ),
+      amount: Money.new(
+        currency_code: 'currency_code6',
+        value: 'value0'
+      )
+    ),
+    OrdersCapture.new(
+      status_details: CaptureStatusDetails.new(
+        reason: CaptureIncompleteReason::VERIFICATION_REQUIRED
+      ),
+      amount: Money.new(
+        currency_code: 'currency_code6',
+        value: 'value0'
+      )
+    )
   ],
-  "refunds": [
-    {
-      "status": "CANCELLED",
-      "status_details": {
-        "reason": "ECHECK"
-      },
-      "id": "id8",
-      "amount": {
-        "currency_code": "currency_code6",
-        "value": "value0"
-      },
-      "invoice_id": "invoice_id8"
-    },
-    {
-      "status": "CANCELLED",
-      "status_details": {
-        "reason": "ECHECK"
-      },
-      "id": "id8",
-      "amount": {
-        "currency_code": "currency_code6",
-        "value": "value0"
-      },
-      "invoice_id": "invoice_id8"
-    }
+  refunds: [
+    Refund.new(
+      status_details: RefundStatusDetails.new(
+        reason: RefundIncompleteReason::ECHECK
+      ),
+      amount: Money.new(
+        currency_code: 'currency_code6',
+        value: 'value0'
+      )
+    ),
+    Refund.new(
+      status_details: RefundStatusDetails.new(
+        reason: RefundIncompleteReason::ECHECK
+      ),
+      amount: Money.new(
+        currency_code: 'currency_code6',
+        value: 'value0'
+      )
+    )
   ]
-}
+)
 ```
 

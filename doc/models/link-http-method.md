@@ -20,3 +20,9 @@ The HTTP method required to make the related call.
 | `OPTIONS` | The HTTP OPTIONS method. |
 | `PATCH` | The HTTP PATCH method. |
 
+## Example
+
+```ruby
+link_http_method = LinkHttpMethod::HEAD
+```
+

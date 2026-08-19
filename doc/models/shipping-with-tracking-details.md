@@ -17,73 +17,60 @@
 | `options` | [`Array[ShippingOption]`](../../doc/models/shipping-option.md) | Optional | An array of shipping options that the payee or merchant offers to the payer to ship or pick up their items.<br><br>**Constraints**: *Minimum Items*: `0`, *Maximum Items*: `10` |
 | `address` | [`Address`](../../doc/models/address.md) | Optional | The portable international postal address. Maps to [AddressValidationMetadata](https://github.com/googlei18n/libaddressinput/wiki/AddressValidationMetadata) and HTML 5.1 [Autofilling form controls: the autocomplete attribute](https://www.w3.org/TR/html51/sec-forms.html#autofilling-form-controls-the-autocomplete-attribute). |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "trackers": [
-    {
-      "id": "id2",
-      "status": "CANCELLED",
-      "items": [
-        {
-          "name": "name8",
-          "quantity": "quantity4",
-          "sku": "sku6",
-          "url": "url2",
-          "image_url": "image_url4"
-        }
+```ruby
+shipping_with_tracking_details = ShippingWithTrackingDetails.new(
+  trackers: [
+    OrderTrackerResponse.new(
+      status: OrderTrackerStatus::CANCELLED,
+      items: [
+        OrderTrackerItem.new(
+          name: 'name8',
+          quantity: 'quantity4',
+          sku: 'sku6',
+          url: 'url2',
+          image_url: 'image_url4'
+        )
       ],
-      "links": [
-        {
-          "href": "href6",
-          "rel": "rel0",
-          "method": "HEAD"
-        },
-        {
-          "href": "href6",
-          "rel": "rel0",
-          "method": "HEAD"
-        }
+      create_time: 'create_time8'
+    ),
+    OrderTrackerResponse.new(
+      status: OrderTrackerStatus::CANCELLED,
+      items: [
+        OrderTrackerItem.new(
+          name: 'name8',
+          quantity: 'quantity4',
+          sku: 'sku6',
+          url: 'url2',
+          image_url: 'image_url4'
+        )
       ],
-      "create_time": "create_time8"
-    },
-    {
-      "id": "id2",
-      "status": "CANCELLED",
-      "items": [
-        {
-          "name": "name8",
-          "quantity": "quantity4",
-          "sku": "sku6",
-          "url": "url2",
-          "image_url": "image_url4"
-        }
+      create_time: 'create_time8'
+    ),
+    OrderTrackerResponse.new(
+      status: OrderTrackerStatus::CANCELLED,
+      items: [
+        OrderTrackerItem.new(
+          name: 'name8',
+          quantity: 'quantity4',
+          sku: 'sku6',
+          url: 'url2',
+          image_url: 'image_url4'
+        )
       ],
-      "links": [
-        {
-          "href": "href6",
-          "rel": "rel0",
-          "method": "HEAD"
-        },
-        {
-          "href": "href6",
-          "rel": "rel0",
-          "method": "HEAD"
-        }
-      ],
-      "create_time": "create_time8"
-    }
+      create_time: 'create_time8'
+    )
   ],
-  "name": {
-    "full_name": "full_name6"
-  },
-  "email_address": "email_address2",
-  "phone_number": {
-    "country_code": "country_code2",
-    "national_number": "national_number6"
-  },
-  "type": "SHIPPING"
-}
+  name: ShippingName.new(
+    full_name: 'full_name6'
+  ),
+  email_address: 'email_address8',
+  phone_number: PhoneNumberWithOptionalCountryCode.new(
+    national_number: 'national_number6',
+    country_code: 'country_code2'
+  ),
+  type: FulfillmentType::SHIPPING
+)
 ```
 

@@ -17,39 +17,39 @@ Refunds a captured payment, by ID. For a full refund, include an empty request b
 | `note_to_payer` | `String` | Optional | The reason for the refund. Appears in both the payer's transaction history and the emails that the payer receives. The pattern is defined by an external party and supports Unicode.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^.*$` |
 | `payment_instruction` | [`RefundPaymentInstruction`](../../doc/models/refund-payment-instruction.md) | Optional | Any additional payments instructions during refund payment processing. This object is only applicable to merchants that have been enabled for PayPal Commerce Platform for Marketplaces and Platforms capability. Please speak to your account manager if you want to use this capability. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  },
-  "custom_id": "custom_id6",
-  "invoice_id": "invoice_id8",
-  "note_to_payer": "note_to_payer0",
-  "payment_instruction": {
-    "platform_fees": [
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        }
-      },
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        }
-      },
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        }
-      }
+```ruby
+refund_request = RefundRequest.new(
+  amount: Money.new(
+    currency_code: 'currency_code6',
+    value: 'value0'
+  ),
+  custom_id: 'custom_id8',
+  invoice_id: 'invoice_id0',
+  note_to_payer: 'note_to_payer2',
+  payment_instruction: RefundPaymentInstruction.new(
+    platform_fees: [
+      RefundPlatformFee.new(
+        amount: Money.new(
+          currency_code: 'currency_code6',
+          value: 'value0'
+        )
+      ),
+      RefundPlatformFee.new(
+        amount: Money.new(
+          currency_code: 'currency_code6',
+          value: 'value0'
+        )
+      ),
+      RefundPlatformFee.new(
+        amount: Money.new(
+          currency_code: 'currency_code6',
+          value: 'value0'
+        )
+      )
     ]
-  }
-}
+  )
+)
 ```
 

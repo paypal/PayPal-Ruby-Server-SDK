@@ -19,134 +19,132 @@ The response to a request to update the quantity of the product or service in a 
 | `plan_overridden` | `TrueClass \| FalseClass` | Optional, Read-only | Indicates whether the subscription has overridden any plan attributes. |
 | `links` | [`Array[LinkDescription]`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links). |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "plan_id": "plan_id6",
-  "quantity": "quantity0",
-  "shipping_amount": {
-    "currency_code": "currency_code0",
-    "value": "value6"
-  },
-  "shipping_address": {
-    "name": {
-      "full_name": "full_name6"
-    },
-    "email_address": "email_address8",
-    "phone_number": {
-      "country_code": "country_code2",
-      "national_number": "national_number6"
-    },
-    "type": "PICKUP_IN_STORE",
-    "options": [
-      {
-        "id": "id2",
-        "label": "label2",
-        "type": "SHIPPING",
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "selected": false
-      }
+```ruby
+modify_subscription_response = ModifySubscriptionResponse.new(
+  plan_id: 'plan_id8',
+  quantity: 'quantity2',
+  shipping_amount: Money.new(
+    currency_code: 'currency_code0',
+    value: 'value6'
+  ),
+  shipping_address: ShippingDetails.new(
+    name: ShippingName.new(
+      full_name: 'full_name6'
+    ),
+    email_address: 'email_address8',
+    phone_number: PhoneNumberWithCountryCode.new(
+      country_code: 'country_code2',
+      national_number: 'national_number6'
+    ),
+    type: FulfillmentType::PICKUP_IN_STORE,
+    options: [
+      ShippingOption.new(
+        id: 'id2',
+        label: 'label2',
+        selected: false,
+        type: ShippingType::SHIPPING,
+        amount: Money.new(
+          currency_code: 'currency_code6',
+          value: 'value0'
+        )
+      )
     ]
-  },
-  "plan": {
-    "billing_cycles": [
-      {
-        "pricing_scheme": {
-          "version": 10,
-          "fixed_price": {
-            "currency_code": "currency_code4",
-            "value": "value0"
-          },
-          "pricing_model": "VOLUME",
-          "tiers": [
-            {
-              "starting_quantity": "starting_quantity8",
-              "ending_quantity": "ending_quantity6",
-              "amount": {
-                "currency_code": "currency_code6",
-                "value": "value0"
-              }
-            },
-            {
-              "starting_quantity": "starting_quantity8",
-              "ending_quantity": "ending_quantity6",
-              "amount": {
-                "currency_code": "currency_code6",
-                "value": "value0"
-              }
-            },
-            {
-              "starting_quantity": "starting_quantity8",
-              "ending_quantity": "ending_quantity6",
-              "amount": {
-                "currency_code": "currency_code6",
-                "value": "value0"
-              }
-            }
+  ),
+  plan: PlanOverride.new(
+    billing_cycles: [
+      BillingCycleOverride.new(
+        sequence: 8,
+        pricing_scheme: SubscriptionPricingScheme.new(
+          fixed_price: Money.new(
+            currency_code: 'currency_code4',
+            value: 'value0'
+          ),
+          pricing_model: SubscriptionPricingModel::VOLUME,
+          tiers: [
+            PricingTier.new(
+              starting_quantity: 'starting_quantity8',
+              amount: Money.new(
+                currency_code: 'currency_code6',
+                value: 'value0'
+              ),
+              ending_quantity: 'ending_quantity6'
+            ),
+            PricingTier.new(
+              starting_quantity: 'starting_quantity8',
+              amount: Money.new(
+                currency_code: 'currency_code6',
+                value: 'value0'
+              ),
+              ending_quantity: 'ending_quantity6'
+            ),
+            PricingTier.new(
+              starting_quantity: 'starting_quantity8',
+              amount: Money.new(
+                currency_code: 'currency_code6',
+                value: 'value0'
+              ),
+              ending_quantity: 'ending_quantity6'
+            )
           ],
-          "create_time": "create_time4"
-        },
-        "sequence": 8,
-        "total_cycles": 198
-      },
-      {
-        "pricing_scheme": {
-          "version": 10,
-          "fixed_price": {
-            "currency_code": "currency_code4",
-            "value": "value0"
-          },
-          "pricing_model": "VOLUME",
-          "tiers": [
-            {
-              "starting_quantity": "starting_quantity8",
-              "ending_quantity": "ending_quantity6",
-              "amount": {
-                "currency_code": "currency_code6",
-                "value": "value0"
-              }
-            },
-            {
-              "starting_quantity": "starting_quantity8",
-              "ending_quantity": "ending_quantity6",
-              "amount": {
-                "currency_code": "currency_code6",
-                "value": "value0"
-              }
-            },
-            {
-              "starting_quantity": "starting_quantity8",
-              "ending_quantity": "ending_quantity6",
-              "amount": {
-                "currency_code": "currency_code6",
-                "value": "value0"
-              }
-            }
+          create_time: 'create_time4'
+        ),
+        total_cycles: 198
+      ),
+      BillingCycleOverride.new(
+        sequence: 8,
+        pricing_scheme: SubscriptionPricingScheme.new(
+          fixed_price: Money.new(
+            currency_code: 'currency_code4',
+            value: 'value0'
+          ),
+          pricing_model: SubscriptionPricingModel::VOLUME,
+          tiers: [
+            PricingTier.new(
+              starting_quantity: 'starting_quantity8',
+              amount: Money.new(
+                currency_code: 'currency_code6',
+                value: 'value0'
+              ),
+              ending_quantity: 'ending_quantity6'
+            ),
+            PricingTier.new(
+              starting_quantity: 'starting_quantity8',
+              amount: Money.new(
+                currency_code: 'currency_code6',
+                value: 'value0'
+              ),
+              ending_quantity: 'ending_quantity6'
+            ),
+            PricingTier.new(
+              starting_quantity: 'starting_quantity8',
+              amount: Money.new(
+                currency_code: 'currency_code6',
+                value: 'value0'
+              ),
+              ending_quantity: 'ending_quantity6'
+            )
           ],
-          "create_time": "create_time4"
-        },
-        "sequence": 8,
-        "total_cycles": 198
-      }
+          create_time: 'create_time4'
+        ),
+        total_cycles: 198
+      )
     ],
-    "payment_preferences": {
-      "auto_bill_outstanding": false,
-      "setup_fee": {
-        "currency_code": "currency_code8",
-        "value": "value4"
-      },
-      "setup_fee_failure_action": "CONTINUE",
-      "payment_failure_threshold": 104
-    },
-    "taxes": {
-      "percentage": "percentage8",
-      "inclusive": false
-    }
-  }
-}
+    payment_preferences: PaymentPreferencesOverride.new(
+      auto_bill_outstanding: false,
+      setup_fee: Money.new(
+        currency_code: 'currency_code8',
+        value: 'value4'
+      ),
+      setup_fee_failure_action: SetupFeeFailureAction::CONTINUE,
+      payment_failure_threshold: 104
+    ),
+    taxes: TaxesOverride.new(
+      percentage: 'percentage8',
+      inclusive: false
+    )
+  )
+)
 ```
 

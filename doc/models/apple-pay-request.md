@@ -21,37 +21,36 @@ Information needed to pay using ApplePay.
 | `attributes` | [`ApplePayAttributes`](../../doc/models/apple-pay-attributes.md) | Optional | Additional attributes associated with apple pay. |
 | `experience_context` | [`ApplePayExperienceContext`](../../doc/models/apple-pay-experience-context.md) | Optional | Customizes the payer experience during the approval process for the payment. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "name": "name6",
-  "email_address": "email_address4",
-  "phone_number": {
-    "national_number": "national_number6"
-  },
-  "decrypted_token": {
-    "transaction_amount": {
-      "currency_code": "currency_code6",
-      "value": "value2"
-    },
-    "tokenized_card": {
-      "name": "name4",
-      "number": "number2",
-      "expiry": "expiry2",
-      "card_type": "VISA",
-      "type": "UNKNOWN"
-    },
-    "device_manufacturer_id": "device_manufacturer_id6",
-    "payment_data_type": "3DSECURE",
-    "payment_data": {
-      "cryptogram": "cryptogram6",
-      "eci_indicator": "eci_indicator0",
-      "emv_data": "emv_data0",
-      "pin": "pin4"
-    }
-  }
-}
+```ruby
+apple_pay_request = ApplePayRequest.new(
+  id: 'id0',
+  name: 'name0',
+  email_address: 'email_address8',
+  phone_number: PhoneNumber.new(
+    national_number: 'national_number6'
+  ),
+  decrypted_token: ApplePayDecryptedTokenData.new(
+    tokenized_card: ApplePayTokenizedCard.new(
+      name: 'name4',
+      number: 'number2',
+      expiry: 'expiry2',
+      type: CardType::UNKNOWN
+    ),
+    transaction_amount: Money.new(
+      currency_code: 'currency_code6',
+      value: 'value2'
+    ),
+    device_manufacturer_id: 'device_manufacturer_id6',
+    payment_data_type: ApplePayPaymentDataType::ENUM_3DSECURE,
+    payment_data: ApplePayPaymentData.new(
+      cryptogram: 'cryptogram6',
+      eci_indicator: 'eci_indicator0',
+      emv_data: 'emv_data0',
+      pin: 'pin4'
+    )
+  )
+)
 ```
 

@@ -73,6 +73,21 @@ module PaypalServerSdk
     # @return [Array[LinkDescription]]
     attr_accessor :links
 
+    # The status of the subscription.
+    # @return [SubscriptionStatus]
+    attr_accessor :status
+
+    # The reason or notes for the status of the subscription.
+    # @return [String]
+    attr_accessor :status_change_note
+
+    # The date and time, in [Internet date and time
+    # format](https://tools.ietf.org/html/rfc3339#section-5.6). Seconds are
+    # required while fractional seconds are optional. Note: The regular
+    # expression provides guidance but does not reject all invalid dates.
+    # @return [String]
+    attr_accessor :status_update_time
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -89,6 +104,9 @@ module PaypalServerSdk
       @_hash['plan_overridden'] = 'plan_overridden'
       @_hash['plan'] = 'plan'
       @_hash['links'] = 'links'
+      @_hash['status'] = 'status'
+      @_hash['status_change_note'] = 'status_change_note'
+      @_hash['status_update_time'] = 'status_update_time'
       @_hash
     end
 
@@ -108,6 +126,9 @@ module PaypalServerSdk
         plan_overridden
         plan
         links
+        status
+        status_change_note
+        status_update_time
       ]
     end
 
@@ -119,7 +140,8 @@ module PaypalServerSdk
     def initialize(id: SKIP, plan_id: SKIP, start_time: SKIP, quantity: SKIP,
                    shipping_amount: SKIP, subscriber: SKIP, billing_info: SKIP,
                    create_time: SKIP, update_time: SKIP, custom_id: SKIP,
-                   plan_overridden: SKIP, plan: SKIP, links: SKIP)
+                   plan_overridden: SKIP, plan: SKIP, links: SKIP, status: SKIP,
+                   status_change_note: SKIP, status_update_time: SKIP)
       @id = id unless id == SKIP
       @plan_id = plan_id unless plan_id == SKIP
       @start_time = start_time unless start_time == SKIP
@@ -133,6 +155,9 @@ module PaypalServerSdk
       @plan_overridden = plan_overridden unless plan_overridden == SKIP
       @plan = plan unless plan == SKIP
       @links = links unless links == SKIP
+      @status = status unless status == SKIP
+      @status_change_note = status_change_note unless status_change_note == SKIP
+      @status_update_time = status_update_time unless status_update_time == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -164,6 +189,11 @@ module PaypalServerSdk
       end
 
       links = SKIP unless hash.key?('links')
+      status = hash.key?('status') ? hash['status'] : SKIP
+      status_change_note =
+        hash.key?('status_change_note') ? hash['status_change_note'] : SKIP
+      status_update_time =
+        hash.key?('status_update_time') ? hash['status_update_time'] : SKIP
 
       # Create object from extracted values.
       Subscription.new(id: id,
@@ -178,7 +208,10 @@ module PaypalServerSdk
                        custom_id: custom_id,
                        plan_overridden: plan_overridden,
                        plan: plan,
-                       links: links)
+                       links: links,
+                       status: status,
+                       status_change_note: status_change_note,
+                       status_update_time: status_update_time)
     end
 
     # Provides a human-readable string representation of the object.
@@ -188,7 +221,8 @@ module PaypalServerSdk
       " #{@quantity}, shipping_amount: #{@shipping_amount}, subscriber: #{@subscriber},"\
       " billing_info: #{@billing_info}, create_time: #{@create_time}, update_time:"\
       " #{@update_time}, custom_id: #{@custom_id}, plan_overridden: #{@plan_overridden}, plan:"\
-      " #{@plan}, links: #{@links}>"
+      " #{@plan}, links: #{@links}, status: #{@status}, status_change_note:"\
+      " #{@status_change_note}, status_update_time: #{@status_update_time}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
@@ -199,7 +233,9 @@ module PaypalServerSdk
       " #{@shipping_amount.inspect}, subscriber: #{@subscriber.inspect}, billing_info:"\
       " #{@billing_info.inspect}, create_time: #{@create_time.inspect}, update_time:"\
       " #{@update_time.inspect}, custom_id: #{@custom_id.inspect}, plan_overridden:"\
-      " #{@plan_overridden.inspect}, plan: #{@plan.inspect}, links: #{@links.inspect}>"
+      " #{@plan_overridden.inspect}, plan: #{@plan.inspect}, links: #{@links.inspect}, status:"\
+      " #{@status.inspect}, status_change_note: #{@status_change_note.inspect},"\
+      " status_update_time: #{@status_update_time.inspect}>"
     end
   end
 end

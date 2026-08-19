@@ -13,14 +13,14 @@ The tax levied by a government on the purchase of goods or services.
 |  --- | --- | --- | --- |
 | `tax_amount` | [`Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "tax_amount": {
-    "currency_code": "currency_code2",
-    "value": "value8"
-  }
-}
+```ruby
+tax_amount = TaxAmount.new(
+  tax_amount: Money.new(
+    currency_code: 'currency_code2',
+    value: 'value8'
+  )
+)
 ```
 

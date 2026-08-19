@@ -13,11 +13,11 @@ Information used to pay using BLIK one-click flow.
 |  --- | --- | --- | --- |
 | `consumer_reference` | `String` | Optional | The merchant generated, unique reference serving as a primary identifier for accounts connected between Blik and a merchant.<br><br>**Constraints**: *Minimum Length*: `3`, *Maximum Length*: `64`, *Pattern*: `^[ -~]{3,64}$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "consumer_reference": "consumer_reference0"
-}
+```ruby
+blik_one_click_payment_object = BlikOneClickPaymentObject.new(
+  consumer_reference: 'consumer_reference2'
+)
 ```
 

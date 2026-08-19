@@ -15,3 +15,9 @@ The pricing model for the billing cycle.
 | `VARIABLE` | A variable pricing scheme where the customer is charged a variable amount. |
 | `AUTO_RELOAD` | A auto-reload pricing scheme where the customer is charged a fixed amount for reload. |
 
+## Example
+
+```ruby
+pricing_model = PricingModel::AUTO_RELOAD
+```
+

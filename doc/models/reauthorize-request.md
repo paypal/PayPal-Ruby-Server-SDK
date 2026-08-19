@@ -13,14 +13,14 @@ Reauthorizes an authorized PayPal account payment, by ID. To ensure that funds a
 |  --- | --- | --- | --- |
 | `amount` | [`Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  }
-}
+```ruby
+reauthorize_request = ReauthorizeRequest.new(
+  amount: Money.new(
+    currency_code: 'currency_code6',
+    value: 'value0'
+  )
+)
 ```
 

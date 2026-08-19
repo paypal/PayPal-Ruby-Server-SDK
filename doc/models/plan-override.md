@@ -15,142 +15,63 @@ An inline plan object to customise the subscription. You can override plan level
 | `payment_preferences` | [`PaymentPreferencesOverride`](../../doc/models/payment-preferences-override.md) | Optional | The payment preferences to override at subscription level. |
 | `taxes` | [`TaxesOverride`](../../doc/models/taxes-override.md) | Optional | The tax details. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "billing_cycles": [
-    {
-      "pricing_scheme": {
-        "version": 10,
-        "fixed_price": {
-          "currency_code": "currency_code4",
-          "value": "value0"
-        },
-        "pricing_model": "VOLUME",
-        "tiers": [
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          },
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          },
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          }
+```ruby
+plan_override = PlanOverride.new(
+  billing_cycles: [
+    BillingCycleOverride.new(
+      sequence: 8,
+      pricing_scheme: SubscriptionPricingScheme.new(
+        fixed_price: Money.new(
+          currency_code: 'currency_code4',
+          value: 'value0'
+        ),
+        pricing_model: SubscriptionPricingModel::VOLUME,
+        tiers: [
+          PricingTier.new(
+            starting_quantity: 'starting_quantity8',
+            amount: Money.new(
+              currency_code: 'currency_code6',
+              value: 'value0'
+            ),
+            ending_quantity: 'ending_quantity6'
+          ),
+          PricingTier.new(
+            starting_quantity: 'starting_quantity8',
+            amount: Money.new(
+              currency_code: 'currency_code6',
+              value: 'value0'
+            ),
+            ending_quantity: 'ending_quantity6'
+          ),
+          PricingTier.new(
+            starting_quantity: 'starting_quantity8',
+            amount: Money.new(
+              currency_code: 'currency_code6',
+              value: 'value0'
+            ),
+            ending_quantity: 'ending_quantity6'
+          )
         ],
-        "create_time": "create_time4"
-      },
-      "sequence": 8,
-      "total_cycles": 198
-    },
-    {
-      "pricing_scheme": {
-        "version": 10,
-        "fixed_price": {
-          "currency_code": "currency_code4",
-          "value": "value0"
-        },
-        "pricing_model": "VOLUME",
-        "tiers": [
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          },
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          },
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          }
-        ],
-        "create_time": "create_time4"
-      },
-      "sequence": 8,
-      "total_cycles": 198
-    },
-    {
-      "pricing_scheme": {
-        "version": 10,
-        "fixed_price": {
-          "currency_code": "currency_code4",
-          "value": "value0"
-        },
-        "pricing_model": "VOLUME",
-        "tiers": [
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          },
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          },
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          }
-        ],
-        "create_time": "create_time4"
-      },
-      "sequence": 8,
-      "total_cycles": 198
-    }
+        create_time: 'create_time4'
+      ),
+      total_cycles: 198
+    )
   ],
-  "payment_preferences": {
-    "auto_bill_outstanding": false,
-    "setup_fee": {
-      "currency_code": "currency_code8",
-      "value": "value4"
-    },
-    "setup_fee_failure_action": "CONTINUE",
-    "payment_failure_threshold": 104
-  },
-  "taxes": {
-    "percentage": "percentage8",
-    "inclusive": false
-  }
-}
+  payment_preferences: PaymentPreferencesOverride.new(
+    auto_bill_outstanding: false,
+    setup_fee: Money.new(
+      currency_code: 'currency_code8',
+      value: 'value4'
+    ),
+    setup_fee_failure_action: SetupFeeFailureAction::CONTINUE,
+    payment_failure_threshold: 104
+  ),
+  taxes: TaxesOverride.new(
+    percentage: 'percentage8',
+    inclusive: false
+  )
+)
 ```
 

@@ -17,3 +17,9 @@ The status of the payment token.
 | `VAULTED` | The payment token has been vaulted. |
 | `TOKENIZED` | A vaulted payment method token has been tokenized for short term (one time) use. |
 
+## Example
+
+```ruby
+payment_token_status = PaymentTokenStatus::PAYER_ACTION_REQUIRED
+```
+

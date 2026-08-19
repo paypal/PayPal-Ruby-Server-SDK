@@ -20,33 +20,33 @@ A resource representing a request to vault PayPal Wallet.
 | `billing_plan` | [`Plan`](../../doc/models/plan.md) | Optional | The merchant level Recurring Billing plan metadata for the Billing Agreement. |
 | `experience_context` | [`VaultExperienceContext`](../../doc/models/vault-experience-context.md) | Optional | A resource representing an experience context of vault PayPal Wallet. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "permit_multiple_payment_tokens": false,
-  "description": "description0",
-  "usage_pattern": "INSTALLMENT_PREPAID",
-  "shipping": {
-    "name": {
-      "full_name": "full_name6"
-    },
-    "email_address": "email_address2",
-    "phone_number": {
-      "country_code": "country_code2",
-      "national_number": "national_number6"
-    },
-    "type": "SHIPPING",
-    "address": {
-      "address_line_1": "address_line_16",
-      "address_line_2": "address_line_26",
-      "admin_area_2": "admin_area_20",
-      "admin_area_1": "admin_area_12",
-      "postal_code": "postal_code8",
-      "country_code": "country_code6"
-    }
-  },
-  "usage_type": "MERCHANT"
-}
+```ruby
+vault_paypal_wallet_request = VaultPaypalWalletRequest.new(
+  description: 'description0',
+  usage_pattern: UsagePattern::RECURRING_PREPAID,
+  shipping: VaultedDigitalWalletShippingDetails.new(
+    name: ShippingName.new(
+      full_name: 'full_name6'
+    ),
+    email_address: 'email_address2',
+    phone_number: PhoneNumberWithCountryCode.new(
+      country_code: 'country_code2',
+      national_number: 'national_number6'
+    ),
+    type: FulfillmentType::SHIPPING,
+    address: Address.new(
+      country_code: 'country_code6',
+      address_line_1: 'address_line_16',
+      address_line_2: 'address_line_26',
+      admin_area_2: 'admin_area_20',
+      admin_area_1: 'admin_area_12',
+      postal_code: 'postal_code8'
+    )
+  ),
+  permit_multiple_payment_tokens: false,
+  usage_type: PaypalPaymentTokenUsageType::MERCHANT
+)
 ```
 

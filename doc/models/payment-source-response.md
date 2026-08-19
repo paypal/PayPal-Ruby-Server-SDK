@@ -26,49 +26,44 @@ The payment source used to fund the payment.
 | `google_pay` | [`GooglePayWalletResponse`](../../doc/models/google-pay-wallet-response.md) | Optional | Google Pay Wallet payment data. |
 | `venmo` | [`VenmoWalletResponse`](../../doc/models/venmo-wallet-response.md) | Optional | Venmo wallet response. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "card": {
-    "name": "name6",
-    "last_digits": "last_digits0",
-    "brand": "CB_NATIONALE",
-    "available_networks": [
-      "DELTA"
-    ],
-    "type": "UNKNOWN"
-  },
-  "paypal": {
-    "email_address": "email_address0",
-    "account_id": "account_id4",
-    "account_status": "VERIFIED",
-    "name": {
-      "given_name": "given_name2",
-      "surname": "surname8"
-    },
-    "phone_type": "FAX"
-  },
-  "bancontact": {
-    "name": "name0",
-    "country_code": "country_code0",
-    "bic": "bic2",
-    "iban_last_chars": "iban_last_chars8",
-    "card_last_digits": "card_last_digits4"
-  },
-  "blik": {
-    "name": "name2",
-    "country_code": "country_code2",
-    "email": "email4",
-    "one_click": {
-      "consumer_reference": "consumer_reference2"
-    }
-  },
-  "eps": {
-    "name": "name6",
-    "country_code": "country_code6",
-    "bic": "bic8"
-  }
-}
+```ruby
+payment_source_response = PaymentSourceResponse.new(
+  card: CardResponse.new(
+    name: 'name6',
+    brand: CardBrand::CB_NATIONALE,
+    type: CardType::UNKNOWN
+  ),
+  paypal: PaypalWalletResponse.new(
+    email_address: 'email_address0',
+    account_id: 'account_id4',
+    name: Name.new(
+      given_name: 'given_name2',
+      surname: 'surname8'
+    ),
+    phone_type: PhoneType::FAX
+  ),
+  bancontact: BancontactPaymentObject.new(
+    name: 'name0',
+    country_code: 'country_code0',
+    bic: 'bic2',
+    iban_last_chars: 'iban_last_chars8',
+    card_last_digits: 'card_last_digits4'
+  ),
+  blik: BlikPaymentObject.new(
+    name: 'name2',
+    country_code: 'country_code2',
+    email: 'email4',
+    one_click: BlikOneClickPaymentObject.new(
+      consumer_reference: 'consumer_reference2'
+    )
+  ),
+  eps: EpsPaymentObject.new(
+    name: 'name6',
+    country_code: 'country_code6',
+    bic: 'bic8'
+  )
+)
 ```
 

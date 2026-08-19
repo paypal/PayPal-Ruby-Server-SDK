@@ -16,34 +16,27 @@ The details about a saved PayPal Wallet payment source.
 | `links` | [`Array[LinkDescription]`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related HATEOAS links.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `10` |
 | `customer` | [`PaypalWalletCustomer`](../../doc/models/paypal-wallet-customer.md) | Optional | The details about a customer in PayPal's system of record. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id0",
-  "status": "CREATED",
-  "links": [
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    }
-  ],
-  "customer": {
-    "id": "id0",
-    "email_address": "email_address2",
-    "phone": {
-      "phone_type": "OTHER",
-      "phone_number": {
-        "national_number": "national_number6"
-      }
-    },
-    "name": {
-      "given_name": "given_name2",
-      "surname": "surname8"
-    },
-    "merchant_customer_id": "merchant_customer_id2"
-  }
-}
+```ruby
+paypal_wallet_vault_response = PaypalWalletVaultResponse.new(
+  id: 'id6',
+  status: PaypalWalletVaultStatus::CREATED,
+  customer: PaypalWalletCustomer.new(
+    id: 'id0',
+    email_address: 'email_address2',
+    phone: PhoneWithType.new(
+      phone_number: PhoneNumber.new(
+        national_number: 'national_number6'
+      ),
+      phone_type: PhoneType::OTHER
+    ),
+    name: Name.new(
+      given_name: 'given_name2',
+      surname: 'surname8'
+    ),
+    merchant_customer_id: 'merchant_customer_id2'
+  )
+)
 ```
 

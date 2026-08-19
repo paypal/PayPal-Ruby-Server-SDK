@@ -17,65 +17,13 @@ The error details.
 | `details` | [`Array[ErrorDetails]`](../../doc/models/error-details.md) | Optional | An array of additional details about the error. |
 | `links` | [`Array[LinkDescription]`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related [HATEOAS links](https://developer.paypal.com/api/rest/responses/#hateoas-links). |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name4",
-  "message": "message4",
-  "debug_id": "debug_id0",
-  "details": [
-    {
-      "field": "field4",
-      "value": "value2",
-      "location": "location4",
-      "issue": "issue6",
-      "links": [
-        {
-          "href": "href6",
-          "rel": "rel0",
-          "method": "HEAD"
-        },
-        {
-          "href": "href6",
-          "rel": "rel0",
-          "method": "HEAD"
-        }
-      ],
-      "description": "description0"
-    },
-    {
-      "field": "field4",
-      "value": "value2",
-      "location": "location4",
-      "issue": "issue6",
-      "links": [
-        {
-          "href": "href6",
-          "rel": "rel0",
-          "method": "HEAD"
-        },
-        {
-          "href": "href6",
-          "rel": "rel0",
-          "method": "HEAD"
-        }
-      ],
-      "description": "description0"
-    }
-  ],
-  "links": [
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    },
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    }
-  ]
-}
+```ruby
+begin
+  # make the API call
+rescue ErrorException => e
+  puts "Caught ErrorException: #{e.message}"
+end
 ```
 

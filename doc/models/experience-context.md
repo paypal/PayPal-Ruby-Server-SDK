@@ -17,15 +17,15 @@ Customizes the payer experience during the approval process for the payment.
 | `return_url` | `String` | Optional | Describes the URL. |
 | `cancel_url` | `String` | Optional | Describes the URL. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "shipping_preference": "GET_FROM_FILE",
-  "brand_name": "brand_name0",
-  "locale": "locale4",
-  "return_url": "return_url2",
-  "cancel_url": "cancel_url4"
-}
+```ruby
+experience_context = ExperienceContext.new(
+  brand_name: 'brand_name2',
+  locale: 'locale6',
+  shipping_preference: ExperienceContextShippingPreference::GET_FROM_FILE,
+  return_url: 'return_url4',
+  cancel_url: 'cancel_url6'
+)
 ```
 
