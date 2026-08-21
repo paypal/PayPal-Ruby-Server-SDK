@@ -13,11 +13,11 @@ The cancel subscription request details.
 |  --- | --- | --- | --- |
 | `reason` | `String` | Required | The reason for the cancellation of a subscription.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `128`, *Pattern*: `^.*$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "reason": "reason8"
-}
+```ruby
+cancel_subscription_request = CancelSubscriptionRequest.new(
+  reason: 'reason8'
+)
 ```
 

@@ -14,3 +14,9 @@ The action to take on the subscription if the initial payment for the setup fail
 | `CONTINUE` | Continues the subscription if the initial payment for the setup fails. |
 | `CANCEL` | Cancels the subscription if the initial payment for the setup fails. |
 
+## Example
+
+```ruby
+setup_fee_failure_action = SetupFeeFailureAction::CONTINUE
+```
+

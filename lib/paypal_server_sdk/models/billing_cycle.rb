@@ -46,6 +46,10 @@ module PaypalServerSdk
     # @return [String]
     attr_accessor :start_date
 
+    # The frequency of the terms reset cycle.
+    # @return [CycleFrequency]
+    attr_accessor :frequency
+
     # A mapping from model property names to API property names.
     def self.names
       @_hash = {} if @_hash.nil?
@@ -54,6 +58,7 @@ module PaypalServerSdk
       @_hash['total_cycles'] = 'total_cycles'
       @_hash['sequence'] = 'sequence'
       @_hash['start_date'] = 'start_date'
+      @_hash['frequency'] = 'frequency'
       @_hash
     end
 
@@ -64,6 +69,7 @@ module PaypalServerSdk
         total_cycles
         sequence
         start_date
+        frequency
       ]
     end
 
@@ -73,12 +79,13 @@ module PaypalServerSdk
     end
 
     def initialize(tenure_type:, pricing_scheme: SKIP, total_cycles: 1,
-                   sequence: 1, start_date: SKIP)
+                   sequence: 1, start_date: SKIP, frequency: SKIP)
       @tenure_type = tenure_type
       @pricing_scheme = pricing_scheme unless pricing_scheme == SKIP
       @total_cycles = total_cycles unless total_cycles == SKIP
       @sequence = sequence unless sequence == SKIP
       @start_date = start_date unless start_date == SKIP
+      @frequency = frequency unless frequency == SKIP
     end
 
     # Creates an instance of the object from a hash.
@@ -91,20 +98,23 @@ module PaypalServerSdk
       total_cycles = hash['total_cycles'] ||= 1
       sequence = hash['sequence'] ||= 1
       start_date = hash.key?('start_date') ? hash['start_date'] : SKIP
+      frequency = CycleFrequency.from_hash(hash['frequency']) if hash['frequency']
 
       # Create object from extracted values.
       BillingCycle.new(tenure_type: tenure_type,
                        pricing_scheme: pricing_scheme,
                        total_cycles: total_cycles,
                        sequence: sequence,
-                       start_date: start_date)
+                       start_date: start_date,
+                       frequency: frequency)
     end
 
     # Provides a human-readable string representation of the object.
     def to_s
       class_name = self.class.name.split('::').last
       "<#{class_name} tenure_type: #{@tenure_type}, pricing_scheme: #{@pricing_scheme},"\
-      " total_cycles: #{@total_cycles}, sequence: #{@sequence}, start_date: #{@start_date}>"
+      " total_cycles: #{@total_cycles}, sequence: #{@sequence}, start_date: #{@start_date},"\
+      " frequency: #{@frequency}>"
     end
 
     # Provides a debugging-friendly string with detailed object information.
@@ -112,7 +122,8 @@ module PaypalServerSdk
       class_name = self.class.name.split('::').last
       "<#{class_name} tenure_type: #{@tenure_type.inspect}, pricing_scheme:"\
       " #{@pricing_scheme.inspect}, total_cycles: #{@total_cycles.inspect}, sequence:"\
-      " #{@sequence.inspect}, start_date: #{@start_date.inspect}>"
+      " #{@sequence.inspect}, start_date: #{@start_date.inspect}, frequency:"\
+      " #{@frequency.inspect}>"
     end
   end
 end

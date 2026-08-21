@@ -18,29 +18,29 @@ Information needed to pay using BLIK.
 | `level_0` | [`BlikLevel0PaymentObject`](../../doc/models/blik-level-0-payment-object.md) | Optional | Information used to pay using BLIK level_0 flow. |
 | `one_click` | [`BlikOneClickPaymentRequest`](../../doc/models/blik-one-click-payment-request.md) | Optional | Information used to pay using BLIK one-click flow. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name8",
-  "country_code": "country_code8",
-  "email": "email8",
-  "experience_context": {
-    "brand_name": "brand_name2",
-    "locale": "locale6",
-    "shipping_preference": "NO_SHIPPING",
-    "return_url": "return_url4",
-    "cancel_url": "cancel_url6"
-  },
-  "level_0": {
-    "auth_code": "auth_code8"
-  },
-  "one_click": {
-    "auth_code": "auth_code0",
-    "consumer_reference": "consumer_reference2",
-    "alias_label": "alias_label6",
-    "alias_key": "alias_key4"
-  }
-}
+```ruby
+blik_payment_request = BlikPaymentRequest.new(
+  name: 'name2',
+  country_code: 'country_code2',
+  email: 'email4',
+  experience_context: BlikExperienceContext.new(
+    brand_name: 'brand_name2',
+    locale: 'locale6',
+    shipping_preference: ExperienceContextShippingPreference::NO_SHIPPING,
+    return_url: 'return_url4',
+    cancel_url: 'cancel_url6'
+  ),
+  level_0: BlikLevel0PaymentObject.new(
+    auth_code: 'auth_code8'
+  ),
+  one_click: BlikOneClickPaymentRequest.new(
+    consumer_reference: 'consumer_reference2',
+    auth_code: 'auth_code0',
+    alias_label: 'alias_label6',
+    alias_key: 'alias_key4'
+  )
+)
 ```
 

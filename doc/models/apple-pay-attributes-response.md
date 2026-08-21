@@ -13,28 +13,21 @@ Additional attributes associated with the use of Apple Pay.
 |  --- | --- | --- | --- |
 | `vault` | [`VaultResponse`](../../doc/models/vault-response.md) | Optional | The details about a saved payment source. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "vault": {
-    "id": "id6",
-    "status": "APPROVED",
-    "customer": {
-      "id": "id0",
-      "name": {
-        "given_name": "given_name2",
-        "surname": "surname8"
-      }
-    },
-    "links": [
-      {
-        "href": "href6",
-        "rel": "rel0",
-        "method": "HEAD"
-      }
-    ]
-  }
-}
+```ruby
+apple_pay_attributes_response = ApplePayAttributesResponse.new(
+  vault: VaultResponse.new(
+    id: 'id6',
+    status: VaultStatus::APPROVED,
+    customer: VaultCustomer.new(
+      id: 'id0',
+      name: Name.new(
+        given_name: 'given_name2',
+        surname: 'surname8'
+      )
+    )
+  )
+)
 ```
 

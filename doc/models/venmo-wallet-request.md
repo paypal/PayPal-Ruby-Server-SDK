@@ -16,49 +16,49 @@ Information needed to pay using Venmo.
 | `experience_context` | [`VenmoWalletExperienceContext`](../../doc/models/venmo-wallet-experience-context.md) | Optional | Customizes the buyer experience during the approval process for payment with Venmo. Note: Partners and Marketplaces might configure shipping_preference during partner account setup, which overrides the request values. |
 | `attributes` | [`VenmoWalletAdditionalAttributes`](../../doc/models/venmo-wallet-additional-attributes.md) | Optional | Additional attributes associated with the use of this Venmo Wallet. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "vault_id": "vault_id2",
-  "email_address": "email_address2",
-  "experience_context": {
-    "brand_name": "brand_name2",
-    "shipping_preference": "NO_SHIPPING",
-    "order_update_callback_config": {
-      "callback_events": [
-        "SHIPPING_OPTIONS",
-        "SHIPPING_ADDRESS",
-        "SHIPPING_OPTIONS"
+```ruby
+venmo_wallet_request = VenmoWalletRequest.new(
+  vault_id: 'vault_id6',
+  email_address: 'email_address6',
+  experience_context: VenmoWalletExperienceContext.new(
+    brand_name: 'brand_name2',
+    shipping_preference: VenmoWalletExperienceContextShippingPreference::NO_SHIPPING,
+    order_update_callback_config: CallbackConfiguration.new(
+      callback_events: [
+        CallbackEvents::SHIPPING_OPTIONS,
+        CallbackEvents::SHIPPING_ADDRESS,
+        CallbackEvents::SHIPPING_OPTIONS
       ],
-      "callback_url": "callback_url6"
-    },
-    "user_action": "CONTINUE"
-  },
-  "attributes": {
-    "customer": {
-      "id": "id0",
-      "email_address": "email_address2",
-      "phone": {
-        "phone_type": "OTHER",
-        "phone_number": {
-          "national_number": "national_number6"
-        }
-      },
-      "name": {
-        "given_name": "given_name2",
-        "surname": "surname8"
-      }
-    },
-    "vault": {
-      "store_in_vault": "ON_SUCCESS",
-      "description": "description6",
-      "usage_pattern": "THRESHOLD_PREPAID",
-      "usage_type": "MERCHANT",
-      "customer_type": "CONSUMER",
-      "permit_multiple_payment_tokens": false
-    }
-  }
-}
+      callback_url: 'callback_url6'
+    ),
+    user_action: VenmoWalletExperienceContextUserAction::CONTINUE
+  ),
+  attributes: VenmoWalletAdditionalAttributes.new(
+    customer: VenmoWalletCustomerInformation.new(
+      id: 'id0',
+      email_address: 'email_address2',
+      phone: PhoneWithType.new(
+        phone_number: PhoneNumber.new(
+          national_number: 'national_number6'
+        ),
+        phone_type: PhoneType::OTHER
+      ),
+      name: Name.new(
+        given_name: 'given_name2',
+        surname: 'surname8'
+      )
+    ),
+    vault: VenmoWalletVaultAttributes.new(
+      store_in_vault: StoreInVaultInstruction::ON_SUCCESS,
+      usage_type: VenmoPaymentTokenUsageType::MERCHANT,
+      description: 'description6',
+      usage_pattern: VenmoPaymentTokenUsagePattern::THRESHOLD_PREPAID,
+      customer_type: VenmoPaymentTokenCustomerType::CONSUMER,
+      permit_multiple_payment_tokens: false
+    )
+  )
+)
 ```
 

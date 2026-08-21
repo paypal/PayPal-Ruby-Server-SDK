@@ -18,48 +18,48 @@ The subscriber request information .
 | `payment_source` | [`SubscriptionPaymentSource`](../../doc/models/subscription-payment-source.md) | Optional | The payment source definition. To be eligible to create subscription using debit or credit card, you will need to sign up here (https://www.paypal.com/bizsignup/entry/product/ppcp). Please note, its available only for non-3DS cards and for merchants in US and AU regions. |
 | `phone` | [`PhoneWithType`](../../doc/models/phone-with-type.md) | Optional | The phone information. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "email_address": "email_address0",
-  "payer_id": "payer_id0",
-  "name": {
-    "given_name": "given_name2",
-    "surname": "surname8"
-  },
-  "shipping_address": {
-    "name": {
-      "full_name": "full_name6"
-    },
-    "email_address": "email_address8",
-    "phone_number": {
-      "country_code": "country_code2",
-      "national_number": "national_number6"
-    },
-    "type": "PICKUP_IN_STORE",
-    "options": [
-      {
-        "id": "id2",
-        "label": "label2",
-        "type": "SHIPPING",
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "selected": false
-      }
+```ruby
+subscriber_request = SubscriberRequest.new(
+  email_address: 'email_address6',
+  payer_id: 'payer_id6',
+  name: Name.new(
+    given_name: 'given_name2',
+    surname: 'surname8'
+  ),
+  shipping_address: ShippingDetails.new(
+    name: ShippingName.new(
+      full_name: 'full_name6'
+    ),
+    email_address: 'email_address8',
+    phone_number: PhoneNumberWithCountryCode.new(
+      country_code: 'country_code2',
+      national_number: 'national_number6'
+    ),
+    type: FulfillmentType::PICKUP_IN_STORE,
+    options: [
+      ShippingOption.new(
+        id: 'id2',
+        label: 'label2',
+        selected: false,
+        type: ShippingType::SHIPPING,
+        amount: Money.new(
+          currency_code: 'currency_code6',
+          value: 'value0'
+        )
+      )
     ]
-  },
-  "payment_source": {
-    "card": {
-      "name": "name6",
-      "number": "number6",
-      "expiry": "expiry4",
-      "security_code": "security_code8",
-      "type": "UNKNOWN"
-    }
-  }
-}
+  ),
+  payment_source: SubscriptionPaymentSource.new(
+    card: SubscriptionCardRequest.new(
+      name: 'name6',
+      number: 'number6',
+      expiry: 'expiry4',
+      security_code: 'security_code8',
+      type: CardType::UNKNOWN
+    )
+  )
+)
 ```
 

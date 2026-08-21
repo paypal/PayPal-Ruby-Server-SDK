@@ -19,51 +19,32 @@ The billing details for the subscription. If the subscription was or is active, 
 | `failed_payments_count` | `Integer` | Required, Read-only | The number of consecutive payment failures. Resets to `0` after a successful payment. If this reaches the `payment_failure_threshold` value, the subscription updates to the `SUSPENDED` state.<br><br>**Constraints**: `>= 0`, `<= 999` |
 | `last_failed_payment` | [`FailedPaymentDetails`](../../doc/models/failed-payment-details.md) | Optional | The details for the failed payment of the subscription. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "outstanding_balance": {
-    "currency_code": "currency_code8",
-    "value": "value4"
-  },
-  "cycle_executions": [
-    {
-      "tenure_type": "REGULAR",
-      "sequence": 64,
-      "cycles_completed": 110,
-      "cycles_remaining": 14,
-      "current_pricing_scheme_version": 99,
-      "total_cycles": 254
-    },
-    {
-      "tenure_type": "REGULAR",
-      "sequence": 64,
-      "cycles_completed": 110,
-      "cycles_remaining": 14,
-      "current_pricing_scheme_version": 99,
-      "total_cycles": 254
-    }
-  ],
-  "last_payment": {
-    "amount": {
-      "currency_code": "currency_code6",
-      "value": "value0"
-    },
-    "time": "time2"
-  },
-  "next_billing_time": "next_billing_time0",
-  "final_payment_time": "final_payment_time4",
-  "failed_payments_count": 70,
-  "last_failed_payment": {
-    "amount": {
-      "currency_code": "currency_code6",
-      "value": "value0"
-    },
-    "time": "time4",
-    "reason_code": "PAYER_CANNOT_PAY",
-    "next_payment_retry_time": "next_payment_retry_time6"
-  }
-}
+```ruby
+subscription_billing_information = SubscriptionBillingInformation.new(
+  outstanding_balance: Money.new(
+    currency_code: 'currency_code8',
+    value: 'value4'
+  ),
+  failed_payments_count: nil,
+  last_payment: LastPaymentDetails.new(
+    amount: Money.new(
+      currency_code: 'currency_code6',
+      value: 'value0'
+    ),
+    time: 'time2'
+  ),
+  next_billing_time: 'next_billing_time2',
+  final_payment_time: 'final_payment_time6',
+  last_failed_payment: FailedPaymentDetails.new(
+    amount: Money.new(
+      currency_code: 'currency_code6',
+      value: 'value0'
+    ),
+    time: 'time4',
+    next_payment_retry_time: 'next_payment_retry_time6'
+  )
+)
 ```
 

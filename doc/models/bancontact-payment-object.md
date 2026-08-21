@@ -17,15 +17,15 @@ Information used to pay Bancontact.
 | `iban_last_chars` | `String` | Optional | The last characters of the IBAN used to pay.<br><br>**Constraints**: *Minimum Length*: `4`, *Maximum Length*: `34`, *Pattern*: `[a-zA-Z0-9]{4}` |
 | `card_last_digits` | `String` | Optional | The last digits of the card used to fund the Bancontact payment.<br><br>**Constraints**: *Minimum Length*: `4`, *Maximum Length*: `4`, *Pattern*: `[0-9]{4}` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name6",
-  "country_code": "country_code6",
-  "bic": "bic8",
-  "iban_last_chars": "iban_last_chars4",
-  "card_last_digits": "card_last_digits0"
-}
+```ruby
+bancontact_payment_object = BancontactPaymentObject.new(
+  name: 'name8',
+  country_code: 'country_code8',
+  bic: 'bic0',
+  iban_last_chars: 'iban_last_chars6',
+  card_last_digits: 'card_last_digits2'
+)
 ```
 

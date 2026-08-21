@@ -13,3 +13,9 @@ The type of the payment credential. Currently, only CARD is supported.
 |  --- | --- |
 | `CARD` | CARD is the only value that Google Pay accepts. |
 
+## Example
+
+```ruby
+google_pay_payment_method = GooglePayPaymentMethod::CARD
+```
+

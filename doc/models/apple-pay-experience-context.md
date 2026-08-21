@@ -14,12 +14,12 @@ Customizes the payer experience during the approval process for the payment.
 | `return_url` | `String` | Required | Describes the URL. |
 | `cancel_url` | `String` | Required | Describes the URL. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "return_url": "return_url6",
-  "cancel_url": "cancel_url8"
-}
+```ruby
+apple_pay_experience_context = ApplePayExperienceContext.new(
+  return_url: 'return_url4',
+  cancel_url: 'cancel_url6'
+)
 ```
 

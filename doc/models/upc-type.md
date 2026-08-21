@@ -19,3 +19,9 @@ The Universal Product Code type.
 | `UPC_2` |
 | `UPC_5` |
 
+## Example
+
+```ruby
+upc_type = UpcType::UPC_E
+```
+

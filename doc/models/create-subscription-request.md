@@ -21,58 +21,58 @@ The create subscription request details.
 | `custom_id` | `String` | Optional | The custom id for the subscription. Can be invoice id.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `127`, *Pattern*: `^[\x20-\x7E]+` |
 | `plan` | [`PlanOverride`](../../doc/models/plan-override.md) | Optional | An inline plan object to customise the subscription. You can override plan level default attributes by providing customised values for the subscription in this object. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "plan_id": "plan_id8",
-  "auto_renewal": false,
-  "start_time": "start_time0",
-  "quantity": "quantity2",
-  "shipping_amount": {
-    "currency_code": "currency_code0",
-    "value": "value6"
-  },
-  "subscriber": {
-    "email_address": "email_address8",
-    "payer_id": "payer_id8",
-    "name": {
-      "given_name": "given_name2",
-      "surname": "surname8"
-    },
-    "shipping_address": {
-      "name": {
-        "full_name": "full_name6"
-      },
-      "email_address": "email_address8",
-      "phone_number": {
-        "country_code": "country_code2",
-        "national_number": "national_number6"
-      },
-      "type": "PICKUP_IN_STORE",
-      "options": [
-        {
-          "id": "id2",
-          "label": "label2",
-          "type": "SHIPPING",
-          "amount": {
-            "currency_code": "currency_code6",
-            "value": "value0"
-          },
-          "selected": false
-        }
+```ruby
+create_subscription_request = CreateSubscriptionRequest.new(
+  plan_id: 'plan_id6',
+  start_time: 'start_time8',
+  quantity: 'quantity0',
+  shipping_amount: Money.new(
+    currency_code: 'currency_code0',
+    value: 'value6'
+  ),
+  subscriber: SubscriberRequest.new(
+    email_address: 'email_address8',
+    payer_id: 'payer_id8',
+    name: Name.new(
+      given_name: 'given_name2',
+      surname: 'surname8'
+    ),
+    shipping_address: ShippingDetails.new(
+      name: ShippingName.new(
+        full_name: 'full_name6'
+      ),
+      email_address: 'email_address8',
+      phone_number: PhoneNumberWithCountryCode.new(
+        country_code: 'country_code2',
+        national_number: 'national_number6'
+      ),
+      type: FulfillmentType::PICKUP_IN_STORE,
+      options: [
+        ShippingOption.new(
+          id: 'id2',
+          label: 'label2',
+          selected: false,
+          type: ShippingType::SHIPPING,
+          amount: Money.new(
+            currency_code: 'currency_code6',
+            value: 'value0'
+          )
+        )
       ]
-    },
-    "payment_source": {
-      "card": {
-        "name": "name6",
-        "number": "number6",
-        "expiry": "expiry4",
-        "security_code": "security_code8",
-        "type": "UNKNOWN"
-      }
-    }
-  }
-}
+    ),
+    payment_source: SubscriptionPaymentSource.new(
+      card: SubscriptionCardRequest.new(
+        name: 'name6',
+        number: 'number6',
+        expiry: 'expiry4',
+        security_code: 'security_code8',
+        type: CardType::UNKNOWN
+      )
+    )
+  ),
+  auto_renewal: false
+)
 ```
 

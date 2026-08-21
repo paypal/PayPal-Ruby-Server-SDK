@@ -13,17 +13,17 @@ The payment source definition. To be eligible to create subscription using debit
 |  --- | --- | --- | --- |
 | `card` | [`SubscriptionCardRequest`](../../doc/models/subscription-card-request.md) | Optional | The payment card to use to fund a payment. Can be a credit or debit card. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "card": {
-    "name": "name6",
-    "number": "number6",
-    "expiry": "expiry4",
-    "security_code": "security_code8",
-    "type": "UNKNOWN"
-  }
-}
+```ruby
+subscription_payment_source = SubscriptionPaymentSource.new(
+  card: SubscriptionCardRequest.new(
+    name: 'name6',
+    number: 'number6',
+    expiry: 'expiry4',
+    security_code: 'security_code8',
+    type: CardType::UNKNOWN
+  )
+)
 ```
 

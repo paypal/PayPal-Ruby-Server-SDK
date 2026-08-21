@@ -25,18 +25,17 @@ The PayPal Wallet response.
 | `stored_credential` | [`PaypalWalletStoredCredential`](../../doc/models/paypal-wallet-stored-credential.md) | Optional | Provides additional details to process a payment using the PayPal wallet billing agreement or a vaulted payment method that has been stored or is intended to be stored. |
 | `experience_status` | [`ExperienceStatus`](../../doc/models/experience-status.md) | Optional, Read-only | This field indicates the status of PayPal's Checkout experience throughout the order lifecycle. The values reflect the current stage of the checkout process.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[A-Z_]+$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "email_address": "email_address8",
-  "account_id": "account_id2",
-  "account_status": "VERIFIED",
-  "name": {
-    "given_name": "given_name2",
-    "surname": "surname8"
-  },
-  "phone_type": "OTHER"
-}
+```ruby
+paypal_wallet_response = PaypalWalletResponse.new(
+  email_address: 'email_address2',
+  account_id: 'account_id6',
+  name: Name.new(
+    given_name: 'given_name2',
+    surname: 'surname8'
+  ),
+  phone_type: PhoneType::MOBILE
+)
 ```
 

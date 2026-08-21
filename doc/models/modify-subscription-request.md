@@ -18,49 +18,49 @@ The request to update the quantity of the product or service in a subscription. 
 | `application_context` | [`SubscriptionPatchApplicationContext`](../../doc/models/subscription-patch-application-context.md) | Optional | The application context, which customizes the payer experience during the subscription approval process with PayPal. |
 | `plan` | [`PlanOverride`](../../doc/models/plan-override.md) | Optional | An inline plan object to customise the subscription. You can override plan level default attributes by providing customised values for the subscription in this object. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "plan_id": "plan_id6",
-  "quantity": "quantity0",
-  "shipping_amount": {
-    "currency_code": "currency_code0",
-    "value": "value6"
-  },
-  "shipping_address": {
-    "name": {
-      "full_name": "full_name6"
-    },
-    "email_address": "email_address8",
-    "phone_number": {
-      "country_code": "country_code2",
-      "national_number": "national_number6"
-    },
-    "type": "PICKUP_IN_STORE",
-    "options": [
-      {
-        "id": "id2",
-        "label": "label2",
-        "type": "SHIPPING",
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "selected": false
-      }
+```ruby
+modify_subscription_request = ModifySubscriptionRequest.new(
+  plan_id: 'plan_id8',
+  quantity: 'quantity2',
+  shipping_amount: Money.new(
+    currency_code: 'currency_code0',
+    value: 'value6'
+  ),
+  shipping_address: ShippingDetails.new(
+    name: ShippingName.new(
+      full_name: 'full_name6'
+    ),
+    email_address: 'email_address8',
+    phone_number: PhoneNumberWithCountryCode.new(
+      country_code: 'country_code2',
+      national_number: 'national_number6'
+    ),
+    type: FulfillmentType::PICKUP_IN_STORE,
+    options: [
+      ShippingOption.new(
+        id: 'id2',
+        label: 'label2',
+        selected: false,
+        type: ShippingType::SHIPPING,
+        amount: Money.new(
+          currency_code: 'currency_code6',
+          value: 'value0'
+        )
+      )
     ]
-  },
-  "application_context": {
-    "brand_name": "brand_name8",
-    "locale": "locale2",
-    "shipping_preference": "SET_PROVIDED_ADDRESS",
-    "payment_method": {
-      "payee_preferred": "UNRESTRICTED"
-    },
-    "return_url": "return_url0",
-    "cancel_url": "cancel_url2"
-  }
-}
+  ),
+  application_context: SubscriptionPatchApplicationContext.new(
+    return_url: 'return_url0',
+    cancel_url: 'cancel_url2',
+    brand_name: 'brand_name8',
+    locale: 'locale2',
+    shipping_preference: ExperienceContextShippingPreference::SET_PROVIDED_ADDRESS,
+    payment_method: PaymentMethod.new(
+      payee_preferred: PayeePaymentMethodPreference::UNRESTRICTED
+    )
+  )
+)
 ```
 

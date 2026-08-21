@@ -16,14 +16,14 @@ A resource representing an experience context of vault a venmo account.
 | `vault_instruction` | [`VaultInstructionAction`](../../doc/models/vault-instruction-action.md) | Optional | DEPRECATED. Vault Instruction on action to be performed after a successful payer approval.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[A-Z_]+$` |
 | `user_action` | [`VaultUserAction`](../../doc/models/vault-user-action.md) | Optional | User Action on action to be performed after a successful payer approval.<br><br>**Default**: `VaultUserAction::CONTINUE`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[A-Z_]+$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "shipping_preference": "GET_FROM_FILE",
-  "user_action": "CONTINUE",
-  "brand_name": "brand_name0",
-  "vault_instruction": "ON_CREATE_PAYMENT_TOKENS"
-}
+```ruby
+venmo_experience_context = VenmoExperienceContext.new(
+  brand_name: 'brand_name0',
+  shipping_preference: ExperienceContextShippingPreference::GET_FROM_FILE,
+  vault_instruction: VaultInstructionAction::ON_CREATE_PAYMENT_TOKENS,
+  user_action: VaultUserAction::CONTINUE
+)
 ```
 

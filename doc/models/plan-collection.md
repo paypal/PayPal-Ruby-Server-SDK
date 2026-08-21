@@ -16,38 +16,26 @@ The list of plans with details.
 | `total_pages` | `Integer` | Optional | The total number of pages.<br><br>**Constraints**: `>= 0`, `<= 100000000` |
 | `links` | [`Array[LinkDescription]`](../../doc/models/link-description.md) | Optional, Read-only | An array of request-related [HATEOAS links](/docs/api/reference/api-responses/#hateoas-links).<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `10` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "plans": [
-    {
-      "id": "id4",
-      "product_id": "product_id0",
-      "name": "name4",
-      "status": "INACTIVE",
-      "description": "description4"
-    }
+```ruby
+plan_collection = PlanCollection.new(
+  plans: [
+    BillingPlan.new(
+      product_id: 'product_id0',
+      name: 'name4',
+      status: SubscriptionPlanStatus::INACTIVE,
+      description: 'description4'
+    ),
+    BillingPlan.new(
+      product_id: 'product_id0',
+      name: 'name4',
+      status: SubscriptionPlanStatus::INACTIVE,
+      description: 'description4'
+    )
   ],
-  "total_items": 158,
-  "total_pages": 194,
-  "links": [
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    },
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    },
-    {
-      "href": "href6",
-      "rel": "rel0",
-      "method": "HEAD"
-    }
-  ]
-}
+  total_items: 68,
+  total_pages: 104
+)
 ```
 

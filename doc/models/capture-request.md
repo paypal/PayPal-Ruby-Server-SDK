@@ -18,53 +18,53 @@ Captures either a portion or the full authorized amount of an authorized payment
 | `note_to_payer` | `String` | Optional | An informational note about this settlement. Appears in both the payer's transaction history and the emails that the payer receives.<br><br>**Constraints**: *Maximum Length*: `255` |
 | `soft_descriptor` | `String` | Optional | The payment descriptor on the payer's account statement.<br><br>**Constraints**: *Maximum Length*: `22` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "final_capture": false,
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  },
-  "invoice_id": "invoice_id4",
-  "payment_instruction": {
-    "platform_fees": [
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "payee": {
-          "email_address": "email_address4",
-          "merchant_id": "merchant_id6"
-        }
-      },
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "payee": {
-          "email_address": "email_address4",
-          "merchant_id": "merchant_id6"
-        }
-      },
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "payee": {
-          "email_address": "email_address4",
-          "merchant_id": "merchant_id6"
-        }
-      }
+```ruby
+capture_request = CaptureRequest.new(
+  amount: Money.new(
+    currency_code: 'currency_code6',
+    value: 'value0'
+  ),
+  invoice_id: 'invoice_id6',
+  final_capture: false,
+  payment_instruction: CapturePaymentInstruction.new(
+    platform_fees: [
+      PlatformFee.new(
+        amount: Money.new(
+          currency_code: 'currency_code6',
+          value: 'value0'
+        ),
+        payee: PayeeBase.new(
+          email_address: 'email_address4',
+          merchant_id: 'merchant_id6'
+        )
+      ),
+      PlatformFee.new(
+        amount: Money.new(
+          currency_code: 'currency_code6',
+          value: 'value0'
+        ),
+        payee: PayeeBase.new(
+          email_address: 'email_address4',
+          merchant_id: 'merchant_id6'
+        )
+      ),
+      PlatformFee.new(
+        amount: Money.new(
+          currency_code: 'currency_code6',
+          value: 'value0'
+        ),
+        payee: PayeeBase.new(
+          email_address: 'email_address4',
+          merchant_id: 'merchant_id6'
+        )
+      )
     ],
-    "disbursement_mode": "INSTANT",
-    "payee_receivable_fx_rate_id": "payee_receivable_fx_rate_id0"
-  },
-  "note_to_payer": "note_to_payer6"
-}
+    disbursement_mode: DisbursementMode::INSTANT,
+    payee_receivable_fx_rate_id: 'payee_receivable_fx_rate_id0'
+  ),
+  note_to_payer: 'note_to_payer8'
+)
 ```
 

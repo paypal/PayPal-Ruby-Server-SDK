@@ -14,12 +14,9 @@ Merchant provided, buyer's native app preferences to app switch to the PayPal co
 | `os_type` | [`OsType`](../../doc/models/os-type.md) | Optional, Read-only | Operating System type of the device that the buyer is using.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `7`, *Pattern*: `^[A-Z_]+$` |
 | `os_version` | `String` | Optional, Read-only | Operating System version of the device that the buyer is using.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `64`, *Pattern*: `^.*$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "os_type": "ANDROID",
-  "os_version": "os_version0"
-}
+```ruby
+native_app_context = NativeAppContext.new
 ```
 

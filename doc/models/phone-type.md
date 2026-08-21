@@ -17,3 +17,9 @@ The phone type.
 | `OTHER` | Other phone number. |
 | `PAGER` | Pager number. |
 
+## Example
+
+```ruby
+phone_type = PhoneType::OTHER
+```
+

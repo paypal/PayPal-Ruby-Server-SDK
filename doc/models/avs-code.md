@@ -36,3 +36,9 @@ The address verification code for Visa, Discover, Mastercard, or American Expres
 | `AVS_3` | For Maestro, the merchant did not provide AVS information. It was not processed. |
 | `AVS_4` | For Maestro, the address was not checked or the acquirer had no response. The service is not available. |
 
+## Example
+
+```ruby
+avs_code = AvsCode::AVS_W
+```
+

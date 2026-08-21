@@ -16,20 +16,20 @@ Information needed to pay using P24 (Przelewy24).
 | `country_code` | `String` | Required | The [two-character ISO 3166-1 code](https://developer.paypal.com/api/rest/reference/country-codes/) that identifies the country or region. Note: The country code for Great Britain is GB and not UK as used in the top-level domain names for that country. Use the `C2` country code for China worldwide for comparable uncontrolled price (CUP) method, bank card, and cross-border transactions.<br><br>**Constraints**: *Minimum Length*: `2`, *Maximum Length*: `2`, *Pattern*: `^([A-Z]{2}\|C2)$` |
 | `experience_context` | [`ExperienceContext`](../../doc/models/experience-context.md) | Optional | Customizes the payer experience during the approval process for the payment. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name6",
-  "email": "email0",
-  "country_code": "country_code6",
-  "experience_context": {
-    "brand_name": "brand_name2",
-    "locale": "locale6",
-    "shipping_preference": "NO_SHIPPING",
-    "return_url": "return_url4",
-    "cancel_url": "cancel_url6"
-  }
-}
+```ruby
+p24_payment_request = P24PaymentRequest.new(
+  name: 'name0',
+  email: 'email6',
+  country_code: 'country_code0',
+  experience_context: ExperienceContext.new(
+    brand_name: 'brand_name2',
+    locale: 'locale6',
+    shipping_preference: ExperienceContextShippingPreference::NO_SHIPPING,
+    return_url: 'return_url4',
+    cancel_url: 'cancel_url6'
+  )
+)
 ```
 

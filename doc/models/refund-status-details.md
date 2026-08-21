@@ -13,11 +13,11 @@ The details of the refund status.
 |  --- | --- | --- | --- |
 | `reason` | [`RefundIncompleteReason`](../../doc/models/refund-incomplete-reason.md) | Optional | The reason why the refund has the `PENDING` or `FAILED` status. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "reason": "ECHECK"
-}
+```ruby
+refund_status_details = RefundStatusDetails.new(
+  reason: RefundIncompleteReason::ECHECK
+)
 ```
 

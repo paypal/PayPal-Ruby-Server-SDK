@@ -26,20 +26,17 @@ The authorized payment transaction.
 | `supplementary_data` | [`PaymentSupplementaryData`](../../doc/models/payment-supplementary-data.md) | Optional | The supplementary data. |
 | `payee` | [`PayeeBase`](../../doc/models/payee-base.md) | Optional | The details for the merchant who receives the funds and fulfills the order. The merchant is also known as the payee. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "VOIDED",
-  "status_details": {
-    "reason": "PENDING_REVIEW"
-  },
-  "id": "id0",
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  },
-  "invoice_id": "invoice_id0"
-}
+```ruby
+payment_authorization = PaymentAuthorization.new(
+  status_details: AuthorizationStatusDetails.new(
+    reason: AuthorizationIncompleteReason::PENDING_REVIEW
+  ),
+  amount: Money.new(
+    currency_code: 'currency_code6',
+    value: 'value0'
+  )
+)
 ```
 

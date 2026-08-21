@@ -13,11 +13,11 @@ The details of the captured payment status.
 |  --- | --- | --- | --- |
 | `reason` | [`CaptureIncompleteReason`](../../doc/models/capture-incomplete-reason.md) | Optional | The reason why the captured payment status is `PENDING` or `DENIED`.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `64`, *Pattern*: `^[A-Z_]+$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "reason": "BUYER_COMPLAINT"
-}
+```ruby
+capture_status_details = CaptureStatusDetails.new(
+  reason: CaptureIncompleteReason::OTHER
+)
 ```
 

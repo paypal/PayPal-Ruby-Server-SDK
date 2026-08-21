@@ -16,3 +16,9 @@ The interval at which the subscription is charged or billed.
 | `MONTH` | A monthly billing cycle. |
 | `YEAR` | A yearly billing cycle. |
 
+## Example
+
+```ruby
+interval_unit = IntervalUnit::DAY
+```
+

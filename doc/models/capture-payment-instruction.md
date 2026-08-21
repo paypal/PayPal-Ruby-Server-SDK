@@ -15,34 +15,44 @@ Any additional payment instructions to be consider during payment processing. Th
 | `disbursement_mode` | [`DisbursementMode`](../../doc/models/disbursement-mode.md) | Optional | The funds that are held on behalf of the merchant.<br><br>**Default**: `DisbursementMode::INSTANT`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `16`, *Pattern*: `^[A-Z_]+$` |
 | `payee_receivable_fx_rate_id` | `String` | Optional | FX identifier generated returned by PayPal to be used for payment processing in order to honor FX rate (for eligible integrations) to be used when amount is settled/received into the payee account.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `4000`, *Pattern*: `^.*$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "disbursement_mode": "INSTANT",
-  "platform_fees": [
-    {
-      "amount": {
-        "currency_code": "currency_code6",
-        "value": "value0"
-      },
-      "payee": {
-        "email_address": "email_address4",
-        "merchant_id": "merchant_id6"
-      }
-    },
-    {
-      "amount": {
-        "currency_code": "currency_code6",
-        "value": "value0"
-      },
-      "payee": {
-        "email_address": "email_address4",
-        "merchant_id": "merchant_id6"
-      }
-    }
+```ruby
+capture_payment_instruction = CapturePaymentInstruction.new(
+  platform_fees: [
+    PlatformFee.new(
+      amount: Money.new(
+        currency_code: 'currency_code6',
+        value: 'value0'
+      ),
+      payee: PayeeBase.new(
+        email_address: 'email_address4',
+        merchant_id: 'merchant_id6'
+      )
+    ),
+    PlatformFee.new(
+      amount: Money.new(
+        currency_code: 'currency_code6',
+        value: 'value0'
+      ),
+      payee: PayeeBase.new(
+        email_address: 'email_address4',
+        merchant_id: 'merchant_id6'
+      )
+    ),
+    PlatformFee.new(
+      amount: Money.new(
+        currency_code: 'currency_code6',
+        value: 'value0'
+      ),
+      payee: PayeeBase.new(
+        email_address: 'email_address4',
+        merchant_id: 'merchant_id6'
+      )
+    )
   ],
-  "payee_receivable_fx_rate_id": "payee_receivable_fx_rate_id8"
-}
+  disbursement_mode: DisbursementMode::INSTANT,
+  payee_receivable_fx_rate_id: 'payee_receivable_fx_rate_id8'
+)
 ```
 
