@@ -14,14 +14,13 @@ The status and status details of a captured payment.
 | `status` | [`CaptureStatus`](../../doc/models/capture-status.md) | Optional, Read-only | The status of the captured payment. |
 | `status_details` | [`CaptureStatusDetails`](../../doc/models/capture-status-details.md) | Optional | The details of the captured payment status. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "status": "COMPLETED",
-  "status_details": {
-    "reason": "VERIFICATION_REQUIRED"
-  }
-}
+```ruby
+capture_status_with_details = CaptureStatusWithDetails.new(
+  status_details: CaptureStatusDetails.new(
+    reason: CaptureIncompleteReason::VERIFICATION_REQUIRED
+  )
+)
 ```
 

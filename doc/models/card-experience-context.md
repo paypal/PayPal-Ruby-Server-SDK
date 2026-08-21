@@ -14,12 +14,12 @@ Customizes the payer experience during the 3DS Approval for payment.
 | `return_url` | `String` | Optional | Describes the URL. |
 | `cancel_url` | `String` | Optional | Describes the URL. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "return_url": "return_url2",
-  "cancel_url": "cancel_url0"
-}
+```ruby
+card_experience_context = CardExperienceContext.new(
+  return_url: 'return_url2',
+  cancel_url: 'cancel_url4'
+)
 ```
 

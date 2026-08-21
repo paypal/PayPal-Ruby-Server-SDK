@@ -16,14 +16,14 @@ Information about the decrypted apple pay payment data for the token like crypto
 | `emv_data` | `String` | Optional | Encoded Apple Pay EMV Payment Structure used for payments in China. The pattern is defined by an external party and supports Unicode.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `2000`, *Pattern*: `^.*$` |
 | `pin` | `String` | Optional | Bank Key encrypted Apple Pay PIN. The pattern is defined by an external party and supports Unicode.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `2000`, *Pattern*: `^.*$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "cryptogram": "cryptogram6",
-  "eci_indicator": "eci_indicator0",
-  "emv_data": "emv_data0",
-  "pin": "pin4"
-}
+```ruby
+apple_pay_payment_data = ApplePayPaymentData.new(
+  cryptogram: 'cryptogram2',
+  eci_indicator: 'eci_indicator6',
+  emv_data: 'emv_data6',
+  pin: 'pin0'
+)
 ```
 

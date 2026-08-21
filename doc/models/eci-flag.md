@@ -18,3 +18,9 @@ Electronic Commerce Indicator (ECI). The ECI value is part of the 2 data element
 | `ATTEMPTED_AUTHENTICATION_TRANSACTION` | VISA, AMEX, JCB, DINERS CLUB attempted authentication transaction. |
 | `NON_3D_SECURE_TRANSACTION` | VISA, AMEX, JCB, DINERS CLUB non-3-D Secure transaction. |
 
+## Example
+
+```ruby
+eci_flag = EciFlag::ATTEMPTED_AUTHENTICATION_TRANSACTION
+```
+

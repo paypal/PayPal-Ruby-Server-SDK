@@ -21,78 +21,77 @@ The create plan request details.
 | `taxes` | [`Taxes`](../../doc/models/taxes.md) | Optional | The tax details. |
 | `quantity_supported` | `TrueClass \| FalseClass` | Optional | Indicates whether you can subscribe to this plan by providing a quantity for the goods or service.<br><br>**Default**: `false` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "product_id": "product_id2",
-  "name": "name2",
-  "status": "ACTIVE",
-  "billing_cycles": [
-    {
-      "frequency": {
-        "interval_unit": "DAY",
-        "interval_count": 1
-      },
-      "tenure_type": "REGULAR",
-      "sequence": 8,
-      "total_cycles": 1,
-      "pricing_scheme": {
-        "version": 10,
-        "fixed_price": {
-          "currency_code": "currency_code4",
-          "value": "value0"
-        },
-        "pricing_model": "VOLUME",
-        "tiers": [
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          },
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          },
-          {
-            "starting_quantity": "starting_quantity8",
-            "ending_quantity": "ending_quantity6",
-            "amount": {
-              "currency_code": "currency_code6",
-              "value": "value0"
-            }
-          }
+```ruby
+plan_request = PlanRequest.new(
+  product_id: 'product_id8',
+  name: 'name2',
+  billing_cycles: [
+    SubscriptionBillingCycle.new(
+      frequency: Frequency.new(
+        interval_unit: IntervalUnit::DAY,
+        interval_count: 1
+      ),
+      tenure_type: TenureType::REGULAR,
+      sequence: 8,
+      pricing_scheme: SubscriptionPricingScheme.new(
+        fixed_price: Money.new(
+          currency_code: 'currency_code4',
+          value: 'value0'
+        ),
+        pricing_model: SubscriptionPricingModel::VOLUME,
+        tiers: [
+          PricingTier.new(
+            starting_quantity: 'starting_quantity8',
+            amount: Money.new(
+              currency_code: 'currency_code6',
+              value: 'value0'
+            ),
+            ending_quantity: 'ending_quantity6'
+          ),
+          PricingTier.new(
+            starting_quantity: 'starting_quantity8',
+            amount: Money.new(
+              currency_code: 'currency_code6',
+              value: 'value0'
+            ),
+            ending_quantity: 'ending_quantity6'
+          ),
+          PricingTier.new(
+            starting_quantity: 'starting_quantity8',
+            amount: Money.new(
+              currency_code: 'currency_code6',
+              value: 'value0'
+            ),
+            ending_quantity: 'ending_quantity6'
+          )
         ],
-        "create_time": "create_time4"
-      }
-    }
+        create_time: 'create_time4'
+      ),
+      total_cycles: 1
+    )
   ],
-  "payment_preferences": {
-    "auto_bill_outstanding": true,
-    "setup_fee_failure_action": "CANCEL",
-    "payment_failure_threshold": 0,
-    "setup_fee": {
-      "currency_code": "currency_code8",
-      "value": "value4"
-    }
-  },
-  "quantity_supported": false,
-  "description": "description8",
-  "merchant_preferences": {
-    "return_url": "return_url4",
-    "cancel_url": "cancel_url6"
-  },
-  "taxes": {
-    "percentage": "percentage8",
-    "inclusive": false
-  }
-}
+  payment_preferences: PaymentPreferences.new(
+    auto_bill_outstanding: true,
+    setup_fee: Money.new(
+      currency_code: 'currency_code8',
+      value: 'value4'
+    ),
+    setup_fee_failure_action: SetupFeeFailureAction::CANCEL,
+    payment_failure_threshold: 0
+  ),
+  status: PlanRequestStatus::ACTIVE,
+  description: 'description2',
+  merchant_preferences: MerchantPreferences.new(
+    return_url: 'return_url4',
+    cancel_url: 'cancel_url6'
+  ),
+  taxes: Taxes.new(
+    percentage: 'percentage8',
+    inclusive: false
+  ),
+  quantity_supported: false
+)
 ```
 

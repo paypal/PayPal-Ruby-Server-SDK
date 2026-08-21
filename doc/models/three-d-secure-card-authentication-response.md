@@ -15,13 +15,13 @@ Results of 3D Secure Authentication.
 | `enrollment_status` | [`EnrollmentStatus`](../../doc/models/enrollment-status.md) | Optional | Status of Authentication eligibility.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_]+$` |
 | `authentication_id` | `String` | Optional | The externally received 3ds authentication id, to be returned in card detokenization response.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "authentication_status": "D",
-  "enrollment_status": "U",
-  "authentication_id": "authentication_id2"
-}
+```ruby
+three_d_secure_card_authentication_response = ThreeDSecureCardAuthenticationResponse.new(
+  authentication_status: PaResStatus::UNABLETOCOMPLETEAUTHENTICATION,
+  enrollment_status: EnrollmentStatus::UNAVAILABLE,
+  authentication_id: 'authentication_id4'
+)
 ```
 

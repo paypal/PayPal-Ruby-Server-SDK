@@ -26,79 +26,79 @@ The purchase unit details. Used to capture required information for the payment 
 | `payments` | [`PaymentCollection`](../../doc/models/payment-collection.md) | Optional | The collection of payments, or transactions, for a purchase unit in an order. For example, authorized payments, captured payments, and refunds. |
 | `most_recent_errors` | `Array[Object]` | Optional | The error reason code and description that are the reason for the most recent order decline.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `10` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "reference_id": "reference_id8",
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0",
-    "breakdown": {
-      "item_total": {
-        "currency_code": "currency_code0",
-        "value": "value6"
-      },
-      "shipping": {
-        "currency_code": "currency_code0",
-        "value": "value6"
-      },
-      "handling": {
-        "currency_code": "currency_code2",
-        "value": "value8"
-      },
-      "tax_total": {
-        "currency_code": "currency_code4",
-        "value": "value0"
-      },
-      "insurance": {
-        "currency_code": "currency_code2",
-        "value": "value8"
-      }
-    }
-  },
-  "payee": {
-    "email_address": "email_address4",
-    "merchant_id": "merchant_id6"
-  },
-  "payment_instruction": {
-    "platform_fees": [
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "payee": {
-          "email_address": "email_address4",
-          "merchant_id": "merchant_id6"
-        }
-      },
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "payee": {
-          "email_address": "email_address4",
-          "merchant_id": "merchant_id6"
-        }
-      },
-      {
-        "amount": {
-          "currency_code": "currency_code6",
-          "value": "value0"
-        },
-        "payee": {
-          "email_address": "email_address4",
-          "merchant_id": "merchant_id6"
-        }
-      }
+```ruby
+purchase_unit = PurchaseUnit.new(
+  reference_id: 'reference_id8',
+  amount: AmountWithBreakdown.new(
+    currency_code: 'currency_code6',
+    value: 'value0',
+    breakdown: AmountBreakdown.new(
+      item_total: Money.new(
+        currency_code: 'currency_code0',
+        value: 'value6'
+      ),
+      shipping: Money.new(
+        currency_code: 'currency_code0',
+        value: 'value6'
+      ),
+      handling: Money.new(
+        currency_code: 'currency_code2',
+        value: 'value8'
+      ),
+      tax_total: Money.new(
+        currency_code: 'currency_code4',
+        value: 'value0'
+      ),
+      insurance: Money.new(
+        currency_code: 'currency_code2',
+        value: 'value8'
+      )
+    )
+  ),
+  payee: PayeeBase.new(
+    email_address: 'email_address4',
+    merchant_id: 'merchant_id6'
+  ),
+  payment_instruction: PaymentInstruction.new(
+    platform_fees: [
+      PlatformFee.new(
+        amount: Money.new(
+          currency_code: 'currency_code6',
+          value: 'value0'
+        ),
+        payee: PayeeBase.new(
+          email_address: 'email_address4',
+          merchant_id: 'merchant_id6'
+        )
+      ),
+      PlatformFee.new(
+        amount: Money.new(
+          currency_code: 'currency_code6',
+          value: 'value0'
+        ),
+        payee: PayeeBase.new(
+          email_address: 'email_address4',
+          merchant_id: 'merchant_id6'
+        )
+      ),
+      PlatformFee.new(
+        amount: Money.new(
+          currency_code: 'currency_code6',
+          value: 'value0'
+        ),
+        payee: PayeeBase.new(
+          email_address: 'email_address4',
+          merchant_id: 'merchant_id6'
+        )
+      )
     ],
-    "disbursement_mode": "INSTANT",
-    "payee_pricing_tier_id": "payee_pricing_tier_id2",
-    "payee_receivable_fx_rate_id": "payee_receivable_fx_rate_id0"
-  },
-  "description": "description0"
-}
+    disbursement_mode: DisbursementMode::INSTANT,
+    payee_pricing_tier_id: 'payee_pricing_tier_id2',
+    payee_receivable_fx_rate_id: 'payee_receivable_fx_rate_id0'
+  ),
+  description: 'description0'
+)
 ```
 

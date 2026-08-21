@@ -18,16 +18,16 @@ A resource representing an experience context of vault a card.
 | `vault_instruction` | [`VaultInstructionAction`](../../doc/models/vault-instruction-action.md) | Optional | DEPRECATED. Vault Instruction on action to be performed after a successful payer approval.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[A-Z_]+$` |
 | `user_action` | [`VaultUserAction`](../../doc/models/vault-user-action.md) | Optional | User Action on action to be performed after a successful payer approval.<br><br>**Default**: `VaultUserAction::CONTINUE`<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[A-Z_]+$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "user_action": "CONTINUE",
-  "brand_name": "brand_name4",
-  "locale": "locale8",
-  "return_url": "return_url4",
-  "cancel_url": "cancel_url8",
-  "vault_instruction": "ON_CREATE_PAYMENT_TOKENS"
-}
+```ruby
+vault_card_experience_context = VaultCardExperienceContext.new(
+  brand_name: 'brand_name2',
+  locale: 'locale6',
+  return_url: 'return_url4',
+  cancel_url: 'cancel_url6',
+  vault_instruction: VaultInstructionAction::ON_CREATE_PAYMENT_TOKENS,
+  user_action: VaultUserAction::CONTINUE
+)
 ```
 

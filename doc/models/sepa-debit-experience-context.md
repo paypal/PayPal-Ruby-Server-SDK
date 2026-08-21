@@ -15,13 +15,13 @@ Customizes the payer experience during the approval process for the SEPA Debit p
 | `return_url` | `String` | Required | Describes the URL. |
 | `cancel_url` | `String` | Required | Describes the URL. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "locale": "locale8",
-  "return_url": "return_url6",
-  "cancel_url": "cancel_url8"
-}
+```ruby
+sepa_debit_experience_context = SepaDebitExperienceContext.new(
+  return_url: 'return_url6',
+  cancel_url: 'cancel_url8',
+  locale: 'locale8'
+)
 ```
 

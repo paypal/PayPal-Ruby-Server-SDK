@@ -29,22 +29,19 @@ A captured payment.
 | `supplementary_data` | [`PaymentSupplementaryData`](../../doc/models/payment-supplementary-data.md) | Optional | The supplementary data. |
 | `payee` | [`PayeeBase`](../../doc/models/payee-base.md) | Optional | The details for the merchant who receives the funds and fulfills the order. The merchant is also known as the payee. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "final_capture": false,
-  "disbursement_mode": "INSTANT",
-  "status": "PARTIALLY_REFUNDED",
-  "status_details": {
-    "reason": "VERIFICATION_REQUIRED"
-  },
-  "id": "id4",
-  "amount": {
-    "currency_code": "currency_code6",
-    "value": "value0"
-  },
-  "invoice_id": "invoice_id4"
-}
+```ruby
+captured_payment = CapturedPayment.new(
+  status_details: CaptureStatusDetails.new(
+    reason: CaptureIncompleteReason::VERIFICATION_REQUIRED
+  ),
+  amount: Money.new(
+    currency_code: 'currency_code6',
+    value: 'value0'
+  ),
+  final_capture: false,
+  disbursement_mode: DisbursementMode::INSTANT
+)
 ```
 

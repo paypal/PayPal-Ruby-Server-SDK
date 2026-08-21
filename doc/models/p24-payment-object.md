@@ -18,15 +18,15 @@ Information used to pay using P24(Przelewy24).
 | `method_id` | `String` | Optional | Numeric identifier of the payment scheme or bank used for the payment.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `300` |
 | `method_description` | `String` | Optional | Friendly name of the payment scheme or bank used for the payment.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `2000` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name4",
-  "email": "email2",
-  "country_code": "country_code4",
-  "payment_descriptor": "payment_descriptor8",
-  "method_id": "method_id8"
-}
+```ruby
+p24_payment_object = P24PaymentObject.new(
+  name: 'name6',
+  email: 'email0',
+  country_code: 'country_code4',
+  payment_descriptor: 'payment_descriptor0',
+  method_id: 'method_id0'
+)
 ```
 

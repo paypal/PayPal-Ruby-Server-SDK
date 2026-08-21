@@ -14,12 +14,12 @@ The tokenized payment source to fund a payment.
 | `id` | `String` | Required | The PayPal-generated ID for the token.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9a-zA-Z_-]+$` |
 | `type` | [`TokenType`](../../doc/models/token-type.md) | Required | The tokenization method that generated the ID.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `255`, *Pattern*: `^[0-9A-Z_-]+$` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id6",
-  "type": "BILLING_AGREEMENT"
-}
+```ruby
+token = Token.new(
+  id: 'id6',
+  type: TokenType::BILLING_AGREEMENT
+)
 ```
 

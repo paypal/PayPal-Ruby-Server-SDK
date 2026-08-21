@@ -16,3 +16,9 @@ The PayPal reference ID type.
 | `SUB` | A subscription ID. |
 | `PAP` | A pre-approved payment ID. |
 
+## Example
+
+```ruby
+paypal_reference_id_type = PaypalReferenceIdType::ODR
+```
+

@@ -46,15 +46,14 @@ The transaction information.
 | `instrument_type` | `String` | Optional | A high-level classification of the type of financial instrument that was used to fund a payment. The pattern is not provided because the value is defined by an external party. E.g. PAYPAL, CREDIT_CARD, DEBIT_CARD, APPLE_PAY, BANK , VENMO ,Pay Upon Invoice, Pay Later  or Alternative Payment Methods (APM).<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `64` |
 | `instrument_sub_type` | `String` | Optional | A finer-grained classification of the financial instrument that was used to fund a payment. For example, `Visa card` or a `Mastercard` for a credit card, BANKCARD ,DISCOVER etc. The pattern is not provided because the value is defined by an external party.<br><br>**Constraints**: *Minimum Length*: `1`, *Maximum Length*: `64` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "paypal_account_id": "paypal_account_id6",
-  "transaction_id": "transaction_id2",
-  "paypal_reference_id": "paypal_reference_id4",
-  "paypal_reference_id_type": "ODR",
-  "transaction_event_code": "transaction_event_code8"
-}
+```ruby
+transaction_information = TransactionInformation.new(
+  paypal_account_id: 'paypal_account_id0',
+  paypal_reference_id: 'paypal_reference_id8',
+  paypal_reference_id_type: PaypalReferenceIdType::ODR,
+  transaction_event_code: 'transaction_event_code2'
+)
 ```
 

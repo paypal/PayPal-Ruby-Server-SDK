@@ -13,11 +13,11 @@ The name of the party.
 |  --- | --- | --- | --- |
 | `full_name` | `String` | Optional | When the party is a person, the party's full name.<br><br>**Constraints**: *Maximum Length*: `300` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "full_name": "full_name6"
-}
+```ruby
+shipping_name = ShippingName.new(
+  full_name: 'full_name6'
+)
 ```
 

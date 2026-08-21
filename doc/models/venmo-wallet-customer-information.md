@@ -16,22 +16,22 @@ The details about a customer in PayPal's system of record.
 | `phone` | [`PhoneWithType`](../../doc/models/phone-with-type.md) | Optional | The phone information. |
 | `name` | [`Name`](../../doc/models/name.md) | Optional | The name of the party. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "id": "id4",
-  "email_address": "email_address2",
-  "phone": {
-    "phone_type": "OTHER",
-    "phone_number": {
-      "national_number": "national_number6"
-    }
-  },
-  "name": {
-    "given_name": "given_name2",
-    "surname": "surname8"
-  }
-}
+```ruby
+venmo_wallet_customer_information = VenmoWalletCustomerInformation.new(
+  id: 'id4',
+  email_address: 'email_address2',
+  phone: PhoneWithType.new(
+    phone_number: PhoneNumber.new(
+      national_number: 'national_number6'
+    ),
+    phone_type: PhoneType::OTHER
+  ),
+  name: Name.new(
+    given_name: 'given_name2',
+    surname: 'surname8'
+  )
+)
 ```
 

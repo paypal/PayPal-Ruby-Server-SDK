@@ -13,39 +13,39 @@ The incentive details.
 |  --- | --- | --- | --- |
 | `incentive_details` | [`Array[IncentiveDetails]`](../../doc/models/incentive-details.md) | Optional | An array of incentive details.<br><br>**Constraints**: *Minimum Items*: `1`, *Maximum Items*: `32767` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "incentive_details": [
-    {
-      "incentive_type": "incentive_type4",
-      "incentive_code": "incentive_code0",
-      "incentive_amount": {
-        "currency_code": "currency_code4",
-        "value": "value0"
-      },
-      "incentive_program_code": "incentive_program_code4"
-    },
-    {
-      "incentive_type": "incentive_type4",
-      "incentive_code": "incentive_code0",
-      "incentive_amount": {
-        "currency_code": "currency_code4",
-        "value": "value0"
-      },
-      "incentive_program_code": "incentive_program_code4"
-    },
-    {
-      "incentive_type": "incentive_type4",
-      "incentive_code": "incentive_code0",
-      "incentive_amount": {
-        "currency_code": "currency_code4",
-        "value": "value0"
-      },
-      "incentive_program_code": "incentive_program_code4"
-    }
+```ruby
+incentive_information = IncentiveInformation.new(
+  incentive_details: [
+    IncentiveDetails.new(
+      incentive_type: 'incentive_type4',
+      incentive_code: 'incentive_code0',
+      incentive_amount: Money.new(
+        currency_code: 'currency_code4',
+        value: 'value0'
+      ),
+      incentive_program_code: 'incentive_program_code4'
+    ),
+    IncentiveDetails.new(
+      incentive_type: 'incentive_type4',
+      incentive_code: 'incentive_code0',
+      incentive_amount: Money.new(
+        currency_code: 'currency_code4',
+        value: 'value0'
+      ),
+      incentive_program_code: 'incentive_program_code4'
+    ),
+    IncentiveDetails.new(
+      incentive_type: 'incentive_type4',
+      incentive_code: 'incentive_code0',
+      incentive_amount: Money.new(
+        currency_code: 'currency_code4',
+        value: 'value0'
+      ),
+      incentive_program_code: 'incentive_program_code4'
+    )
   ]
-}
+)
 ```
 

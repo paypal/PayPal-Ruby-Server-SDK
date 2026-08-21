@@ -21,6 +21,10 @@ Metrics/PerceivedComplexity:
 
 Layout/EndOfLine:
   Enabled: false
+
+Layout/EmptyLines:
+  Enabled: false
+
 Lint/UnderscorePrefixedVariableName:
   Enabled: false
 

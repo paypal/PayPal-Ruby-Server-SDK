@@ -17,24 +17,24 @@ The Balance information.
 | `available_balance` | [`Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. |
 | `withheld_balance` | [`Money`](../../doc/models/money.md) | Optional | The currency and amount for a financial transaction, such as a balance or payment due. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "currency": "currency4",
-  "primary": false,
-  "total_balance": {
-    "currency_code": "currency_code6",
-    "value": "value2"
-  },
-  "available_balance": {
-    "currency_code": "currency_code8",
-    "value": "value4"
-  },
-  "withheld_balance": {
-    "currency_code": "currency_code2",
-    "value": "value8"
-  }
-}
+```ruby
+balance_information = BalanceInformation.new(
+  currency: 'currency8',
+  total_balance: Money.new(
+    currency_code: 'currency_code6',
+    value: 'value2'
+  ),
+  primary: false,
+  available_balance: Money.new(
+    currency_code: 'currency_code8',
+    value: 'value4'
+  ),
+  withheld_balance: Money.new(
+    currency_code: 'currency_code2',
+    value: 'value8'
+  )
+)
 ```
 

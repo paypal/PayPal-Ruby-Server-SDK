@@ -16,28 +16,28 @@ The shipping information.
 | `address` | [`SimplePostalAddressCoarseGrained`](../../doc/models/simple-postal-address-coarse-grained.md) | Optional | A simple postal address with coarse-grained fields. Do not use for an international address. Use for backward compatibility only. Does not contain phone. |
 | `secondary_shipping_address` | [`SimplePostalAddressCoarseGrained`](../../doc/models/simple-postal-address-coarse-grained.md) | Optional | A simple postal address with coarse-grained fields. Do not use for an international address. Use for backward compatibility only. Does not contain phone. |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "name": "name8",
-  "method": "method2",
-  "address": {
-    "line1": "line18",
-    "line2": "line20",
-    "city": "city6",
-    "state": "state2",
-    "country_code": "country_code6",
-    "postal_code": "postal_code8"
-  },
-  "secondary_shipping_address": {
-    "line1": "line16",
-    "line2": "line28",
-    "city": "city4",
-    "state": "state0",
-    "country_code": "country_code4",
-    "postal_code": "postal_code6"
-  }
-}
+```ruby
+shipping_information = ShippingInformation.new(
+  name: 'name4',
+  method: 'method8',
+  address: SimplePostalAddressCoarseGrained.new(
+    line1: 'line18',
+    city: 'city6',
+    country_code: 'country_code6',
+    line2: 'line20',
+    state: 'state2',
+    postal_code: 'postal_code8'
+  ),
+  secondary_shipping_address: SimplePostalAddressCoarseGrained.new(
+    line1: 'line16',
+    city: 'city4',
+    country_code: 'country_code4',
+    line2: 'line28',
+    state: 'state0',
+    postal_code: 'postal_code6'
+  )
+)
 ```
 

@@ -14,12 +14,12 @@ The tax details.
 | `percentage` | `String` | Required | The percentage, as a fixed-point, signed decimal number. For example, define a 19.99% interest rate as `19.99`.<br><br>**Constraints**: *Pattern*: `^((-?[0-9]+)\|(-?([0-9]+)?[.][0-9]+))$` |
 | `inclusive` | `TrueClass \| FalseClass` | Optional | Indicates whether the tax was already included in the billing amount.<br><br>**Default**: `true` |
 
-## Example (as JSON)
+## Example
 
-```json
-{
-  "percentage": "percentage6",
-  "inclusive": true
-}
+```ruby
+taxes = Taxes.new(
+  percentage: 'percentage8',
+  inclusive: true
+)
 ```
 
